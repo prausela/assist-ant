@@ -4,7 +4,8 @@
         <div class="modal-body">
             <div class="column-container">
                 <div class="image-container">
-                    <v-icon name="lightbulb" :style="{color:color}" scale="15" />
+                    <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
+                    <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="15" />
 
                     <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
                     <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
@@ -24,11 +25,10 @@
 </template>
 
 <script>
-import { Slider } from 'vue-color'
-
+import { Slider } from 'vue-color'    
 import Switches from 'vue-switches'
 
-    export default {
+export default {
 
   name: 'Lightbulb',
   components: {
@@ -37,7 +37,7 @@ import Switches from 'vue-switches'
   },
   data () {
     return {
-        name: 'Luz',
+        name: 'Luza',
         enabled: true,
         colors: { r: 25, g: 77, b:  255, a: 0.5},
         color: null

@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <Header/>
     <LightbulbCard/>
     <Lightbulb/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import LightbulbCard from './components/cards/devices/LightbulbCard.vue'
 import Lightbulb from './components/devices/Lightbulb.vue'
 
@@ -13,13 +15,16 @@ export default {
   name: 'app',
   components: {
     LightbulbCard,
-    Lightbulb
+    Lightbulb,
+    Header
   }
 }
 </script>
 
 <style lang="sass">
 #app 
+  display: flex
+  flex-direction: column
   font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
