@@ -37,7 +37,7 @@ export default {
   },
   data () {
     return {
-        name: 'Luza',
+        name: 'Luz',
         enabled: true,
         colors: { r: 25, g: 77, b:  255, a: 0.5},
         color: null

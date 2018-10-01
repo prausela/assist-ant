@@ -4,7 +4,7 @@
 			<div class="icon-label">ASSIST</div>
 			<img class="icon-img" src="../assets/logo.png">
 		</div>
-		<div class="title">TITULO</div>
+		<div class="title">Bienvenido a casa</div>
 		<div class="info">
 			<Time/>
 		</div>

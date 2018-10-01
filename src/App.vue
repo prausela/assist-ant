@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <LightbulbCard/>
-    <Lightbulb/>
+    <Body/>
+   
   </div>
 </template>
 
@@ -10,13 +10,15 @@
 import Header from './components/Header.vue'
 import LightbulbCard from './components/cards/devices/LightbulbCard.vue'
 import Lightbulb from './components/devices/Lightbulb.vue'
+import Body from './components/body/Body.vue'
 
 export default {
   name: 'app',
   components: {
     LightbulbCard,
     Lightbulb,
-    Header
+    Header,
+    Body
   }
 }
 </script>
