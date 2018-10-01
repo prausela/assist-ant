@@ -30,7 +30,7 @@
 	height: 30px;
 }
 .Devices button{
-	background-color: pink;
+	background-color: rgb(219, 187, 214);
 	padding:30px 30px; 
 
 }
@@ -47,7 +47,7 @@
 .Tabs{
 	width: 33%;
 	height:400px;
-	background-color: pink ;
+	background-color:  rgb(219, 187, 214);
 	float: left;
   	border: 1px solid black;
 }
@@ -55,7 +55,7 @@
 .Favourite{
 	width: 33%;
 	height:400px;
-	background-color: pink ;
+	background-color:  rgb(219, 187, 214);
 	float: left;
 	border: 1px solid black;
 
@@ -65,7 +65,7 @@
 .History{
 	width: 33%;
 	height:200px;
-	background-color: pink ;
+	background-color:  rgb(219, 187, 214);
 	float: right;
 	border: 1px solid black;
 }
@@ -75,7 +75,7 @@
 	height: 200px;
 	float: right;
 	border: 1px solid black;
-	background-color: pink ;
+	background-color:  rgb(219, 187, 214);
 
 }
 
