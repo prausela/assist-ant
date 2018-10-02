@@ -1,11 +1,27 @@
 <template>
-	<div class="Columns">
-  		<div class="Tabs">
+	<div class="columns">
+    <div class="tabs">
+      <div class="tabs-component">
+      <tabs class="tabs-component-tabs" :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged">
+        <tab class="tabs-component-tab" name="Dispositivos">
+            This is the content of the first tab
+        </tab>
+        <tab class="tabs-component-tab" name="Pisos">
+            This is the content of the second tab
+        </tab>
+        <tab class="tabs-component-tab" name="Habitaciones">
+            This is the content of the hitory tab
+        </tab>
+        
+      </tabs>
+    </div>
+    </div>
+  		<!-- <div class="tabs">
   			<button class="tab" @click="pressedButton">Dispositivos</button>
   				<!-- <div id='dev' class="tabcontent">
   					<p>Listarlos.</p>
 				</div> -->
-				<table v-if="verBotones" class="Devices">
+				<!-- <table v-if="verBotones" class="devices">
   					<button class="button">
   						<img class="card-icon" src="@/assets/lb-on.png"> 
   					</button>
@@ -13,15 +29,15 @@
   					<button>d3</button>
 				</table>
   			<button class="tab" onclick="openDev(event,'dev')">Pisos</button>
-  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button>		
-  		</div>
-  		<div class="Favourite">
+  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button> -->		
+  		<!-- </div> -->
+  		<div class="favourite">
   			<h2>Destacados</h2>
   		</div>
-  		<div class="History">
+  		<div class="history">
 			<h2>Ultima Accion</h2>
   		</div>
-  		<div class="Routines">
+  		<div class="routines">
   			<h2>Rutinas</h2>
   		</div>
 	</div>
@@ -46,36 +62,40 @@
   	}
   }
 }
-// function openDev(evt, dev) {
-//     var i, tabcontent, tablinks;
-//     tabcontent = document.getElementsByClassName("tabcontent");
-//     for (i = 0; i < tabcontent.length; i++) {
-//         tabcontent[i].style.display = "none";
-//     }
-//     tablinks = document.getElementsByClassName("tab");
-//     for (i = 0; i < tablinks.length; i++) {
-//         tablinks[i].className = tablinks[i].className.replace(" active", "");
-//     }
-//     document.getElementById(cityName).style.display = "block";
-//     evt.currentTarget.className += " active";
-// }
 </script>
 
 
 <style lang="css" scoped>
-.tab{
-		background-color: rgb(219, 187, 214);
-		color:black;
-		width: 33%;
-		height:40px;
+
+.tabs-component {
+  color:red;
+
 }
+
+.tabs-component-tab {
+  color:black;
+  border: solid 1px #ddd;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.tabs{
+  width: 30%;
+  height:400px;
+  background-color:  rgb(219, 187, 214);
+  position: absolute;
+  box-shadow: 5px 10px rgb(193, 160, 201);
+
+}
+
+
 .card-icon{
 	width: 30px;
 	height: 30px;
 }
 
 
-.Columns{
+.columns{
     content: "";
     display:table;
     clear: both;
@@ -85,26 +105,8 @@
     position: relative;
 
 }
-.Tabs button:hover{
-	    background-color: rgb(193, 160, 201);
-}
 
-.Tabs button:Accion{
-
-    background-color: rgb(193, 160, 201);
-}
-
-.Tabs{
-
-	width: 30%;
-	height:400px;
-	background-color:  rgb(219, 187, 214);
-	position: absolute;
-  	box-shadow: 5px 10px rgb(193, 160, 201);
-
-}
-
-.Favourite{
+.favourite{
 	width: 30%;
 	height:400px;
 	float: center;
@@ -114,7 +116,7 @@
 	box-shadow: 5px 10px rgb(193, 160, 201);
 }
 
-.Routines{
+.routines{
 	width: 30%;
 	height: 180px;
 	left:69%;
@@ -125,7 +127,7 @@
 
 
 }
-.History{
+.history{
 	width: 30%;
 	height:180px;
 	background-color:  rgb(219, 187, 214);
@@ -133,10 +135,7 @@
 	left:69%;
 	bottom: 0px;
 	box-shadow: 5px 10px rgb(193, 160, 201);
-
-
 }
-
 
 </style>
 
