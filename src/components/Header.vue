@@ -7,6 +7,7 @@
 		<div class="title">Bienvenido a casa</div>
 		<div class="info">
 			<Time/>
+			
 		</div>
 	</div>
 </template>
