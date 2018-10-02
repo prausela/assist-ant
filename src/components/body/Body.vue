@@ -1,27 +1,10 @@
 <template>
 	<div class="columns">
-    <div class="tabs">
-      <div class="tabs-component">
-      <tabs class="tabs-component-tabs" :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged">
-        <tab class="tabs-component-tab" name="Dispositivos">
-            This is the content of the first tab
-        </tab>
-        <tab class="tabs-component-tab" name="Pisos">
-            This is the content of the second tab
-        </tab>
-        <tab class="tabs-component-tab" name="Habitaciones">
-            This is the content of the hitory tab
-        </tab>
-        
-      </tabs>
-    </div>
-    </div>
-  		<!-- <div class="tabs">
+    
+  		<div class="tabs">
   			<button class="tab" @click="pressedButton">Dispositivos</button>
-  				<!-- <div id='dev' class="tabcontent">
-  					<p>Listarlos.</p>
-				</div> -->
-				<!-- <table v-if="verBotones" class="devices">
+  				
+				<table v-if="verBotones" class="devices">
   					<button class="button">
   						<img class="card-icon" src="@/assets/lb-on.png"> 
   					</button>
@@ -29,8 +12,8 @@
   					<button>d3</button>
 				</table>
   			<button class="tab" onclick="openDev(event,'dev')">Pisos</button>
-  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button> -->		
-  		<!-- </div> -->
+  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button>		
+  		</div>
   		<div class="favourite">
   			<h2>Destacados</h2>
   		</div>
@@ -67,25 +50,12 @@
 
 <style lang="css" scoped>
 
-.tabs-component {
-  color:red;
-
-}
-
-.tabs-component-tab {
-  color:black;
-  border: solid 1px #ddd;
-  border-radius: 6px;
-  margin-bottom: 5px;
-}
-
 .tabs{
   width: 30%;
   height:400px;
   background-color:  rgb(219, 187, 214);
   position: absolute;
   box-shadow: 5px 10px rgb(193, 160, 201);
-
 }
 
 
