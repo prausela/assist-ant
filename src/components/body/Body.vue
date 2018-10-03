@@ -2,7 +2,23 @@
 	<div class="columns">
     
   		<div class="tabs">
-  			<button class="tab" @click="pressedButton">Dispositivos</button>
+        
+        <div class="devices" @click="pressedButton">Dispositivos</div>
+        <table v-if="verBotones" class="devices-list">
+            
+            <img class="card-icon" src="@/assets/lb-on.png"> 
+            <img class="card-icon" src="@/assets/lb-on.png"> 
+            <img class="card-icon" src="@/assets/lb-on.png"> 
+
+<!--             <img class="card-icon" src="@/assets/bedroom.PNG"> 
+ --><!--             <img class="card-icon" src="@/assets/cocina.PNG"> 
+ -->    
+
+        </table>
+        <div class="hab" @click="pressedButton">Habitaciones</div>
+        <div class="floors" @click="pressedButton">Pisos</div>
+
+  			<!-- <button class="tab" @click="pressedButton">Dispositivos</button>
   				
 				<table v-if="verBotones" class="devices">
   					<button class="button">
@@ -12,7 +28,7 @@
   					<button>d3</button>
 				</table>
   			<button class="tab" onclick="openDev(event,'dev')">Pisos</button>
-  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button>		
+  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button>	 -->	
   		</div>
   		<div class="favourite">
   			<h2>Destacados</h2>
@@ -47,10 +63,67 @@
 }
 </script>
 
-
+<!-- si la tab no esta seleccionada    background-color:  rgb(193, 160, 201);
+ -->
 <style lang="css" scoped>
+.card-icon{
+  display: row;
+  border: 1px solid white;
+margin: 8px;    
+width: 100px;
+  height: 100px;
+
+}
+
+.devices-list{
+  position: absolute;
+  margin-top: 20%;
+  height: 80%;
+  width: 100%;
+  background-color: rgb(219, 187, 214);
+  display: inline;
+
+  text-align: left;
+}
+
+.floors{
+  border: 1px solid white;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+    padding: 3px;
+
+
+}
+.devices{
+    border: 1px solid white;
+
+      height: 10%;
+    margin-left: 2px;
+   display: flex;
+    align-items: center;
+      padding: 3px;
+
+
+}
+.hab{
+    border: 1px solid white;
+
+  height: 10%;
+  display: flex;
+  align-items: center;
+    padding: 3px;
+
+
+}
 
 .tabs{
+    justify-content: space-between;
+  font-size: 20px;
+  color:black;
+  display: flex;
+  flex-direction:row;
   width: 30%;
   height:400px;
   background-color:  rgb(219, 187, 214);
@@ -58,11 +131,6 @@
   box-shadow: 5px 10px rgb(193, 160, 201);
 }
 
-
-.card-icon{
-	width: 30px;
-	height: 30px;
-}
 
 
 .columns{
@@ -73,6 +141,8 @@
     border-color: black;
     height: 400px;
     position: relative;
+      font-family: My Happy Ending;
+
 
 }
 

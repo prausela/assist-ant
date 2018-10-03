@@ -2,7 +2,6 @@
   <div id="app">
     <Header/>
     <Body/>
-   
   </div>
 </template>
 
