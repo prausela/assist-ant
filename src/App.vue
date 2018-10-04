@@ -36,10 +36,12 @@ export default {
   display: flex
   position: relative
   justify-content: space-around
+  height: 100vh
 
 body 
   margin: 0
   position: relative
+  height: 100vh
 
 
 .modal-window

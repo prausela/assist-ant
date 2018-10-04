@@ -31,27 +31,30 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-.header {
-	height: 100px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	font-family: My Happy Ending;
+<style lang="sass" scoped>
+.header 
+	height: 100px
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	font-family: My Happy Ending
+	padding: 5px 10px
 
-}
-.title{
-	display: flex;
-	align-items: center;
-}
-.icon-img{
-	height: 100%;
-}
-.icon{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
+.title
+	display: flex
+	align-items: center
 
+.icon-img
+	height: 100%
+
+.icon
+	display: flex
+	flex-direction: row
+	justify-content: center
+	align-items: center
+
+.info 
+	display: flex
+	justify-content: center
+	align-items: center
 </style>

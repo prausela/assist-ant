@@ -2,11 +2,9 @@
 	<div id="devices">
 		<div class="tabs">
 	        
-	        <div class="devices-tab" @click="pressedButton">Dispositivos</div>
-	        <div class="hab-tab" @click="pressedButton">Habitaciones</div>
-	        <div class="floors-tab" @click="pressedButton">Pisos</div>
-
-
+	        <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
+          <div class="hab-tab tab" @click="pressedButton">Habitaciones</div>
+	        <div class="floors-tab tab" @click="pressedButton">Pisos</div>
 	  			<!-- <button class="tab" @click="pressedButton">Dispositivos</button>
 	  				
 					<table v-if="verBotones" class="devices">
@@ -51,73 +49,56 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-#devices{
-	display: flex;
-	flex-direction: column;
-}
-.card-icon{
-  display: row;
-  border: 1px solid white;
-  margin: 8px;    
-  width: 100px;
-  height: 100px;
+<style lang="sass" scoped>
+#devices
+  display: flex
+  flex-direction: column
+  width: 30%
+  background-color: $primaryBg
+  box-shadow: 5px 10px $shadowBg
 
-}
-
-.devices-list{
-  position: relative;
-  margin-top: 20%;
-  height: 80%;
-  width: 100%;
-  background-color: rgb(219, 187, 214);
-  display: inline;
-
-  text-align: left;
-}
-
-.floors{
-  border: 1px solid white;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  margin-right: 2px;
-    padding: 3px;
+.card-icon
+  display: row
+  border: 1px solid white
+  margin: 8px    
+  width: 100px
+  height: 100px
 
 
-}
-.devices{
-    border: 1px solid white;
 
-      height: 10%;
-    margin-left: 2px;
-   display: flex;
-    align-items: center;
-      padding: 3px;
+.devices-list
+  position: relative
+  text-align: left
 
 
-}
-.hab{
-    border: 1px solid white;
+.floors
+  border: 1px solid white
+  height: 10%
+  display: flex
+  align-items: center
+  margin-right: 2px
+    padding: 3px
 
-  height: 10%;
-  display: flex;
-  align-items: center;
-    padding: 3px;
 
 
-}
+.hab
+  border: 1px solid white
+  height: 10%
+  display: flex
+  align-items: center
+  padding: 3px
 
-.tabs{
-    justify-content: space-between;
-  font-size: 20px;
-  color:black;
-  display: flex;
-  flex-direction:row;
-  width: 30%;
-  height:400px;
-  background-color:  rgb(219, 187, 214);
-  position: absolute;
-  box-shadow: 5px 10px rgb(193, 160, 201);
-}
+
+
+
+.tabs
+  justify-content: space-around
+  font-size: 20px
+  color: black
+  display: flex
+  flex-direction: row
+  border-bottom: 1px solid black
+  & .tab 
+    padding: 3px 0
+
 </style>

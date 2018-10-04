@@ -1,19 +1,21 @@
 <template>
-	<div class="columns">
-      <Devices/>
-  		
-  		<div class="favourite">
-  			<h2>Destacados</h2>
-  		</div>
-      <div id="history-routines">
-        <div class="history">
-        <h2>Ultima Accion</h2>
+    <div id="main-content">
+        <div class="columns">
+            <Devices/>
+
+            <div class="favourite">
+                <h2>Destacados</h2>
+            </div>
+            <div id="history-routines">
+                <div class="history">
+                    <h2>Ultima Accion</h2>
+                </div>
+                <div class="routines">
+                    <h2>Rutinas</h2>
+                </div>
+            </div>
         </div>
-        <div class="routines">
-          <h2>Rutinas</h2>
-        </div>
-      </div>
-	</div>
+    </div>
 </template>
 
  <script>
@@ -34,48 +36,44 @@
 
 <!-- si la tab no esta seleccionada    background-color:  rgb(193, 160, 201);
  -->
-<style lang="css" scoped>
+<style lang="sass" scoped>
+    #main-content
+        flex: 1
+        display: flex
+        flex-direction: column
+    .columns
+        max-height: 600px
+        display: flex
+        flex-direction: row 
+        position: relative
+        font-family: My Happy Ending
+        align-items: stretch
+        flex: 1
+        justify-content: space-around
+
+    .favourite
+        background-color: $primaryBg
+        box-shadow: 5px 10px $shadowBg
+        width: 30%
 
 
 
+    #history-routines
+        display: flex
+        flex-direction: column
+        width: 30%
 
-.columns{
-    display:flex;
-    flex-direction: row; 
-    border: 3px solid black;
-    height: 400px;
-    position: relative;
-    font-family: My Happy Ending;
+    .routines
+        margin: 5% 0
+        box-shadow: 5px 10px $shadowBg
+        background-color:  $primaryBg
+        flex: 1
+    .history
+        margin: 5% 0
+        background-color:  $primaryBg
+        box-shadow: 5px 10px $shadowBg
+        flex: 1
 
-
-}
-
-.favourite{
-	width: 30%;
-	height:400px;
-	float: center;
-	background-color:  rgb(219, 187, 214);
-	box-shadow: 5px 10px rgb(193, 160, 201);
-}
-
-.routines{
-	width: 30%;
-	height: 180px;
-	left:69%;
-
-	box-shadow: 5px 10px rgb(193, 160, 201);
-	background-color:  rgb(219, 187, 214);
-		position: absolute;
-
-
-}
-#history-routines{
-  /*display: flex;*/
-}
-.history{
-	background-color:  rgb(219, 187, 214);
-	box-shadow: 5px 10px rgb(193, 160, 201);
-}
 
 </style>
 
