@@ -2,6 +2,7 @@
   <div id="app">
     <Header/>
     <Body/>
+    <Modal/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import Header from './components/Header.vue'
 import LightbulbCard from './components/cards/devices/LightbulbCard.vue'
 import Lightbulb from './components/devices/Lightbulb.vue'
 import Body from './components/body/Body.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'app',
@@ -31,8 +33,6 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  padding-top: 5px
-  padding-left: 5px
   display: flex
   position: relative
   justify-content: space-around

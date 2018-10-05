@@ -1,38 +1,30 @@
 <template>
-	<div id="devices">
-		<div class="tabs">
-	        
-	        <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
-          <div class="hab-tab tab" @click="pressedButton">Habitaciones</div>
-	        <div class="floors-tab tab" @click="pressedButton">Pisos</div>
-	  			<!-- <button class="tab" @click="pressedButton">Dispositivos</button>
-	  				
-					<table v-if="verBotones" class="devices">
-	  					<button class="button">
-	  						<img class="card-icon" src="@/assets/lb-on.png"> 
-	  					</button>
-	  					<button>d2</button>
-	  					<button>d3</button>
-					</table>
-	  			<button class="tab" onclick="openDev(event,'dev')">Pisos</button>
-	  			<button class="tab" onclick="openDev(event,'dev')">Habitaciones</button>	 -->	
-	  	</div>
-	    <div v-if="verBotones" class="devices-list">
-	        
-	        <img class="card-icon" src="@/assets/lb-on.png"> 
-	        <img class="card-icon" src="@/assets/lb-on.png"> 
-	        <img class="card-icon" src="@/assets/lb-on.png"> 
+  <div id="devices">
+    <div class="tabs">
 
-	<!--             <img class="card-icon" src="@/assets/bedroom.PNG"> 
-	--><!--             <img class="card-icon" src="@/assets/cocina.PNG"> 
-	-->    
+      <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
+      <div class="hab-tab tab" @click="pressedButton">Habitaciones</div>
+      <div class="floors-tab tab" @click="pressedButton">Pisos</div>	  	
+    </div>
+    <div v-if="verBotones" class="devices-list">
 
-	    </div>
-	</div>
+      <img class="card-icon"  src="@/assets/lb-on.png"> 
+
+      <img class="card-icon" src="@/assets/lb-on.png"> 
+      <img class="card-icon" src="@/assets/lb-on.png"> 
+<!--       <Lightbulb/>
+ -->
+
+    </div>
+  </div>
 </template>
 
 <script>
+import Lightbulb from "@/components/devices/Lightbulb.vue"
 export default {
+  components:{
+    Lightbulb
+  },
 
   name: 'Devices',
 

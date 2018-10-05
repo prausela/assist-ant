@@ -8,7 +8,10 @@
             </div>
             <div id="history-routines">
                 <div class="history">
+
                     <h2>Ultima Accion</h2>
+                    <v-icon name="redo-alt" scale="2" />
+
                 </div>
                 <div class="routines">
                     <h2>Rutinas</h2>
@@ -64,12 +67,11 @@
         width: 30%
 
     .routines
-        margin: 5% 0
         box-shadow: 5px 10px $shadowBg
         background-color:  $primaryBg
         flex: 1
     .history
-        margin: 5% 0
+        margin-bottom: 8%
         background-color:  $primaryBg
         box-shadow: 5px 10px $shadowBg
         flex: 1
