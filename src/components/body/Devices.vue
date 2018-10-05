@@ -7,13 +7,13 @@
       <div class="floors-tab tab" @click="pressedButton">Pisos</div>	  	
     </div>
     <div v-if="verBotones" class="devices-list">
+      <div v-for="device in devices">
+        {{device.name}}
+      </div>
 
-      <img class="card-icon"  src="@/assets/lb-on.png"> 
+      
+      <!-- <Lightbulb/> -->
 
-      <img class="card-icon" src="@/assets/lb-on.png"> 
-      <img class="card-icon" src="@/assets/lb-on.png"> 
-<!--       <Lightbulb/>
- -->
 
     </div>
   </div>
@@ -21,6 +21,8 @@
 
 <script>
 import Lightbulb from "@/components/devices/Lightbulb.vue"
+import testData from "@/testData.js"
+
 export default {
   components:{
     Lightbulb
@@ -30,8 +32,10 @@ export default {
 
   data () {
     return {
-    	verBotones: true
+    	verBotones: true, 
+      devices: testData.devices
     }
+
   },
   methods:{
   	pressedButton(){

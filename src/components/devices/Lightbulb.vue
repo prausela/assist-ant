@@ -1,25 +1,27 @@
 <template>
-    <div class="modal-window">
-        <div class="modal-header">{{name}}</div>
-        <div class="modal-body">
-            <div class="column-container">
-                <div class="image-container">
-                    <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
-                    <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="15" />
+    <div class="modal">
+        <div class="modal-inner">
+            <div class="modal-header">{{name}}</div>
+            <div class="modal-body">
+                <div class="column-container">
+                    <div class="image-container">
+                        <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
+                        <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="15" />
 
-                    <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
-                    <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
+                        <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
+                        <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
+                    </div>
+                    <div class="switch-container">
+                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                    </div>
                 </div>
-                <div class="switch-container">
-                    <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                <div class="sliders">
+                    <slider-picker v-model="colors" @input="changedColor" />
                 </div>
             </div>
-            <div class="sliders">
-                <slider-picker v-model="colors" @input="changedColor" />
+            <div class="modal-footer">
+                <cbfooter />
             </div>
-        </div>
-        <div class="modal-footer">
-            <cbfooter />
         </div>
     </div>
 </template>

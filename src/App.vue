@@ -2,7 +2,6 @@
   <div id="app">
     <Header/>
     <Body/>
-    <Modal/>
   </div>
 </template>
 
@@ -11,7 +10,6 @@ import Header from './components/Header.vue'
 import LightbulbCard from './components/cards/devices/LightbulbCard.vue'
 import Lightbulb from './components/devices/Lightbulb.vue'
 import Body from './components/body/Body.vue'
-import Modal from './components/Modal.vue'
 
 export default {
   name: 'app',
@@ -25,6 +23,7 @@ export default {
 </script>
 
 <style lang="sass">
+
 #app 
   display: flex
   flex-direction: column
@@ -57,5 +56,22 @@ body
 
 .vc-slider-swatches // Para el addon de photoshop
   display: none!important
+
+.modal
+  position: fixed
+  left: 0
+  top: 0
+  width: 100vw
+  height: 100vh
+  z-index: 10
+  background-color: $modalBg
+.modal-inner
+  position: fixed
+  width: 50%
+  height: 50%
+  margin-right: auto
+  margin-left: auto
+
+
 
 </style>
