@@ -8,10 +8,9 @@
             </div>
             <div id="history-routines">
                 <div class="history">
-
-                    <h2>Ultima Accion</h2>
-                    <v-icon name="redo-alt" scale="2" />
-
+                        <h2 class="ultima">Ultima Accion</h2>
+                        <v-icon name="redo-alt" class="redo" scale="1" />
+                 
                 </div>
                 <div class="routines">
                     <h2>Rutinas</h2>
@@ -45,7 +44,7 @@
         display: flex
         flex-direction: column
     .columns
-        max-height: 600px
+        max-height: 400px
         display: flex
         flex-direction: row 
         position: relative
@@ -75,6 +74,9 @@
         background-color:  $primaryBg
         box-shadow: 5px 10px $shadowBg
         flex: 1
+
+
+
 
 
 </style>

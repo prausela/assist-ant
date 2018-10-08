@@ -8,7 +8,6 @@
 <script>
 import Header from './components/Header.vue'
 import Body from './components/body/Body.vue'
-
 export default {
   name: 'app',
   components: {

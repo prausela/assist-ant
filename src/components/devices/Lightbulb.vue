@@ -3,14 +3,14 @@
         <div class="modal-inner">
             <div class="modal-header" @click="closeModal">
                 {{name}}
-                <v-icon name="times-circle"  scale="5" />
+                <v-icon name="times-circle"  scale="1" />
 
             </div>
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
                         <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
-                        <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="15" />
+                        <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="8" />
                         
                         <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
                         <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
@@ -77,18 +77,50 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.modal
+    display: flex
+    justify-content: center
+    align-items: center
+
+.modal-inner
+    display: flex
+    height: 400px
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+    border: 1px solid black
+    background-color: $primaryBg
+
+.modal-header
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    justify-content: space-around
+
+.modal-body
+    display: flex
+    flex-direction: column
+    align-items: center
+.modal-footer
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+
 .column-container
     display: flex
     justify-content: center
+    width: 100%
+
 
 
 .image-container
     padding: 15px   
-    height: 400px
     flex: 1
     display: flex
-    justify-content: center
     align-items: center
+    justify-content: center
 .lightbulb-image
     height: 100%
     width: auto
@@ -97,11 +129,8 @@ export default {
     justify-content: center
     align-items: center
     display: flex
+    
 
-.modal-body
-
-
-    flex: 1
 .sliders
     display: flex
     flex-direction: column
