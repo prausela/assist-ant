@@ -4,7 +4,7 @@
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
 		</div>
 		<div v-if="verDevice" class="device">
-			<Lightbulb @closeMe='closeMe'/>
+			<Lightbulb @closeMe="closeMe" />
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
@@ -23,7 +23,7 @@ export default {
 
 	data () {
 		return {
-			verDevice:false,
+			verDevice: false,
 			name: 'Luz'
 		}
 	},
@@ -32,21 +32,20 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
-			this.verDevice=false
-		}
+			console.log('test')
+			console.log(this)
+			console.log(this.name)
+			console.log(this.verDevice)
+			this.verDevice = false
+			console.log(this.verDevice)
 
+		}
 	}
 }
 </script>
 
 <style lang="sass" scoped>
-.card
-	display: flex
-	justify-content:center
-	align-content:center
-	position: relative
-	flex-direction: column
-	width: 30%
+
 		
 .icon-container
 	justify-content: center

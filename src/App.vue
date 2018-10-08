@@ -69,8 +69,13 @@ body
   margin-left: auto
 
 .card
-  width: 100px
+  display: flex
+  justify-content:center
+  align-content:center
+  position: relative
+  flex-direction: column
+  width: 30%
   height: 100px
-
+  margin: 5px 1%
 
 </style>

@@ -1,9 +1,11 @@
 <template>
-    <div class="modal">
+    <div class="modal" @click.stop>
         <div class="modal-inner">
-            <div class="modal-header" @click="closeModal">
+            <div class="modal-header">
                 {{name}}
-                <v-icon name="times-circle"  scale="1" />
+                <div class="close" @click="closeModal">
+                    <v-icon name="times-circle"  scale="1" />
+                </div>
 
             </div>
             <div class="modal-body">

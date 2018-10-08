@@ -31,8 +31,13 @@ export default {
     border-top: 1px solid black
     display: flex
     padding: 4px 0
+    justify-content: center
+    width: 100%
+    align-items: center
 .footer-icon
     flex: 1
+    justify-content: center
+    display: flex
 .footer-icon:first-child
     border-right: 1px solid black
 </style>

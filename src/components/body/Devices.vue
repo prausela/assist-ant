@@ -70,11 +70,12 @@ export default {
 
 .devices-list
   padding: 10px 0
+  padding-left: 2%
   flex-wrap: wrap
   position: relative
   text-align: left
   display: flex
-  justify-content: space-around
+  justify-content: flex-start
   overflow: auto
 
 
@@ -84,7 +85,7 @@ export default {
   display: flex
   align-items: center
   margin-right: 2px
-    padding: 3px
+  padding: 3px
 
 
 
