@@ -1,8 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="lightbulb" class="card-icon" scale="2" />
-
+			<v-icon name="door-open" class="card-icon" scale="2" />
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
@@ -11,17 +10,18 @@
 <script>
 export default {
 
-  name: 'LightbulbCard',
+  name: 'DoorCard',
 
   data () {
 	return {
-		name: 'Luz'
+		name: 'Puerta'
 	}
   }
 }
 </script>
 
 <style lang="sass" scoped>
+
 .card
 	display: flex
 	justify-content:center
@@ -47,4 +47,7 @@ export default {
 .name
 	text-align: center
 	margin: 5px 0px
+
+
+
 </style>

@@ -23,7 +23,7 @@ export default {
 #app 
   display: flex
   flex-direction: column
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  // font-family: 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
@@ -61,6 +61,7 @@ body
   height: 100vh
   z-index: 10
   background-color: $modalBg
+
 .modal-inner
   position: fixed
   width: 50%
@@ -68,6 +69,9 @@ body
   margin-right: auto
   margin-left: auto
 
+.card
+  width: 100px
+  height: 100px
 
 
 </style>

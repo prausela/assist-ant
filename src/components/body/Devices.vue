@@ -9,7 +9,7 @@
       </div>	  	
     </div>
     <div v-if="verBotones" class="devices-list">
-      <template v-for="(device, index) in devices" >
+      <template v-for="(device, index) in devices">
         <component v-if="$config.availableDevices.includes(device.typeId)" :is="device.typeId + 'Card'" :key="index"/>
       </template>
     </div>
@@ -19,13 +19,16 @@
 <script>
 import Lightbulb from "@/components/devices/Lightbulb.vue"
 import testData from "@/testData.js"
-
 import LightCard from "@/components/cards/devices/LightCard.vue"
+import DoorCard from "@/components/cards/devices/DoorCard.vue"  
+import GarageCard from "@/components/cards/devices/GarageCard.vue"
 
 export default {
   components:{
     Lightbulb,
-    LightCard
+    LightCard,
+    DoorCard,
+    GarageCard
   },
 
   name: 'Devices',
@@ -107,6 +110,8 @@ export default {
     display: flex
     align-items: center
     justify-content: center
+    cursor: pointer
+
 .tab:not(:last-child)::after
   top: 0
   content: ''
