@@ -1,20 +1,14 @@
 <template>
   <div id="devices">
     <div class="tabs">
-
       <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
       <div class="hab-tab tab" @click="pressedButton">Habitaciones</div>
       <div class="floors-tab tab" @click="pressedButton">Pisos</div>	  	
     </div>
     <div v-if="verBotones" class="devices-list">
-      <div v-for="device in devices">
-        {{device.name}}
-      </div>
-
-      
-      <!-- <Lightbulb/> -->
-
-
+      <template v-for="(device, index) in devices" >
+        <component v-if="$config.availableDevices.includes(device.typeId)" :is="device.typeId + 'Card'" :key="index"/>
+      </template>
     </div>
   </div>
 </template>
@@ -23,9 +17,12 @@
 import Lightbulb from "@/components/devices/Lightbulb.vue"
 import testData from "@/testData.js"
 
+import LightCard from "@/components/cards/devices/LightCard.vue"
+
 export default {
   components:{
-    Lightbulb
+    Lightbulb,
+    LightCard
   },
 
   name: 'Devices',
@@ -41,6 +38,8 @@ export default {
   	pressedButton(){
   		this.verBotones = !this.verBotones
   	}
+  },
+  mounted() {
   }
 }
 </script>
@@ -63,8 +62,13 @@ export default {
 
 
 .devices-list
+  padding: 10px 0
+  flex-wrap: wrap
   position: relative
   text-align: left
+  display: flex
+  justify-content: space-around
+
 
 
 .floors
@@ -96,5 +100,7 @@ export default {
   border-bottom: 1px solid black
   & .tab 
     padding: 3px 0
+    &:not(:first-child)
+      border-left: 1px solid black  
 
 </style>

@@ -27,11 +27,12 @@ export default {
 	align-content:center
 	position: relative
 	flex-direction: column
-	width: 300px
+	width: 30%
+		
 .icon-container
 	justify-content: center
 	align-content: center
-	height: 300px
+	height: 100px
 	border: 1px solid black
 	display: flex
 	position: relative
@@ -41,6 +42,8 @@ export default {
 	object-fit: contain
 	height: 100%
 	position: relative
+	
 .name
+	text-align: center
 	margin: 5px 0px
 </style>

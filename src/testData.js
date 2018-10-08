@@ -4,21 +4,42 @@ export default{
 
 		"id": "aefe74ef7653fb6c",
 		"name": "table lamp",
-		"typeId": "go46xmbqeomjrsjr",
+		"typeId": "Light",
 		"meta": "{}"
 	},
 	{
 
 		"id": "aefe74ef7653fb6d",
 		"name": "table lamp 2",
-		"typeId": "go46xmbqeomjrsjr",
+		"typeId": "Light",
 		"meta": "{}"
 	},
 	{
 
-		"id": "aefe74ef7653fb6e",
-		"name": "table lamp 3",
-		"typeId": "go46xmbqeomjrsjr",
+		"id": "aefe74ef7653fb6d",
+		"name": "table lamp 2",
+		"typeId": "Light",
+		"meta": "{}"
+	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "table lamp 2",
+		"typeId": "Light",
+		"meta": "{}"
+	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "table lamp 2",
+		"typeId": "Light",
+		"meta": "{}"
+	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "table lamp 2",
+		"typeId": "Light",
 		"meta": "{}"
 	},
 

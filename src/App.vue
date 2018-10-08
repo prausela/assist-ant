@@ -7,15 +7,11 @@
 
 <script>
 import Header from './components/Header.vue'
-import LightbulbCard from './components/cards/devices/LightbulbCard.vue'
-import Lightbulb from './components/devices/Lightbulb.vue'
 import Body from './components/body/Body.vue'
 
 export default {
   name: 'app',
   components: {
-    LightbulbCard,
-    Lightbulb,
     Header,
     Body
   }
