@@ -2,8 +2,11 @@
   <div id="devices">
     <div class="tabs">
       <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
-      <div class="hab-tab tab" @click="pressedButton">Habitaciones</div>
-      <div class="floors-tab tab" @click="pressedButton">Pisos</div>	  	
+      <div class="hab-tab tab" @click="pressedButton">
+        Habitaciones</div>
+      <div class="floors-tab tab" @click="pressedButton">
+        Pisos
+      </div>	  	
     </div>
     <div v-if="verBotones" class="devices-list">
       <template v-for="(device, index) in devices" >
@@ -68,7 +71,7 @@ export default {
   text-align: left
   display: flex
   justify-content: space-around
-
+  overflow: auto
 
 
 .floors
@@ -89,8 +92,6 @@ export default {
   padding: 3px
 
 
-
-
 .tabs
   justify-content: space-around
   font-size: 20px
@@ -98,9 +99,21 @@ export default {
   display: flex
   flex-direction: row
   border-bottom: 1px solid black
-  & .tab 
-    padding: 3px 0
-    &:not(:first-child)
-      border-left: 1px solid black  
+  height: 30px
+  .tab 
+    flex: 0 1 25%
+    position: relative
+    padding: 0 1rem
+    display: flex
+    align-items: center
+    justify-content: center
+.tab:not(:last-child)::after
+  top: 0
+  content: ''
+  position: absolute
+  right: -2px
+  width: 1px
+  height: 30px
+  background-color: black
 
 </style>

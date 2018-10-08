@@ -43,7 +43,7 @@ export default {
 .title
 	display: flex
 	align-items: center
-
+	font-size: 30px
 .icon-img
 	height: 100%
 
