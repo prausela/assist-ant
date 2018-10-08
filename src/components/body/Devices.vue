@@ -3,7 +3,8 @@
     <div class="tabs">
       <div class="devices-tab tab" @click="pressedButton">Dispositivos</div>
       <div class="hab-tab tab" @click="pressedButton">
-        Habitaciones</div>
+        Habitaciones
+      </div>
       <div class="floors-tab tab" @click="pressedButton">
         Pisos
       </div>	  	

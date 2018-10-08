@@ -1,23 +1,41 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
-
+		</div>
+		<div v-if="verDevice" class="device">
+			<Lightbulb @closeMe='closeMe'/>
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
 </template>
 
+
 <script>
+import Lightbulb from "@/components/devices/Lightbulb.vue"
+
 export default {
+	components:{
+		Lightbulb
+	},
 
-  name: 'LightbulbCard',
+	name: 'LightbulbCard',
 
-  data () {
-	return {
-		name: 'Luz'
+	data () {
+		return {
+			verDevice:false,
+			name: 'Luz'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice=false
+		}
+
 	}
-  }
 }
 </script>
 

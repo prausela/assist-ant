@@ -1,13 +1,17 @@
 <template>
     <div class="modal">
         <div class="modal-inner">
-            <div class="modal-header">{{name}}</div>
+            <div class="modal-header" @click="closeModal">
+                {{name}}
+                <v-icon name="times-circle"  scale="5" />
+
+            </div>
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
                         <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
                         <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="15" />
-
+                        
                         <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
                         <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
                     </div>
@@ -58,6 +62,10 @@ export default {
         let blue = rgb.b
         var rgbe = blue | (green << 8) | (red << 16);
         return '#' + (0x1000000 + rgbe).toString(16).slice(1)
+    },
+    closeModal(){
+        console.log("hola")
+        this.$emit('closeMe')
     }
   },
 
@@ -72,6 +80,7 @@ export default {
 .column-container
     display: flex
     justify-content: center
+
 
 .image-container
     padding: 15px   
@@ -88,7 +97,10 @@ export default {
     justify-content: center
     align-items: center
     display: flex
+
 .modal-body
+
+
     flex: 1
 .sliders
     display: flex
