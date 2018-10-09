@@ -6,7 +6,7 @@
 		<div v-if="verDevice" class="device">
 			<Lightbulb @closeMe="closeMe" />
 		</div>
-		<div class="name">{{name}}</div>
+		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
@@ -20,7 +20,11 @@ export default {
 	},
 
 	name: 'LightbulbCard',
-
+	props: {
+		device: {
+			required: true	
+		}
+	},
 	data () {
 		return {
 			verDevice: false,

@@ -11,7 +11,7 @@
     </div>
     <div v-if="verBotones" class="devices-list">
       <template v-for="(device, index) in devices">
-        <component v-if="$config.availableDevices.includes(device.typeId)" :is="device.typeId + 'Card'" :key="index"/>
+        <component v-if="$config.availableDevices.includes(device.typeId)" :device="device" :is="device.typeId + 'Card'" :key="index"/>
       </template>
     </div>
   </div>

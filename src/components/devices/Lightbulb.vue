@@ -1,9 +1,9 @@
 <template>
-    <div class="modal" @click.stop>
-        <div class="modal-inner">
+    <div class="modal" @click.stop="closeModal">
+        <div class="modal-inner" @click.stop>
             <div class="modal-header">
                 {{name}}
-                <div class="close" @click="closeModal">
+                <div class="close-modal-btn" @click="closeModal">
                     <v-icon name="times-circle"  scale="1" />
                 </div>
 
@@ -86,13 +86,15 @@ export default {
 
 .modal-inner
     display: flex
-    height: 400px
+    height: 500px
+    width: 500px
     flex-direction: column
     align-items: center
     justify-content: space-around
     border: 1px solid black
     background-color: $primaryBg
-
+.close-modal-btn
+    position
 .modal-header
     display: flex
     align-items: center
@@ -139,4 +141,5 @@ export default {
     justify-content: center
     align-items: center
     margin: 50px 0
+
 </style>
