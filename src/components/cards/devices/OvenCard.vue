@@ -31,15 +31,6 @@ export default {
 	width: 30%
 	cursor: pointer
 
-		
-.icon-container
-	justify-content: center
-	align-content: center
-	height: 100px
-	border: 1px solid black
-	display: flex
-	position: relative
-	padding: 5px
 
 .card-icon
 	max-widht: 100%

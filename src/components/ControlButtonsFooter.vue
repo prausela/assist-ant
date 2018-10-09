@@ -28,9 +28,8 @@ export default {
 
 <style lang="sass" scoped>
 .control-buttons
-    border-top: 1px solid black
+    height: 100%
     display: flex
-    padding: 4px 0
     justify-content: center
     width: 100%
     align-items: center
@@ -38,6 +37,8 @@ export default {
     flex: 1
     justify-content: center
     display: flex
+    height: 100%
+    align-items: center
 .footer-icon:first-child
     border-right: 1px solid black
 </style>

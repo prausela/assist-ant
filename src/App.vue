@@ -8,11 +8,13 @@
 <script>
 import Header from './components/Header.vue'
 import Body from './components/body/Body.vue'
+import AddDevice from './components/devices/AddDevice.vue'
 export default {
   name: 'app',
   components: {
     Header,
-    Body
+    Body,
+    AddDevice
   }
 }
 </script>
@@ -55,25 +57,50 @@ body
   height: 100vh
   z-index: 10
   background-color: $modalBg
-
+  display: flex
+  justify-content: center
+  align-items: center
 .modal-inner
   position: fixed
-  width: 50%
-  height: 50%
   margin-right: auto
   margin-left: auto
-
-.modal-window
-  width: 800px
-  height: 800px
+  height: 500px
+  width: 500px
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
   border: 1px solid black
-  padding-top: 5px
+  background-color: $primaryBg
   display: flex
   flex-direction: column
 
-.modal-header 
+.close-modal-btn
+  position: absolute
+  right: 20px
+  top: 5px
+
+.modal-header
+  padding-top: 30px
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  justify-content: space-around
   font-size: 40px
 
+.modal-body
+  flex: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+.modal-footer
+  display: flex
+  width: 100%
+  justify-content: center
+  align-items: center
+  height: 50px
+  border-top: 1px solid black
+  
 // Tarjetas
 .card
   display: flex
@@ -90,11 +117,15 @@ body
   justify-content: center
   align-content: center
   min-height: 60px
+  height: 60px
   border: 1px solid black
   display: flex
   position: relative
   padding: 5px
 
-
+.submit-btn
+  padding: 5px 15px
+  border-radius: 10px
+  background-color: #06de06
 
 </style>

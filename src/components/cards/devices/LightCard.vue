@@ -4,7 +4,7 @@
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
 		</div>
 		<div v-if="verDevice" class="device">
-			<Lightbulb @closeMe="closeMe" />
+			<Lightbulb :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
@@ -36,12 +36,7 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
-			console.log('test')
-			console.log(this)
-			console.log(this.name)
-			console.log(this.verDevice)
 			this.verDevice = false
-			console.log(this.verDevice)
 
 		}
 	}

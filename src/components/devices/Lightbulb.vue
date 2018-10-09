@@ -2,7 +2,7 @@
     <div class="modal" @click.stop="closeModal">
         <div class="modal-inner" @click.stop>
             <div class="modal-header">
-                {{name}}
+                {{device.name}}
                 <div class="close-modal-btn" @click="closeModal">
                     <v-icon name="times-circle"  scale="1" />
                 </div>
@@ -43,11 +43,14 @@ export default {
     Switches,
     'slider-picker': Slider
   },
+  props: [
+    'device'
+  ],
   data () {
     return {
         name: 'Luz',
         enabled: true,
-        colors: { r: 25, g: 77, b:  255, a: 0.5},
+        colors: { r: 255, g: 77, b:  255, a: 0.5},
         color: null
     }
   },
@@ -75,23 +78,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.modal
-    display: flex
-    justify-content: center
-    align-items: center
 
-.modal-inner
-    display: flex
-    height: 500px
-    width: 500px
-    flex-direction: column
-    align-items: center
-    justify-content: space-around
-    border: 1px solid black
-    background-color: $primaryBg
-.close-modal-btn
-    position
 .modal-header
+    padding-top: 30px
     display: flex
     align-items: center
     justify-content: center
@@ -107,6 +96,9 @@ export default {
     width: 100%
     justify-content: center
     align-items: center
+    height: 50px
+    border-top: 1px solid black
+
 
 .column-container
     display: flex
