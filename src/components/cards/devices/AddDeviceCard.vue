@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<img class="oven-img" src="@/assets/oven.png">
+			<v-icon name="plus" class="card-icon" scale="0.5" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
@@ -10,7 +10,8 @@
 <script>
 export default {
 
-	name: 'OvenCard',
+	name: 'AddDeviceCard',
+
 	props: {
 		device: {
 			required: true	
@@ -19,7 +20,7 @@ export default {
 
 	data () {
 		return {
-			name: 'Horno'
+			name: 'Agregar'
 		}
 	}
 }
@@ -56,10 +57,5 @@ export default {
 .name
 	text-align: center
 	margin: 5px 0px
-
-
-.oven-img
-	width: auto
-	height: 100%
 
 </style>

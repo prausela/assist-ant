@@ -41,6 +41,29 @@ export default{
 		"name": "AC",
 		"typeId": "AC",
 		"meta": "{}"
+	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "Persiana",
+		"typeId": "Blind",
+		"meta": "{}"
+	}
+
+	,
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "Alarma",
+		"typeId": "Alarm",
+		"meta": "{}"
+	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "Agregar",
+		"typeId": "AddDevice",
+		"meta": "{}"
 	}
 
 	]

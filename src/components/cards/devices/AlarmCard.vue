@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<img class="oven-img" src="@/assets/oven.png">
+			<img class="alarm-img" src="@/assets/alarm.png">
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
@@ -10,7 +10,7 @@
 <script>
 export default {
 
-	name: 'OvenCard',
+	name: 'AlarmCard',
 	props: {
 		device: {
 			required: true	
@@ -19,7 +19,7 @@ export default {
 
 	data () {
 		return {
-			name: 'Horno'
+			name: 'Alarma'
 		}
 	}
 }
@@ -57,9 +57,8 @@ export default {
 	text-align: center
 	margin: 5px 0px
 
-
-.oven-img
-	width: auto
+.alarm-img
+	width: 100%
 	height: 100%
 
 </style>

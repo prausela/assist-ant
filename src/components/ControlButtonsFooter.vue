@@ -38,6 +38,11 @@ export default {
     flex: 1
     justify-content: center
     display: flex
+
 .footer-icon:first-child
     border-right: 1px solid black
+
+.footer-icon:nth-child(2)
+    border-right: 1px solid black
+
 </style>

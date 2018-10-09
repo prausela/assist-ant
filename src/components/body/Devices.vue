@@ -20,6 +20,9 @@ import GarageCard from "@/components/cards/devices/GarageCard.vue"
 import TimerCard from "@/components/cards/devices/TimerCard.vue"
 import OvenCard from "@/components/cards/devices/OvenCard.vue"
 import ACCard from "@/components/cards/devices/ACCard.vue"
+import BlindCard from "@/components/cards/devices/BlindCard.vue"
+import AlarmCard from "@/components/cards/devices/AlarmCard.vue"
+import AddDeviceCard from "@/components/cards/devices/AddDeviceCard.vue"
 
 export default {
   components:{
@@ -29,7 +32,10 @@ export default {
     GarageCard,
     TimerCard,
     OvenCard,
-    ACCard
+    ACCard,
+    BlindCard,
+    AlarmCard,
+    AddDeviceCard
   },
 
   name: 'Devices',

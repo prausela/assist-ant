@@ -3,20 +3,25 @@
 		<div class="icon-container">
 			<v-icon name="door-open" class="card-icon" scale="2" />
 		</div>
-		<div class="name">{{name}}</div>
+		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
 export default {
 
-  name: 'DoorCard',
+	name: 'DoorCard',
+	props: {
+		device: {
+			required: true	
+		}
+	},
 
-  data () {
-	return {
-		name: 'Puerta'
+	data () {
+		return {
+			name: 'Puerta'
+		}
 	}
-  }
 }
 </script>
 
@@ -31,7 +36,7 @@ export default {
 	width: 30%
 	cursor: pointer
 
-		
+
 .icon-container
 	justify-content: center
 	align-content: center
@@ -47,11 +52,9 @@ export default {
 	height: 100%
 	position: relative
 
-	
+
 .name
 	text-align: center
 	margin: 5px 0px
-
-
 
 </style>

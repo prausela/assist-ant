@@ -3,7 +3,7 @@
 		<div class="icon-container">
 			<v-icon name="stopwatch" class="card-icon" scale="2" />
 		</div>
-		<div class="name">{{name}}</div>
+		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
@@ -11,6 +11,11 @@
 export default {
 
 	name: 'TimerCard',
+	props: {
+		device: {
+			required: true	
+		}
+	},
 
 	data () {
 		return {
