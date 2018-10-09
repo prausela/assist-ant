@@ -52,7 +52,7 @@ export default {
 	margin: 5px 0px
 
 .oven-img
-	width: 100%
+	width: auto
 	height: 100%
 
 </style>

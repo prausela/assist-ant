@@ -19,6 +19,8 @@ export default {
 
 <style lang="sass">
 
+
+// General
 #app 
   display: flex
   flex-direction: column
@@ -38,20 +40,13 @@ body
   height: 100vh
 
 
-.modal-window
-  width: 800px
-  height: 800px
-  border: 1px solid black
-  padding-top: 5px
-  display: flex
-  flex-direction: column
-
-.modal-header 
-  font-size: 40px
+// Addons
 
 .vc-slider-swatches // Para el addon de photoshop
   display: none!important
 
+
+//  Modal
 .modal
   position: fixed
   left: 0
@@ -68,6 +63,18 @@ body
   margin-right: auto
   margin-left: auto
 
+.modal-window
+  width: 800px
+  height: 800px
+  border: 1px solid black
+  padding-top: 5px
+  display: flex
+  flex-direction: column
+
+.modal-header 
+  font-size: 40px
+
+// Tarjetas
 .card
   display: flex
   justify-content:center
@@ -77,6 +84,16 @@ body
   width: 30%
   height: 100px
   margin: 5px 1%
+
+    
+.icon-container
+  justify-content: center
+  align-content: center
+  min-height: 60px
+  border: 1px solid black
+  display: flex
+  position: relative
+  padding: 5px
 
 
 

@@ -12,7 +12,7 @@
                 <div class="column-container">
                     <div class="image-container">
                         <!-- <v-icon name="lightbulb" :style="{color:color}" scale="15" /> -->
-                        <v-icon name="lightbulb" :style="{color: enabled?'red': 'black'}" scale="8" />
+                        <v-icon name="lightbulb" :style="{color: enabled?color: 'black'}" scale="8" />
                         
                         <!-- <img v-if="enabled" class="lightbulb-image" src="@/assets/lb-on.png"> -->
                         <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
@@ -53,10 +53,8 @@ export default {
   },
   methods: {
     changedColor(colors) {
-        // console.log(colors)
         // this.color = this.rgbToHex(this.hsvToRgb(colors.hsv.h))
         this.color = colors.hex
-        console.log(this.color)
     },
     rgbToHex(rgb) {
         let red = rgb.r
@@ -66,14 +64,12 @@ export default {
         return '#' + (0x1000000 + rgbe).toString(16).slice(1)
     },
     closeModal(){
-        console.log("hola")
         this.$emit('closeMe')
     }
   },
 
   mounted() {
     this.color = this.rgbToHex(this.colors)
-    console.log(this.color)
   }
 }
 </script>
