@@ -1,6 +1,10 @@
 <template>
     <div class="control-buttons">
         <div class="footer-icon">
+            <v-icon name="star" scale="2" />
+
+        </div>
+        <div class="footer-icon">
             <v-icon name="pencil-alt" scale="2" />
 
         </div>
@@ -39,6 +43,11 @@ export default {
     display: flex
     height: 100%
     align-items: center
+
 .footer-icon:first-child
     border-right: 1px solid black
+
+.footer-icon:nth-child(2)
+    border-right: 1px solid black
+
 </style>

@@ -4,5 +4,8 @@
 	"Garage",
 	"Timer",
 	"Oven",
-	"AC"
+	"AC",
+	"Blind",
+	"Alarm",
+	"AddDevice"
 ]

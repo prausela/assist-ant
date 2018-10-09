@@ -1,16 +1,16 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<v-icon name="plus" class="card-icon" scale="1.5" />
 		</div>
-		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
 export default {
 
-	name: 'DoorCard',
+	name: 'AddDeviceCard',
+
 	props: {
 		device: {
 			required: true	
@@ -19,7 +19,7 @@ export default {
 
 	data () {
 		return {
-			name: 'Puerta'
+			name: 'Agregar'
 		}
 	}
 }
@@ -40,7 +40,6 @@ export default {
 .icon-container
 	justify-content: center
 	align-content: center
-	height: 100px
 	border: 1px solid black
 	display: flex
 	position: relative

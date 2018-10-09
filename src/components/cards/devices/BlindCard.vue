@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<img class="blind-img" src="@/assets/blind.png">
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
@@ -10,7 +10,7 @@
 <script>
 export default {
 
-	name: 'DoorCard',
+	name: 'blindCard',
 	props: {
 		device: {
 			required: true	
@@ -19,7 +19,7 @@ export default {
 
 	data () {
 		return {
-			name: 'Puerta'
+			name: 'Perciana'
 		}
 	}
 }
@@ -56,5 +56,9 @@ export default {
 .name
 	text-align: center
 	margin: 5px 0px
+
+.blind-img
+	width: 100%
+	height: 100%
 
 </style>
