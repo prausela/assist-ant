@@ -4,13 +4,13 @@
             <Devices/>
 
             <div class="favourite">
-                <h2>Destacados</h2>
+                <h2 class="favorites-title">Destacados</h2>
+                <DevicesList :add="false" :devices="favoriteDevices" />
             </div>
             <div id="history-routines">
                 <div class="history">
                         <h2 class="ultima">Ultima Accion</h2>
                         <v-icon name="redo-alt" class="redo" scale="1" />
-                 
                 </div>
                 <div class="routines">
                     <h2>Rutinas</h2>
@@ -22,14 +22,20 @@
 
  <script>
  import Devices from "./Devices.vue"
+ import DevicesList from "@/components/body/DevicesList.vue"
+ import testData from "@/testData.js"
  export default {
 
   name: 'Body',
   components: {
-  	Devices
+  	Devices,
+    DevicesList
   },
   data () {
     return {
+        favoriteDevices: testData.devices.filter((device) => {
+            return device.meta.favorite
+        }),
     }
   },
   
@@ -74,6 +80,8 @@
         background-color:  $primaryBg
         box-shadow: 5px 10px $shadowBg
         flex: 1
+    .favorites-title
+        margin: 3px 0
 
 
 

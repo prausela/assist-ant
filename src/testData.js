@@ -33,7 +33,7 @@ export default{
 		"id": "aefe74ef7653fb6d",
 		"name": "front door",
 		"typeId": "Door",
-		"meta": "{}"
+		"meta": {favorite: true}
 	},
 	{
 
@@ -56,15 +56,8 @@ export default{
 		"id": "aefe74ef7653fb6d",
 		"name": "Alarma",
 		"typeId": "Alarm",
-		"meta": "{}"
+		"meta": {favorite: true}
 	},
-	{
-
-		"id": "aefe74ef7653fb6d",
-		"name": "Agregar",
-		"typeId": "AddDevice",
-		"meta": "{}"
-	}
 
 	]
 

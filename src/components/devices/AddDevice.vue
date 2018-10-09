@@ -65,7 +65,8 @@ export default {
 
   data () {
     return {
-    	name: ""
+    	name: "",
+    	selected: null
     }
   },
   methods: {
