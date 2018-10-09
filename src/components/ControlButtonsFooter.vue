@@ -1,6 +1,10 @@
 <template>
     <div class="control-buttons">
         <div class="footer-icon">
+            <v-icon name="star" scale="2" />
+
+        </div>
+        <div class="footer-icon">
             <v-icon name="pencil-alt" scale="2" />
 
         </div>
