@@ -23,13 +23,19 @@ import testData from "@/testData.js"
 import LightCard from "@/components/cards/devices/LightCard.vue"
 import DoorCard from "@/components/cards/devices/DoorCard.vue"  
 import GarageCard from "@/components/cards/devices/GarageCard.vue"
+import TimerCard from "@/components/cards/devices/TimerCard.vue"
+import OvenCard from "@/components/cards/devices/OvenCard.vue"
+import ACCard from "@/components/cards/devices/ACCard.vue"
 
 export default {
   components:{
     Lightbulb,
     LightCard,
     DoorCard,
-    GarageCard
+    GarageCard,
+    TimerCard,
+    OvenCard,
+    ACCard
   },
 
   name: 'Devices',

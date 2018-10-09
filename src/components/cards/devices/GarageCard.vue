@@ -29,6 +29,8 @@ export default {
 	position: relative
 	flex-direction: column
 	width: 30%
+	cursor: pointer
+
 		
 .icon-container
 	justify-content: center
@@ -38,6 +40,7 @@ export default {
 	display: flex
 	position: relative
 	padding: 5px
+
 .card-icon
 	max-widht: 100%
 	object-fit: contain

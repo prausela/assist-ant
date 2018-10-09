@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<img class="oven-img" src="@/assets/oven.png">
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
@@ -10,11 +10,11 @@
 <script>
 export default {
 
-  name: 'DoorCard',
+  name: 'OvenCard',
 
   data () {
 	return {
-		name: 'Puerta'
+		name: 'Horno'
 	}
   }
 }
@@ -46,12 +46,13 @@ export default {
 	object-fit: contain
 	height: 100%
 	position: relative
-
 	
 .name
 	text-align: center
 	margin: 5px 0px
 
-
+.oven-img
+	width: 100%
+	height: 100%
 
 </style>

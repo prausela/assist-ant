@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<v-icon name="snowflake" class="card-icon" scale="2" />
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
@@ -10,11 +10,11 @@
 <script>
 export default {
 
-  name: 'DoorCard',
+  name: 'ACCard',
 
   data () {
 	return {
-		name: 'Puerta'
+		name: 'Aire Acondicionado'
 	}
   }
 }

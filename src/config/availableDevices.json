@@ -1,6 +1,8 @@
 [
 	"Light",
 	"Door",
-	"Garage"
-
+	"Garage",
+	"Timer",
+	"Oven",
+	"AC"
 ]

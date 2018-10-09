@@ -10,15 +10,15 @@ export default{
 	{
 
 		"id": "aefe74ef7653fb6d",
-		"name": "table lamp 2",
-		"typeId": "Light",
+		"name": "Oven",
+		"typeId": "Oven",
 		"meta": "{}"
 	},
 	{
 
 		"id": "aefe74ef7653fb6d",
-		"name": "table lamp 2",
-		"typeId": "Light",
+		"name": "Timer",
+		"typeId": "Timer",
 		"meta": "{}"
 	},
 	{
@@ -35,6 +35,13 @@ export default{
 		"typeId": "Door",
 		"meta": "{}"
 	},
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "AC",
+		"typeId": "AC",
+		"meta": "{}"
+	}
 
 	]
 

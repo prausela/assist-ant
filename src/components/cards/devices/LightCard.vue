@@ -45,7 +45,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+.card
+	display: flex
+	justify-content:center
+	align-content:center
+	position: relative
+	flex-direction: column
+	width: 30%
+	cursor: pointer
 		
 .icon-container
 	justify-content: center
@@ -55,12 +62,14 @@ export default {
 	display: flex
 	position: relative
 	padding: 5px
+	cursor: pointer
+
 .card-icon
 	max-widht: 100%
 	object-fit: contain
 	height: 100%
 	position: relative
-	
+
 .name
 	text-align: center
 	margin: 5px 0px

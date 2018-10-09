@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<v-icon name="stopwatch" class="card-icon" scale="2" />
 		</div>
 		<div class="name">{{name}}</div>
 	</div>
@@ -10,13 +10,13 @@
 <script>
 export default {
 
-  name: 'DoorCard',
+	name: 'TimerCard',
 
-  data () {
-	return {
-		name: 'Puerta'
+	data () {
+		return {
+			name: 'Temporizador'
+		}
 	}
-  }
 }
 </script>
 
@@ -46,12 +46,10 @@ export default {
 	object-fit: contain
 	height: 100%
 	position: relative
+	cursor: pointer
 
 	
 .name
 	text-align: center
 	margin: 5px 0px
-
-
-
 </style>
