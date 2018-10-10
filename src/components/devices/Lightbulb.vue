@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter @clickedFavorite="clickedFavorite" :device="device" />
             </div>
         </div>
     </div>
@@ -68,6 +68,9 @@ export default {
     },
     closeModal(){
         this.$emit('closeMe')
+    },
+    clickedFavorite() {
+        this.device.meta.favorite = this.device.meta.favorite? false : true
     }
   },
 
@@ -79,25 +82,6 @@ export default {
 
 <style lang="sass" scoped>
 
-.modal-header
-    padding-top: 30px
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 100%
-    justify-content: space-around
-
-.modal-body
-    display: flex
-    flex-direction: column
-    align-items: center
-.modal-footer
-    display: flex
-    width: 100%
-    justify-content: center
-    align-items: center
-    height: 50px
-    border-top: 1px solid black
 
 
 .column-container
