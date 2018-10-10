@@ -61,8 +61,10 @@
 
     .favourite
         background-color: $primaryBg
-        box-shadow: 5px 10px $shadowBg
+        box-shadow: 2px 2px $shadowBg
         width: 30%
+        border-radius: 5px
+
 
 
 
@@ -70,16 +72,22 @@
         display: flex
         flex-direction: column
         width: 30%
+        border-radius: 5px
+
 
     .routines
-        box-shadow: 5px 10px $shadowBg
+        box-shadow: 2px 2px $shadowBg
         background-color:  $primaryBg
         flex: 1
+        border-radius: 5px
+
     .history
         margin-bottom: 8%
         background-color:  $primaryBg
-        box-shadow: 5px 10px $shadowBg
+        box-shadow: 2px 2px $shadowBg
         flex: 1
+        border-radius: 5px
+
     .favorites-title
         margin: 3px 0
 

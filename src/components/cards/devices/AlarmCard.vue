@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<img class="alarm-img" src="@/assets/alarm.png">
+			<img class="alarm-img" src="@/assets/devices/alarm.png">
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>

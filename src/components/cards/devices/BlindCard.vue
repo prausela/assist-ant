@@ -1,16 +1,23 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<img class="blind-img" src="@/assets/blind.png">
+			<img class="blind-img" src="@/assets/devices/blind.png">
+		</div>
+		<div v-if="verDevice" class="device">
+			<Blind :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
+import Blind from "@/components/devices/Blind.vue"
 export default {
 
-	name: 'blindCard',
+	name: 'BlindCard',
+	components:{
+		Blind
+	},
 	props: {
 		device: {
 			required: true	
@@ -19,7 +26,17 @@ export default {
 
 	data () {
 		return {
-			name: 'Perciana'
+			verDevice:false,
+			name: 'Persiana'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }

@@ -4,7 +4,6 @@
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
 		</div>
 		<div v-if="verDevice" class="device">
-
 			<Lightbulb :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>

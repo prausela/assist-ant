@@ -1,7 +1,7 @@
 <template>
 	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<img class="oven-img" src="@/assets/oven.png">
+			<img class="oven-img" src="@/assets/devices/oven.png">
 		</div>
 		<div v-if="verDevice" class="device">
 			<Oven :device="device" @closeMe="closeMe" />

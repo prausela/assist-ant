@@ -11,23 +11,25 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                        <img class="oven-img" src="@/assets/devices/oven.png">
+                            <img class="blind-img" src="@/assets/devices/blind.png">
                     </div>
-                    <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                    <div class="arrow-container">
+                        <v-icon name="arrow-up" class="arrow" scale="3" />
+                        <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
                     </div>
                 </div>
                 <div class="setting-op">
-                    <div class="swing">
-                       Swing
-                    </div>
-                    <div class="modes">
-                        Mode
-                        <v-icon name="sun" class="mode" scale="2" />
-                        <v-icon name="snowflake" class="mode" scale="2" />
+                    <div class="heigh">
+                        <div class="name">
+                            Modos(no puedo contrarlo)
+                        </div>
+                        <div class="body">
+                            <img class="blind-op" src="@/assets/modes/blind-open.png">
+                            <img class="blind-op" src="@/assets/modes/blind-close.png">
+                        </div>
                     </div>
                 </div>
-                
+                    
             </div>
             <div class="modal-footer">
                 <cbfooter />
@@ -37,23 +39,20 @@
 </template>
 
 <script>
-import Switches from 'vue-switches'
 
 export default {
 
-    name: 'Oven',
+    name: 'Blind',
 
     components: {
-        Switches
+       
     },
     props: [
     'device'
     ],
     data () {
         return {
-            name: 'Horno',
-            enabled: true,
-
+            name: 'Blind',
         }
     },
     methods:{
@@ -61,9 +60,6 @@ export default {
             this.$emit('closeMe')
         }
     }
-    
-
-
 }
 </script>
 
@@ -74,41 +70,55 @@ export default {
     width: 100%
 .column-container
     display: flex
+    flex: 1
     justify-content: center
     width: 100%
-    height: 50%
+.image-container
+    display: flex
+    flex: 1
+    align-items: center
+    justify-content: center
+.arrow-container
+    display: flex
+    flex: 1
+    align-items: center
+    justify-content: center
+.arrow
+    padding: 8px
+    border: 1px solid black
 
 .setting-op
     display: flex
+    flex: 1
     flex-direction: column
     justify-content: space-around   
+    border-top: 1px solid black
     width: 100%
-    height: 50%
 
-.oven-img
-    width: 150px
-    height: 150px
-.swing
-    text-align: left
-.mode
-    text-align: left
-    border: 1px solid black
-    padding: 2px
-
-.modes
+.heigh
     display: flex
+    flex: 1
     align-items: center
     justify-content: space-around
+.blind-img
+    width: 150px
+    height: 150px
 
-.image-container
-    padding: 15px   
-    flex: 1
+.body
     display: flex
+    flex: 2
+    height: 100%
     align-items: center
-    justify-content: center
-.switch-container
+    justify-content: space-around
+.blind-op
+    width: 40px
+    height: 40px
+    border: 1px solid black
+    align-items: center
+
+.name
     flex: 1
+    height: 100%
     justify-content: center
-    align-items: center
-    display: flex
+
 </style>

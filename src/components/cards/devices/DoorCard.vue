@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="icon-container">
-			<v-icon name="door-open" class="card-icon" scale="2" />
+			<v-icon name="door-closed" class="card-icon" scale="2" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>

@@ -21,9 +21,9 @@
                     <div class="fan">
                         <div class="name">Fan</div>
                         <div class="body">
-                            <img class="fan-img1" src="@/assets/fan.png">
-                            <img class="fan-img2" src="@/assets/fan.png">
-                            <img class="fan-img3" src="@/assets/fan.png">
+                            <img class="fan-img1" src="@/assets/devices/fan.png">
+                            <img class="fan-img2" src="@/assets/devices/fan.png">
+                            <img class="fan-img3" src="@/assets/devices/fan.png">
 
                         </div>
                     </div>
@@ -37,9 +37,9 @@
                     <div class="swing">
                       <div class="name">Swing</div>
                       <div class="body">
-                        <img class="ac-img" src="@/assets/swing.png">
-                        <img class="ac-img" src="@/assets/swing-low.png">
-                        <img class="ac-img" src="@/assets/swing-up.png">
+                        <img class="ac-img" src="@/assets/modes/swing.png">
+                        <img class="ac-img" src="@/assets/modes/swing-low.png">
+                        <img class="ac-img" src="@/assets/modes/swing-up.png">
                     </div>
                 </div>
                     
