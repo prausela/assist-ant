@@ -54,7 +54,6 @@
         display: flex
         flex-direction: row 
         position: relative
-        font-family: My Happy Ending
         align-items: stretch
         flex: 1
         justify-content: space-around

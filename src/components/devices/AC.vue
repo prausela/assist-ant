@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="setting-op">
-                    <div class="fan">
+                    <div class="op-body">
                         <div class="name">Ventilador</div>
                         <div class="body">
                             <v-icon name="minus" class="mode" scale="1" />
@@ -32,27 +32,26 @@
 
                         </div>
                     </div>
-                    <div class="modes">
+                    <div class="op-body">
                         <div class="name">Modo</div>
                         <div class="body">
-                            <v-icon name="sun" class="mode" scale="2" />
-                            <v-icon name="snowflake" class="mode" scale="2" />
+                            <v-icon name="sun" class="ac-img"  />
+                            <v-icon name="snowflake" class="ac-img"  />
                             <img class="fan-img3" src="@/assets/devices/fan.png">
 
                         </div>
                     </div>
-                    <div class="swing">
+                    <div class="op-body">
                         <div class="name">Swing Vertical</div>
                         <div class="body">
                             <img class="ac-img" src="@/assets/modes/swing.png">
                             <img class="ac-img" src="@/assets/modes/swing-22.png">
                             <img class="ac-img" src="@/assets/modes/swing-45.png">
-
                             <img class="ac-img" src="@/assets/modes/swing-67.png">
                             <img class="ac-img" src="@/assets/modes/swing-90.png">
                         </div>
                     </div>
-                    <div class="swing">
+                    <div class="op-body">
                         <div class="name">Swing Horizontal</div>
                         <div class="body">
                             <img class="ac-img" src="@/assets/modes/swing.png">
@@ -118,21 +117,23 @@ export default {
     height: 150px
 .ac-img
     border: 1px solid black
-    width: 40px
-    height: 40px
+    width: 30px
+    height: 30px
 
 
-.swing
+.op-body
     display: flex
     justify-content: space-around
     align-items: center
     text-align: left
+    border: 5px
+    margin: 5px
 .name
     display: flex
     width: 25%
-    font-size: 20px
+    font-size: 15px
     align-items: center
-    justify-content: center
+    justify-content: left
 
 .mode
     text-align: left
@@ -143,7 +144,7 @@ export default {
     display: flex
     width: 75%
     height: 100%
-    justify-content: space-around
+    justify-content: space-between
     align-items: center
 
 
@@ -167,20 +168,13 @@ export default {
     display: flex
     align-items: center
     justify-content: space-around
-.fan-img1
-    width: 20px
-    height: 20px
-    border: 1px solid black
-.fan-img2
-    width: 30px
-    height: 30px
-    border: 1px solid black
+
 .fan-img3
-    width: 40px
-    height: 40px
+    width: 35px
+    height: 35px
     border: 1px solid black
 
 .fan-img
-    width: 40px
-    height: 40px
+    width: 35px
+    height: 35px
 </style>

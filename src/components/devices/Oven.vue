@@ -14,7 +14,13 @@
                         <img class="oven-img" src="@/assets/devices/oven.png">
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                        <switches class="switch" type-bold="true" theme="bulma" color=blue v-model="enabled"></switches>
+                        <div class="switch  ">
+                            <div class=" form form-label">Temperatura</div>
+                            <div class="form form-field">
+                                <input  placeholder="°C">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="setting-op">
@@ -30,15 +36,17 @@
                     <div class="set grill">
                         <div class="name"> Grill </div>
                         <div class="body">
-                           <div>Large</div>
+                            <img class="op" src="@/assets/modes/oven-top.png">
                             <v-icon name="leaf" class="op"  scale="1" />
+                            <div class="op">Off</div>
                         </div>
                     </div>
                     <div class="set conv">
                         <div class="name"> Convection </div>
                         <div class="body">
-                            <div>Normal</div>
+                            <img class="op" src="@/assets/devices/fan.png">                            
                             <v-icon name="leaf" class="op"  scale="1" />
+                            <div class="op">Off</div>
 
                         </div>
                     </div>
@@ -88,12 +96,33 @@ export default {
     display: flex
     align-items: center
     width: 100%
+
+.modal-header
+    position: relative
+.modal-header::after
+       content: ""
+       position: absolute
+       left: 50%
+       bottom: 0
+       height: 1px
+       width: 90%
+       transform: translateX(-50%)
+       background-color: white
 .column-container
     display: flex
+    position: relative
     flex: 1
     justify-content: center
     width: 100%
-
+.column-container::after
+    content: ""
+    position: absolute
+    left: 50%
+    bottom: 0
+    height: 1px
+    width: 90%
+    transform: translateX(-50%)
+    background-color: white
 .setting-op
     display: flex
     flex: 1
@@ -120,7 +149,18 @@ export default {
 
 .set
     display: flex
+    position: relative
     flex: 1
+
+.set::after
+       content: ""
+       position: absolute
+       left: 50%
+       bottom: 0
+       height: 1px
+       width: 90%
+       transform: translateX(-50%)
+       background-color: white
 .image-container
     padding: 15px   
     flex: 1
@@ -128,10 +168,28 @@ export default {
     align-items: center
     justify-content: center
 .switch-container
+    display: flex
     flex: 1
+    flex-direction: column
     justify-content: center
     align-items: center
     display: flex
+
+.switch
+    display: flex
+    flex: 1
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: 100%
+    padding: 15px
+.form
+    display: flex
+    flex: 1
+
+.form-label
+    margin: 5px
+
 
 .op
     width: 30px

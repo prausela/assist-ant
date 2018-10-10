@@ -65,6 +65,8 @@ export default {
 	display: flex
 	position: relative
 	padding: 5px
+	border-radius: 5px
+
 
 .card-icon
 	max-widht: 100%

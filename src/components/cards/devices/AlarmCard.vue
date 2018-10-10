@@ -57,13 +57,14 @@ export default {
 
 
 .icon-container
-	justify-content: center
-	align-content: center
+	align-items:  center
 	height: 100px
 	border: 1px solid black
 	display: flex
 	position: relative
 	padding: 5px
+	border-radius: 5px
+
 
 .card-icon
 	max-widht: 100%
@@ -77,7 +78,8 @@ export default {
 	margin: 5px 0px
 
 .alarm-img
-	width: 100%
-	height: 100%
+	display: flex
+	width: 38px
+	height: 32px
 
 </style>
