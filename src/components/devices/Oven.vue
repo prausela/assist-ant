@@ -15,9 +15,9 @@
                     </div>
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color=blue v-model="enabled"></switches>
-                        <div class="switch  ">
-                            <div class=" form form-label">Temperatura</div>
-                            <div class="form form-field">
+                        <div class="temp-input">
+                            <div class="form-label">Temperatura</div>
+                            <div class="form-field">
                                 <input  placeholder="°C">
                             </div>
                         </div>
@@ -143,8 +143,9 @@ export default {
 .body
     display: flex
     flex: 2
-    justify-content: space-around
+    justify-content: space-between
     align-items: center
+    padding: 0 20px
 
 
 .set
@@ -174,15 +175,26 @@ export default {
     justify-content: center
     align-items: center
     display: flex
+.temp-input
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 1
+    padding-bottom: 10px
+    .form-field
+        align-self: flex-end
+        padding-right: 20px
+        input
 
 .switch
+    padding: 0 15px
     display: flex
-    flex: 1
     justify-content: center
     align-items: center
     flex-direction: column
-    width: 100%
-    padding: 15px
+    flex: 1
 .form
     display: flex
     flex: 1

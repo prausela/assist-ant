@@ -23,12 +23,13 @@ export default {
 <style lang="sass">
 
 
+*
+  font-family: arial
 // General
 #app 
   display: flex
   flex-direction: column
-  *
-       font-family: arial
+  
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
