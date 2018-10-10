@@ -33,6 +33,8 @@ export default {
 	},
 	methods:{
 		pressedCard(){
+					console.log('hola')
+
 			this.verDevice = true
 		},
 		closeMe(){
@@ -63,6 +65,8 @@ export default {
 	display: flex
 	position: relative
 	padding: 5px
+	border-radius: 5px
+
 
 .card-icon
 	max-widht: 100%

@@ -19,6 +19,7 @@ import ACCard from "@/components/cards/devices/ACCard.vue"
 import BlindCard from "@/components/cards/devices/BlindCard.vue"
 import AlarmCard from "@/components/cards/devices/AlarmCard.vue"
 import AddDeviceCard from "@/components/cards/devices/AddDeviceCard.vue"
+import RefrigeratorCard from "@/components/cards/devices/RefrigeratorCard.vue"
 
 export default {
   components:{
@@ -32,6 +33,7 @@ export default {
     BlindCard,
     AlarmCard,
     AddDeviceCard,
+    RefrigeratorCard
   },
   name: 'DevicesList',
   props: {

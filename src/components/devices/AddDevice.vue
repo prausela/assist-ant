@@ -100,4 +100,7 @@ select
 	width: 70%
 input
 	width: 69%
+.submit-btn
+	background-color: $logo
+	color: black
 </style>

@@ -1,35 +1,34 @@
 <template>
 	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<img class="alarm-img" src="@/assets/devices/alarm.png">
+			<img class="refri-img" src="@/assets/devices/refrigerator.png">
 		</div>
 		<div v-if="verDevice" class="device">
-			<Alarm :device="device" @closeMe="closeMe" />
+			<Refrigerator :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
+
 <script>
-import Alarm from "@/components/devices/Alarm.vue"
+import Refrigerator from "@/components/devices/Refrigerator.vue"
 
 export default {
-	
-	name: 'AlarmCard',
 	components:{
-		Alarm
+		Refrigerator
 	},
+
+	name: 'RefrigeratorCard',
 	props: {
 		device: {
 			required: true	
 		}
 	},
-
 	data () {
 		return {
-			verDevice:false,
-
-			name: 'Alarma'
+			verDevice: false,
+			name: 'Heladera'
 		}
 	},
 	methods:{
@@ -57,7 +56,7 @@ export default {
 
 
 .icon-container
-	align-items:  center
+	align-items: center
 	height: 100px
 	border: 1px solid black
 	display: flex
@@ -77,9 +76,9 @@ export default {
 	text-align: center
 	margin: 5px 0px
 
-.alarm-img
+.refri-img
 	display: flex
-	width: 38px
-	height: 32px
+	width: 20px
+	height: 50px
 
 </style>

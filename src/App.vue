@@ -9,6 +9,7 @@
 import Header from './components/Header.vue'
 import Body from './components/body/Body.vue'
 import AddDevice from './components/devices/AddDevice.vue'
+
 export default {
   name: 'app',
   components: {
@@ -26,7 +27,8 @@ export default {
 #app 
   display: flex
   flex-direction: column
-  // font-family: 'Avenir', Helvetica, Arial, sans-serif
+  *
+       font-family: arial
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center

@@ -1,7 +1,6 @@
 <template>
 	<div class="header">
 		<div class="icon">
-			<div class="icon-label">ASSIST</div>
 			<img class="icon-img" src="../assets/logo.png">
 		</div>
 		<div class="title">Bienvenido a casa</div>
@@ -37,7 +36,6 @@ export default {
 	display: flex
 	flex-direction: row
 	justify-content: space-between
-	font-family: My Happy Ending
 	padding: 5px 10px
 
 .title

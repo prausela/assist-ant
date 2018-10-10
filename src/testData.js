@@ -3,14 +3,14 @@ export default{
 	{
 
 		"id": "aefe74ef7653fb6c",
-		"name": "table lamp",
+		"name": "Table Lamp",
 		"typeId": "Light",
 		"meta": "{}"
 	},
 	{
 
 		"id": "aefe74ef7653fb6d",
-		"name": "Oven",
+		"name": "Horno",
 		"typeId": "Oven",
 		"meta": "{}"
 	},
@@ -31,7 +31,7 @@ export default{
 	{
 
 		"id": "aefe74ef7653fb6d",
-		"name": "front door",
+		"name": "Puerta Principal",
 		"typeId": "Door",
 		"meta": {favorite: true}
 	},
@@ -58,6 +58,14 @@ export default{
 		"typeId": "Alarm",
 		"meta": {favorite: true}
 	},
+
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "Heladera",
+		"typeId": "Refrigerator",
+		"meta": {favorite: true}
+	}
 
 	]
 

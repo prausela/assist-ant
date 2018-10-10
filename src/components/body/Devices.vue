@@ -55,7 +55,9 @@ export default {
   flex-direction: column
   width: 30%
   background-color: $primaryBg
-  box-shadow: 5px 10px $shadowBg
+  box-shadow: 2px 2px $shadowBg
+  border-radius: 5px
+
 
 .card-icon
   display: row
@@ -63,10 +65,6 @@ export default {
   margin: 8px    
   width: 100px
   height: 100px
-
-
-
-
 
 
 .floors

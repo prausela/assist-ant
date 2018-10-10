@@ -1,14 +1,22 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<img class="oven-img" src="@/assets/oven.png">
+			<img class="oven-img" src="@/assets/devices/oven.png">
+		</div>
+		<div v-if="verDevice" class="device">
+			<Oven :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
+import Oven from "@/components/devices/Oven.vue"
+
 export default {
+	components:{
+		Oven
+	},
 
 	name: 'OvenCard',
 	props: {
@@ -19,7 +27,17 @@ export default {
 
 	data () {
 		return {
+			verDevice: false,
 			name: 'Horno'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }
@@ -37,13 +55,14 @@ export default {
 	cursor: pointer
 
 .icon-container
-	justify-content: center
-	align-content: center
+	align-items: center
 	height: 100px
 	border: 1px solid black
 	display: flex
 	position: relative
 	padding: 5px
+	border-radius: 5px
+
 
 .card-icon
 	max-widht: 100%
@@ -58,7 +77,7 @@ export default {
 
 
 .oven-img
-	width: auto
-	height: 100%
-
+	display: flex
+	width: 32px
+	height: 32px
 </style>

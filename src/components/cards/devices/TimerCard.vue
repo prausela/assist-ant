@@ -1,25 +1,42 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
 			<v-icon name="stopwatch" class="card-icon" scale="2" />
+		</div>
+		<div v-if="verDevice" class="device">
+			<Timer :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
-export default {
+import Timer from "@/components/devices/Timer.vue"
 
+export default {
+	components:{
+		Timer
+	},
 	name: 'TimerCard',
 	props: {
 		device: {
 			required: true	
 		}
 	},
-
 	data () {
 		return {
+			verDevice: false,
+
 			name: 'Temporizador'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }
@@ -45,6 +62,8 @@ export default {
 	display: flex
 	position: relative
 	padding: 5px
+	border-radius: 5px
+
 
 .card-icon
 	max-widht: 100%
