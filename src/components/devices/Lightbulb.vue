@@ -91,6 +91,7 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
+    
 .modal-footer
     display: flex
     width: 100%
@@ -104,8 +105,6 @@ export default {
     display: flex
     justify-content: center
     width: 100%
-
-
 
 .image-container
     padding: 15px   

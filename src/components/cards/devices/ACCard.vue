@@ -1,15 +1,22 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
 			<v-icon name="snowflake" class="card-icon" scale="2" />
+		</div>
+		<div v-if="verDevice" class="device">
+			<AC :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
-export default {
+import AC from "@/components/devices/AC.vue"
 
+export default {
+	components:{
+		AC
+	},
 	name: 'ACCard',
 
 	props: {
@@ -20,7 +27,17 @@ export default {
 
 	data () {
 		return {
+			verDevice: false,
 			name: 'Aire Acondicionado'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }

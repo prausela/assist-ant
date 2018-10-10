@@ -9,6 +9,7 @@
 import Header from './components/Header.vue'
 import Body from './components/body/Body.vue'
 import AddDevice from './components/devices/AddDevice.vue'
+
 export default {
   name: 'app',
   components: {
