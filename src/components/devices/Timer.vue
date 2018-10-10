@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                        <img class="oven-img" src="@/assets/devices/oven.png">
+                        <v-icon name="stopwatch" class="card-icon" scale="10" />
                     </div>
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
@@ -57,7 +57,7 @@ import Switches from 'vue-switches'
 
 export default {
 
-    name: 'Oven',
+    name: 'Timer',
 
     components: {
         Switches
@@ -67,7 +67,7 @@ export default {
     ],
     data () {
         return {
-            name: 'Horno',
+            name: 'Timer',
             enabled: false,
 
         }

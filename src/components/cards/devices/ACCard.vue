@@ -1,7 +1,7 @@
 <template>
 	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<v-icon name="snowflake" class="card-icon" scale="2" />
+            <img class="ac-img" src="@/assets/devices/AC.png">
 		</div>
 		<div v-if="verDevice" class="device">
 			<AC :device="device" @closeMe="closeMe" />
@@ -74,5 +74,9 @@ export default {
 .name
 	text-align: center
 	margin: 5px 0px
+
+.ac-img
+	width: 50px
+	height: 50px
 
 </style>

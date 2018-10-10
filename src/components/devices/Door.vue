@@ -11,22 +11,18 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="blind-img" src="@/assets/devices/blind.png">
+                        <v-icon name="door-closed" class="state" scale="10" />
                     </div>
-                    <div class="arrow-container">
-                        <v-icon name="arrow-up" class="arrow" scale="3" />
-                        <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
+                    <div class="close-container">
+                        <v-icon name="door-open" class="door" scale="3" />
                     </div>
                 </div>
-                <div class="setting-op">
-                    <div class="heigh">
-                        <div class="name">
-                            Modo
-                        </div>
-                        <div class="body">
-                            <img class="blind-op" src="@/assets/modes/blind-open.png">
-                            <img class="blind-op" src="@/assets/modes/blind-close.png">
-                        </div>
+                <div class="column-container">
+                    <div class="image-container">
+                        <v-icon name="lock" class="state" scale="10" />
+                    </div>
+                    <div class="close-container">
+                        <v-icon name="lock-open" class="door" scale="3" />
                     </div>
                 </div>
                     
@@ -78,15 +74,16 @@ export default {
     flex: 1
     align-items: center
     justify-content: center
-.arrow-container
+.state
+
+.close-container
     display: flex
     flex: 1
     align-items: center
     justify-content: center
-.arrow
+.door
     padding: 8px
     border: 1px solid black
-    margin: 2px
 
 .setting-op
     display: flex
@@ -96,14 +93,7 @@ export default {
     border-top: 1px solid black
     width: 100%
 
-.heigh
-    display: flex
-    flex: 1
-    align-items: center
-    justify-content: space-around
-.blind-img
-    width: 150px
-    height: 150px
+
 
 .body
     display: flex
@@ -111,19 +101,11 @@ export default {
     height: 100%
     align-items: center
     justify-content: space-around
-.blind-op
-    width: 40px
-    height: 40px
-    border: 1px solid black
-    align-items: center
-    padding: 2px
 
 
 .name
-    display: flex
     flex: 1
     height: 100%
     justify-content: center
-    align-items: center
 
 </style>

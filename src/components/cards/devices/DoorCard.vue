@@ -1,15 +1,22 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
 			<v-icon name="door-closed" class="card-icon" scale="2" />
+		</div>
+		<div v-if="verDevice" class="device">
+			<Door :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
-export default {
+import Door from "@/components/devices/Door.vue"
 
+export default {
+	components:{
+		Door
+	},
 	name: 'DoorCard',
 	props: {
 		device: {
@@ -19,7 +26,17 @@ export default {
 
 	data () {
 		return {
+			verDevice: false,
 			name: 'Puerta'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }

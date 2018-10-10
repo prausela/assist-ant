@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                         <v-icon name="snowflake" class="card-icon" scale="10" />
+                        <img class="ac-pimg" src="@/assets/devices/AC.png">
                     </div>
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
@@ -19,32 +19,47 @@
                 </div>
                 <div class="setting-op">
                     <div class="fan">
-                        <div class="name">Fan</div>
+                        <div class="name">Ventilador</div>
                         <div class="body">
-                            <img class="fan-img1" src="@/assets/devices/fan.png">
-                            <img class="fan-img2" src="@/assets/devices/fan.png">
-                            <img class="fan-img3" src="@/assets/devices/fan.png">
+                            <v-icon name="minus" class="mode" scale="1" />
+                            <img class="fan-img" src="@/assets/modes/fan-25.png">
+                            <img class="fan-img" src="@/assets/modes/fan-50.png">
+                            <img class="fan-img" src="@/assets/modes/fan-75.png">
+
+                            <img class="fan-img" src="@/assets/modes/fan-100.png">
+
+                            <v-icon name="plus" class="mode" scale="1" />
 
                         </div>
                     </div>
                     <div class="modes">
-                        <div class="name">Mode</div>
+                        <div class="name">Modo</div>
                         <div class="body">
                             <v-icon name="sun" class="mode" scale="2" />
                             <v-icon name="snowflake" class="mode" scale="2" />
+                            <img class="fan-img3" src="@/assets/devices/fan.png">
+
                         </div>
                     </div>
                     <div class="swing">
-                      <div class="name">Swing</div>
-                      <div class="body">
-                        <img class="ac-img" src="@/assets/modes/swing.png">
-                        <img class="ac-img" src="@/assets/modes/swing-low.png">
-                        <img class="ac-img" src="@/assets/modes/swing-up.png">
+                        <div class="name">Swing Vertical</div>
+                        <div class="body">
+                            <img class="ac-img" src="@/assets/modes/swing.png">
+                            <img class="ac-img" src="@/assets/modes/swing-22.png">
+                            <img class="ac-img" src="@/assets/modes/swing-45.png">
+
+                            <img class="ac-img" src="@/assets/modes/swing-67.png">
+                            <img class="ac-img" src="@/assets/modes/swing-90.png">
+                        </div>
                     </div>
-                </div>
-                    
-                </div>
-                
+                    <div class="swing">
+                        <div class="name">Swing Horizontal</div>
+                        <div class="body">
+                            <img class="ac-img" src="@/assets/modes/swing.png">
+                            
+                        </div>
+                    </div>
+                </div>    
             </div>
             <div class="modal-footer">
                 <cbfooter />
@@ -98,7 +113,9 @@ export default {
     width: 100%
     height: 50%
     border-top: 1px solid black
-
+.ac-pimg
+    width: 150px
+    height: 150px
 .ac-img
     border: 1px solid black
     width: 40px
@@ -114,6 +131,7 @@ export default {
     display: flex
     width: 25%
     font-size: 20px
+    align-items: center
     justify-content: center
 
 .mode
@@ -161,4 +179,8 @@ export default {
     width: 40px
     height: 40px
     border: 1px solid black
+
+.fan-img
+    width: 40px
+    height: 40px
 </style>

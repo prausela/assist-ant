@@ -59,6 +59,14 @@ export default{
 		"meta": {favorite: true}
 	},
 
+	{
+
+		"id": "aefe74ef7653fb6d",
+		"name": "Heladera",
+		"typeId": "Refrigerator",
+		"meta": {favorite: true}
+	}
+
 	]
 
 	

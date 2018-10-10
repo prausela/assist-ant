@@ -1,23 +1,25 @@
 <template>
 	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<v-icon name="stopwatch" class="card-icon" scale="2" />
+			<img class="refri-img" src="@/assets/devices/refrigerator.png">
 		</div>
 		<div v-if="verDevice" class="device">
-			<Timer :device="device" @closeMe="closeMe" />
+			<Refrigerator :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
+
 <script>
-import Timer from "@/components/devices/Timer.vue"
+import Refrigerator from "@/components/devices/Refrigerator.vue"
 
 export default {
 	components:{
-		Timer
+		Refrigerator
 	},
-	name: 'TimerCard',
+
+	name: 'RefrigeratorCard',
 	props: {
 		device: {
 			required: true	
@@ -26,8 +28,7 @@ export default {
 	data () {
 		return {
 			verDevice: false,
-
-			name: 'Temporizador'
+			name: 'Heladera'
 		}
 	},
 	methods:{
@@ -53,7 +54,7 @@ export default {
 	width: 30%
 	cursor: pointer
 
-		
+
 .icon-container
 	justify-content: center
 	align-content: center
@@ -68,10 +69,14 @@ export default {
 	object-fit: contain
 	height: 100%
 	position: relative
-	cursor: pointer
 
-	
+
 .name
 	text-align: center
 	margin: 5px 0px
+
+.refri-img
+	width: auto
+	height: 100%
+
 </style>

@@ -1,16 +1,24 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
 			<img class="alarm-img" src="@/assets/devices/alarm.png">
+		</div>
+		<div v-if="verDevice" class="device">
+			<Alarm :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
-export default {
+import Alarm from "@/components/devices/Alarm.vue"
 
+export default {
+	
 	name: 'AlarmCard',
+	components:{
+		Alarm
+	},
 	props: {
 		device: {
 			required: true	
@@ -19,7 +27,18 @@ export default {
 
 	data () {
 		return {
+			verDevice:false,
+
 			name: 'Alarma'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }

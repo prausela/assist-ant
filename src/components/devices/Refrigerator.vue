@@ -11,25 +11,31 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="blind-img" src="@/assets/devices/blind.png">
+                        <img class="refri-img" src="@/assets/devices/refrigerator.png">
                     </div>
-                    <div class="arrow-container">
-                        <v-icon name="arrow-up" class="arrow" scale="3" />
-                        <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
-                    </div>
+                    
                 </div>
                 <div class="setting-op">
-                    <div class="heigh">
-                        <div class="name">
-                            Modo
-                        </div>
+                    <div class="set freeze">
+                        <div class="name"> Temperatura Freezer </div>
                         <div class="body">
-                            <img class="blind-op" src="@/assets/modes/blind-open.png">
-                            <img class="blind-op" src="@/assets/modes/blind-close.png">
+                            
+                        </div>
+
+                    </div>
+                    <div class="set temp">
+                        <div class="name"> Temperatura Heladera </div>
+                        <div class="body">
+                        </div>
+                    </div>
+                    <div class="set mode">
+                        <div class="name"> Mode </div>
+                        <div class="body">
+                            <v-icon name="suitcase" class="suitcase" scale="2" />
                         </div>
                     </div>
                 </div>
-                    
+                
             </div>
             <div class="modal-footer">
                 <cbfooter />
@@ -39,20 +45,23 @@
 </template>
 
 <script>
+import Switches from 'vue-switches'
 
 export default {
 
-    name: 'Blind',
+    name: 'Oven',
 
     components: {
-       
+        Switches
     },
     props: [
     'device'
     ],
     data () {
         return {
-            name: 'Blind',
+            name: 'Horno',
+            enabled: true,
+
         }
     },
     methods:{
@@ -60,6 +69,9 @@ export default {
             this.$emit('closeMe')
         }
     }
+    
+
+
 }
 </script>
 
@@ -73,57 +85,45 @@ export default {
     flex: 1
     justify-content: center
     width: 100%
-.image-container
-    display: flex
-    flex: 1
-    align-items: center
-    justify-content: center
-.arrow-container
-    display: flex
-    flex: 1
-    align-items: center
-    justify-content: center
-.arrow
-    padding: 8px
-    border: 1px solid black
-    margin: 2px
 
 .setting-op
     display: flex
     flex: 1
     flex-direction: column
     justify-content: space-around   
-    border-top: 1px solid black
     width: 100%
+   
 
-.heigh
+.refri-img
+    width: 80px
+    height: 150px
+.name
     display: flex
     flex: 1
+    justify-content: center
     align-items: center
-    justify-content: space-around
-.blind-img
-    width: 150px
-    height: 150px
 
 .body
     display: flex
     flex: 2
-    height: 100%
-    align-items: center
     justify-content: space-around
-.blind-op
-    width: 40px
-    height: 40px
-    border: 1px solid black
     align-items: center
+
+.suitcase
+    border: 1px solid black
     padding: 2px
 
 
-.name
+
+.set
     display: flex
     flex: 1
-    height: 100%
-    justify-content: center
+.image-container
+    padding: 15px   
+    flex: 1
+    display: flex
     align-items: center
+    justify-content: center
+
 
 </style>

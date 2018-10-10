@@ -11,25 +11,23 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="blind-img" src="@/assets/devices/blind.png">
+                        <img class="alarm-img" src="@/assets/devices/alarm.png">
                     </div>
-                    <div class="arrow-container">
-                        <v-icon name="arrow-up" class="arrow" scale="3" />
-                        <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
+                    <div class="switch-container">
+                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
                     </div>
                 </div>
                 <div class="setting-op">
-                    <div class="heigh">
-                        <div class="name">
-                            Modo
-                        </div>
+                    <div class="set conv">
+                        <div class="name"> Convection </div>
                         <div class="body">
-                            <img class="blind-op" src="@/assets/modes/blind-open.png">
-                            <img class="blind-op" src="@/assets/modes/blind-close.png">
+                            <div>Normal</div>
+                            <v-icon name="leaf" class="op"  scale="1" />
+
                         </div>
                     </div>
                 </div>
-                    
+                
             </div>
             <div class="modal-footer">
                 <cbfooter />
@@ -39,20 +37,23 @@
 </template>
 
 <script>
+import Switches from 'vue-switches'
 
 export default {
 
-    name: 'Blind',
+    name: 'Alarm',
 
     components: {
-       
+        Switches
     },
     props: [
     'device'
     ],
     data () {
         return {
-            name: 'Blind',
+            name: 'Alarm',
+            enabled: false,
+
         }
     },
     methods:{
@@ -73,57 +74,49 @@ export default {
     flex: 1
     justify-content: center
     width: 100%
-.image-container
-    display: flex
-    flex: 1
-    align-items: center
-    justify-content: center
-.arrow-container
-    display: flex
-    flex: 1
-    align-items: center
-    justify-content: center
-.arrow
-    padding: 8px
-    border: 1px solid black
-    margin: 2px
 
 .setting-op
     display: flex
     flex: 1
     flex-direction: column
     justify-content: space-around   
-    border-top: 1px solid black
     width: 100%
+   
 
-.heigh
+.alarm-img
+    width: 150px
+    height: 100px
+.name
     display: flex
     flex: 1
+    justify-content: center
     align-items: center
-    justify-content: space-around
-.blind-img
-    width: 150px
-    height: 150px
 
 .body
     display: flex
     flex: 2
-    height: 100%
-    align-items: center
     justify-content: space-around
-.blind-op
-    width: 40px
-    height: 40px
-    border: 1px solid black
     align-items: center
-    padding: 2px
 
 
-.name
+.set
     display: flex
     flex: 1
-    height: 100%
+.image-container
+    padding: 15px   
+    flex: 1
+    display: flex
+    align-items: center
+    justify-content: center
+.switch-container
+    flex: 1
     justify-content: center
     align-items: center
+    display: flex
 
+.op
+    width: 30px
+    height: 30px
+    border: 1px solid black
+    padding: 3px
 </style>
