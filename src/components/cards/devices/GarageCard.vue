@@ -1,16 +1,24 @@
 <template>
-	<div class="card">
+	<div class="card" @click="pressedCard">
 		<div class="icon-container">
-			<v-icon name="car" class="card-icon" scale="2" />
+            <img class="garage-img" src="@/assets/devices/garage.png">
+		</div>
+		<div v-if="verDevice" class="device">
+			<Garage :device="device" @closeMe="closeMe" />
 		</div>
 		<div class="name">{{device.name}}</div>
 	</div>
 </template>
 
 <script>
+import Garage from "@/components/devices/Garage.vue"
+
 export default {
 
 	name: 'GarageCard',
+	components:{
+		Garage
+	},
 	props: {
 		device: {
 			required: true	
@@ -19,7 +27,17 @@ export default {
 
 	data () {
 		return {
+			verDevice:false,
 			name: 'Garage'
+		}
+	},
+	methods:{
+		pressedCard(){
+			this.verDevice = true
+		},
+		closeMe(){
+			this.verDevice = false
+
 		}
 	}
 }
@@ -38,8 +56,7 @@ export default {
 
 
 .icon-container
-	justify-content: center
-	align-content: center
+	align-items: center
 	height: 100px
 	border: 1px solid black
 	display: flex
@@ -58,5 +75,9 @@ export default {
 .name
 	text-align: center
 	margin: 5px 0px
+.garage-img
+	display: flex
+	width: 38px
+	height: 32px
 
 </style>

@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="blind-img" src="@/assets/devices/blind.png">
+                            <img class="garage-img" src="@/assets/devices/garage.png">
                     </div>
                     <div class="arrow-container">
                         <v-icon name="arrow-up" class="arrow" scale="3" />
@@ -24,8 +24,8 @@
                             Modo
                         </div>
                         <div class="body">
-                            <img class="blind-op" src="@/assets/modes/blind-open.png">
-                            <img class="blind-op" src="@/assets/modes/blind-close.png">
+                            <img class="garage-op" src="@/assets/modes/garage-open.png">
+                            <img class="garage-op" src="@/assets/modes/garage-close.png">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
 export default {
 
-    name: 'Blind',
+    name: 'Garage',
 
     components: {
        
@@ -52,7 +52,7 @@ export default {
     ],
     data () {
         return {
-            name: 'Blind',
+            name: 'Garage',
         }
     },
     methods:{
@@ -122,7 +122,7 @@ export default {
     flex: 1
     align-items: center
     justify-content: space-around
-.blind-img
+.garage-img
     width: 150px
     height: 150px
 
@@ -132,7 +132,7 @@ export default {
     height: 100%
     align-items: center
     justify-content: space-around
-.blind-op
+.garage-op
     width: 40px
     height: 40px
     border: 1px solid black

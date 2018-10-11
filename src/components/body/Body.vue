@@ -13,7 +13,15 @@
                         <v-icon name="redo-alt" class="redo" scale="1" />
                 </div>
                 <div class="routines">
-                    <h2>Rutinas</h2>
+                    <div class="r-header">
+                        Routines
+                    </div>
+                    <div class="r-body">
+                        <div class="name">Nombre Rutina</div>
+                        <div class="btn">
+                            <div class="active-btn">Activar</div>
+                        </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -79,6 +87,34 @@
         background-color:  $primaryBg
         flex: 1
         border-radius: 5px
+        display: flex
+        flex-direction: column
+
+
+    .r-header
+        flex: 1
+        display: block
+        font-size: 1.5em
+        margin-block-start: 0.83em
+        margin-block-end: 0.83em
+        margin-inline-start: 0px
+        margin-inline-end: 0px
+        font-weight: bold
+    .r-body
+        display: flex
+        flex: 2
+    .name
+        display: flex
+        flex: 2
+
+    .btn
+        display: flex
+        flex: 1
+    .active-btn
+        background-color: $logo
+        color: black
+        border-radius: 5px
+        height: 15%
 
     .history
         margin-bottom: 8%

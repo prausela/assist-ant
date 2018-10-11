@@ -15,6 +15,12 @@
                     </div>
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                        <div class="temp-input">
+                            <div class="form-label">Temperatura</div>
+                            <div class="form-field">
+                                <input  placeholder="°C">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="setting-op">
@@ -23,12 +29,15 @@
                         <div class="body">
                             <v-icon name="minus" class="mode" scale="1" />
                             <img class="fan-img" src="@/assets/modes/fan-25.png">
-                            <img class="fan-img" src="@/assets/modes/fan-50.png">
+                           <!--  <img class="fan-img" src="@/assets/modes/fan-50.png">
                             <img class="fan-img" src="@/assets/modes/fan-75.png">
 
-                            <img class="fan-img" src="@/assets/modes/fan-100.png">
+                            <img class="fan-img" src="@/assets/modes/fan-100.png"> -->
 
                             <v-icon name="plus" class="mode" scale="1" />
+                            <div class="empty"></div>
+                            <div class="empty"></div>
+                            <div class="empty"></div>
 
                         </div>
                     </div>
@@ -38,6 +47,10 @@
                             <v-icon name="sun" class="ac-img"  />
                             <v-icon name="snowflake" class="ac-img"  />
                             <img class="fan-img3" src="@/assets/devices/fan.png">
+                            <div class="empty"></div>
+                            <div class="empty"></div>
+                            <div class="empty"></div>
+
 
                         </div>
                     </div>
@@ -49,13 +62,19 @@
                             <img class="ac-img" src="@/assets/modes/swing-45.png">
                             <img class="ac-img" src="@/assets/modes/swing-67.png">
                             <img class="ac-img" src="@/assets/modes/swing-90.png">
+                            <div class="empty"></div>
+
                         </div>
                     </div>
                     <div class="op-body">
                         <div class="name">Swing Horizontal</div>
                         <div class="body">
-                            <img class="ac-img" src="@/assets/modes/swing.png">
-                            
+                            <img class="ac-img" src="@/assets/modes/h-auto.png">
+                            <img class="ac-img" src="@/assets/modes/h--90.png">
+                            <img class="ac-img" src="@/assets/modes/h--45.png">
+                            <img class="ac-img" src="@/assets/modes/h-0.png">
+                            <img class="ac-img" src="@/assets/modes/h-45.png">                            
+                            <img class="ac-img" src="@/assets/modes/h-90.png">                            
                         </div>
                     </div>
                 </div>    
@@ -99,11 +118,32 @@ export default {
     display: flex
     align-items: center
     width: 100%
+.modal-header
+    position: relative
+.modal-header::after
+       content: ""
+       position: absolute
+       left: 50%
+       bottom: 0
+       height: 1px
+       width: 90%
+       transform: translateX(-50%)
+       background-color: white
 .column-container
     display: flex
     justify-content: center
     width: 100%
     height: 50%
+    position: relative
+.column-container::after
+    content: ""
+    position: absolute
+    left: 50%
+    bottom: 0
+    height: 1px
+    width: 90%
+    transform: translateX(-50%)
+    background-color: white
 
 .setting-op
     display: flex
@@ -111,7 +151,6 @@ export default {
     justify-content: space-around   
     width: 100%
     height: 50%
-    border-top: 1px solid black
 .ac-pimg
     width: 150px
     height: 150px
@@ -128,12 +167,22 @@ export default {
     text-align: left
     border: 5px
     margin: 5px
+    position: relative
+.op-body::after
+    content: ""
+    position: absolute
+    left: 50%
+    bottom: -5px
+    height: 1px
+    width: 90%
+    transform: translateX(-50%)
+    background-color: white
 .name
     display: flex
     width: 25%
     font-size: 15px
     align-items: center
-    justify-content: left
+    justify-content: center
 
 .mode
     text-align: left
@@ -160,21 +209,52 @@ export default {
     align-items: center
     justify-content: center
 .switch-container
+    display: flex
     flex: 1
+    flex-direction: column
     justify-content: center
     align-items: center
+.temp-input
+    width: 100%
     display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 1
+    padding-bottom: 10px
+    .form-field
+        align-self: flex-end
+        padding-right: 20px
+        input
+
+.switch
+    padding: 0 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    flex: 1
+.form
+    display: flex
+    flex: 1
+
+.form-label
+    margin: 5px
 .fan
     display: flex
     align-items: center
     justify-content: space-around
 
 .fan-img3
-    width: 35px
-    height: 35px
+    width: 32px
+    height: 32px
     border: 1px solid black
 
 .fan-img
     width: 35px
     height: 35px
+.empty
+    width: 35px
+    height: 35px
+    border: 1px 
 </style>
