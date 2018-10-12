@@ -4,6 +4,7 @@
         <component v-if="$config.availableDevices.includes(device.typeId)" :device="device" :is="device.typeId + 'Card'" :key="index"/>
       </template>
       <AddDeviceCard v-if="add" />
+      <AddRoomCard v-if="add"/>
     </div>
 </template>
 
@@ -20,6 +21,7 @@ import BlindCard from "@/components/cards/devices/BlindCard.vue"
 import AlarmCard from "@/components/cards/devices/AlarmCard.vue"
 import AddDeviceCard from "@/components/cards/devices/AddDeviceCard.vue"
 import RefrigeratorCard from "@/components/cards/devices/RefrigeratorCard.vue"
+import AddRoomCard from "@/components/cards/devices/AddRoomCard.vue"
 
 export default {
   components:{
@@ -33,7 +35,8 @@ export default {
     BlindCard,
     AlarmCard,
     AddDeviceCard,
-    RefrigeratorCard
+    RefrigeratorCard,
+    AddRoomCard
   },
   name: 'DevicesList',
   props: {

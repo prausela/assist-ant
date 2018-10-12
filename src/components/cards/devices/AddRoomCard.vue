@@ -4,19 +4,19 @@
 			<v-icon name="plus" class="card-icon" scale="1.5" />
 		</div>
 		<div v-if="verDevice" class="device">
-			<AddDevice @closeMe="verDevice = false" />
+			<AddRoom @closeMe="verDevice = false" />
 		</div>
 	</div>
 </template>
 
 <script>
-import AddDevice from "@/components/forms/AddDevice.vue"
+import AddRoom from "@/components/forms/AddRoom.vue"
 
 export default {
 
-	name: 'AddDeviceCard',
+	name: 'AddRoomCard',
 	components: {
-		AddDevice
+		AddRoom
 	},
 	props: {
 		device: {

@@ -98,12 +98,24 @@ body
   justify-content: space-around
   font-size: 40px
   user-select: none
+  position: relative
+.modal-header::after
+  content: ""
+  position: absolute
+  left: 50%
+  bottom: 0
+  height: 1px
+  width: 90%
+  transform: translateX(-50%)
+  background-color: white
+    
 
 .modal-body
   flex: 1
   display: flex
   flex-direction: column
   align-items: center
+  width: 100%
 .modal-footer
   display: flex
   width: 100%
@@ -160,7 +172,6 @@ body
   padding: 5px 15px
   border-radius: 10px
   background-color: #06de06
-
 
 
 </style>

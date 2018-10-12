@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import EditDevice from "@/components/devices/EditDevice.vue"
+import EditDevice from "@/components/forms/EditDevice.vue"
 export default {
   components:{
     EditDevice
