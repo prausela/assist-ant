@@ -1,5 +1,6 @@
 <template>
 	<div class="modal" @click.stop="closeModal">
+		<AddDevice v-if="showAddModal" @closeMe="showAddModal=false"/>
 		<div class="modal-inner" @click.stop>
 			<div class="modal-header">
 				Agregar Habitacion
@@ -41,14 +42,11 @@
 					<div class="form-row">
 						<div class="form-label">Dispositivos dentro de la Habitacion</div>
 						<div class="form-field select-field">
-							<select v-model="selected">
-							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
-							</select>
+							
+						<DevicesList />
 						</div>
 					</div>
+
 				</div>
 			</div>
 			 <div class="modal-footer">
@@ -59,12 +57,22 @@
 </template>
 
 <script>
-export default {
+import AddDevice from "./AddDevice.vue"
+import DevicesList from "@/components/body/DevicesList.vue"
+import testData from "@/testData.js"
 
-  name: 'AddDevice',
+export default {
+	components:{
+		AddDevice,
+		DevicesList
+	},
+  name: 'AddRoom',
 
   data () {
     return {
+    	allDevices: testData.devices,
+    	devices: [],
+    	showAddModal: false,
     	name: "",
     	selected: null
     }
@@ -72,6 +80,13 @@ export default {
   methods: {
   	closeModal() {
   		this.$emit('closeMe')
+  	},
+  	selectedDevice(){
+  		console.log(this.selected)
+  		if(this.selected=="add"){
+  			this.showAddModal=true
+  			this.selected=""
+  		}
   	}
   }
 }

@@ -80,7 +80,7 @@
                 </div>    
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter @clickedFavorite="clickedFavorite" :device="device"/>
             </div>
         </div>
     </div>

@@ -23,6 +23,10 @@ export default {
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
 		}
 	},
 	data () {
@@ -33,9 +37,9 @@ export default {
 	},
 	methods:{
 		pressedCard(){
-					console.log('hola pressed Lcard')
-
-			this.verDevice = true
+			if (this.openModals) {
+				this.verDevice = true
+			}
 		},
 		closeMe(){
 			this.verDevice = false
