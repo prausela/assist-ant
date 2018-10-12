@@ -14,11 +14,10 @@
                         <img class="alarm-img" src="@/assets/devices/alarm.png">
                     </div>
                     <div class="arm">
-                        
-                            <div class="submit-btn">Stay</div>
-                            <div class="submit-btn">Away</div>
-                    
-                            <div class="submit-btn">Disarm</div>
+
+                        <div class="submit-btn">Stay</div>
+                        <div class="submit-btn">Away</div>
+                        <div class="submit-btn">Disarm</div>
                         </div>
                     </div>
                     <div class="setting-op">

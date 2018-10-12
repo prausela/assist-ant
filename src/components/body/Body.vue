@@ -71,6 +71,8 @@
         box-shadow: 2px 2px $shadowBg
         width: 30%
         border-radius: 5px
+        display: flex
+        flex-direction: column
 
 
 

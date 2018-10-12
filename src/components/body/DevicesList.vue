@@ -62,4 +62,5 @@ export default {
   display: flex
   justify-content: flex-start
   overflow: auto
+  flex: 1
 </style>

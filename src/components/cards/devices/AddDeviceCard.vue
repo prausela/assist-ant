@@ -35,31 +35,10 @@ export default {
 
 <style lang="sass" scoped>
 
-.card
-	display: flex
-	justify-content:center
-	align-content:center
-	position: relative
-	flex-direction: column
-	width: 30%
-	cursor: pointer
 
 
 .icon-container
-	justify-content: center
-	align-content: center
-	border: 1px solid black
-	display: flex
-	position: relative
-	padding: 5px
-	border-radius: 5px
-
-.card-icon
-	max-widht: 100%
-	object-fit: contain
-	height: 100%
-	position: relative
-
+	height: 60px
 
 .name
 	text-align: center
