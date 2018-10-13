@@ -97,12 +97,25 @@ body
   width: 100%
   justify-content: space-around
   font-size: 40px
+  user-select: none
+  position: relative
+.modal-header::after
+  content: ""
+  position: absolute
+  left: 50%
+  bottom: 0
+  height: 1px
+  width: 90%
+  transform: translateX(-50%)
+  background-color: white
+    
 
 .modal-body
   flex: 1
   display: flex
   flex-direction: column
   align-items: center
+  width: 100%
 .modal-footer
   display: flex
   width: 100%
@@ -121,13 +134,35 @@ body
   width: 30%
   height: 100px
   margin: 5px 1%
+.icon-container
+  align-items: center
+  height: 100px
+  border: 1px solid black
+  display: flex
+  position: relative
+  padding: 5px
+  border-radius: 5px
+  cursor: pointer
+  min-height: 60px
 
+
+
+.card-icon
+  max-widht: 100%
+  object-fit: contain
+  height: 100%
+  position: relative
+
+
+.card-name
+  text-align: center
+  margin: 5px 0px
+  cursor: pointer
     
 .icon-container
   justify-content: center
   align-content: center
-  min-height: 60px
-  height: 60px
+  
   border: 1px solid black
   display: flex
   position: relative
@@ -137,5 +172,6 @@ body
   padding: 5px 15px
   border-radius: 10px
   background-color: #06de06
+
 
 </style>

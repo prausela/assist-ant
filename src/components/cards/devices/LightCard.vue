@@ -6,7 +6,7 @@
 		<div v-if="verDevice" class="device">
 			<Lightbulb :device="device" @closeMe="closeMe" />
 		</div>
-		<div class="name">{{device.name}}</div>
+		<div class="card-name">{{device.name}}</div>
 	</div>
 </template>
 
@@ -23,6 +23,10 @@ export default {
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
 		}
 	},
 	data () {
@@ -33,9 +37,9 @@ export default {
 	},
 	methods:{
 		pressedCard(){
-					console.log('hola')
-
-			this.verDevice = true
+			if (this.openModals) {
+				this.verDevice = true
+			}
 		},
 		closeMe(){
 			this.verDevice = false
@@ -47,36 +51,6 @@ export default {
 
 <style lang="sass" scoped>
 
-.card
-	display: flex
-	justify-content:center
-	align-content:center
-	position: relative
-	flex-direction: column
-	width: 30%
-	cursor: pointer
 
-
-.icon-container
-	justify-content: center
-	align-content: center
-	height: 100px
-	border: 1px solid black
-	display: flex
-	position: relative
-	padding: 5px
-	border-radius: 5px
-
-
-.card-icon
-	max-widht: 100%
-	object-fit: contain
-	height: 100%
-	position: relative
-
-
-.name
-	text-align: center
-	margin: 5px 0px
 
 </style>

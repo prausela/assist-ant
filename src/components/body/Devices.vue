@@ -92,7 +92,7 @@ export default {
   display: flex
   flex-direction: row
   border-bottom: 1px solid black
-  height: 30px
+  height: 35px
   user-select: none
   .tab 
     flex: 0 1 33%

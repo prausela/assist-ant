@@ -60,21 +60,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.modal-body
-    display: flex
-    align-items: center
-    width: 100%
-.modal-header
-    position: relative
-.modal-header::after
-       content: ""
-       position: absolute
-       left: 50%
-       bottom: 0
-       height: 1px
-       width: 90%
-       transform: translateX(-50%)
-       background-color: white
+
+
 .column-container
     display: flex
     flex: 1

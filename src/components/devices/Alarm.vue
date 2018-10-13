@@ -14,11 +14,12 @@
                         <img class="alarm-img" src="@/assets/devices/alarm.png">
                     </div>
                     <div class="arm">
-                        
-                            <div class="submit-btn">Stay</div>
-                            <div class="submit-btn">Away</div>
-                    
-                            <div class="submit-btn">Disarm</div>
+
+                        <div class="submit-btn">Stay</div>
+
+                        <NumericKeyboard/>
+                        <div class="submit-btn">Away</div>
+                        <div class="submit-btn">Disarm</div>
                         </div>
                     </div>
                     <div class="setting-op">
@@ -40,13 +41,14 @@
 
 <script>
 import Switches from 'vue-switches'
-
+import NumericKeyboard from "@/components/devices/NumericKeyboard.vue"
 export default {
 
     name: 'Alarm',
 
     components: {
-        Switches
+        Switches,
+        NumericKeyboard
     },
     props: [
     'device'
@@ -67,21 +69,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.modal-body
-    display: flex
-    align-items: center
-    width: 100%
-.modal-header
-    position: relative
-.modal-header::after
-       content: ""
-       position: absolute
-       left: 50%
-       bottom: 0
-       height: 1px
-       width: 90%
-       transform: translateX(-50%)
-       background-color: white
+
 .column-container
     display: flex
     flex: 1
