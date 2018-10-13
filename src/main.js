@@ -24,9 +24,9 @@ Vue.use(Toaster, {timeout: 5000})
 import config from './config/config.js'
 import ApiServiceProvider from './ApiServiceProvider'
 import Strings from './Strings.json'
-
+ApiServiceProvider.initialize()
 Vue.prototype.$strings = Strings
-Vue.prototype.$api = new ApiServiceProvider()
+Vue.prototype.$api = ApiServiceProvider
 Vue.prototype.$config = config
 
 Vue.prototype.$refreshDeviceTypes = function() {

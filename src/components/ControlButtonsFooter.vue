@@ -1,7 +1,7 @@
 <template>
     <div class="control-buttons">
-        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="clickedFav">
-            <v-icon   name="star" scale="2" />
+        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="$emit('clickedFavorite')">
+          <v-icon   name="star" scale="2" />
         </div>
         <div class="footer-icon" @click="pressedEdit">
             <v-icon name="pencil-alt" scale="2" />
@@ -9,7 +9,7 @@
               <EditDevice :device="device" @closeEdit="closeEdit"/>
               </div>
         </div>
-        <div class="footer-icon">
+        <div @click="$emit('clickedDelete')" class="footer-icon">
             <v-icon name="trash-alt" scale="2" />
         </div>
     </div>
@@ -36,10 +36,6 @@ export default {
   },
   methods: {
     clickedFav() {
-        this.$emit('clickedFavorite')
-        setTimeout(() => {
-            this.refreshDev()            
-        }, 500);
     },
     refreshDev() {
         this.dev = this.device
@@ -90,10 +86,10 @@ export default {
     display: flex
     height: 100%
     align-items: center
+    cursor: pointer
 
 .footer-icon:first-child
     border-right: 1px solid black
-
 .footer-icon:nth-child(2)
     border-right: 1px solid black
 

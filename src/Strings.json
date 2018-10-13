@@ -9,7 +9,11 @@
 		"devices": {
 			"add": {
 				"unselectedType": "Must select a device type",
-				"unselectedName": "Must choose a name"
+				"unselectedName": "Must choose a name",
+				"success": "The device was added succesfully"
+			},
+			"delete": {
+				"success": "Device succesfully deleted"
 			}
 		}
 	},
@@ -23,7 +27,11 @@
 		"devices": {
 			"add": {
 				"unselectedType": "Debe elegir el tipo de dispositivo",
-				"unselectedName": "Debe elegir un nombre para el dispositivo"
+				"unselectedName": "Debe elegir un nombre para el dispositivo",
+				"success": "El dispositivo se agrego correctamente"
+			},
+			"delete": {
+				"success": "El dispositivo se eliminó correctamente"
 			}
 		}
 	}
