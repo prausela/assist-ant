@@ -36,15 +36,13 @@
                         <div class="body">
                             <v-icon name="suitcase" class="mode" scale="2" />
                             <img class="mode" src="@/assets/modes/party.png">
-
                         </div>
                     </div>
                 </div>
                 
             </div>
             <div class="modal-footer">
-                <cbfooter />
-            </div>
+      <cbfooter @clickedFavorite="clickedFavorite" :device="device" />            </div>
         </div>
     </div>
 </template>
@@ -82,30 +80,6 @@ export default {
 
 <style lang="sass" scoped>
 
-
-
-.column-container
-    display: flex
-    flex: 1
-    justify-content: center
-    width: 100%
-    position: relative
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
-
-.setting-op
-    display: flex
-    flex: 1
-    flex-direction: column
-    justify-content: space-around   
-    width: 100%
 .op-body
     display: flex
     justify-content: space-around
@@ -135,6 +109,8 @@ export default {
     padding: 2px
     width: 30px
     height: 30px
+    cursor: pointer
+
 
 .switch-container
     display: flex

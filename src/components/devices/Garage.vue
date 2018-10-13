@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="garage-img" src="@/assets/devices/garage.png">
+                        <img class="garage-img" src="@/assets/devices/garage.png">
                     </div>
                     <div class="arrow-container">
                         <v-icon name="arrow-up" class="arrow" scale="3" />
@@ -29,13 +29,13 @@
                         </div>
                     </div>
                 </div>
-                    
+
             </div>
             <div class="modal-footer">
-                <cbfooter />
-            </div>
-        </div>
-    </div>
+              <cbfooter @clickedFavorite="clickedFavorite" :device="device" />            
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -65,24 +65,6 @@ export default {
 
 <style lang="sass" scoped>
 
-
-
-.column-container
-    display: flex
-    flex: 1
-    justify-content: center
-    width: 100%
-    position: relative
-
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
 .image-container
     display: flex
     flex: 1
@@ -97,13 +79,8 @@ export default {
     padding: 8px
     border: 1px solid black
     margin: 2px
+    cursor: pointer
 
-.setting-op
-    display: flex
-    flex: 1
-    flex-direction: column
-    justify-content: space-around   
-    width: 100%
 
 .heigh
     display: flex
@@ -126,6 +103,7 @@ export default {
     border: 1px solid black
     align-items: center
     padding: 2px
+    cursor: pointer
 
 
 .name

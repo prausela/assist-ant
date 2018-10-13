@@ -46,7 +46,7 @@
                         <div class="body">
                             <v-icon name="sun" class="ac-img"  />
                             <v-icon name="snowflake" class="ac-img"  />
-                            <img class="fan-img3" src="@/assets/devices/fan.png">
+                            <img class="fan-img3 ac-img" src="@/assets/devices/fan.png">
                             <div class="empty"></div>
                             <div class="empty"></div>
                             <div class="empty"></div>
@@ -116,28 +116,10 @@ export default {
 <style lang="sass" scoped>
 
 
-.column-container
-    display: flex
-    justify-content: center
-    width: 100%
-    height: 50%
-    position: relative
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
 
-.setting-op
-    display: flex
-    flex-direction: column
-    justify-content: space-around   
-    width: 100%
-    height: 50%
+
+
+
 .ac-pimg
     width: 150px
     height: 150px
@@ -145,6 +127,8 @@ export default {
     border: 1px solid black
     width: 30px
     height: 30px
+    cursor: pointer
+
 
 
 .op-body
@@ -175,6 +159,7 @@ export default {
     text-align: left
     border: 1px solid black
     padding: 2px
+    cursor: pointer
 
 .body
     display: flex

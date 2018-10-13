@@ -9,6 +9,7 @@
 
             </div>
             <div class="modal-body">
+                  <NumericKeyboard/>
                 <div class="column-container">
                     <div class="image-container">
                         <img class="alarm-img" src="@/assets/devices/alarm.png">
@@ -17,7 +18,7 @@
 
                         <div class="submit-btn">Stay</div>
 
-                        <NumericKeyboard/>
+                      
                         <div class="submit-btn">Away</div>
                         <div class="submit-btn">Disarm</div>
                         </div>
@@ -33,7 +34,7 @@
 
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter @clickedFavorite="clickedFavorite" :device="device" />
             </div>
         </div>
     </div>
@@ -64,34 +65,17 @@ export default {
         closeModal(){
             this.$emit('closeMe')
         }
+    },
+    clickedFavorite() {
+        this.device.meta.favorite = this.device.meta.favorite? false : true
     }
 }
 </script>
 
 <style lang="sass" scoped>
 
-.column-container
-    display: flex
-    flex: 1
-    justify-content: center
-    width: 100%
-    position: relative
-.column-container::after
-       content: ""
-       position: absolute
-       left: 50%
-       bottom: 0
-       height: 1px
-       width: 90%
-       transform: translateX(-50%)
-       background-color: white
 
-.setting-op
-    display: flex
-    flex: 1
-    
-    justify-content: space-around   
-    width: 100%
+
 
 .btn
     display: flex
@@ -108,6 +92,7 @@ export default {
     padding: 5px 15px;
     border-radius: 10px;
     height: 28px
+    cursor: pointer
 
 
    
@@ -160,6 +145,6 @@ export default {
     background-color: $logo
     color: black
     width: 30%
-
+    cursor: pointer
 
 </style>
