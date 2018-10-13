@@ -1,0 +1,18 @@
+{
+	"english": {
+		"api": {
+			"devices": {
+				"addSuccessful": "El dispositivo se agrego correctamente",
+				"addErr2": "Device name already in use"
+			}
+		}
+	},
+	"spanish": {
+		"api": {
+			"devices": {
+				"addSuccessful": "El dispositivo se agrego correctamente",
+				"addErr2": "El nombre del dispositivo ya esta en uso222"
+			}
+		}	
+	}
+}
