@@ -28,7 +28,7 @@
                     
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>

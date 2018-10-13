@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <cbfooter @clickedDelete="clickedDelete" @clickedFavorite="clickedFavorite" :device="device" />
+                <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>
@@ -70,16 +70,8 @@ export default {
         this.$emit('closeMe')
     },
     clickedFavorite() {
-        this.device.meta.favorite = this.device.meta.favorite? false : true
+        // this.device.meta.favorite = this.device.meta.favorite? false : true
     },
-    clickedDelete() {
-        this.$api.devices.delete(this.device).then(() => {
-            this.$toaster.success(this.$strings[this.$language].devices.delete.success)
-            this.closeModal()
-        }).catch((error) => {
-            this.$toaster.error(error)
-        })
-    }
   },
 
   mounted() {

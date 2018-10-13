@@ -1,15 +1,15 @@
 <template>
     <div class="control-buttons">
-        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="$emit('clickedFavorite')">
+        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="star">
           <v-icon   name="star" scale="2" />
         </div>
-        <div class="footer-icon" @click="pressedEdit">
+        <div class="footer-icon" @click="edit">
             <v-icon name="pencil-alt" scale="2" />
             <div v-if="verEdit" class="device">
               <EditDevice :device="device" @closeEdit="closeEdit"/>
               </div>
         </div>
-        <div @click="$emit('clickedDelete')" class="footer-icon">
+        <div @click="remove" class="footer-icon">
             <v-icon name="trash-alt" scale="2" />
         </div>
     </div>
@@ -43,16 +43,23 @@ export default {
         this.$set(this.dev.meta, "favorite", this.device.meta.favorite)
         // console.log(this.dev.meta.favorite)
       },
-      pressedEdit(){
-        console.log("hola pressed")
-
+      edit(){
         this.verEdit = true
       },
+      star() {
+
+      },
+      remove() {
+        this.$api.devices.delete(this.device).then(() => {
+            this.$toaster.success(this.$strings[this.$language].devices.delete.success)
+            this.$emit('closeModal')
+        }).catch((error) => {
+            console.log(error)
+            this.$toaster.error(error)
+        })
+      },
       closeEdit(){
-        console.log("hola pressed close")
-
         this.verEdit = false
-
       }
     },
   computed: {
