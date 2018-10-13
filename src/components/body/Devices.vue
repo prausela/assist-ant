@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import testData from "@/testData.js"
 
 
 export default {
@@ -18,7 +17,7 @@ export default {
   data () {
     return {
     	verBotones: true, 
-      devices: testData.devices,
+      devices: [],
       tabs: {
         Dispositivos: {
           label: "Dispositivos"
@@ -37,10 +36,21 @@ export default {
   methods:{
   	pressedButton(){
   		this.verBotones = !this.verBotones
-  	}
+  	},
+    refreshDevices() {
+      this.$api.devices.getAll().then((devices) => {
+        console.log(devices)
+        this.devices = devices
+      })
+    }
   },
   mounted() {
     this.selectedTab = this.tabs.Dispositivos
+    this.refreshDevices()
+    this.$api.eventBus.$on('refreshDevices', () => {
+      console.log('refresh devices received')
+      this.refreshDevices()
+    })
   }
 }
 </script>

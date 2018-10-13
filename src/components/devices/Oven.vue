@@ -54,7 +54,7 @@
                 
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>
@@ -94,27 +94,8 @@ export default {
 <style lang="sass" scoped>
 
 
-.column-container
-    display: flex
-    position: relative
-    flex: 1
-    justify-content: center
-    width: 100%
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
-.setting-op
-    display: flex
-    flex: 1
-    flex-direction: column
-    justify-content: space-around   
-    width: 100%
+
+
    
 
 .oven-img
@@ -194,4 +175,6 @@ export default {
     height: 30px
     border: 1px solid black
     padding: 3px
+    cursor: pointer
+
 </style>

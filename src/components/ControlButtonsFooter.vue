@@ -1,15 +1,15 @@
 <template>
     <div class="control-buttons">
-        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="clickedFav">
-            <v-icon   name="star" scale="2" />
+        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="star">
+          <v-icon   name="star" scale="2" />
         </div>
-        <div class="footer-icon" @click="pressedEdit">
+        <div class="footer-icon" @click="edit">
             <v-icon name="pencil-alt" scale="2" />
             <div v-if="verEdit" class="device">
               <EditDevice :device="device" @closeEdit="closeEdit"/>
               </div>
         </div>
-        <div class="footer-icon">
+        <div @click="remove" class="footer-icon">
             <v-icon name="trash-alt" scale="2" />
         </div>
     </div>
@@ -36,10 +36,6 @@ export default {
   },
   methods: {
     clickedFav() {
-        this.$emit('clickedFavorite')
-        setTimeout(() => {
-            this.refreshDev()            
-        }, 500);
     },
     refreshDev() {
         this.dev = this.device
@@ -47,16 +43,23 @@ export default {
         this.$set(this.dev.meta, "favorite", this.device.meta.favorite)
         // console.log(this.dev.meta.favorite)
       },
-      pressedEdit(){
-        console.log("hola pressed")
-
+      edit(){
         this.verEdit = true
       },
+      star() {
+
+      },
+      remove() {
+        this.$api.devices.delete(this.device).then(() => {
+            this.$toaster.success(this.$strings[this.$language].devices.delete.success)
+            this.$emit('closeModal')
+        }).catch((error) => {
+            console.log(error)
+            this.$toaster.error(error)
+        })
+      },
       closeEdit(){
-        console.log("hola pressed close")
-
         this.verEdit = false
-
       }
     },
   computed: {
@@ -82,6 +85,7 @@ export default {
     justify-content: center
     width: 100%
     align-items: center
+    cursor: pointer
 .favorite
     color: yellow
 .footer-icon
@@ -90,10 +94,10 @@ export default {
     display: flex
     height: 100%
     align-items: center
+    cursor: pointer
 
 .footer-icon:first-child
     border-right: 1px solid black
-
 .footer-icon:nth-child(2)
     border-right: 1px solid black
 

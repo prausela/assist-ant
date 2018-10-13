@@ -1,7 +1,7 @@
 <template>
 	<div class="devices-list">
       <template v-for="(device, index) in devices">
-        <component v-if="$config.availableDevices.includes(device.typeId)" :device="device" :is="device.typeId + 'Card'" :key="index" :openModals="openModals"/>
+        <component v-if="device && device.type" :device="device" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
       </template>
       <AddDeviceCard v-if="add" />
       <AddRoomCard v-if="add"/>

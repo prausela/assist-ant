@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <cbfooter @clickedFavorite="clickedFavorite" :device="device" />
+                <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>
@@ -70,8 +70,8 @@ export default {
         this.$emit('closeMe')
     },
     clickedFavorite() {
-        this.device.meta.favorite = this.device.meta.favorite? false : true
-    }
+        // this.device.meta.favorite = this.device.meta.favorite? false : true
+    },
   },
 
   mounted() {
@@ -100,15 +100,8 @@ export default {
     justify-content: center
     width: 100%
     position: relative
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
+  
+
 
 .image-container
     padding: 15px   

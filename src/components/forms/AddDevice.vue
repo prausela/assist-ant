@@ -91,7 +91,7 @@ export default {
 	  			type: this.type.id,
 	  			meta: JSON.stringify({}),
 	  		}).then(() => {
-	  			this.$toaster.success('Your toaster success message.')
+	  			this.$toaster.success(this.$strings[this.$language].devices.add.success)
 	  			this.closeModal()
 	  		}).catch((error) => {
 	  			this.$toaster.error(error.message)

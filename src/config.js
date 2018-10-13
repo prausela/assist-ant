@@ -10,56 +10,64 @@ export default {
 				english: "Lamp",
 				spanish: "Lampara",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "Light"
 		},
 		blind: {
 			label: {
 				english: "Blinds",
 				spanish: "Persiana",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "Blind"
 		},
 		oven: {
 			label: {
 				english: "Oven",
 				spanish: "Horno",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "Oven"
 		},
 		ac: {
 			label: {
 				english: "AC",
 				spanish: "Aire Acondicionado",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "AC"
 		},
 		door: {
 			label: {
 				english: "Door",
 				spanish: "Puerta",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "Door"
 		},
 		alarm: {
 			label: {
 				english: "Alarm,",
 				spanish: "Alarma",
 			},
-			canAdd: false
+			canAdd: false,
+			component: "Alarm"
 		},
 		refrigerator: {
 			label: {
 				english: "Refrigerator",
 				spanish: "Heladera",
 			},
-			canAdd: true
+			canAdd: true,
+			component: "Refrigerator"
 		},
 		timer: {
 			label: {
 				english: "Timer",
 				spanish: "Cronometro",
 			},
-			canAdd: false
+			canAdd: false,
+			component: "Timer"
 		},
 	},
 }

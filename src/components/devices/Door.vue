@@ -25,10 +25,10 @@
                         <v-icon name="lock-open" class="door" scale="3" />
                     </div>
                 </div>
-                    
+
             </div>
             <div class="modal-footer">
-                <cbfooter />
+                <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>
@@ -62,21 +62,7 @@ export default {
 <style lang="sass" scoped>
 
 
-.column-container
-    display: flex
-    flex: 1
-    justify-content: center
-    width: 100%
-    position: relative
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
+
 .image-container
     display: flex
     flex: 1
