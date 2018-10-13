@@ -70,6 +70,8 @@ body
   display: flex
   justify-content: center
   align-items: center
+  user-select: none
+
 .modal-inner
   position: fixed
   margin-right: auto
@@ -88,6 +90,7 @@ body
   position: absolute
   right: 20px
   top: 5px
+  cursor: pointer
 
 .modal-header
   padding-top: 30px
@@ -109,13 +112,33 @@ body
   transform: translateX(-50%)
   background-color: white
     
-
 .modal-body
   flex: 1
   display: flex
   flex-direction: column
   align-items: center
   width: 100%
+.column-container
+    display: flex
+    justify-content: center
+    width: 100%
+    height: 50%
+    position: relative
+.column-container::after
+    content: ""
+    position: absolute
+    left: 50%
+    bottom: 0
+    height: 1px
+    width: 90%
+    transform: translateX(-50%)
+    background-color: white
+.setting-op
+    display: flex
+    flex-direction: column
+    justify-content: space-around   
+    flex: 1
+    width: 100%
 .modal-footer
   display: flex
   width: 100%

@@ -85,6 +85,7 @@ export default {
     justify-content: center
     width: 100%
     align-items: center
+    cursor: pointer
 .favorite
     color: yellow
 .footer-icon

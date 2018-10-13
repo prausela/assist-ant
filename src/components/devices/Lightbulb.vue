@@ -100,15 +100,8 @@ export default {
     justify-content: center
     width: 100%
     position: relative
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
+  
+
 
 .image-container
     padding: 15px   

@@ -24,12 +24,12 @@
                             Modo
                         </div>
                         <div class="body">
-                            <img class="blind-op" src="@/assets/modes/blind-open.png">
+                            <img class="blind-op"  src="@/assets/modes/blind-open.png">
                             <img class="blind-op" src="@/assets/modes/blind-close.png">
                         </div>
                     </div>
                 </div>
-                    
+                
             </div>
             <div class="modal-footer">
                 <cbfooter :device="device" @closeModal="closeModal" />
@@ -59,30 +59,12 @@ export default {
         closeModal(){
             this.$emit('closeMe')
         }
-    }
+    },
 }
 </script>
 
 <style lang="sass" scoped>
 
-
-
-.column-container
-    display: flex
-    flex: 1
-    justify-content: center
-    width: 100%
-    position: relative
-
-.column-container::after
-    content: ""
-    position: absolute
-    left: 50%
-    bottom: 0
-    height: 1px
-    width: 90%
-    transform: translateX(-50%)
-    background-color: white
 .image-container
     display: flex
     flex: 1
@@ -97,13 +79,8 @@ export default {
     padding: 8px
     border: 1px solid black
     margin: 2px
+    cursor: pointer
 
-.setting-op
-    display: flex
-    flex: 1
-    flex-direction: column
-    justify-content: space-around   
-    width: 100%
 
 .heigh
     display: flex
@@ -126,6 +103,8 @@ export default {
     border: 1px solid black
     align-items: center
     padding: 2px
+    cursor: pointer
+
 
 
 .name

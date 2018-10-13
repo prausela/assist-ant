@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+
 // Registering Components
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
