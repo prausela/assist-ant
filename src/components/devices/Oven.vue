@@ -54,17 +54,10 @@
                 
             </div>
             <div class="modal-footer">
-<<<<<<< HEAD
                 <cbfooter :device="device" @closeModal="closeModal" />
             </div>
         </div>
     </div>
-=======
-              <cbfooter @clickedFavorite="clickedFavorite" :device="device" />           
-          </div>
-      </div>
-  </div>
->>>>>>> 73924a870de6116916bdba1fc4e5cb72502fa364
 </template>
 
 <script>
