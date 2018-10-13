@@ -54,7 +54,7 @@ import Switches from 'vue-switches'
 
 export default {
 
-    name: 'Oven',
+    name: 'Refrigerator',
 
     components: {
         Switches
@@ -64,7 +64,7 @@ export default {
     ],
     data () {
         return {
-            name: 'Horno',
+            name: 'Heladera',
             enabled: true,
 
         }

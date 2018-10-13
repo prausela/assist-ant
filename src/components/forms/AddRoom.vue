@@ -43,28 +43,25 @@
 						<div class="form-label">Dispositivos dentro de la Habitacion</div>
 						<div class="form-field select-field">
 							
-						<DevicesList />
 						</div>
 					</div>
-
+					<DevicesList :devices="allDevices" />
 				</div>
 			</div>
-			 <div class="modal-footer">
-			 	<div class="submit-btn">Agregar</div>
-            </div>
+		  	<div class="modal-footer">
+			 		<div @click="save" class="submit-btn">Agregar</div>
+    		</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import AddDevice from "./AddDevice.vue"
-import DevicesList from "@/components/body/DevicesList.vue"
 import testData from "@/testData.js"
 
 export default {
 	components:{
-		AddDevice,
-		DevicesList
+		AddDevice: AddDevice,
 	},
   name: 'AddRoom',
 
@@ -87,6 +84,9 @@ export default {
   			this.showAddModal=true
   			this.selected=""
   		}
+  	},
+  	save() {
+  		console.log('saving device')
   	}
   }
 }

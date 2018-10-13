@@ -19,7 +19,7 @@ export default {
 		Lightbulb
 	},
 
-	name: 'LightbulbCard',
+	name: 'LightCard',
 	props: {
 		device: {
 			required: true	

@@ -58,7 +58,7 @@
         display: flex
         flex-direction: column
     .columns
-        max-height: 400px
+        max-height: 380px
         display: flex
         flex-direction: row 
         position: relative

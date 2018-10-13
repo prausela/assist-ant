@@ -48,7 +48,7 @@ export default {
   ],
   data () {
     return {
-        name: 'Luz',
+        name: 'Lightbulb',
         enabled: true,
         colors: { r: 255, g: 77, b:  255, a: 0.5},
         color: null

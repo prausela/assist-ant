@@ -5,6 +5,12 @@
 				"addSuccessful": "El dispositivo se agrego correctamente",
 				"addErr2": "Device name already in use"
 			}
+		},
+		"devices": {
+			"add": {
+				"unselectedType": "Must select a device type",
+				"unselectedName": "Must choose a name"
+			}
 		}
 	},
 	"spanish": {
@@ -13,6 +19,12 @@
 				"addSuccessful": "El dispositivo se agrego correctamente",
 				"addErr2": "El nombre del dispositivo ya esta en uso222"
 			}
-		}	
+		},
+		"devices": {
+			"add": {
+				"unselectedType": "Debe elegir el tipo de dispositivo",
+				"unselectedName": "Debe elegir un nombre para el dispositivo"
+			}
+		}
 	}
 }

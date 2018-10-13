@@ -8,14 +8,10 @@
 </template>
 
 <script>
-import DevicesList from "@/components/body/DevicesList.vue"
 import testData from "@/testData.js"
 
 
 export default {
-  components:{
-    DevicesList
-  },
 
   name: 'Devices',
 

@@ -19,11 +19,9 @@
 					<div class="form-row">
 						<div class="form-label">Tipo de Dispositivo</div>
 						<div class="form-field select-field">
-							<select v-model="selected">
+							<select v-model="type">
 							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
+							  <option v-for="(type,id) in deviceTypes" :value="type" :key="id" >{{type.label[$language]}}</option>
 							</select>
 						</div>
 					</div>
@@ -51,9 +49,9 @@
 					</div>
 				</div>
 			</div>
-			 <div class="modal-footer">
-			 	<div class="submit-btn">Agregar</div>
-            </div>
+				<div class="modal-footer">
+			 		<div @click="submit" class="submit-btn">Agregar</div>
+      	</div>
 		</div>
 	</div>
 </template>
@@ -66,14 +64,53 @@ export default {
   data () {
     return {
     	name: "",
-    	selected: null
+    	type: {},
+    	selected: null,
+    	deviceTypes: {}
     }
   },
   methods: {
   	closeModal() {
   		this.$emit('closeMe')
+  	},
+  	refreshDeviceTypes() {
+  		console.log('test')
+  		if (this.$deviceTypes) {
+  			this.deviceTypes = this.$deviceTypes
+  		} else {
+  			this.$refreshDeviceTypes()
+  			setTimeout(() => {
+  				this.refreshDeviceTypes()
+  			}, 2000);	
+  		}
+  	},
+  	submit() {
+  		if (this.type.id && this.name) {
+  			this.$api.devices.add({
+	  			name: this.name,
+	  			type: this.type.id,
+	  			meta: JSON.stringify({}),
+	  		}).then(() => {
+	  			this.$toaster.success('Your toaster success message.')
+	  			this.closeModal()
+	  		}).catch((error) => {
+	  			this.$toaster.error(error.message)
+	  		})
+  		}
+  		if (!this.type.id) {
+  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedType)
+  		}
+  		if (!this.name) {
+  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedName)
+  		}
+  		
   	}
-  }
+  },
+	mounted() {
+		console.log('mounted')
+
+		this.refreshDeviceTypes()
+	}
 }
 </script>
 
@@ -101,6 +138,7 @@ select
 input
 	width: 69%
 .submit-btn
+	cursor: pointer
 	background-color: $logo
 	color: black
 </style>

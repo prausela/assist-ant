@@ -8,7 +8,6 @@
 <script>
 import Header from './components/Header.vue'
 import Body from './components/body/Body.vue'
-import ApiServiceProvider from './ApiServiceProvider.js'
 
 export default {
   name: 'app',
@@ -18,11 +17,12 @@ export default {
   },
   mounted() {
 
-    console.log(ApiServiceProvider)
+    // console.log(ApiServiceProvider)
     // ApiServiceProvider.testAxios()
-    ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
-      console.log(response)
-    })
+
+    // ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
+    //   console.log(response)
+    // })
   }
 }
 </script>

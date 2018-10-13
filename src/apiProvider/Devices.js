@@ -1,33 +1,33 @@
 import API from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
 
-let devices = class {
+class Devices{
 
-	static get getUrl(){
+	get url(){
 		return API.baseUrl + '/devices';
 	}
 
-	static add(device){
+	add(device){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.post(this.getUrl, {
+			axios.post(this.url, {
 				typeId: device.type,
 		  		name: device.name,
-		  		meta: "{}"
+		  		meta: device.meta
 			})
 			.then(function(response) {
-				console.log(response);
+				resolve(response)
 			})
 			.catch(function(error){
-				console.log(error);
+				reject(error)
 			});
 		});
 	}
 
-	static getAll(){
+	getAll(){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.get(this.getUrl)
+			axios.get(this.url)
 			.then(function(response) {
 				let devices = response.data.devices;
 				devices.forEach(function(device){
@@ -44,12 +44,12 @@ let devices = class {
 		});
 	}
 
-	static modify(device){
+	modify(device){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			//Remember to change to device.getUrl
+			//Remember to change to device.url
 			console.log(device);
-			axios.put(this.getUrl + '/' + device.id, {
+			axios.put(this.url + '/' + device.id, {
 				typeId: device.type,
 		  		name: device.name,
 		  		meta: "{}"
@@ -63,12 +63,12 @@ let devices = class {
 		});
 	}
 
-	static delete(device){
+	delete(device){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			//Remember to change to device.getUrl
+			//Remember to change to device.url
 			console.log(device.id);
-			axios.delete(this.getUrl + '/' + device.id)
+			axios.delete(this.url + '/' + device.id)
 			.then(function(response) {
 				console.log(response);
 			})
@@ -77,6 +77,7 @@ let devices = class {
 			});
 		});
 	}
+
 }
 
-export default devices;
+export default Devices;

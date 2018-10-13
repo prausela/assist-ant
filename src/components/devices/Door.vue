@@ -38,7 +38,7 @@
 
 export default {
 
-    name: 'Blind',
+    name: 'Door',
 
     components: {
        
@@ -48,7 +48,7 @@ export default {
     ],
     data () {
         return {
-            name: 'Blind',
+            name: 'Door',
         }
     },
     methods:{
