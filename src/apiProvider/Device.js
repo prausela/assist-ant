@@ -1,25 +1,32 @@
 import Devices from "./Devices.js"
 import { axios } from '../ApiServiceProvider.js'
 
-let device = class Device {
+const devices = new Devices();
+
+class Device {
 	constructor(id, name, type){
 		this.id = id;
 		this.name = name;
 		this.type = type;
 	}
 
-	get getUrl(){
-		return Devices.getUrl + '/' + this.id;
+	get url(){
+		return devices.url + '/' + this.id;
 	}
 
-	perform(action, if_ok, if_error){
+	perform(action){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.put(this.getUrl + '/' + action)
-			.then(if_ok)
-			.catch(if_error);
+			axios.put(this.url + '/' + action)
+			.then(function(response){
+				console.log(response);
+				resolve(response.data);
+			})
+			.catch(function(error){
+				console.log(error);
+			});
 		});
 	}
 }
 
-export default device;
+export default Device;

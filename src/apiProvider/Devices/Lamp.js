@@ -1,6 +1,6 @@
 import Device from '../Device.js'
 
-let lamp = class Lamp extends Device {
+class Lamp extends Device {
 
 	constructor(id, name){
 		super(id, name, "go46xmbqeomjrsjr");
@@ -8,24 +8,20 @@ let lamp = class Lamp extends Device {
 
 	setState(state){
 		const action = state ? "turnOn": "turnOff";
-		return this.perform(action, 
-			function(response){
-				console.log(response);
-			},
-			function(error){
-				console.log(error);
-			});
+		return this.perform(action);
 	}
 
 	setColor(color){
-		return this.perform("setColor", 
-			function(response){
-				console.log(response);
-			},
-			function(error){
-				console.log(error);
-			});
+		return this.perform("setColor");
+	}
+
+	setBrightness(brightness){
+		return this.perform("setBrightness").then(function(data){console.log(data)});
+	}
+
+	getState(){
+		return this.perform("getState").then(function(data){console.log(data)});
 	}
 };
 
-export default lamp;
+export default Lamp;
