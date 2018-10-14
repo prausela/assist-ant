@@ -3,7 +3,11 @@ import { axios } from '../ApiServiceProvider.js'
 
 class Rooms {
 	static get url() {
-		return api.baseUrl + '/' + 'rooms';
+		return api.baseUrl + Rooms.urn;
+	}
+
+	static get urn(){
+		return '/' + 'rooms';
 	}
 
 	get url(){
@@ -33,6 +37,11 @@ class Rooms {
 			axios.get(this.url)
 			.then(function(response) {
 				console.log(response);
+				let roomsObjects = []
+				response.data.rooms.forEach((room)=>{
+					roomsObjects.push(new Room(room))
+				})
+				resolve(roomsObjects)
 				/*let de
 				ces = response.data.devices;
 				let devicesObjects = []
