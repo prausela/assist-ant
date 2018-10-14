@@ -6,8 +6,9 @@ class Timer extends Device {
 		super(device);
 	}
 
-	setInterval(){
-		return this.perform("setInterval");
+	//Given time in seconds to wait. Integer 0 to 21474836
+	setInterval(elapsed_time){
+		return this.perform("setInterval", [ elapsed_time ]);
 	}
 
 	start(){

@@ -6,16 +6,25 @@ class Refrigerator extends Device {
 		super(device);
 	}
 
-	setTemperature(){
-		return this.perform("setTemperature");
+	//Integer 2-8
+	setTemperature(temperature){
+		if (temperature < 2 || temperature > 8) {
+			return Promise.reject();
+		}
+		return this.perform("setTemperature", temperature);
 	}
 
-	setFreezerTemperature(){
-		return this.perform("setFreezerTemperature");
+	//Integer -20 to -8
+	setFreezerTemperature(temperature){
+		if (temperature < 2 || temperature > 8) {
+			return Promise.reject();
+		}
+		return this.perform("setFreezerTemperature", temperature);
 	}
 
-	setMode(){
-		return this.perform("setMode");
+	//String "default", "party", "vacation"
+	setMode(mode){
+		return this.perform("setMode", mode);
 	}
 };
 

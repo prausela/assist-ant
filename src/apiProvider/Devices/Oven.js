@@ -11,20 +11,27 @@ class Oven extends Device {
 		return this.perform(action);
 	}
 
-	setTemperature(){
-		return this.perform("setTemperature");
+	//Integer 90-230
+	setTemperature(temperature){
+		if (temperature < 90 || temperature > 230) {
+			return Promise.reject();
+		}
+		return this.perform("setTemperature", [ temperature ]);
 	}
 
-	setHeat(){
-		return this.perform("setHeat");
+	//String "conventional", "bottom", "top"
+	setHeat(heat_mode){
+		return this.perform("setHeat", [ heat_mode ]);
 	}
 
-	setGrill(){
-		return this.perform("setGrill");
+	//String "large", "eco", "off"
+	setGrill(grill_mode){
+		return this.perform("setGrill", [ grill_mode ]);
 	}
 
-	setConvection(){
-		return this.perform("setConvection");
+	//String "normal", "eco", "off"
+	setConvection(convection_mode){
+		return this.perform("setConvection", [ convection_mode ]);
 	}
 };
 
