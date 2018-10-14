@@ -27,6 +27,10 @@ class Device {
 			});
 		});
 	}
+
+	getState(){
+		return this.perform("getState");
+	}
 }
 
 export default Device;

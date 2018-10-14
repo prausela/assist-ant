@@ -3,8 +3,7 @@ import Device from '../Device.js'
 class Lamp extends Device {
 
 	constructor(device){
-		super(device)
-
+		super(device);
 	}
 
 	setState(state){
@@ -17,11 +16,7 @@ class Lamp extends Device {
 	}
 
 	setBrightness(brightness){
-		return this.perform("setBrightness").then(function(data){console.log(data)});
-	}
-
-	getState(){
-		return this.perform("getState").then(function(data){console.log(data)});
+		return this.perform("setBrightness");
 	}
 };
 
