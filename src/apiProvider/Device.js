@@ -5,14 +5,14 @@ import { axios } from '../ApiServiceProvider.js'
 
 class Device {
 	constructor(device){
-		this.id = device.id;
-		this.name = device.name;
-		this.type = device.type;
-		this.meta = device.meta;
+		this.id = device.id
+		this.name = device.name
+		this.type = device.type
+		this.meta = device.meta
 	}
 
 	get url(){
-		return Devices.url + '/' + this.id;
+		return Devices.url + '/' + this.id
 	}
 
 	perform(action, parameters){
@@ -25,12 +25,14 @@ class Device {
 			.then(function(response){
 				if (!response.data.result) {
 					//API rejected petition (Action was not performed)
-					reject(new Error());
+					reject({
+						message: "Unknown error"
+					})
 				}
 				resolve(response.data);
 			})
 			.catch(function(error){
-				console.log(error);
+				console.log(error)
 			});
 		});
 	}
@@ -39,17 +41,24 @@ class Device {
 		return this.perform("getState");
 	}
 
-	favorite(value) {
-		let modifiedMeta = JSON.parse(JSON.stringify(this.meta))
-		modifiedMeta.favorite = value
-		console.log('favoriting', value)
+	copyMeta() {
+		return JSON.parse(JSON.stringify(this.meta))
+	}
 
-		api.devices.modify({
+	updateMeta(newMeta) {
+		return api.devices.modify({
 			type: this.type,
 			name: this.name,
-			meta: modifiedMeta,
+			meta: newMeta,
 			id: this.id
 		})
+	}
+
+	favorite(value) {
+		let newMeta = JSON.parse(JSON.stringify(this.meta))
+		newMeta.favorite = value
+		this.updateMeta(newMeta)
+		
 	}
 }
 

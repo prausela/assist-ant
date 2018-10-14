@@ -95,6 +95,7 @@ export default {
   flex-direction: row
   border-bottom: 1px solid black
   height: 35px
+  min-height: 35px
   user-select: none
   .tab 
     flex: 0 1 33%
@@ -113,7 +114,7 @@ export default {
   position: absolute
   right: -2px
   width: 1px
-  height: 30px
+  height: 35px
   background-color: black
   z-index: 5
 

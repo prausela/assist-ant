@@ -10,6 +10,8 @@ export default {
 				english: "Lamp",
 				spanish: "Lampara",
 			},
+			defaultColor: "#EAFF4D",
+			defaultBrightness: 10,
 			canAdd: true,
 			component: "Light"
 		},

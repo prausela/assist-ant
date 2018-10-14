@@ -62,12 +62,10 @@ export default {
 
 <style lang="sass" scoped>
 .devices-list
-  padding: 10px 0
   padding-left: 2%
   flex-wrap: wrap
   position: relative
   display: flex
   justify-content: flex-start
   overflow: auto
-  flex: 1
 </style>

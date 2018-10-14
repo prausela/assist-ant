@@ -156,7 +156,7 @@ body
   flex-direction: column
   width: 30%
   height: 100px
-  margin: 5px 1%
+  margin: 7px 1%
 .icon-container
   align-items: center
   height: 100px

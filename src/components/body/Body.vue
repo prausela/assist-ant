@@ -36,24 +36,6 @@
   	Devices,
     Favorites
   },
-  data () {
-    return {
-        favoriteDevices: []
-    }
-  },
-  methods: {
-    refreshDevices() {
-        this.favoriteDevices = this.$devices.filter((device) => {
-            return device.meta.favorite
-        })
-    },
-  },
-  mounted() {
-    this.$api.eventBus.$on('devicesRefreshed', () => {
-      console.log('refresh devices received')
-      this.refreshDevices()
-    })
-  },  
 }
 </script>
 
