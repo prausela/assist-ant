@@ -43,52 +43,58 @@ class Devices{
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			axios.get(this.url)
-			.then(function(response) {
+			.then((response) => {
 				let devices = response.data.devices;
 				let devicesObjects = []
 				api.devicesTypes.getAll().then((types) => {
 					devices.forEach((device) => {
 						device.type = types[device.typeId]
 						device.meta = JSON.parse(device.meta) || {}
-						let deviceObj = {}
-						switch (device.type.name) {
-							case "ac":
-								deviceObj = new AC(device)
-								break;
-							case "alarm":
-								deviceObj = new Alarm(device)
-								break;
-							case "blind":
-								deviceObj = new Blind(device)
-								break;
-							case "door":
-								deviceObj = new Door(device)
-								break;
-							case "lamp":
-								deviceObj = new Lamp(device)
-								break;
-							case "oven":
-								deviceObj = new Oven(device)
-								break;
-							case "refrigerator":
-								deviceObj = new Refrigerator(device)
-								break;
-							case "timer":
-								deviceObj = new Timer(device)
-								break;
-							default:
-								deviceObj = new Device(device)
-						}
+						let deviceObj = this.initDevice(device)
 						devicesObjects.push(deviceObj)
 					})
 					resolve(devicesObjects);
 				})
-			}).catch(function(error){
+			}).catch((error) => {
 				reject({
 					message: error
 				})
 			});
 		});
+	}
+
+	initDevice(device) {
+		let deviceObj = {}
+		switch (device.type.name) {
+			case "ac":
+				deviceObj = new AC(device)
+				break;
+			case "alarm":
+				deviceObj = new Alarm(device)
+				break;
+			case "blind":
+				deviceObj = new Blind(device)
+				break;
+			case "door":
+				deviceObj = new Door(device)
+				break;
+			case "lamp":
+				deviceObj = new Lamp(device)
+				break;
+			case "oven":
+				deviceObj = new Oven(device)
+				break;
+			case "refrigerator":
+				deviceObj = new Refrigerator(device)
+				break;
+			case "timer":
+				deviceObj = new Timer(device)
+				break;
+			default:
+				deviceObj = new Device(device)
+		}
+
+		return deviceObj
 	}
 
 	modify(device){

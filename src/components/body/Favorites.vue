@@ -23,7 +23,6 @@ export default {
   },
   mounted() {
     this.$api.eventBus.$on('devicesRefreshed', () => {
-      console.log('refresh devices received')
       this.refreshDevices()
     })
   },  

@@ -42,13 +42,11 @@ Vue.prototype.$refreshDevices = function() {
 	Vue.prototype.$api.devices.getAll().then((devices) => {
 		Vue.prototype.$devices = devices
 		ApiServiceProvider.eventBus.$emit('devicesRefreshed')
-		console.log('emitting devices refreshsed')
 	})
 }
 Vue.prototype.$refreshDevices()
 
 ApiServiceProvider.eventBus.$on('refreshDevices', () => {
-  console.log('refresh devices received')
   Vue.prototype.$refreshDevices()
 })
 

@@ -18,7 +18,7 @@
                         <!-- <img v-if="!enabled" class="lightbulb-image" src="@/assets/lb-off.png"> -->
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                     </div>
                 </div>
                 <div class="sliders">
@@ -49,33 +49,38 @@ export default {
   data () {
     return {
         name: 'Lightbulb',
-        enabled: true,
-        colors: { r: 255, g: 77, b:  255, a: 0.5},
-        color: null
+        enabled: this.device.meta.state,
+        colors: this.device.meta.color,
+        color: this.device.meta.color,
+        changeTimeout: null
     }
   },
   methods: {
     changedColor(colors) {
-        // this.color = this.rgbToHex(this.hsvToRgb(colors.hsv.h))
         this.color = colors.hex
+        clearTimeout(this.changeTimeout)
+        this.changeTimeout = setTimeout(() => {
+            this.updateColor()
+        }, 500);
+
     },
-    rgbToHex(rgb) {
-        let red = rgb.r
-        let green = rgb.g
-        let blue = rgb.b
-        var rgbe = blue | (green << 8) | (red << 16);
-        return '#' + (0x1000000 + rgbe).toString(16).slice(1)
+    updateState() {
+        this.device.setState(this.enabled).catch((error) => {
+            // console.log(error)
+        })
+    },
+    updateColor() {
+        this.device.setColor(this.color).catch((error) => {
+            console.log(error)
+        })
     },
     closeModal(){
         this.$emit('closeMe')
     },
-    clickedFavorite() {
-        // this.device.meta.favorite = this.device.meta.favorite? false : true
-    },
   },
 
   mounted() {
-    this.color = this.rgbToHex(this.colors)
+    // this.color = this.rgbToHex(this.colors)
   }
 }
 </script>
