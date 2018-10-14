@@ -1,14 +1,20 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
 import Rooms from './Rooms.js'
+import Devices from './Devices.js'
 
 class Room{
-	constructor(){
+	constructor(room){
+		this.id = room.id
+		this.name = room.name
+	}
 
+	get devices(){
+		return Devices.getFrom(this.url + Devices.urn);
 	}
 
 	assign(device){
-		return new Promise((resolve, reject) =>{
+		return new Promise((resolve, reject) => {
 			axios.post(device.url + this.urn)
 			.then((response)=>{
 				resolve(response)
@@ -20,11 +26,11 @@ class Room{
 	}
 
 	get url(){
-		Rooms.url + '/' + this.id;
+		return Rooms.url + this.urn
 	}
 
 	get urn(){
-		Rooms.urn + '/' + this.id;
+		return Rooms.urn + '/' + this.id
 	}
 }
 

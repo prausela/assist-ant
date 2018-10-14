@@ -43,10 +43,10 @@ class Devices{
 		});
 	}
 
-	getAll(){
+	static getFrom(url){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.get(this.url)
+			axios.get(url)
 			.then((response) => {
 				let devices = response.data.devices;
 				let devicesObjects = []
@@ -54,7 +54,7 @@ class Devices{
 					devices.forEach((device) => {
 						device.type = types[device.typeId]
 						device.meta = JSON.parse(device.meta) || {}
-						let deviceObj = this.initDevice(device)
+						let deviceObj = Devices.initDevice(device)
 						devicesObjects.push(deviceObj)
 					})
 					resolve(devicesObjects);
@@ -67,7 +67,11 @@ class Devices{
 		});
 	}
 
-	initDevice(device) {
+	getAll(){
+		return Devices.getFrom(this.url);
+	}
+
+	static initDevice(device) {
 		let deviceObj = {}
 		switch (device.type.name) {
 			case "ac":

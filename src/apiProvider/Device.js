@@ -1,6 +1,7 @@
 import Devices from "./Devices.js"
 import api from "@/ApiServiceProvider.js"
 import { axios } from '../ApiServiceProvider.js'
+import Rooms from "./Rooms.js"
 
 
 class Device {
@@ -17,6 +18,24 @@ class Device {
 
 	get urn(){
 		return '/' + this.id
+	}
+
+	assignRoom(room){
+		return room.assign(this);
+	}
+
+	//Dissociates device from Room and Floor
+	dissociate(){
+		return new Promise((resolve, reject) => {
+			axios.delete(this.url + Rooms.urn)
+			.then((response) => {
+				//api.eventBus.$emit('refreshDevices')
+				resolve(response)
+			})
+			.catch((error) => {
+				reject(error)
+			});
+		});
 	}
 
 	perform(action, parameters){
