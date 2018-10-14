@@ -6,20 +6,25 @@ class Alarm extends Device {
 		super(device);
 	}
 
-	changeSecurityCode(){
-		return this.perform("changeSecurityCode");
+	/*
+		Security codes are Strings that range from "0000" to "9999"
+		Default security code is "1234"
+	*/
+
+	changeSecurityCode(old_code, new_code){
+		return this.perform("changeSecurityCode", [ old_code, new_code ]);
 	}
 
-	armStay(){
-		return this.perform("armStay");
+	armStay(code){
+		return this.perform("armStay", [ code ]);
 	}
 
-	armAway(){
-		return this.perform("armStay");
+	armAway(code){
+		return this.perform("armStay", [ code ]);
 	}
 
-	disarm(){
-		return this.perform("disarm");
+	disarm(code){
+		return this.perform("disarm", [ code ]);
 	}
 };
 
