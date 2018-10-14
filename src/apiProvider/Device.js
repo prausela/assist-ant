@@ -1,4 +1,5 @@
 import Devices from "./Devices.js"
+import api from "@/ApiServiceProvider.js"
 import { axios } from '../ApiServiceProvider.js'
 
 
@@ -30,6 +31,19 @@ class Device {
 
 	getState(){
 		return this.perform("getState");
+	}
+
+	favorite(value) {
+		let modifiedMeta = JSON.parse(JSON.stringify(this.meta))
+		modifiedMeta.favorite = value
+		console.log('favoriting', value)
+
+		api.devices.modify({
+			type: this.type,
+			name: this.name,
+			meta: modifiedMeta,
+			id: this.id
+		})
 	}
 }
 

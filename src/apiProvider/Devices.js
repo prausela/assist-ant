@@ -95,17 +95,17 @@ class Devices{
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			//Remember to change to device.url
-			console.log(device);
 			axios.put(this.url + '/' + device.id, {
-				typeId: device.type,
+				typeId: device.type.id,
 		  		name: device.name,
-		  		meta: device.meta
+		  		meta: JSON.stringify(device.meta)
 			})
 			.then(function(response) {
-				console.log(response);
+				api.eventBus.$emit('refreshDevices')
+				resolve(response)
 			})
 			.catch(function(error){
-				console.log(error);
+				reject(error)
 			});
 		});
 	}
