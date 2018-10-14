@@ -1,15 +1,24 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
+
+import AC from './Devices/AC.js'
+import Alarm from './Devices/Alarm.js'
+import Blind from './Devices/Blind.js'
+import Door from './Devices/Door.js'
 import Lamp from './Devices/Lamp.js'
+import Oven from './Devices/Oven.js'
+import Refrigerator from './Devices/Refrigerator.js'
+import Timer from './Devices/Timer.js'
+
 import Device from './Device.js'
 
 class Devices{
 	static get url() {
-		return api.baseUrl + '/devices';
+		return api.baseUrl + '/' + 'devices';
 	}
 
 	get url(){
-		return api.baseUrl + '/devices';
+		return Devices.url;
 	}
 
 	add(device){
@@ -43,8 +52,29 @@ class Devices{
 						device.meta = JSON.parse(device.meta) || {}
 						let deviceObj = {}
 						switch (device.type.name) {
+							case "ac":
+								deviceObj = new AC(device)
+								break;
+							case "alarm":
+								deviceObj = new Alarm(device)
+								break;
+							case "blind":
+								deviceObj = new Blind(device)
+								break;
+							case "door":
+								deviceObj = new Door(device)
+								break;
 							case "lamp":
 								deviceObj = new Lamp(device)
+								break;
+							case "oven":
+								deviceObj = new Oven(device)
+								break;
+							case "refrigerator":
+								deviceObj = new Refrigerator(device)
+								break;
+							case "timer":
+								deviceObj = new Timer(device)
 								break;
 							default:
 								deviceObj = new Device(device)
