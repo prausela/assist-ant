@@ -15,12 +15,18 @@ class Device {
 		return Devices.url + '/' + this.id;
 	}
 
-	perform(action){
+	perform(action, parameters){
+		if(!parameters){
+			parameters = [];
+		}
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.put(this.url + '/' + action)
+			axios.put(this.url + '/' + action, parameters)
 			.then(function(response){
-				console.log(response);
+				if (!response.data.result) {
+					//API rejected petition (Action was not performed)
+					reject(new Error());
+				}
 				resolve(response.data);
 			})
 			.catch(function(error){
