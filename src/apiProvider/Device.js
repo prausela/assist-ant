@@ -14,12 +14,14 @@ class Device {
 		return Devices.url + '/' + this.id;
 	}
 
-	perform(action){
+	perform(action, parameters){
+		if(!parameters){
+			parameters = [];
+		}
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.put(this.url + '/' + action)
+			axios.put(this.url + '/' + action, parameters)
 			.then(function(response){
-				console.log(response);
 				resolve(response.data);
 			})
 			.catch(function(error){
