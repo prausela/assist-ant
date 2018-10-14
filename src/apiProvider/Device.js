@@ -22,6 +22,10 @@ class Device {
 		return new Promise((resolve, reject) => {
 			axios.put(this.url + '/' + action, parameters)
 			.then(function(response){
+				if (!response.data.result) {
+					//API rejected petition (Action was not performed)
+					reject(new Error());
+				}
 				resolve(response.data);
 			})
 			.catch(function(error){
