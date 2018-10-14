@@ -1,17 +1,17 @@
 import Devices from "./Devices.js"
 import { axios } from '../ApiServiceProvider.js'
 
-const devices = new Devices();
 
 class Device {
-	constructor(id, name, type){
-		this.id = id;
-		this.name = name;
-		this.type = type;
+	constructor(device){
+		this.id = device.id;
+		this.name = device.name;
+		this.type = device.type;
+		this.meta = device.meta;
 	}
 
 	get url(){
-		return devices.url + '/' + this.id;
+		return Devices.url + '/' + this.id;
 	}
 
 	perform(action){

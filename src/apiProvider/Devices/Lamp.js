@@ -2,8 +2,9 @@ import Device from '../Device.js'
 
 class Lamp extends Device {
 
-	constructor(id, name){
-		super(id, name, "go46xmbqeomjrsjr");
+	constructor(device){
+		super(device)
+
 	}
 
 	setState(state){

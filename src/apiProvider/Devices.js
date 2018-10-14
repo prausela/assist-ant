@@ -1,7 +1,12 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
+import Lamp from './Devices/Lamp.js'
+import Device from './Device.js'
 
 class Devices{
+	static get url() {
+		return api.baseUrl + '/devices';
+	}
 
 	get url(){
 		return api.baseUrl + '/devices';
@@ -31,12 +36,22 @@ class Devices{
 			axios.get(this.url)
 			.then(function(response) {
 				let devices = response.data.devices;
+				let devicesObjects = []
 				api.devicesTypes.getAll().then((types) => {
 					devices.forEach((device) => {
 						device.type = types[device.typeId]
 						device.meta = JSON.parse(device.meta) || {}
+						let deviceObj = {}
+						switch (device.type.name) {
+							case "lamp":
+								deviceObj = new Lamp(device)
+								break;
+							default:
+								deviceObj = new Device(device)
+						}
+						devicesObjects.push(deviceObj)
 					})
-					resolve(devices);
+					resolve(devicesObjects);
 				})
 			}).catch(function(error){
 				reject({
