@@ -12,7 +12,11 @@ class Device {
 	}
 
 	get url(){
-		return Devices.url + '/' + this.id
+		return Devices.url + this.urn
+	}
+
+	get urn(){
+		return '/' + this.id
 	}
 
 	perform(action, parameters){

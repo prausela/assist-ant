@@ -9,7 +9,13 @@ class Room{
 
 	assign(device){
 		return new Promise((resolve, reject) =>{
-			axios.post(device.url + '/' + 'devices')
+			axios.post(device.url + this.urn)
+			.then((response)=>{
+				resolve(response)
+			})
+			.catch((error)=>{
+				reject(error)			
+			})
 		})
 	}
 

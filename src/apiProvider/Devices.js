@@ -14,7 +14,11 @@ import Device from './Device.js'
 
 class Devices{
 	static get url() {
-		return api.baseUrl + '/' + 'devices';
+		return api.baseUrl + Devices.urn;
+	}
+
+	static get urn(){
+		return '/' + 'devices';
 	}
 
 	get url(){
