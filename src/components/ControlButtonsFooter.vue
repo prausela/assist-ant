@@ -1,7 +1,7 @@
 <template>
     <div class="control-buttons">
-        <div class="footer-icon" :class="{favorite: dev?dev.meta.favorite: false}" @click="star">
-          <v-icon   name="star" scale="2" />
+        <div class="footer-icon" :class="{favorite: device.meta.favorite}" @click="star">
+          <v-icon name="star" scale="2" />
         </div>
         <div class="footer-icon" @click="edit">
             <v-icon name="pencil-alt" scale="2" />
@@ -26,8 +26,7 @@ export default {
 
   props: [
   'device'
-  ]
-  ,
+  ],
   data () {
     return {
         verEdit:false,
@@ -35,45 +34,29 @@ export default {
     }
   },
   methods: {
-    clickedFav() {
+    edit(){
+      this.verEdit = true
     },
-    refreshDev() {
-        this.dev = this.device
-        this.$set(this.dev, "meta", this.device.meta)
-        this.$set(this.dev.meta, "favorite", this.device.meta.favorite)
-        // console.log(this.dev.meta.favorite)
-      },
-      edit(){
-        this.verEdit = true
-      },
-      star() {
-
-      },
-      remove() {
-        this.$api.devices.delete(this.device).then(() => {
-            this.$toaster.success(this.$strings[this.$language].devices.delete.success)
-            this.$emit('closeModal')
-        }).catch((error) => {
-            console.log(error)
-            this.$toaster.error(error)
-        })
-      },
-      closeEdit(){
-        this.verEdit = false
-      }
+    star() {
+      this.device.favorite(!this.device.meta.favorite)
     },
-  computed: {
-    favorite() {
-        return this.dev && this.dev.meta && this.dev.meta.favorite
+    remove() {
+      this.$api.devices.delete(this.device).then(() => {
+          this.$toaster.success(this.$strings[this.$language].devices.delete.success)
+          this.$emit('closeModal')
+      }).catch((error) => {
+          console.log(error)
+          this.$toaster.error(error)
+      })
+    },
+    closeEdit(){
+      this.verEdit = false
     }
   },
-  watch: {
-    dev() {
-        console.log("dev changed")
-    }
+  computed: {
   },
   mounted() {
-    this.refreshDev()
+
   }
 }
 </script>

@@ -8,9 +8,9 @@ class api {
 
 	/* API Modules */
 	constructor() {
+		this.eventBus = new Vue()
 		this.devices = new Devices()
 		this.devicesTypes = new DevicesTypes()
-		this.eventBus = new Vue()
 	}
 
 	get baseUrl(){

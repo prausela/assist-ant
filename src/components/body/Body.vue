@@ -3,10 +3,7 @@
         <div class="columns">
             <Devices/>
 
-            <div class="favourite">
-                <h2 class="favorites-title">Destacados</h2>
-                <DevicesList :add="false" :devices="favoriteDevices" />
-            </div>
+            <Favorites />
             <div id="history-routines">
                 <div class="history">
                         <h2 class="ultima">Ultima Accion</h2>
@@ -30,23 +27,33 @@
 
  <script>
  import Devices from "./Devices.vue"
- import DevicesList from "@/components/body/DevicesList.vue"
- import testData from "@/testData.js"
+ import Favorites from "./Favorites.vue"
+
  export default {
 
   name: 'Body',
   components: {
   	Devices,
-    DevicesList
+    Favorites
   },
   data () {
     return {
-        favoriteDevices: testData.devices.filter((device) => {
-            return device.meta.favorite
-        }),
+        favoriteDevices: []
     }
   },
-  
+  methods: {
+    refreshDevices() {
+        this.favoriteDevices = this.$devices.filter((device) => {
+            return device.meta.favorite
+        })
+    },
+  },
+  mounted() {
+    this.$api.eventBus.$on('devicesRefreshed', () => {
+      console.log('refresh devices received')
+      this.refreshDevices()
+    })
+  },  
 }
 </script>
 
@@ -65,17 +72,6 @@
         align-items: stretch
         flex: 1
         justify-content: space-around
-
-    .favourite
-        background-color: $primaryBg
-        box-shadow: 2px 2px $shadowBg
-        width: 30%
-        border-radius: 5px
-        display: flex
-        flex-direction: column
-
-
-
 
     #history-routines
         display: flex
@@ -125,8 +121,6 @@
         flex: 1
         border-radius: 5px
 
-    .favorites-title
-        margin: 3px 0
 
 
 

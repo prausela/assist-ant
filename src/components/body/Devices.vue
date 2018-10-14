@@ -38,17 +38,13 @@ export default {
   		this.verBotones = !this.verBotones
   	},
     refreshDevices() {
-      this.$api.devices.getAll().then((devices) => {
-        console.log(devices)
-        this.devices = devices
-      })
+      this.devices = this.$devices
     }
   },
   mounted() {
     this.selectedTab = this.tabs.Dispositivos
     this.refreshDevices()
-    this.$api.eventBus.$on('refreshDevices', () => {
-      console.log('refresh devices received')
+    this.$api.eventBus.$on('devicesRefreshed', () => {
       this.refreshDevices()
     })
   }
