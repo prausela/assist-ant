@@ -32,7 +32,9 @@ class Rooms {
 		return new Promise((resolve, reject) => {
 			axios.get(this.url)
 			.then(function(response) {
-				let devices = response.data.devices;
+				console.log(response);
+				/*let de
+				ces = response.data.devices;
 				let devicesObjects = []
 				api.devicesTypes.getAll().then((types) => {
 					devices.forEach((device) => {
@@ -69,8 +71,10 @@ class Rooms {
 						}
 						devicesObjects.push(deviceObj)
 					})
+
 					resolve(devicesObjects);
 				})
+				*/
 			}).catch(function(error){
 				reject({
 					message: error
@@ -79,7 +83,7 @@ class Rooms {
 		});
 	}
 
-	modify(device){
+	modify(rooms){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			//Remember to change to device.url
@@ -97,10 +101,9 @@ class Rooms {
 		});
 	}
 
-	delete(device){
+	delete(room){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			//Remember to change to device.url
 			axios.delete(this.url + '/' + room.id)
 			.then(function(response) {
 				//api.eventBus.$emit('refreshDevices')
