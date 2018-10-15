@@ -45,7 +45,12 @@ export default {
 		},
 		"refrigerator": {
 			"canAdd": true,
-			"component": "Refrigerator"
+			"component": "Refrigerator",
+			"defaults": {
+				"freezerTemperature": -10,
+				"temperature": 6,
+				"mode": "default"
+			}
 		},
 		"timer": {
 			"canAdd": false,
