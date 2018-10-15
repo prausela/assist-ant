@@ -3,7 +3,15 @@ import Device from '../Device.js'
 class Door extends Device {
 
 	constructor(device){
-		super(device);
+		super(device)
+
+		if(typeof(this.meta.state) == "undefined") {
+			this.meta.state = false
+		}
+
+		if(typeof(this.meta.state) == "undefined") {
+			this.meta.lock = false
+		}
 	}
 
 	//Boolean true turns on, false off
