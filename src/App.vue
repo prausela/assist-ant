@@ -124,6 +124,7 @@ body
     width: 100%
     height: 50%
     position: relative
+    flex: 1
 .column-container::after
     content: ""
     position: absolute
@@ -139,6 +140,7 @@ body
     justify-content: space-around   
     flex: 1
     width: 100%
+    Transition: 0.4s all
 .modal-footer
   display: flex
   width: 100%

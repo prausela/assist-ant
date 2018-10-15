@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="setting-op">
+                <div class="setting-op" :class="{invisible: !enabled}">
                     <div class="set heat">
                         <div class="name"> Heat </div>
                         <div class="body">
@@ -92,7 +92,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+.invisible
+     opacity: 0
 
 
 

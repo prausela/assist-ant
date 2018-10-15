@@ -1,6 +1,6 @@
 <template>
-	<div class="favorites">
-        <h2 class="favorites-title">Destacados</h2>
+  <div class="favorites">
+        <h2 class="favorites-title">DESTACADOS</h2>
         <DevicesList :add="false" :devices="favoriteDevices" />
     </div>
 </template>
@@ -31,14 +31,16 @@ export default {
 
 <style lang="sass" scoped>
 .favorites
-	background-color: $primaryBg
-	box-shadow: 2px 2px $shadowBg
-	width: 30%
-	border-radius: 5px
-	display: flex
-	flex-direction: column
+  background-color: $primaryBg
+  box-shadow: 2px 2px $shadowBg
+  width: 30%
+  border-radius: 5px
+  display: flex
+  flex-direction: column
 
 .favorites-title
-    margin: 3px 0
+    margin: 17px 0
+    color: rgba(0, 0, 0, 0.61)
+    font-size: 17px
 
 </style>

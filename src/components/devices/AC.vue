@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="setting-op">
+                <div class="setting-op" :class="{invisible: !enabled}">
                     <div class="op-body">
                         <div class="name">Ventilador</div>
                         <div class="body">
@@ -116,7 +116,8 @@ export default {
 <style lang="sass" scoped>
 
 
-
+.invisible
+     opacity: 0
 
 
 

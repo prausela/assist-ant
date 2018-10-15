@@ -6,16 +6,16 @@
             <Favorites />
             <div id="history-routines">
                 <div class="history">
-                        <h2 class="ultima">Ultima Accion</h2>
-                        <v-icon name="redo-alt" class="redo" scale="1" />
+                        <h2 class="ultima">ULTIMA ACCION</h2>
+                        <v-icon name="redo-alt" class="redo" scale="1.5" />
                 </div>
                 <div class="routines">
                     <div class="r-header">
-                        Routines
+                        RUTINAS
                     </div>
                     <div class="r-body">
-                        <div class="name">Nombre Rutina</div>
-                        <div class="btn">
+                        <div class="r-name">Nombre Rutina</div>
+                        <div class="r-btn">
                             <div class="active-btn">Activar</div>
                         </div>
                 </div>
@@ -33,7 +33,7 @@
 
   name: 'Body',
   components: {
-  	Devices,
+    Devices,
     Favorites
   },
 }
@@ -54,6 +54,7 @@
         align-items: stretch
         flex: 1
         justify-content: space-around
+        user-select: none
 
     #history-routines
         display: flex
@@ -80,21 +81,31 @@
         margin-inline-start: 0px
         margin-inline-end: 0px
         font-weight: bold
+        color: rgba(0, 0, 0, 0.61)
+        font-size: 17px
     .r-body
         display: flex
         flex: 2
-    .name
+    .r-name
         display: flex
         flex: 2
+        margin-left: 7px
 
-    .btn
+    .r-btn
         display: flex
         flex: 1
+        cursor: pointer
+     
+        justify-content: center
     .active-btn
+        display: fel
         background-color: $logo
         color: black
         border-radius: 5px
         height: 15%
+        text-align: center
+        padding: 3px
+
 
     .history
         margin-bottom: 8%
@@ -103,8 +114,18 @@
         flex: 1
         border-radius: 5px
 
+    .favorites-title
+        margin: 17px 0
 
-
+    .redo
+        position: absolute
+        right: 27px
+        top: 20px
+        cursor: pointer
+    .ultima
+        margin-right: 30px
+        color: rgba(0, 0, 0, 0.61)
+        font-size: 17px
 
 
 
