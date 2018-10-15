@@ -1,5 +1,6 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
+import Room from './Room.js'
 
 class Rooms {
 	static get url() {
