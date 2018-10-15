@@ -18,7 +18,7 @@
                         <div class="temp-input">
                             <div class="form-label">Temperatura</div>
                             <div class="form-field">
-                                <input id="numberField" type="number" placeholder="°C">
+                                <input id="numberField" v-model="temperature" type="number">°C
                             </div>
                         </div>
                     </div>

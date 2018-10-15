@@ -21,7 +21,8 @@ export default {
 			"defaults": {
 				"heat": "conventional",
 				"grill": "off",
-				"convection": "off"
+				"convection": "off",
+				"temperature": 200
 			}
 		},
 		"ac": {
