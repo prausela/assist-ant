@@ -17,17 +17,6 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="form-label">Tipo de Dispositivo</div>
-						<div class="form-field select-field">
-							<select v-model="selected">
-							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-row">
 						<div class="form-label">Piso</div>
 						<div class="form-field select-field">
 							<select v-model="selected">
@@ -63,14 +52,13 @@
 export default {
 
 	name: 'EditDevice',
-	
 	props: [
 	'device'
 	],
 
 	data () {
 		return {
-			name: "",
+			name: this.device.name,
 			selected: null,
 			dev: {}
 		}
@@ -81,14 +69,12 @@ export default {
 			this.$emit('closeEdit')
 		},
 		save() {
-			// Api.devices.modify(this.dev.name, this.dev).then((response) => {
-			// 	alert("Device saved succcessfully")
-			// 	console.log(response)
-			// 	this.closeModal()
-			// }).catch ((error) => {
-			// 	alert(error.message)
-			// })
-			this.closeModal()
+			this.$api.devices.modify(this.dev).then(() => {
+	  			this.$toaster.success(this.$strings[this.$language].devices.edit.success)
+	  			this.closeModal()
+	  		}).catch((error) => {
+	  			this.$toaster.error(error.message)
+	  		})
 		}
 	},
 	mounted() {

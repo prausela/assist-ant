@@ -50,7 +50,7 @@ ApiServiceProvider.eventBus.$on('refreshDevices', () => {
   Vue.prototype.$refreshDevices()
 })
 
-Vue.prototype.$language = "english"
+Vue.prototype.$language = "spanish"
 
 
 

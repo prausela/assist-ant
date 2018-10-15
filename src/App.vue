@@ -178,7 +178,7 @@ body
   border-radius: 5px
   cursor: pointer
   min-height: 60px
-
+  justify-content: center
 
 
 .card-icon
@@ -193,15 +193,6 @@ body
   margin: 5px 0px
   cursor: pointer
     
-.icon-container
-  justify-content: center
-  align-content: center
-  
-  border: 1px solid black
-  display: flex
-  position: relative
-  padding: 5px
-
 .submit-btn
   padding: 5px 15px
   border-radius: 10px
