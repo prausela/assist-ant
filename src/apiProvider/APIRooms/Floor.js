@@ -1,6 +1,7 @@
-import Room from '../Room.js'
+import APIRoom from '../APIRoom.js'
+import Rooms from '../Rooms.js'
 
-class Floor extends Room {
+class Floor extends APIRoom {
 	constructor(floor){
 		super(floor);
 		this.roomIds = []
