@@ -1,11 +1,30 @@
 import Device from '../Device.js'
 import Strings from '@/Strings.json'
 import api from '@/ApiServiceProvider.js'
+import config from '@/config.js'
 
 class AC extends Device {
 
 	constructor(device){
 		super(device);
+		if(typeof(this.meta.state) == "undefined") {
+			this.meta.state = false
+		}
+		if(typeof(this.meta.temperature) == "undefined") {
+			this.meta.temperature = config.deviceTypes.ac.defaultTemperature
+		}
+		if(typeof(this.meta.verticalSwing) == "undefined") {
+			this.meta.verticalSwing = config.deviceTypes.ac.defaultVS
+		}
+		if(typeof(this.meta.horizontalSwing) == "undefined") {
+			this.meta.horizontalSwing = config.deviceTypes.ac.defaultHS
+		}
+		if(typeof(this.meta.speed) == "undefined") {
+			this.meta.speed = config.deviceTypes.ac.defaultSpeed
+		}
+		if(typeof(this.meta.mode) == "undefined") {
+			this.meta.mode = config.deviceTypes.ac.defaultMode
+		}
 	}
 
 	//Boolean true turns on, false off

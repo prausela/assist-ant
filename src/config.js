@@ -21,7 +21,12 @@ export default {
 		},
 		"ac": {
 			"canAdd": true,
-			"component": "AC"
+			"component": "AC",
+			"defaultTemperature": 24,
+			"defaultMode": "cool",
+			"defaultVS": "auto,",
+			"defaultHS": "auto",
+			"defaultSpeed": "auto"
 		},
 		"door": {
 			"canAdd": true,
