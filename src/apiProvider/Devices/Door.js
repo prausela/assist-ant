@@ -9,7 +9,7 @@ class Door extends Device {
 			this.meta.state = false
 		}
 
-		if(typeof(this.meta.state) == "undefined") {
+		if(typeof(this.meta.lock) == "undefined") {
 			this.meta.lock = false
 		}
 	}

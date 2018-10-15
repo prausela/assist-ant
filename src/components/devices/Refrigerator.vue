@@ -34,14 +34,14 @@
                     <div class="op-body">
                         <div class="name"> Modo </div>
                         <div class="body">
-                            <div class="mode-button" :class="{active: mode == 'default'}" @click="setMode('default')">
-                                <v-icon name="suitcase" class="mode" scale="2" />
+                            <div class="mode-button mode" :class="{active: mode == 'default'}" @click="setMode('default')">
+                                Default
                             </div>
                             <div class="mode-button" :class="{active: mode == 'party'}" @click="setMode('party')">
                                 <img class="mode" src="@/assets/modes/party.png">
                             </div>
                             <div class="mode-button" :class="{active: mode == 'vacation'}" @click="setMode('vacation')">
-                                <img class="mode" src="@/assets/modes/party.png">
+                                <v-icon name="suitcase" class="mode" scale="2" />
                             </div>
                         </div>
                     </div>
