@@ -14,8 +14,12 @@
                             <img class="blind-img" src="@/assets/devices/blind.png">
                     </div>
                     <div class="arrow-container">
-                        <v-icon name="arrow-up" class="arrow" scale="3" />
-                        <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
+                        <div @click="setState(true)">
+                            <v-icon name="arrow-up" class="arrow" scale="3" />
+                        </div>
+                        <div @click="setState(false)">
+                            <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
+                        </div>
                     </div>
                 </div>
                 <div class="setting-op">
@@ -50,8 +54,13 @@ export default {
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        setState(state) {
+            this.device.setState(state).catch((error) => {
+                console.log(error)
+            })
         }
-    },
+    }
 }
 </script>
 

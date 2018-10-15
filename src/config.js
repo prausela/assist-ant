@@ -17,16 +17,23 @@ export default {
 		},
 		"oven": {
 			"canAdd": true,
-			"component": "Oven"
+			"component": "Oven",
+			"defaults": {
+				"heat": "conventional",
+				"grill": "off",
+				"convection": "off"
+			}
 		},
 		"ac": {
 			"canAdd": true,
 			"component": "AC",
-			"defaultTemperature": 24,
-			"defaultMode": "cool",
-			"defaultVS": "auto,",
-			"defaultHS": "auto",
-			"defaultSpeed": "auto"
+			"defaults": {
+				"temperature": 24,
+				"mode": "cool",
+				"verticalSwing": "auto,",
+				"horizontalSwing": "auto",
+				"speed": "auto"
+			}
 		},
 		"door": {
 			"canAdd": true,

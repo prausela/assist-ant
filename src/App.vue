@@ -148,6 +148,15 @@ body
   align-items: center
   height: 50px
   border-top: 1px solid black
+
+.mode-button
+    display: flex
+    justify-content: center
+    align-items: center
+    &.active
+        background-color: #b1aeae
+        box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+
   
 // Tarjetas
 .card

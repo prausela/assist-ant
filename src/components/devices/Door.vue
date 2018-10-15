@@ -10,18 +10,18 @@
             </div>
             <div class="modal-body">
                 <div class="column-container">
-                    <div class="image-container">
+                    <div @click="setState(false)" class="image-container">
                         <v-icon name="door-closed" class="state" scale="10" />
                     </div>
-                    <div class="close-container">
+                    <div @click="setState(true)" class="close-container">
                         <v-icon name="door-open" class="door" scale="3" />
                     </div>
                 </div>
                 <div class="column-container">
-                    <div class="image-container">
+                    <div @click="setLock(true)" class="image-container">
                         <v-icon name="lock" class="state" scale="10" />
                     </div>
-                    <div class="close-container">
+                    <div @click="setLock(false)" class="close-container">
                         <v-icon name="lock-open" class="door" scale="3" />
                     </div>
                 </div>
@@ -54,6 +54,16 @@ export default {
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        setState(state) {
+            this.device.setState(state).catch((error) => {
+                console.log(error)
+            })
+        },
+        setLock(lock) {
+            this.device.setLock(lock).catch((error) => {
+                console.log(error)
+            })
         }
     }
 }
@@ -68,6 +78,7 @@ export default {
     flex: 1
     align-items: center
     justify-content: center
+    cursor: pointer
 .state
 
 .close-container
@@ -75,6 +86,7 @@ export default {
     flex: 1
     align-items: center
     justify-content: center
+    cursor: pointer
 .door
     padding: 8px
     border: 1px solid black

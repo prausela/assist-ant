@@ -24,7 +24,10 @@
 				"label": "Blinds"
 			},
 			"oven": {
-				"label": "Oven"
+				"label": "Oven",
+				"errors": {
+					"invalidRange": "Temperature must be between 90°C and 230°C"
+				}
 			},
 			"ac": {
 				"label": "AC",
@@ -71,7 +74,10 @@
 				"label": "Persiana"
 			},
 			"oven": {
-				"label": "Horno"
+				"label": "Horno",
+				"errors": {
+					"invalidRange": "La temperatura debe estar entre 90°C y 230°C"
+				}
 			},
 			"ac": {
 				"label": "Aire Acondicionado",
