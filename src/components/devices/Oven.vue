@@ -14,11 +14,11 @@
                         <img class="oven-img" src="@/assets/devices/oven.png">
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color=blue v-model="enabled"></switches>
+                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                         <div class="temp-input">
                             <div class="form-label">Temperatura</div>
                             <div class="form-field">
-                                <input  placeholder="°C">
+                                <input id="numberField" v-model="temperature" type="number">°C
                             </div>
                         </div>
                     </div>
@@ -27,26 +27,44 @@
                     <div class="set heat">
                         <div class="name"> Heat </div>
                         <div class="body">
-                            <img class="op" src="@/assets/modes/oven-conventional.png">
-                            <img class="op" src="@/assets/modes/oven-bottom.png">
-                            <img class="op" src="@/assets/modes/oven-top.png">
+                            <div class="mode-button" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
+                                <img class="op" src="@/assets/modes/oven-conventional.png">
+                            </div>
+                            <div class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">
+                                <img class="op" src="@/assets/modes/oven-bottom.png">
+                            </div>
+                            <div class="mode-button" :class="{active: heat == 'top'}" @click="setHeat('top')">
+                                <img class="op" src="@/assets/modes/oven-top.png">
+                            </div>
                         </div>
 
                     </div>
                     <div class="set grill">
                         <div class="name"> Grill </div>
                         <div class="body">
-                            <img class="op" src="@/assets/modes/oven-top.png">
-                            <v-icon name="leaf" class="op"  scale="1" />
-                            <div class="op">Off</div>
+                            <div class="mode-button" :class="{active: grill == 'large'}" @click="setGrill('large')">
+                                <img class="op" src="@/assets/modes/oven-top.png">
+                            </div>
+                            <div class="mode-button" :class="{active: grill == 'eco'}" @click="setGrill('eco')">
+                                <v-icon name="leaf" class="op"  scale="1" />
+                            </div>
+                            <div class="mode-button" :class="{active: grill == 'off'}" @click="setGrill('off')">
+                                <div class="op">Off</div>
+                            </div>
                         </div>
                     </div>
                     <div class="set conv">
                         <div class="name"> Convection </div>
                         <div class="body">
-                            <img class="op" src="@/assets/devices/fan.png">                            
-                            <v-icon name="leaf" class="op"  scale="1" />
-                            <div class="op">Off</div>
+                            <div class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
+                                <img class="op" src="@/assets/devices/fan.png">
+                            </div>
+                            <div class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
+                                <v-icon name="leaf" class="op"  scale="1" />
+                            </div>
+                            <div class="mode-button" :class="{active: convection == 'off'}" @click="setConvection('off')">
+                                <div class="op">Off</div>
+                            </div>
 
                         </div>
                     </div>
@@ -75,15 +93,43 @@ export default {
     ],
     data () {
         return {
-            name: 'Horno',
-            enabled: false,
-
+            enabled: this.device.meta.state,
+            temperature: this.device.meta.temperature,
+            heat: this.device.meta.heat,
+            grill: this.device.meta.grill,
+            convection: this.device.meta.convection,
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        updateState() {
+            if (this.enabled != this.device.meta.state) {
+                this.device.setState(this.enabled).catch((error) => {
+                    console.log(error)
+                })
+            }
+        },
+        setHeat(newHeat) {
+            this.heat = newHeat
+            this.device.setHeat(newHeat).catch((error) => {
+                console.log(error)
+            })
+        },
+        setGrill(newGrill) {
+            this.grill = newGrill
+            this.device.setGrill(newGrill).catch((error) => {
+                console.log(error)
+            })
+        },
+        setConvection(newConvection) {
+            this.convection = newConvection
+            this.device.setConvection(newConvection).catch((error) => {
+                console.log(error)
+            })
         }
+
     }
     
 
@@ -154,7 +200,6 @@ export default {
     .form-field
         align-self: flex-end
         padding-right: 20px
-        input
 
 .switch
     padding: 0 15px

@@ -34,8 +34,15 @@
                     <div class="op-body">
                         <div class="name"> Modo </div>
                         <div class="body">
-                            <v-icon name="suitcase" class="mode" scale="2" />
-                            <img class="mode" src="@/assets/modes/party.png">
+                            <div class="mode-button mode" :class="{active: mode == 'default'}" @click="setMode('default')">
+                                Default
+                            </div>
+                            <div class="mode-button" :class="{active: mode == 'party'}" @click="setMode('party')">
+                                <img class="mode" src="@/assets/modes/party.png">
+                            </div>
+                            <div class="mode-button" :class="{active: mode == 'vacation'}" @click="setMode('vacation')">
+                                <v-icon name="suitcase" class="mode" scale="2" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,14 +71,19 @@ export default {
     data () {
         return {
             name: 'Heladera',
-            enabled: true,
-
+            mode: this.device.meta.mode
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
-        }
+        },
+        setMode(newMode) {
+            this.mode = newMode
+            this.device.setMode(newMode).catch((error) => {
+                console.log(error)
+            })
+        },
     }
     
 

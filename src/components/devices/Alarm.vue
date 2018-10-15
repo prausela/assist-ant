@@ -16,11 +16,11 @@
                     </div>
                     <div class="arm">
 
-                        <div class="submit-btn">Stay</div>
+                        <div class="submit-btn" @click="arm('stay')">Stay</div>
 
                       
-                        <div class="submit-btn">Away</div>
-                        <div class="submit-btn">Disarm</div>
+                        <div class="submit-btn" @click="arm('Away')">Away</div>
+                        <div class="submit-btn" @click="disarm()">Disarm</div>
                         </div>
                     </div>
                     <div class="setting-op">

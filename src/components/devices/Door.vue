@@ -9,20 +9,29 @@
 
             </div>
             <div class="modal-body">
-                <div class="column-container">
-                    <div class="image-container">
+                <div class="column-container"> 
+                    <div class="state-container" @click="setState(false)"  v-if="this.state == true">
                         <v-icon name="door-closed" class="state" scale="10" />
+                        <v-icon name="door-open" class="not-state" scale="3" />
+
                     </div>
-                    <div class="close-container">
-                        <v-icon name="door-open" class="door" scale="3" />
+                    <div class="state-container" @click="setState(true)"  v-if="this.state == false">
+                        <v-icon name="door-open" class="state" scale="10" />
+                       <v-icon name="door-closed" class="not-state" scale="3" />
+                      
                     </div>
                 </div>
                 <div class="column-container">
-                    <div class="image-container">
+
+                    <div class="state-container" @click="setLock(true)" v-if="this.lock == false">
                         <v-icon name="lock" class="state" scale="10" />
+                        <v-icon name="lock-open" class="not-state" scale="3" />
+
                     </div>
-                    <div class="close-container">
-                        <v-icon name="lock-open" class="door" scale="3" />
+                    <div  class="state-container" @click="setLock(false)" v-if="this.lock == true">
+                        <v-icon name="lock-open" class="state" scale="10" />
+                        <v-icon name="lock" class="not-state" scale="3" />
+
                     </div>
                 </div>
 
@@ -49,12 +58,31 @@ export default {
     data () {
         return {
             name: 'Door',
+            state:this.device.meta.state,
+            lock:this.device.meta.lock
+
+
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
-        }
+        },
+        setState(state) {
+            console.log(state)
+            this.state=state
+            this.device.setState(state).catch((error) => {
+                console.log(error)
+                console.log(error)
+            })
+        },
+            setLock(lock) {
+                console.log(lock)
+                this.lock=lock
+                this.device.setLock(lock).catch((error) => {
+                    console.log(error)
+                })
+            }
     }
 }
 </script>
@@ -63,22 +91,34 @@ export default {
 
 
 
-.image-container
+.state-container
     display: flex
     flex: 1
     align-items: center
     justify-content: center
-.state
+    cursor: pointer
 
-.close-container
+
+.not-state-container
     display: flex
     flex: 1
     align-items: center
     justify-content: center
+    cursor: pointer
 .door
+    display: flex
+    flex: 1
     padding: 8px
     border: 1px solid black
 
+.state
+    display: flex
+    flex: 1
+
+.not-state
+    display: flex
+    flex: 1 
+    border: 1px solid black   
 .setting-op
     display: flex
     flex: 1

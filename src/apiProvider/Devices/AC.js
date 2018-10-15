@@ -11,19 +11,19 @@ class AC extends Device {
 			this.meta.state = false
 		}
 		if(typeof(this.meta.temperature) == "undefined") {
-			this.meta.temperature = config.deviceTypes.ac.defaultTemperature
+			this.meta.temperature = config.deviceTypes.ac.defaults.temperature
 		}
 		if(typeof(this.meta.verticalSwing) == "undefined") {
-			this.meta.verticalSwing = config.deviceTypes.ac.defaultVS
+			this.meta.verticalSwing = config.deviceTypes.ac.defaults.verticalSwing
 		}
 		if(typeof(this.meta.horizontalSwing) == "undefined") {
-			this.meta.horizontalSwing = config.deviceTypes.ac.defaultHS
+			this.meta.horizontalSwing = config.deviceTypes.ac.defaults.horizontalSwing
 		}
 		if(typeof(this.meta.speed) == "undefined") {
-			this.meta.speed = config.deviceTypes.ac.defaultSpeed
+			this.meta.speed = config.deviceTypes.ac.defaults.speed
 		}
 		if(typeof(this.meta.mode) == "undefined") {
-			this.meta.mode = config.deviceTypes.ac.defaultMode
+			this.meta.mode = config.deviceTypes.ac.defaults.mode
 		}
 	}
 

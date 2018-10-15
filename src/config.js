@@ -17,16 +17,24 @@ export default {
 		},
 		"oven": {
 			"canAdd": true,
-			"component": "Oven"
+			"component": "Oven",
+			"defaults": {
+				"heat": "conventional",
+				"grill": "off",
+				"convection": "off",
+				"temperature": 200
+			}
 		},
 		"ac": {
 			"canAdd": true,
 			"component": "AC",
-			"defaultTemperature": 24,
-			"defaultMode": "cool",
-			"defaultVS": "auto,",
-			"defaultHS": "auto",
-			"defaultSpeed": "auto"
+			"defaults": {
+				"temperature": 24,
+				"mode": "cool",
+				"verticalSwing": "auto,",
+				"horizontalSwing": "auto",
+				"speed": "25"
+			}
 		},
 		"door": {
 			"canAdd": true,
@@ -38,7 +46,12 @@ export default {
 		},
 		"refrigerator": {
 			"canAdd": true,
-			"component": "Refrigerator"
+			"component": "Refrigerator",
+			"defaults": {
+				"freezerTemperature": -10,
+				"temperature": 6,
+				"mode": "default"
+			}
 		},
 		"timer": {
 			"canAdd": false,

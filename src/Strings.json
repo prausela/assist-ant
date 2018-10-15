@@ -24,7 +24,10 @@
 				"label": "Blinds"
 			},
 			"oven": {
-				"label": "Oven"
+				"label": "Oven",
+				"errors": {
+					"invalidRange": "Temperature must be between 90°C and 230°C"
+				}
 			},
 			"ac": {
 				"label": "AC",
@@ -39,7 +42,11 @@
 				"label": "Alarm"
 			},
 			"refrigerator": {
-				"label": "Refrigerator"
+				"label": "Refrigerator",
+				"errors": {
+					"invalidRange": "Temperature must be 2 and 8",
+					"invalidFreezerRange": "Freezer temperature must be -20 and -8"
+				}
 			},
 			"timer": {
 				"label": "Timer"
@@ -50,7 +57,7 @@
 		"api": {
 			"devices": {
 				"addSuccessful": "El dispositivo se agrego correctamente",
-				"addErr2": "El nombre del dispositivo ya esta en uso222"
+				"addErr2": "El nombre del dispositivo ya esta en uso"
 			}
 		},
 		"devices": {
@@ -71,7 +78,10 @@
 				"label": "Persiana"
 			},
 			"oven": {
-				"label": "Horno"
+				"label": "Horno",
+				"errors": {
+					"invalidRange": "La temperatura debe estar entre 90°C y 230°C"
+				}
 			},
 			"ac": {
 				"label": "Aire Acondicionado",
@@ -86,7 +96,11 @@
 				"label": "Alarma"
 			},
 			"refrigerator": {
-				"label": "Heladera"
+				"label": "Heladera",
+				"errors": {
+					"invalidRange": "La temperatura debe estar entre 2 y 8",
+					"invalidFreezerRange": "La temperatura del freezer debe estar entre -20 y -8"
+				}
 			},
 			"timer": {
 				"label": "Cronometro"

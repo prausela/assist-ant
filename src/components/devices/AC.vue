@@ -27,20 +27,25 @@
                     <div class="op-body">
                         <div class="name">Ventilador</div>
                         <div class="body">
-                            <v-icon name="minus" class="mode" scale="1" />
-                            <img class="fan-img" src="@/assets/modes/fan-25.png">
-                           <!--  <img class="fan-img" src="@/assets/modes/fan-50.png">
-                            <img class="fan-img" src="@/assets/modes/fan-75.png">
+                            <div class="minus-container" @click="setFanSpeed('-25')">
+                               <v-icon name="minus" class="mode" scale="1" />
+                           </div>
 
-                            <img class="fan-img" src="@/assets/modes/fan-100.png"> -->
+                           <img class="fan-img" src="@/assets/modes/fan-25.png" v-if="this.speed == '25' ">
+                           <img class="fan-img" src="@/assets/modes/fan-50.png" v-if="this.speed == '50' ">
+                           <img class="fan-img" src="@/assets/modes/fan-75.png" v-if="this.speed == '75' ">
+
+                           <img class="fan-img" src="@/assets/modes/fan-100.png" v-if="this.speed == '100' ">
+                           <div class="plus-container" @click="setFanSpeed('25')">
 
                             <v-icon name="plus" class="mode" scale="1" />
-                            <div class="empty"></div>
-                            <div class="empty"></div>
-                            <div class="empty"></div>
-
                         </div>
+                        <!-- <div class="fan-auto" @click="setFanSpeed('auto')" :class="{active: horizontalSwing == '90'}">Auto</div> -->
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+
                     </div>
+                </div>
                     <div class="op-body">
                         <div class="name">Modo</div>
                         <div class="body">
@@ -58,24 +63,24 @@
                     <div class="op-body">
                         <div class="name">Swing Vertical</div>
                         <div class="body">
-                            <img class="ac-img" src="@/assets/modes/swing.png">
-                            <img class="ac-img" src="@/assets/modes/swing-22.png">
-                            <img class="ac-img" src="@/assets/modes/swing-45.png">
-                            <img class="ac-img" src="@/assets/modes/swing-67.png">
-                            <img class="ac-img" src="@/assets/modes/swing-90.png">
+                            <img class="ac-img" src="@/assets/modes/swing.png" :class="{active: verticalSwing == 'auto'}" @click="setVerticalSwing('auto')">
+                            <img class="ac-img" src="@/assets/modes/swing-22.png" :class="{active: verticalSwing == '22'}" @click="setVerticalSwing('22')">
+                            <img class="ac-img" src="@/assets/modes/swing-45.png" :class="{active: verticalSwing == '45'}" @click="setVerticalSwing('45')">
+                            <img class="ac-img" src="@/assets/modes/swing-67.png" :class="{active: verticalSwing == '67'}" @click="setVerticalSwing('67')">
+                            <img class="ac-img" src="@/assets/modes/swing-90.png" :class="{active: verticalSwing == '90'}" @click="setVerticalSwing('90')">
                             <div class="empty"></div>
 
                         </div>
                     </div>
                     <div class="op-body">
                         <div class="name">Swing Horizontal</div>
-                        <div class="body">
-                            <img class="ac-img" src="@/assets/modes/h-auto.png">
-                            <img class="ac-img" src="@/assets/modes/h--90.png">
-                            <img class="ac-img" src="@/assets/modes/h--45.png">
-                            <img class="ac-img" src="@/assets/modes/h-0.png">
-                            <img class="ac-img" src="@/assets/modes/h-45.png">                            
-                            <img class="ac-img" src="@/assets/modes/h-90.png">                            
+                        <div class="body">  
+                            <img class="ac-img" src="@/assets/modes/h-auto.png" :class="{active: horizontalSwing == 'auto'}" @click="setHorizontalSwing('auto')" >
+                            <img class="ac-img" src="@/assets/modes/h--90.png" :class="{active: horizontalSwing == '-90'}" @click="setHorizontalSwing('-90')">
+                            <img class="ac-img" src="@/assets/modes/h--45.png" :class="{active: horizontalSwing == '-45'}" @click="setHorizontalSwing('-45')">
+                            <img class="ac-img" src="@/assets/modes/h-0.png" :class="{active: horizontalSwing == '0'}" @click="setHorizontalSwing('0')">
+                            <img class="ac-img" src="@/assets/modes/h-45.png" :class="{active: horizontalSwing == '45'}" @click="setHorizontalSwing('45')">                            
+                            <img class="ac-img" src="@/assets/modes/h-90.png" :class="{active: horizontalSwing == '90'}" @click="setHorizontalSwing('90')">                            
                         </div>
                     </div>
                 </div>    
@@ -125,13 +130,67 @@ export default {
             this.device.setMode(newMode).catch((error) => {
                 console.log(error)
             })
+        },
+        setVerticalSwing(newVS){
+            this.verticalSwing=newVS
+            this.device.setVerticalSwing(newVS).catch((error)=>{
+                console.log(error)
+            })
+        },
+        setHorizontalSwing(newHS){
+            this.horizontalSwing=newHS
+            this.device.setHorizontalSwing(newHS).catch((error)=>{
+                console.log(error)
+            })
+        },
+        setFanSpeed(newFS){
+
+            console.log(this.speed)
+            if(newFS=='auto'){
+                this.speed=newFS
+                this.device.setFanSpeed(this.speed).catch((error)=>{
+                    console.log(error)
+                })
+            }
+            else if(newFS=='-25'){
+             this.speed= parseInt(this.speed)
+
+             if(this.speed!=25){
+                this.speed-=25
+                this.speed=this.speed.toString()
+                this.device.setFanSpeed(this.speed).catch((error)=>{
+                    console.log(error)
+                })
+            }
         }
+        else if(newFS=='25'){
+            this.speed= parseInt(this.speed)
+
+            if(this.speed!=100){
+                this.speed+=25
+                this.speed=this.speed.toString()
+
+                this.device.setFanSpeed(this.speed).catch((error)=>{
+                    console.log(error)
+                })
+            }
+        }
+
     }
+}
 }
 </script>
 
 <style lang="sass" scoped>
-
+.fan-auto
+    display: flex
+    align-items: center
+    border: 1px solid black
+    height: 100%
+    cursor: pointer
+    &.active
+        background-color: #b1aeae
+        box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
 .invisible
      opacity: 0
@@ -146,6 +205,9 @@ export default {
     width: 30px
     height: 30px
     cursor: pointer
+    &.active
+        background-color: #b1aeae
+        box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
 
 
