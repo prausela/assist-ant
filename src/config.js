@@ -32,7 +32,7 @@ export default {
 				"mode": "cool",
 				"verticalSwing": "auto,",
 				"horizontalSwing": "auto",
-				"speed": "auto"
+				"speed": "25"
 			}
 		},
 		"door": {

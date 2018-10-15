@@ -11,14 +11,16 @@
             <div class="modal-body">
                 <div class="column-container">
                     <div class="image-container">
-                            <img class="blind-img" src="@/assets/devices/blind.png">
+                            <img class="blind-img" src="@/assets/modes/blind-open.png" v-if="this.state == true ">
+                            <img class="blind-img" src="@/assets/modes/blind-close.png" v-if="this.state == false ">
+                            
                     </div>
                     <div class="arrow-container">
-                        <div @click="setState(true)">
+                        <div class="arrow-s" @click="setState(true)"  :class="{active: state == true}">
                             <v-icon name="arrow-up" class="arrow" scale="3" />
                         </div>
-                        <div @click="setState(false)">
-                            <v-icon name="arrow-down"  class="arrow" scale="3" border=1px />
+                        <div class="arrow-s" @click="setState(false)"   :class="{active: state == false}">
+                            <v-icon name="arrow-down"  class="arrow" scale="3"  />
                         </div>
                     </div>
                 </div>
@@ -49,6 +51,8 @@ export default {
     data () {
         return {
             name: 'Blind',
+            state: this.device.meta.state
+
         }
     },
     methods:{
@@ -56,6 +60,8 @@ export default {
             this.$emit('closeMe')
         },
         setState(state) {
+            console.log(this.state)
+            this.state=state
             this.device.setState(state).catch((error) => {
                 console.log(error)
             })
@@ -76,12 +82,20 @@ export default {
     flex: 1
     align-items: center
     justify-content: center
+    
+
+.arrow-s
+    &.active
+        background-color: #b1aeae
+        box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+
+
 .arrow
     padding: 8px
     border: 1px solid black
     margin: 2px
     cursor: pointer
-
+    
 
 .heigh
     display: flex
