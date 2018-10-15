@@ -8,6 +8,27 @@ class Floors extends Rooms{
 		return this.getAllWithCategory("floor", Floor)
 	}
 
+	delete(floor){
+		return new Promise((resolve, reject)=>{
+			let promises = []
+			floor.roomIds.forEach((roomId)=>{
+				promises.push(super.delete(roomId))
+			})
+			Promise.all(promises)
+			.then(()=>{
+				super.delete(floor.id)
+				.then((response)=>{
+					resolve(response.data)
+				})
+				.catch((error)=>{
+					reject()
+				})
+			})
+			.catch((error)=>{
+				reject()
+			})
+		})
+	}
 }
 
 export default Floors
