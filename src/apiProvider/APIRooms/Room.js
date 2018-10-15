@@ -13,10 +13,6 @@ class Room extends APIRoom {
 		this.meta = JSON.stringify(this.meta)
 	}
 
-	/*floor(){
-		this.floor = 
-	}*/
-
 	assign(device){
 		super.assign(device);
 		if(this.floor){
