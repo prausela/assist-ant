@@ -11,7 +11,7 @@ class Oven extends Device {
 			this.meta.state = false
 		}
 		if(typeof(this.meta.temperature) == "undefined") {
-			this.meta.temperature = config.deviceTypes.oven.defaults.heat
+			this.meta.temperature = config.deviceTypes.oven.defaults.temperature
 		}
 		if(typeof(this.meta.heat) == "undefined") {
 			this.meta.heat = config.deviceTypes.oven.defaults.heat
