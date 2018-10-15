@@ -8,6 +8,7 @@ class api {
 
 	/* API Modules */
 	constructor() {
+		this.language = "spanish"
 		this.eventBus = new Vue()
 		this.devices = new Devices()
 		this.devicesTypes = new DevicesTypes()
@@ -26,6 +27,10 @@ class api {
 	initialize() {
 		this.devicesTypes.getAll()
 	}
+
+	setLanguage(language) {
+		this.language = language
+	} 
 }
 
 export default new api();

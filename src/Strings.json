@@ -15,6 +15,35 @@
 			"delete": {
 				"success": "Device succesfully deleted"
 			}
+		},
+		"deviceTypes": {
+			"lamp": {
+				"label": "Lamp"
+			},
+			"blind": {
+				"label": "Blinds"
+			},
+			"oven": {
+				"label": "Oven"
+			},
+			"ac": {
+				"label": "AC",
+				"errors": {
+					"invalidRange": "Temperature must be between 18°C and 38°C"
+				}
+			},
+			"door": {
+				"label": "Door"
+			},
+			"alarm": {
+				"label": "Alarm"
+			},
+			"refrigerator": {
+				"label": "Refrigerator"
+			},
+			"timer": {
+				"label": "Timer"
+			}
 		}
 	},
 	"spanish": {
@@ -32,6 +61,35 @@
 			},
 			"delete": {
 				"success": "El dispositivo se eliminó correctamente"
+			}
+		},
+		"deviceTypes": {
+			"lamp": {
+				"label": "Lampara"
+			},
+			"blind": {
+				"label": "Persiana"
+			},
+			"oven": {
+				"label": "Horno"
+			},
+			"ac": {
+				"label": "Aire Acondicionado",
+				"errors": {
+					"invalidRange": "La temperatura debe estar entre 18°C y 38°C"
+				}
+			},
+			"door": {
+				"label": "Puerta"
+			},
+			"alarm": {
+				"label": "Alarma"
+			},
+			"refrigerator": {
+				"label": "Heladera"
+			},
+			"timer": {
+				"label": "Cronometro"
 			}
 		}
 	}

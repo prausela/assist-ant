@@ -4,72 +4,40 @@ export default {
 		port: 8080,
 		url: 'api'
 	},
-	deviceTypes: {
-		lamp: {
-			label: {
-				english: "Lamp",
-				spanish: "Lampara",
-			},
-			defaultColor: "#EAFF4D",
-			defaultBrightness: 10,
-			canAdd: true,
-			component: "Light"
+	"deviceTypes": {
+		"lamp": {
+			"defaultColor": "#EAFF4D",
+			"defaultBrightness": 10,
+			"canAdd": true,
+			"component": "Light"
 		},
-		blind: {
-			label: {
-				english: "Blinds",
-				spanish: "Persiana",
-			},
-			canAdd: true,
-			component: "Blind"
+		"blind": {
+			"canAdd": true,
+			"component": "Blind"
 		},
-		oven: {
-			label: {
-				english: "Oven",
-				spanish: "Horno",
-			},
-			canAdd: true,
-			component: "Oven"
+		"oven": {
+			"canAdd": true,
+			"component": "Oven"
 		},
-		ac: {
-			label: {
-				english: "AC",
-				spanish: "Aire Acondicionado",
-			},
-			canAdd: true,
-			component: "AC"
+		"ac": {
+			"canAdd": true,
+			"component": "AC"
 		},
-		door: {
-			label: {
-				english: "Door",
-				spanish: "Puerta",
-			},
-			canAdd: true,
-			component: "Door"
+		"door": {
+			"canAdd": true,
+			"component": "Door"
 		},
-		alarm: {
-			label: {
-				english: "Alarm,",
-				spanish: "Alarma",
-			},
-			canAdd: false,
-			component: "Alarm"
+		"alarm": {
+			"canAdd": false,
+			"component": "Alarm"
 		},
-		refrigerator: {
-			label: {
-				english: "Refrigerator",
-				spanish: "Heladera",
-			},
-			canAdd: true,
-			component: "Refrigerator"
+		"refrigerator": {
+			"canAdd": true,
+			"component": "Refrigerator"
 		},
-		timer: {
-			label: {
-				english: "Timer",
-				spanish: "Cronometro",
-			},
-			canAdd: false,
-			component: "Timer"
-		},
-	},
+		"timer": {
+			"canAdd": false,
+			"component": "Timer"
+		}
+	}
 }
