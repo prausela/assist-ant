@@ -16,15 +16,21 @@
                     <div class="switch-container">
                         
                         <div class="temp-input">
-                            <div class="form-label">Temperatura Heladera</div>
-                            <div class="form-field">
-                                <input  placeholder="°C">
+                            <div class="temp-header">Temperatura Freezer</div>
+                            <div class="temp-body">
+                                <input class="numberField" type="number" placeholder="°C" v-model="freezerTemperature">
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="setFreezerTemperature(freezerTemperature)">Guardar</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="temp-input">
-                            <div class="form-label">Temperatura Freezer</div>
-                            <div class="form-field">
-                                <input  placeholder="°C">
+                         <div class="temp-input">
+                            <div class="temp-header">Temperatura Heladera</div>
+                            <div class="temp-body">
+                                <input class="numberField" type="number" placeholder="°C" v-model="temperature">
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="setTemperature(temperature)">Guardar</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +77,9 @@ export default {
     data () {
         return {
             name: 'Heladera',
-            mode: this.device.meta.mode
+            mode: this.device.meta.mode,
+            temperature:this.meta.temperature,
+            freezerTemperature:this.meta.freezerTemperature
         }
     },
     methods:{
@@ -84,6 +92,19 @@ export default {
                 console.log(error)
             })
         },
+        setTemperature(temperature){
+            this.temperature=temperature
+            this.device.setTemperature(temperature).catch((error) => {
+                console.log(error)
+            })
+        },
+        setFreezerTemperature(freezerTemperature){
+            this.freezerTemperature=freezerTemperature
+            this.device.setFreezerTemperature(freezerTemperature).catch((error) => {
+                console.log(error)
+            })
+        }
+
     }
     
 

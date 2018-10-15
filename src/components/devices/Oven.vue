@@ -154,20 +154,7 @@ export default {
     flex: 1
     flex-direction: row
 
-.numberField
-    display: flex
-    flex: 1
-    width: 50%
-    margin-left: 25px
 
-.save-btn
-    display: flex
-    flex: 1
-    justify-content: left
-    margin-left: 5px
-.save-txt
-    border: 1px solid black
-    cursor: pointer
 .oven-img
     width: 150px
     height: 150px
@@ -212,29 +199,7 @@ export default {
     justify-content: center
     align-items: center
     display: flex
-.temp-input
-    width: 100%
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    flex: 1
-    padding-bottom: 10px
-    .form-field
-        align-self: flex-end
-        padding-right: 20px
-.temp-header
-    display: flex
-    flex: 1
-    width: 100%
-    align-items: center
-    justify-content: center
-.temp-body
-    display: flex
-    flex: 2
-    width: 100%
-    align-items: center
-    justify-content: center
+
 .switch
     display: flex
     justify-content: center

@@ -13,12 +13,23 @@
                     <div class="image-container">
                         <v-icon name="stopwatch" class="card-icon" scale="10" />
                     </div>
+
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
-                        <div class="seg-input">
-                            <div class="form-label">Tiempo</div>
-                            <div class="form-field">
-                                <input  placeholder="Segundos">
+                        <div class="temp-input">
+                            <div class="temp-header">Set Tiempo</div>
+                            <div class="temp-body">
+                                <input class="numberField" type="number" placeholder="°C" v-model="this.perform("start")">
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="this.perform('start')">
+                                        Comenzar
+                                    </div>
+                                </div>
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="this.perform('stop')">
+                                        Parar
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,11 +64,18 @@ export default {
             name: 'Timer',
             enabled: false,
 
+
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        setPerform(newMode) {
+            this.perform = newMode
+            this.device.setPerform(newMode).catch((error) => {
+                console.log(error)
+            })
         }
     }
 }

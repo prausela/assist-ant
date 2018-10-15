@@ -157,6 +157,43 @@ body
         background-color: #b1aeae
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
+.temp-input
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 1
+    padding-bottom: 10px
+    .form-field
+        align-self: flex-end
+        padding-right: 20px
+.temp-header
+    display: flex
+    flex: 1
+    width: 100%
+    align-items: center
+    justify-content: center
+.temp-body
+    display: flex
+    flex: 2
+    width: 100%
+    align-items: center
+    justify-content: center
+.numberField
+    display: flex
+    flex: 1
+    width: 50%
+    margin-left: 25px
+
+.save-btn
+    display: flex
+    flex: 1
+    justify-content: left
+    margin-left: 5px
+.save-txt
+    border: 1px solid black
+    cursor: pointer
   
 // Tarjetas
 .card
