@@ -16,67 +16,70 @@
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                         <div class="temp-input">
-                            <div class="form-label">Temperatura</div>
-                            <div class="form-field">
-                                <input id="numberField" v-model="temperature" type="number">°C
+                            <div class="temp-header">Temperatura</div>
+                            <div class="temp-body">
+                                <input class="numberField" type="number" placeholder="°C" v-model="temperature">
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="setTemperature(temperature)">Save</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="setting-op" :class="{invisible: !enabled}">
-                    <div class="set heat">
-                        <div class="name"> Heat </div>
-                        <div class="body">
-                            <div class="mode-button" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
-                                <img class="op" src="@/assets/modes/oven-conventional.png">
-                            </div>
-                            <div class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">
-                                <img class="op" src="@/assets/modes/oven-bottom.png">
-                            </div>
-                            <div class="mode-button" :class="{active: heat == 'top'}" @click="setHeat('top')">
-                                <img class="op" src="@/assets/modes/oven-top.png">
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="set grill">
-                        <div class="name"> Grill </div>
-                        <div class="body">
-                            <div class="mode-button" :class="{active: grill == 'large'}" @click="setGrill('large')">
-                                <img class="op" src="@/assets/modes/oven-top.png">
-                            </div>
-                            <div class="mode-button" :class="{active: grill == 'eco'}" @click="setGrill('eco')">
-                                <v-icon name="leaf" class="op"  scale="1" />
-                            </div>
-                            <div class="mode-button" :class="{active: grill == 'off'}" @click="setGrill('off')">
-                                <div class="op">Off</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="set conv">
-                        <div class="name"> Convection </div>
-                        <div class="body">
-                            <div class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
-                                <img class="op" src="@/assets/devices/fan.png">
-                            </div>
-                            <div class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
-                                <v-icon name="leaf" class="op"  scale="1" />
-                            </div>
-                            <div class="mode-button" :class="{active: convection == 'off'}" @click="setConvection('off')">
-                                <div class="op">Off</div>
+                    <div class="setting-op" :class="{invisible: !enabled}">
+                        <div class="set heat">
+                            <div class="name"> Heat </div>
+                            <div class="body">
+                                <div class="mode-button" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
+                                    <img class="op" src="@/assets/modes/oven-conventional.png">
+                                </div>
+                                <div class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">
+                                    <img class="op" src="@/assets/modes/oven-bottom.png">
+                                </div>
+                                <div class="mode-button" :class="{active: heat == 'top'}" @click="setHeat('top')">
+                                    <img class="op" src="@/assets/modes/oven-top.png">
+                                </div>
                             </div>
 
                         </div>
+                        <div class="set grill">
+                            <div class="name"> Grill </div>
+                            <div class="body">
+                                <div class="mode-button" :class="{active: grill == 'large'}" @click="setGrill('large')">
+                                    <img class="op" src="@/assets/modes/oven-top.png">
+                                </div>
+                                <div class="mode-button" :class="{active: grill == 'eco'}" @click="setGrill('eco')">
+                                    <v-icon name="leaf" class="op"  scale="1" />
+                                </div>
+                                <div class="mode-button" :class="{active: grill == 'off'}" @click="setGrill('off')">
+                                    <div class="op">Off</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="set conv">
+                            <div class="name"> Convection </div>
+                            <div class="body">
+                                <div class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
+                                    <img class="op" src="@/assets/devices/fan.png">
+                                </div>
+                                <div class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
+                                    <v-icon name="leaf" class="op"  scale="1" />
+                                </div>
+                                <div class="mode-button" :class="{active: convection == 'off'}" @click="setConvection('off')">
+                                    <div class="op">Off</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-                
-            </div>
-            <div class="modal-footer">
-                <cbfooter :device="device" @closeModal="closeModal" />
+                <div class="modal-footer">
+                    <cbfooter :device="device" @closeModal="closeModal" />
+                </div>
             </div>
         </div>
-    </div>
-</template>
+    </template>
 
 <script>
 import Switches from 'vue-switches'
@@ -111,6 +114,13 @@ export default {
                 })
             }
         },
+        setTemperature(temperature){
+            console.log(temperature)
+            this.temperature=temperature
+            this.device.setTemperature(temperature).catch((error) => {
+                console.log(error)
+            })
+        },
         setHeat(newHeat) {
             this.heat = newHeat
             this.device.setHeat(newHeat).catch((error) => {
@@ -131,8 +141,6 @@ export default {
         }
 
     }
-    
-
 
 }
 </script>
@@ -141,10 +149,25 @@ export default {
 .invisible
      opacity: 0
 
+.input
+    display: flex
+    flex: 1
+    flex-direction: row
 
+.numberField
+    display: flex
+    flex: 1
+    width: 50%
+    margin-left: 25px
 
-   
-
+.save-btn
+    display: flex
+    flex: 1
+    justify-content: left
+    margin-left: 5px
+.save-txt
+    border: 1px solid black
+    cursor: pointer
 .oven-img
     width: 150px
     height: 150px
@@ -200,14 +223,25 @@ export default {
     .form-field
         align-self: flex-end
         padding-right: 20px
-
+.temp-header
+    display: flex
+    flex: 1
+    width: 100%
+    align-items: center
+    justify-content: center
+.temp-body
+    display: flex
+    flex: 2
+    width: 100%
+    align-items: center
+    justify-content: center
 .switch
-    padding: 0 15px
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
     flex: 1
+    width: 100%
 .form
     display: flex
     flex: 1
