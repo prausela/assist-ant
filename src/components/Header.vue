@@ -1,9 +1,10 @@
 <template>
 	<div class="header">
+		<div class="title"></div>
+
 		<div class="icon">
-			<img class="icon-img" src="../assets/logo.png">
+			<img class="icon-img" src="../assets/logo1.png">
 		</div>
-		<div class="title">Bienvenido a casa</div>
 		<div class="info">
 			<Time/>
 			
@@ -40,19 +41,27 @@ export default {
 
 .title
 	display: flex
+	flex: 1
 	align-items: center
 	font-size: 30px
 .icon-img
 	height: 100%
+	width: 50%
+	display: flex
+	align-items: center
+	justify-content: center
+
 
 .icon
 	display: flex
 	flex-direction: row
 	justify-content: center
 	align-items: center
+	flex: 2
 
 .info 
 	display: flex
-	justify-content: center
+	justify-content: flex-end
 	align-items: center
+	flex: 1
 </style>

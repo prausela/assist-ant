@@ -6,7 +6,6 @@
     <DevicesList :add="true" :devices="devices" />
   </div>
 </template>
-
 <script>
 
 
@@ -16,17 +15,17 @@ export default {
 
   data () {
     return {
-    	verBotones: true, 
+      verBotones: true, 
       devices: [],
       tabs: {
         Dispositivos: {
-          label: "Dispositivos"
+          label: "DISPOSITIVOS"
         },
         Habitaciones: {
-          label: "Habitaciones"
+          label: "HABITACIONES"
         },
         Pisos: {
-          label: "Pisos"
+          label: "PISOS"
         }
       },
       selectedTab: null
@@ -34,9 +33,9 @@ export default {
 
   },
   methods:{
-  	pressedButton(){
-  		this.verBotones = !this.verBotones
-  	},
+    pressedButton(){
+      this.verBotones = !this.verBotones
+    },
     refreshDevices() {
       this.devices = this.$devices
     }
@@ -97,6 +96,8 @@ export default {
   height: 35px
   min-height: 35px
   user-select: none
+  color: rgba(0, 0, 0, 0.61);
+  font-size: 17px;
   .tab 
     flex: 0 1 33%
     position: relative

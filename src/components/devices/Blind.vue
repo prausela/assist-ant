@@ -19,15 +19,7 @@
                     </div>
                 </div>
                 <div class="setting-op">
-                    <div class="heigh">
-                        <div class="name">
-                            Modo
-                        </div>
-                        <div class="body">
-                            <img class="blind-op"  src="@/assets/modes/blind-open.png">
-                            <img class="blind-op" src="@/assets/modes/blind-close.png">
-                        </div>
-                    </div>
+                    
                 </div>
                 
             </div>
