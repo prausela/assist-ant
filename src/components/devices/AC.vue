@@ -14,11 +14,11 @@
                         <img class="ac-pimg" src="@/assets/devices/AC.png">
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
+                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                         <div class="temp-input">
                             <div class="form-label">Temperatura</div>
                             <div class="form-field">
-                                <input  placeholder="°C">
+                                <input v-model="temperature" placeholder="°C">
                             </div>
                         </div>
                     </div>
@@ -44,9 +44,10 @@
                     <div class="op-body">
                         <div class="name">Modo</div>
                         <div class="body">
-                            <v-icon name="sun" class="ac-img"  />
-                            <v-icon name="snowflake" class="ac-img"  />
-                            <img class="fan-img3 ac-img" src="@/assets/devices/fan.png">
+                            <!-- String "cool", "heat", "fan" -->
+                            <div class="mode-button" :class="{active: mode == 'heat'}" @click="setMode('heat')"><v-icon name="sun" class="ac-img"  /></div>
+                            <div class="mode-button" :class="{active: mode == 'cool'}" @click="setMode('cool')" ><v-icon name="snowflake" class="ac-img"  /></div>
+                            <div class="mode-button" :class="{active: mode == 'fan'}"  @click="setMode('fan')"><img class="fan-img3 ac-img" src="@/assets/devices/fan.png"> </div>
                             <div class="empty"></div>
                             <div class="empty"></div>
                             <div class="empty"></div>
@@ -102,12 +103,28 @@ export default {
     data () {
         return {
             name: 'AC',
-            enabled:true
+            enabled: this.device.meta.state,
+            temperature: this.device.meta.temperature,
+            mode: this.device.meta.mode,
+            horizontalSwing: this.device.meta.horizontalSwing,
+            verticalSwing: this.device.meta.verticalSwing,
+            speed: this.device.meta.speed
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        updateState() {
+            this.device.setState(this.enabled).catch((error) => {
+                console.log(error)
+            })
+        },
+        setMode(newMode) {
+            this.mode = newMode
+            this.device.setMode(newMode).catch((error) => {
+                console.log(error)
+            })
         }
     }
 }
@@ -231,4 +248,12 @@ export default {
     width: 35px
     height: 35px
     border: 1px 
+.mode-button
+    display: flex
+    justify-content: center
+    align-items: center
+    &.active
+        background-color: #b1aeae
+        box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+
 </style>

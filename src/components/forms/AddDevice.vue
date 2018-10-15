@@ -21,7 +21,7 @@
 						<div class="form-field select-field">
 							<select v-model="type">
 							  <option disabled value=""></option>
-							  <option v-for="(type,id) in deviceTypes" :value="type" :key="id" >{{type.label[$language]}}</option>
+							  <option v-for="(type,id) in deviceTypes" :value="type" :key="id" >{{$strings[$language].deviceTypes[type.name].label}}</option>
 							</select>
 						</div>
 					</div>
