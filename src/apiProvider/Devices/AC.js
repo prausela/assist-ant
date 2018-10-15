@@ -54,7 +54,7 @@ class AC extends Device {
 
 			this.perform("setTemperature", [ temperature ]).then((response) => {
 				let newMeta = this.copyMeta()
-				newMeta.color = color
+				newMeta.temperature = temperature
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
 				})
@@ -70,7 +70,7 @@ class AC extends Device {
 
 			this.perform("setMode", [ mode ]).then((response) => {
 				let newMeta = this.copyMeta()
-				newMeta.color = color
+				newMeta.mode = mode
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
 				})
@@ -86,7 +86,7 @@ class AC extends Device {
 
 			this.perform("setVerticalSwing", [ swing ]).then((response) => {
 				let newMeta = this.copyMeta()
-				newMeta.color = color
+				newMeta.verticalSwing = swing
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
 				})
@@ -102,7 +102,7 @@ class AC extends Device {
 
 			this.perform("setHorizontalSwing", [ swing ]).then((response) => {
 				let newMeta = this.copyMeta()
-				newMeta.color = color
+				newMeta.horizontalSwing = swing
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
 				})
@@ -118,7 +118,7 @@ class AC extends Device {
 
 			this.perform("setFanSpeed", [ speed ]).then((response) => {
 				let newMeta = this.copyMeta()
-				newMeta.color = color
+				newMeta.speed = speed
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
 				})
