@@ -3,6 +3,7 @@ import Devices from './apiProvider/Devices.js'
 import DevicesTypes from './apiProvider/DevicesTypes.js'
 export const axios = require('axios');
 import Vue from 'vue';
+import Rooms from './apiProvider/Rooms.js'
 
 class api {
 
@@ -12,6 +13,7 @@ class api {
 		this.eventBus = new Vue()
 		this.devices = new Devices()
 		this.devicesTypes = new DevicesTypes()
+		this.rooms = new Rooms()
 	}
 
 	get baseUrl(){

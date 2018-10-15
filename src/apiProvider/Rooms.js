@@ -1,6 +1,6 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
-import Room from './Room.js'
+import Room from './APIRooms/Room.js'
 
 class Rooms {
 	static get url() {
@@ -15,7 +15,7 @@ class Rooms {
 		return Rooms.url;
 	}
 
-	add(room){
+	static add(room){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			axios.post(this.url, {
@@ -32,65 +32,33 @@ class Rooms {
 		});
 	}
 
-	getAll(){
-		// eslint-disable-next-line
+	add(room){
+		Rooms.add(room)
+	}
+
+	getAllWithCategory(category, object){
 		return new Promise((resolve, reject) => {
 			axios.get(this.url)
 			.then(function(response) {
-				console.log(response);
 				let roomsObjects = []
-				response.data.rooms.forEach((room)=>{
-					roomsObjects.push(new Room(room))
+
+				let a = response.data.rooms.filter((room) =>{
+					return JSON.parse(room.meta).category == category;
+				})
+				a.forEach((room)=>{
+					roomsObjects.push(new object(room))
 				})
 				resolve(roomsObjects)
-				/*let de
-				ces = response.data.devices;
-				let devicesObjects = []
-				api.devicesTypes.getAll().then((types) => {
-					devices.forEach((device) => {
-						device.type = types[device.typeId]
-						device.meta = JSON.parse(device.meta) || {}
-						let deviceObj = {}
-						switch (device.type.name) {
-							case "ac":
-								deviceObj = new AC(device)
-								break;
-							case "alarm":
-								deviceObj = new Alarm(device)
-								break;
-							case "blind":
-								deviceObj = new Blind(device)
-								break;
-							case "door":
-								deviceObj = new Door(device)
-								break;
-							case "lamp":
-								deviceObj = new Lamp(device)
-								break;
-							case "oven":
-								deviceObj = new Oven(device)
-								break;
-							case "refrigerator":
-								deviceObj = new Refrigerator(device)
-								break;
-							case "timer":
-								deviceObj = new Timer(device)
-								break;
-							default:
-								deviceObj = new Device(device)
-						}
-						devicesObjects.push(deviceObj)
-					})
-
-					resolve(devicesObjects);
-				})
-				*/
 			}).catch(function(error){
 				reject({
 					message: error
 				})
 			});
 		});
+	}
+
+	getAll(){
+		return this.getAllWithCategory("room", Room)
 	}
 
 	modify(rooms){
@@ -127,4 +95,4 @@ class Rooms {
 
 }
 
-export default Rooms;
+export default Rooms
