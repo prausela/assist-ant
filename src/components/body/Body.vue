@@ -9,17 +9,7 @@
                         <h2 class="ultima">ULTIMA ACCION</h2>
                         <v-icon name="redo-alt" class="redo" scale="1.5" />
                 </div>
-                <div class="routines">
-                    <div class="r-header">
-                        RUTINAS
-                    </div>
-                    <div class="r-body">
-                        <div class="r-name">Nombre Rutina</div>
-                        <div class="r-btn">
-                            <a class="button is-primary">Activar</a>
-                        </div>
-                </div>
-                </div>
+                <Routines />   
             </div>
         </div>
     </div>
@@ -28,13 +18,14 @@
  <script>
  import Devices from "./Devices.vue"
  import Favorites from "./Favorites.vue"
-
+ import Routines from "./Routines.vue"
  export default {
 
   name: 'Body',
   components: {
     Devices,
-    Favorites
+    Favorites,
+    Routines
   },
 }
 </script>

@@ -247,14 +247,6 @@ body .modal
   padding: 5px 10px 4px
   z-index: 2000
 
-.tooltip-arrow 
-    width: 0
-    height: 0
-    border-style: solid
-    position: absolute
-    margin: 5px
-    border-color: black
-    z-index: 2000
 .card-icon
   max-widht: 100%
   object-fit: contain

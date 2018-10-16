@@ -56,9 +56,9 @@
                         </div>
                     </div>
                     <div class="set conv">
-                        <div class="name">  Convección </div>
+                        <div class="name">Convección </div>
                         <div class="body">
-                            <div class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.convectionMode1" class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
                                 <img class="op" src="@/assets/devices/fan.png">
                             </div>
                             <div class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
