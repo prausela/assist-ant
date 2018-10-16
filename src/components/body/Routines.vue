@@ -1,5 +1,6 @@
 <template>
 	<div class="routines">
+        <AddRoutine @closeMe="showAddRoutine = false" v-if="showAddRoutine"/>
         <div class="r-header">
             RUTINAS
         </div>
@@ -10,7 +11,7 @@
             </div>
          </div>
          <div class="r-footer">
-         	<a class="button is-link">Agregar Rutina</a>
+         	<a class="button is-link" @click="showAddRoutine = true">Agregar Rutina</a>
          </div>
     </div>
 </template>
@@ -25,7 +26,7 @@ export default {
   },
   data () {
     return {
-
+      showAddRoutine: false
     }
   }
 }
