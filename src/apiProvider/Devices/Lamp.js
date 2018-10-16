@@ -14,6 +14,7 @@ class Lamp extends Device {
 		if(typeof(this.meta.brightness) == "undefined") {
 			this.meta.brightness = config.deviceTypes.lamp.defaultBrightness
 		}
+		this.actions.push("setState", "setColor", "setBrightness")
 	}
 
 	//Returns a boolean. If the state hasn't change returns false otherwise true.

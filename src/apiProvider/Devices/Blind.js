@@ -7,6 +7,7 @@ class Blind extends Device {
 		if(typeof(this.meta.state) == "undefined") {
 			this.meta.state = false
 		}
+		this.actions.push("setState")
 	}
 
 	//Boolean true = up, false = down

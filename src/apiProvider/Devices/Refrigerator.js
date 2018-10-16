@@ -16,6 +16,7 @@ class Refrigerator extends Device {
 		if(typeof(this.meta.mode) == "undefined") {
 			this.meta.mode = config.deviceTypes.refrigerator.defaults.mode
 		}
+		this.actions.push("setTemperature", "setMode", "setFreezerTemperature")
 	}
 
 

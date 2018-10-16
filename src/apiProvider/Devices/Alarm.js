@@ -4,6 +4,7 @@ class Alarm extends Device {
 
 	constructor(device){
 		super(device);
+		this.actions.push("changeSecurityCode", "armStay", "armAway", "disarm")
 	}
 
 	/*

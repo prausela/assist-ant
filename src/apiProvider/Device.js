@@ -10,6 +10,9 @@ class Device {
 		this.name = device.name
 		this.type = device.type
 		this.meta = device.meta
+
+		this.actions = []
+		actions.push("getState")
 	}
 
 	get url(){
