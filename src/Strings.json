@@ -78,8 +78,11 @@
 		},
 		"rooms": {
 			"add": {
-				"success": "El cuarto se agregó correctamente",
-				"unselectedName": "Debe elegir un nombre para el cuarto"
+				"success": "La habitación se agregó correctamente",
+				"unselectedName": "Debe elegir un nombre para la habitación"
+			},
+			"delete": {
+				"success": "La habitación se eliminó correctamente"
 			}
 		},
 		"devices": {

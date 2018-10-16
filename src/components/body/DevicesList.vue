@@ -1,11 +1,10 @@
 <template>
 	<div class="devices-list">
-      <template v-for="(device, index) in devices">
-        <component v-if="device && device.type" :device="device" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
-      </template>
-      <AddDeviceCard v-if="add" />
-      <AddRoomCard v-if="add"/>
-    </div>
+    <template v-for="(device, index) in devices">
+      <component v-if="device && device.type" :device="device" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
+    </template>
+    <AddDeviceCard :room="room" v-if="add" />
+  </div>
 </template>
 
 <script>
@@ -50,6 +49,10 @@ export default {
     openModals: {
       required: false,
       default: true
+    },
+    room: {
+      required: false,
+      deafult: null
     }
   },
   data () {
@@ -68,4 +71,5 @@ export default {
   display: flex
   justify-content: flex-start
   overflow: auto
+  width: 100%
 </style>

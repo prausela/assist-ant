@@ -8,9 +8,15 @@ class Room {
 		this.id = room.id
 		this.name = room.name
 		this.meta = room.meta
+		this.devices= []
+		this.downloadDevices().then((devices) =>{
+			this.devices = devices
+		}).catch((error) => {
+			console.log(error)
+		})
 	}
 
-	get devices(){
+	downloadDevices(){
 		return Devices.getFrom(this.url + Devices.urn);
 	}
 
@@ -19,17 +25,23 @@ class Room {
 	}
 
 	get urn(){
-		return Rooms.urn + '/' + this.id
+		return '/' + this.id
 	}
 
 	static urn(id){
-		return Rooms.urn + '/' + id
+		return Rooms.urn + '/' + this.id
 	}
 
-	assign(device, urn){
+	get deviceUrl() {
+		return "/rooms/" + this.id
+	}
+
+	assign(device){
 		return new Promise((resolve, reject) => {
-			axios.post(device.url + urn)
+			axios.post(device.url + this.deviceUrl)
 			.then((response)=>{
+				console.log("device assigned")
+				console.log(response)
 				resolve(response)
 			})
 			.catch((error)=>{

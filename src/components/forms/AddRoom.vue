@@ -66,10 +66,10 @@ export default {
   		}
   	},
   	save() {
-  		if (this.type.id && this.name) {
+  		if (this.name) {
   			this.$api.rooms.add({
 	  			name: this.name,
-	  			type: this.type.id,
+	  			// type: this.type.id,
 	  			meta: JSON.stringify({}),
 	  		}).then(() => {
 	  			this.$toaster.success(this.$strings[this.$language].rooms.add.success)
@@ -78,11 +78,11 @@ export default {
 	  			this.$toaster.error(error.message)
 	  		})
   		}
-  		if (!this.type.id) {
-  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedType)
-  		}
+  		// if (!this.type.id) {
+  		// 	this.$toaster.error(this.$strings[this.$language].devices.add.unselectedType)
+  		// }
   		if (!this.name) {
-  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedName)
+  			this.$toaster.error(this.$strings[this.$language].rooms.add.unselectedName)
   		}
   	}
   }
@@ -113,6 +113,7 @@ select
 input
 	width: 69%
 .submit-btn
+	cursor: pointer
 	background-color: $logo
 	color: black
 </style>

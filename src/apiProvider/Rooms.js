@@ -25,7 +25,7 @@ class Rooms {
 		  		meta: meta
 			})
 			.then(function(response) {
-				//api.eventBus.$emit('refreshDevices')
+				api.eventBus.$emit('refreshRooms')
 				resolve(response)
 			})
 			.catch(function(error){
@@ -69,6 +69,8 @@ class Rooms {
 		  		meta: room.meta
 			})
 			.then(function(response) {
+				api.eventBus.$emit('refreshRooms')
+				resolve(response)
 				console.log(response);
 			})
 			.catch(function(error){
@@ -82,7 +84,7 @@ class Rooms {
 		return new Promise((resolve, reject) => {
 			axios.delete(this.url + '/' + room.id)
 			.then(function(response) {
-				//api.eventBus.$emit('refreshDevices')
+				api.eventBus.$emit('refreshRooms')
 				resolve(response)
 			})
 			.catch(function(error){

@@ -16,7 +16,7 @@
 							<input v-model="dev.name" >
 						</div>
 					</div>
-					<div class="form-row">
+					<!-- <div class="form-row">
 						<div class="form-label">Piso</div>
 						<div class="form-field select-field">
 							<select v-model="selected">
@@ -26,15 +26,13 @@
 							  <option>C</option>
 							</select>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-row">
 						<div class="form-label">Habitacion</div>
 						<div class="form-field select-field">
-							<select v-model="selected">
-							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
+							<select v-model="selectedRoom">
+							  <option value=""></option>
+							  <option v-for="(room, id) in availableRooms" :key="id" :value="room">{{room.name}}</option>
 							</select>
 						</div>
 					</div>
@@ -60,7 +58,9 @@ export default {
 		return {
 			name: this.device.name,
 			selected: null,
-			dev: {}
+			dev: {},
+			selectedRoom: null,
+    		availableRooms: this.$rooms
 		}
 	},
 	methods: {
@@ -69,7 +69,14 @@ export default {
 			this.$emit('closeEdit')
 		},
 		save() {
-			this.$api.devices.modify(this.dev).then(() => {
+			let clearRoom = true
+			if (this.selectedRoom) {
+				clearRoom = false
+				this.dev.room = this.selectedRoom
+			} else {
+				delete this.dev.room
+			}
+			this.$api.devices.modify(this.dev, clearRoom).then(() => {
 	  			this.$toaster.success(this.$strings[this.$language].devices.edit.success)
 	  			this.closeModal()
 	  		}).catch((error) => {
@@ -79,6 +86,13 @@ export default {
 	},
 	mounted() {
 		this.dev = JSON.parse(JSON.stringify(this.device))
+		this.availableRooms.forEach((room) => {
+			room.devices.forEach((device) => {
+				if (device.id == this.device.id) {
+					this.selectedRoom = room
+				}
+			})
+		})
 	}
 }
 </script>

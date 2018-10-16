@@ -25,7 +25,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-row">
+					<!-- <div class="form-row">
 						<div class="form-label">Piso</div>
 						<div class="form-field select-field">
 							<select v-model="selected">
@@ -35,23 +35,21 @@
 							  <option>C</option>
 							</select>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-row">
 						<div class="form-label">Habitacion</div>
 						<div class="form-field select-field">
-							<select v-model="selected">
+							<select v-model="selectedRoom">
 							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
+							  <option v-for="(room, id) in availableRooms" :key="id" :value="room">{{room.name}}</option>
 							</select>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="modal-footer">
-			 		<div @click="submit" class="submit-btn">Agregar</div>
-      	</div>
+			<div class="modal-footer">
+		 		<div @click="submit" class="submit-btn">Agregar</div>
+	      	</div>
 		</div>
 	</div>
 </template>
@@ -60,13 +58,20 @@
 export default {
 
   name: 'AddDevice',
-
+  props: {
+  	room: {
+  		required: false,
+  		deafult: null
+  	}
+  },
   data () {
     return {
     	name: "",
     	type: {},
     	selected: null,
-    	deviceTypes: {}
+    	deviceTypes: {},
+    	selectedRoom: this.room,
+    	availableRooms: this.$rooms
     }
   },
   methods: {
@@ -90,6 +95,7 @@ export default {
 	  			name: this.name,
 	  			type: this.type.id,
 	  			meta: JSON.stringify({}),
+	  			room: this.selectedRoom
 	  		}).then(() => {
 	  			this.$toaster.success(this.$strings[this.$language].devices.add.success)
 	  			this.closeModal()

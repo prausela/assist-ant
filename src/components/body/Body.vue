@@ -1,6 +1,6 @@
 <template>
     <div id="main-content">
-        <div class="columns">
+        <div class="body-columns">
             <Devices/>
 
             <Favorites />
@@ -46,7 +46,7 @@
         flex: 1
         display: flex
         flex-direction: column
-    .columns
+    .body-columns
         max-height: 380px
         display: flex
         flex-direction: row 
@@ -98,11 +98,11 @@
      
         justify-content: center
     .active-btn
-        display: fel
+        display: flex
         background-color: $logo
         color: black
         border-radius: 5px
-        height: 15%
+        height: 30px
         text-align: center
         padding: 3px
 

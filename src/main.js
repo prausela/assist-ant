@@ -7,6 +7,8 @@ import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('v-icon', Icon)
 
+// Bulma
+
 // ControlButtonsFooter
 import ControlButtonsFooter from './components/ControlButtonsFooter'
 Vue.component('cbfooter', ControlButtonsFooter)
@@ -48,6 +50,19 @@ Vue.prototype.$refreshDevices()
 
 ApiServiceProvider.eventBus.$on('refreshDevices', () => {
   Vue.prototype.$refreshDevices()
+})
+
+Vue.prototype.$refreshRooms = function() {
+	Vue.prototype.$api.rooms.getAll().then((rooms) => {
+		Vue.prototype.$rooms = rooms
+		ApiServiceProvider.eventBus.$emit('roomsRefreshed')
+		console.log("Rooms refreshsed")
+	})
+}
+Vue.prototype.$refreshRooms()
+
+ApiServiceProvider.eventBus.$on('refreshRooms', () => {
+  Vue.prototype.$refreshRooms()
 })
 
 Vue.prototype.$language = "spanish"

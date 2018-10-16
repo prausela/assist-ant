@@ -3,25 +3,24 @@
 		<div class="icon-container">
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
 		</div>
-		<div v-if="verDevice" class="device">
-			<Lightbulb :device="device" @closeMe="closeMe" />
+		<div v-if="verModal" class="device">
+			<Room :room="room" @closeMe="closeMe" />
 		</div>
-		<div class="card-name">{{device.name}}</div>
+		<div class="card-name">{{room.name}}</div>
 	</div>
 </template>
 
 
 <script>
-import Lightbulb from "@/components/devices/Lightbulb.vue"
-
+import Room from "./Room.vue"
 export default {
 	components:{
-		Lightbulb
+		Room
 	},
 
-	name: 'LightCard',
+	name: 'RoomCard',
 	props: {
-		device: {
+		room: {
 			required: true	
 		},
 		openModals: {
@@ -31,18 +30,17 @@ export default {
 	},
 	data () {
 		return {
-			verDevice: false,
-			name: 'Luz'
+			verModal: false,
 		}
 	},
 	methods:{
 		pressedCard(){
 			if (this.openModals) {
-				this.verDevice = true
+				this.verModal = true
 			}
 		},
 		closeMe(){
-			this.verDevice = false
+			this.verModal = false
 
 		}
 	}

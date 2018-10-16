@@ -1,10 +1,10 @@
 <template>
-	<div class="card"  @click="verDevice = true">
+	<div class="device-card"  @click="verDevice = true">
 		<div class="icon-container">
 			<v-icon name="plus" class="card-icon" scale="1.5" />
 		</div>
 		<div v-if="verDevice" class="device">
-			<AddDevice @closeMe="verDevice = false" />
+			<AddDevice :room="room" @closeMe="verDevice = false" />
 		</div>
 	</div>
 </template>
@@ -21,13 +21,15 @@ export default {
 	props: {
 		device: {
 			required: false	
+		},
+		room: {
+			required: false
 		}
 	},
-
 	data () {
 		return {
 			name: 'Agregar',
-			verDevice: false
+			verDevice: false,
 		}
 	}
 }

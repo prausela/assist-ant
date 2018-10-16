@@ -1,9 +1,8 @@
 <template>
 	<div class="header">
-		<div class="title"></div>
-
-		<div class="icon">
-			<img class="icon-img" src="../assets/logo1.png">
+		<div class="empty"></div>
+		<div class="header-icon">
+			<img class="header-img" src="../assets/logo1.png">
 		</div>
 		<div class="info">
 			<Time/>
@@ -44,15 +43,15 @@ export default {
 	flex: 1
 	align-items: center
 	font-size: 30px
-.icon-img
-	height: 100%
+.header-img
+	height: 90%
 	width: auto
 	display: flex
 	align-items: center
 	justify-content: center
 
 
-.icon
+.header-icon
 	display: flex
 	flex-direction: row
 	justify-content: center
@@ -62,5 +61,4 @@ export default {
 	display: flex
 	justify-content: flex-end
 	align-items: center
-	flex: 1
 </style>
