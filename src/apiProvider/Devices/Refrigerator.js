@@ -26,17 +26,18 @@ class Refrigerator extends Device {
 				reject({
 					message: Strings[api.language].deviceTypes.refrigerator.errors.invalidRange
 				})
-			}
-
-			this.perform("setTemperature", [ temperature ]).then((response) => {
-				let newMeta = this.copyMeta()
-				newMeta.temperature = temperature
-				this.updateMeta(newMeta).catch((error) => {
+			} else {
+				this.perform("setTemperature", [ temperature ]).then((response) => {
+					let newMeta = this.copyMeta()
+					newMeta.temperature = temperature
+					this.updateMeta(newMeta).catch((error) => {
+						reject(error)
+					})
+				}).catch((error) => {
 					reject(error)
 				})
-			}).catch((error) => {
-				reject(error)
-			})
+			}
+
 		})
 	}
 
@@ -47,17 +48,17 @@ class Refrigerator extends Device {
 				reject({
 					message: Strings[api.language].deviceTypes.refrigerator.errors.invalidFreezerRange
 				})
-			}
-
-			this.perform("setFreezerTemperature", [ freezerTemperature ]).then((response) => {
-				let newMeta = this.copyMeta()
-				newMeta.freezerTemperature = freezerTemperature
-				this.updateMeta(newMeta).catch((error) => {
+			} else {
+				this.perform("setFreezerTemperature", [ freezerTemperature ]).then((response) => {
+					let newMeta = this.copyMeta()
+					newMeta.freezerTemperature = freezerTemperature
+					this.updateMeta(newMeta).catch((error) => {
+						reject(error)
+					})
+				}).catch((error) => {
 					reject(error)
 				})
-			}).catch((error) => {
-				reject(error)
-			})
+			}
 		})
 	}
 	

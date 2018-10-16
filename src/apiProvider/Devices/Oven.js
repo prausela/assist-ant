@@ -49,17 +49,17 @@ class Oven extends Device {
 				reject({
 					message: Strings[api.language].deviceTypes.oven.errors.invalidRange
 				})
-			}
-
-			this.perform("setTemperature", [ temperature ]).then((response) => {
-				let newMeta = this.copyMeta()
-				newMeta.temperature = temperature
-				this.updateMeta(newMeta).catch((error) => {
+			} else {
+				this.perform("setTemperature", [ temperature ]).then((response) => {
+					let newMeta = this.copyMeta()
+					newMeta.temperature = temperature
+					this.updateMeta(newMeta).catch((error) => {
+						reject(error)
+					})
+				}).catch((error) => {
 					reject(error)
 				})
-			}).catch((error) => {
-				reject(error)
-			})
+			}
 		})
 	}
 
