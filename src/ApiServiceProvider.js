@@ -14,6 +14,8 @@ class api {
 		this.devices = new Devices()
 		this.devicesTypes = new DevicesTypes()
 		this.rooms = new Rooms()
+		this.source = new EventSource(this.baseUrl + "/devices/events");
+		
 	}
 
 	get baseUrl(){
@@ -28,6 +30,19 @@ class api {
 
 	initialize() {
 		this.devicesTypes.getAll()
+		this.source.addEventListener('message', (e) =>{
+			// Se recibio un evento (emito el refresh)
+		  console.log('new event', e.data)
+		  this.eventBus.$emit('refreshDevices')
+
+
+		  // Para Timers, avisar que se terminó
+		  if (e.data.event == "timeIsUp") {
+		  	this.eventBus.$emit("timeIsUp", e.data.deviceId)
+		  }
+
+
+		}, false)
 	}
 
 	setLanguage(language) {

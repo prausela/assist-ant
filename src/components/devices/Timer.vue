@@ -14,17 +14,21 @@
                         <v-icon name="stopwatch" class="card-icon" scale="10" />
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" v-model="enabled"></switches>
                         <div class="seg-input">
                             <div class="form-label">Tiempo</div>
                             <div class="form-field">
-                                <input  placeholder="Segundos">
+                                <input v-model="seconds" placeholder="Segundos">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="setting-op">
-
+                    <div v-show="enabled">{{remainingTime}}</div>
+                        
+                    <div>
+                        <button :disabled="enabled" @click="start">Empezar!</button>
+                        <button :disabled="!enabled" @click="stop">Detener</button>
+                    </div>
                 </div>
                 
             </div>
@@ -39,9 +43,7 @@
 import Switches from 'vue-switches'
 
 export default {
-
     name: 'Timer',
-
     components: {
         Switches
     },
@@ -52,14 +54,73 @@ export default {
         return {
             name: 'Timer',
             enabled: false,
-
+            seconds: 300,
+            targetTime: 0,
+            remainingTime: 0,
+            interval: null
         }
+    },
+    mounted() {
+        this.device.getState().then((deviceInfo) => {
+            console.log(deviceInfo)
+            if (deviceInfo.status) {
+                this.enabled = deviceInfo.status
+                this.targetTime = this.calculateTargetMs(deviceInfo.remaining)
+                this.seconds = deviceInfo.interval
+                this.startInterval()    
+            }
+        })
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
+        },
+        start() {
+            
+            this.device.setInterval(this.seconds).catch((error) => {
+                console.log(error)
+            }).then(() => {
+                console.log('starting')
+                this.device.start().then(() => {
+                    this.enabled = true
+                    this.targetTime = this.calculateTargetMs(this.seconds)
+                    this.startInterval()
+                })
+            })
+
+        },
+        startInterval() {
+            this.interval = setInterval(() => {
+                this.updateTime()
+            }, 50);
+        },
+        calculateTargetMs(seconds) {
+            let now = new Date()
+            let nowMs = now.valueOf()
+            let targetMs = nowMs + seconds * 1000
+            return targetMs
+        },
+        stop() {
+            this.device.setInterval(this.seconds).catch((error) => {
+                console.log(error)
+            }).then(() => {
+                this.device.start().then(() => {
+                    this.enabled = true
+
+                })
+            })
+        },
+        updateTime() {
+            if (!this.enabled ) { return 0}
+            let now = new Date()
+            let nowMs = now.valueOf()
+
+
+            let msDiff = this.targetTime - nowMs
+
+            this.remainingTime =  (msDiff / 1000).toFixed(2)
         }
-    }
+    },
 }
 </script>
 

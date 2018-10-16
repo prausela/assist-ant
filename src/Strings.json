@@ -109,7 +109,8 @@
 				}
 			},
 			"timer": {
-				"label": "Cronometro"
+				"label": "Cronometro",
+				"timeIsUp": "Se acabo el tiempo!"
 			}
 		}
 	}

@@ -11,8 +11,24 @@ class Timer extends Device {
 		return this.perform("setInterval", [ elapsed_time ]);
 	}
 
+	//Boolean true turns on, false off
+	getState(){
+		return new Promise((resolve, reject) => { 
+			this.perform('getState').then((response) => {
+				if (response.result.status == "inactive") {
+					response.result.status = false
+				} else {
+					response.result.status = true
+				}
+				resolve(response.result)
+			}).catch((error) => {
+				reject(error)
+			})
+		})
+	}
+
 	start(){
-		return this.perform("start");
+		return this.perform("start")
 	}
 
 	stop(){

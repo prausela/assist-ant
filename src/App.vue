@@ -20,6 +20,10 @@ export default {
     // console.log(ApiServiceProvider)
     // ApiServiceProvider.testAxios()
 
+    this.$api.eventBus.$on('timeIsUp', () => {
+      this.$toaster.info(this.$strings[this.$language].devices.timer.timeIsUp)
+    })
+
     // ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
     //   console.log(response)
     // })
