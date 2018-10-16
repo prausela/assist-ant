@@ -96,12 +96,11 @@ export default {
   height: 35px
   min-height: 35px
   user-select: none
-  color: rgba(0, 0, 0, 0.61);
-  font-size: 17px;
+  color: rgba(0, 0, 0, 0.61)
+  font-size: 10px
   .tab 
     flex: 0 1 33%
     position: relative
-    padding: 0 1rem
     display: flex
     align-items: center
     justify-content: center

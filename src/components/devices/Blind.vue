@@ -85,6 +85,8 @@ export default {
     
 
 .arrow-s
+    border: 1px solid black
+    margin: 2px
     &.active
         background-color: #b1aeae
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
@@ -92,7 +94,6 @@ export default {
 
 .arrow
     padding: 8px
-    border: 1px solid black
     margin: 2px
     cursor: pointer
     
