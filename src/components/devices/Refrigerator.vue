@@ -87,6 +87,8 @@ export default {
             this.$emit('closeMe')
         },
         setMode(newMode) {
+
+
             this.mode = newMode
             this.device.setMode(newMode).catch((error) => {
                 console.log(error)
@@ -94,7 +96,10 @@ export default {
         },
         setTemperature(temperature){
             this.temperature=temperature
-            this.device.setTemperature(temperature).catch((error) => {
+            this.device.setTemperature(temperature).then(()=>{
+                this.$toaster.success(this.$strings[this.$language].devices.modify.success)
+                this.closeModal()
+            }).catch((error) => {
                 console.log(error)
             })
         },

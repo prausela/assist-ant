@@ -17,6 +17,12 @@
 			},
 			"delete": {
 				"success": "Device succesfully deleted"
+			},
+			"modify": {
+				"success":"Device modify succesfully "
+			},
+			"unknown": {
+				"error" : "Same temperature"
 			}
 		},
 		"rooms": {
@@ -87,6 +93,12 @@
 			},
 			"delete": {
 				"success": "El dispositivo se eliminó correctamente"
+			},
+			"modify": {
+				"success": "El dispositivo se modificó correctamente"
+			},
+			"unknown": {
+				"error" : "La temperatura es la misma"
 			}
 		},
 		"deviceTypes": {
