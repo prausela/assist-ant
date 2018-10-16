@@ -39,11 +39,13 @@
                            <img class="fan-img" src="@/assets/modes/fan-75.png" v-if="this.speed == '75' ">
 
                            <img class="fan-img" src="@/assets/modes/fan-100.png" v-if="this.speed == '100' ">
+
+                           <img class="fan-img" src="@/assets/modes/fan-auto.png" v-if="this.speed == 'auto' ">
                            <div class="plus-container" @click="setFanSpeed('25')">
 
                             <v-icon name="plus" class="mode" scale="1" />
                         </div>
-                        <!-- <div class="fan-auto" @click="setFanSpeed('auto')" :class="{active: horizontalSwing == '90'}">Auto</div> -->
+                        <div class="fan-auto" @click="setFanSpeed('auto')" :class="{active: speed == 'auto'}">Auto</div>
                         <div class="empty"></div>
                         <div class="empty"></div>
 
@@ -128,6 +130,19 @@ export default {
                 console.log(error)
             })
         },
+        setTemperature(temperature){
+            this.temperature=temperature
+            this.device.setTemperature(temperature).then(()=>{
+                console.log("exito")
+                this.$toaster.success(this.$strings[this.$language].devices.modify.success)
+            }).catch((error) => {
+                if (error.message == "Unknown error") {
+                    console.log(error)
+                } else {
+                    this.$toaster.error(error.message)
+                }
+            }) 
+        },
         setMode(newMode) {
             this.mode = newMode
             this.device.setMode(newMode).catch((error) => {
@@ -156,9 +171,12 @@ export default {
                 })
             }
             else if(newFS=='-25'){
-             this.speed= parseInt(this.speed)
+                if(this.speed=='auto'){
+                    this.speed='25'
+                }
+               this.speed= parseInt(this.speed)
 
-             if(this.speed!=25){
+               if(this.speed!=25){
                 this.speed-=25
                 this.speed=this.speed.toString()
                 this.device.setFanSpeed(this.speed).catch((error)=>{
@@ -167,6 +185,9 @@ export default {
             }
         }
         else if(newFS=='25'){
+            if(this.speed=='auto'){
+                    this.speed='0'
+                }
             this.speed= parseInt(this.speed)
 
             if(this.speed!=100){

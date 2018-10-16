@@ -120,7 +120,6 @@ export default {
             this.device.setTemperature(temperature).then(()=>{
                 console.log("exito")
                 this.$toaster.success(this.$strings[this.$language].devices.modify.success)
-                this.closeModal()
             }).catch((error) => {
                 if (error.message == "Unknown error") {
                     console.log(error)
