@@ -28,7 +28,6 @@
 							</select>
 						</div>
 					</div>
-					<!-- <DevicesList :devices="allDevices" /> -->
 				</div>
 			</div>
 		  	<div class="modal-footer">
@@ -40,7 +39,6 @@
 
 <script>
 import AddDevice from "./AddDevice.vue"
-import testData from "@/testData.js"
 
 export default {
 	components:{
@@ -50,7 +48,6 @@ export default {
 
   data () {
     return {
-    	allDevices: testData.devices,
     	devices: [],
     	showAddModal: false,
     	name: "",
@@ -70,7 +67,7 @@ export default {
   	},
   	save() {
   		if (this.type.id && this.name) {
-  			this.$api.devices.add({
+  			this.$api.rooms.add({
 	  			name: this.name,
 	  			type: this.type.id,
 	  			meta: JSON.stringify({}),
