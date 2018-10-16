@@ -97,17 +97,28 @@ export default {
         setTemperature(temperature){
             this.temperature=temperature
             this.device.setTemperature(temperature).then(()=>{
+                console.log("exito")
                 this.$toaster.success(this.$strings[this.$language].devices.modify.success)
-                this.closeModal()
             }).catch((error) => {
-                console.log(error)
-            })
+                if (error.message == "Unknown error") {
+                    console.log(error)
+                } else {
+                    this.$toaster.error(error.message)
+                }
+            }) 
         },
         setFreezerTemperature(freezerTemperature){
             this.freezerTemperature=freezerTemperature
-            this.device.setFreezerTemperature(freezerTemperature).catch((error) => {
-                console.log(error)
-            })
+            this.device.setFreezerTemperature(freezerTemperature).then(()=>{
+                console.log("exito")
+                this.$toaster.success(this.$strings[this.$language].devices.modify.success)
+            }).catch((error) => {
+                if (error.message == "Unknown error") {
+                    console.log(error)
+                } else {
+                    this.$toaster.error(error.message)
+                }
+            }) 
         }
 
     }
@@ -149,6 +160,7 @@ export default {
     width: 30px
     height: 30px
     cursor: pointer
+    font-size: 10px
 
 
 .switch-container

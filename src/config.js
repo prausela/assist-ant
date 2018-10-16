@@ -32,7 +32,7 @@ export default {
 			"defaults": {
 				"temperature": 24,
 				"mode": "cool",
-				"verticalSwing": "auto,",
+				"verticalSwing": "auto",
 				"horizontalSwing": "auto",
 				"speed": "25"
 			}
