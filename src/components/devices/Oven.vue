@@ -19,9 +19,7 @@
                             <div class="temp-header">Temperatura</div>
                             <div class="temp-body">
                                 <input class="numberField" type="number" placeholder="°C" v-model="temperature">
-                                <div class="save-btn">
-                                    <div class="save-txt" @click="setTemperature(temperature)">Guardar</div>
-                                </div>
+                                    <a class="button is-primary" @click="setTemperature(temperature)">Guardar</a>
                             </div>
                         </div>
                     </div>
