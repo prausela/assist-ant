@@ -4,6 +4,7 @@ import DevicesTypes from './apiProvider/DevicesTypes.js'
 export const axios = require('axios');
 import Vue from 'vue';
 import Rooms from './apiProvider/Rooms.js'
+import Routines from './apiProvider/Routines.js'
 
 class api {
 
@@ -15,6 +16,7 @@ class api {
 		this.devicesTypes = new DevicesTypes()
 		this.rooms = new Rooms()
 		this.source = new EventSource(this.baseUrl + "/devices/events");
+		this.routines = new Routines()
 		
 	}
 

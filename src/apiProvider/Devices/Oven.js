@@ -22,7 +22,7 @@ class Oven extends Device {
 		if(typeof(this.meta.convection) == "undefined") {
 			this.meta.convection = config.deviceTypes.oven.defaults.convection
 		}
-
+		this.actions.push("setState", "setTemperature", "setHeat", "setGrill", "setConvection")
 
 	}
 

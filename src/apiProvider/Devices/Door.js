@@ -12,6 +12,8 @@ class Door extends Device {
 		if(typeof(this.meta.lock) == "undefined") {
 			this.meta.lock = false
 		}
+
+		this.actions.push("setState", "setLock")
 	}
 
 	//Boolean true turns on, false off

@@ -25,6 +25,8 @@ class AC extends Device {
 		if(typeof(this.meta.mode) == "undefined") {
 			this.meta.mode = config.deviceTypes.ac.defaults.mode
 		}
+		this.actions.push("setState", "setTemperature", "setMode"
+			, "setVerticalSwing", "setHorizontalSwing", "setFanSpeed")
 	}
 
 	//Boolean true turns on, false off
