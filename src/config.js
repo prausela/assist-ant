@@ -5,6 +5,7 @@ export default {
 		url: 'api'
 	},
 	"deviceTypes": {
+		"disabledDevices": ["alarm", "timer"],
 		"lamp": {
 			"defaultColor": "#EAFF4D",
 			"defaultBrightness": 10,

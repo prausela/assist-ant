@@ -15,10 +15,13 @@
                     </div>
                     <div class="switch-container">
                         <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
-                        <div class="temp-input">
-                            <div class="form-label">Temperatura</div>
-                            <div class="form-field">
-                                <input v-model="temperature" placeholder="°C">
+                        <div class="temp-input" :class="{invisible: !enabled}">
+                            <div class="temp-header">Temperatura</div>
+                            <div class="temp-body">
+                                <input class="numberField" type="number" placeholder="°C" v-model="temperature">
+                                <div class="save-btn">
+                                    <div class="save-txt" @click="setTemperature(temperature)">Guardar</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -193,7 +196,7 @@ export default {
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
 .invisible
-     opacity: 0
+    opacity: 0
 
 
 

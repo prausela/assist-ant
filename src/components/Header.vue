@@ -46,7 +46,7 @@ export default {
 	font-size: 30px
 .icon-img
 	height: 100%
-	width: 50%
+	width: auto
 	display: flex
 	align-items: center
 	justify-content: center
@@ -57,7 +57,6 @@ export default {
 	flex-direction: row
 	justify-content: center
 	align-items: center
-	flex: 2
 
 .info 
 	display: flex

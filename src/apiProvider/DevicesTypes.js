@@ -27,16 +27,19 @@ class DevicesTypes {
 		return api.baseUrl + '/devicetypes'	
 	}
 
+
 	downloadTypes() {
 		return new Promise ((resolve, reject) => {
 			axios.get(this.getUrl()).then( (response) => {
 				let types = response.data.devices
 				let deviceTypes = {}
 				types.forEach((type) => {
-					deviceTypes[type.id] = type
-					deviceTypes[type.id].label = config.deviceTypes[type.name].label
-					deviceTypes[type.id].canAdd = config.deviceTypes[type.name].canAdd
-					deviceTypes[type.id].component = config.deviceTypes[type.name].component
+					if (!config.deviceTypes.disabledDevices.includes(type.name)) {
+						deviceTypes[type.id] = type
+						deviceTypes[type.id].label = config.deviceTypes[type.name].label
+						deviceTypes[type.id].canAdd = config.deviceTypes[type.name].canAdd
+						deviceTypes[type.id].component = config.deviceTypes[type.name].component
+					}
 				})
 				resolve(deviceTypes)
 			}).catch ((error) => {

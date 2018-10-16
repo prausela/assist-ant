@@ -12,8 +12,22 @@
 				"unselectedName": "Must choose a name",
 				"success": "The device was added succesfully"
 			},
+			"edit": {
+				"success": "The device was edited succesfully"
+			},
 			"delete": {
 				"success": "Device succesfully deleted"
+			},
+			"modify": {
+				"success":"Device modify succesfully "
+			},
+			"unknown": {
+				"error" : "Same temperature"
+			}
+		},
+		"rooms": {
+			"add": {
+				"success": "Room created successfully"
 			}
 		},
 		"deviceTypes": {
@@ -57,7 +71,15 @@
 		"api": {
 			"devices": {
 				"addSuccessful": "El dispositivo se agrego correctamente",
-				"addErr2": "El nombre del dispositivo ya esta en uso"
+				"addErr2": "El nombre del dispositivo ya esta en uso",
+				"addErr1": "El nombre del dispositivo debe tener al menos 3 letras",
+				"unknownError": "Hubo un error al agregar el dispositivo, por favor con el soporte tecnico"
+			}
+		},
+		"rooms": {
+			"add": {
+				"success": "El cuarto se agregó correctamente",
+				"unselectedName": "Debe elegir un nombre para el cuarto"
 			}
 		},
 		"devices": {
@@ -66,8 +88,17 @@
 				"unselectedName": "Debe elegir un nombre para el dispositivo",
 				"success": "El dispositivo se agrego correctamente"
 			},
+			"edit": {
+				"success": "El dispositivo se editó correctamente"
+			},
 			"delete": {
 				"success": "El dispositivo se eliminó correctamente"
+			},
+			"modify": {
+				"success": "El dispositivo se modificó correctamente"
+			},
+			"unknown": {
+				"error" : "La temperatura es la misma"
 			}
 		},
 		"deviceTypes": {
@@ -103,7 +134,8 @@
 				}
 			},
 			"timer": {
-				"label": "Cronometro"
+				"label": "Cronometro",
+				"timeIsUp": "Se acabo el tiempo!"
 			}
 		}
 	}

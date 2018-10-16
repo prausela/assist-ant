@@ -22,7 +22,7 @@ Vue.use(Toaster, {timeout: 5000})
 
 
 // Downloading Api Data
-import config from './config/config.js'
+import config from './config.js'
 import ApiServiceProvider from './ApiServiceProvider'
 import Strings from './Strings.json'
 ApiServiceProvider.initialize()
@@ -50,7 +50,7 @@ ApiServiceProvider.eventBus.$on('refreshDevices', () => {
   Vue.prototype.$refreshDevices()
 })
 
-Vue.prototype.$language = "english"
+Vue.prototype.$language = "spanish"
 
 
 

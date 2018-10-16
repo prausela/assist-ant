@@ -20,7 +20,7 @@
 					<div class="form-row">
 						<div class="form-label">Tipo de Habitacion</div>
 						<div class="form-field select-field">
-							<select v-model="selected">
+							<select v-model="type">
 							  <option disabled value=""></option>
 							  <option>A</option>
 							  <option>B</option>
@@ -28,24 +28,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="form-label">Piso</div>
-						<div class="form-field select-field">
-							<select v-model="selected">
-							  <option disabled value=""></option>
-							  <option>A</option>
-							  <option>B</option>
-							  <option>C</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-label">Dispositivos dentro de la Habitacion</div>
-						<div class="form-field select-field">
-							
-						</div>
-					</div>
-					<DevicesList :devices="allDevices" />
+					<!-- <DevicesList :devices="allDevices" /> -->
 				</div>
 			</div>
 		  	<div class="modal-footer">
@@ -71,7 +54,7 @@ export default {
     	devices: [],
     	showAddModal: false,
     	name: "",
-    	selected: null
+    	type: null
     }
   },
   methods: {
@@ -86,7 +69,24 @@ export default {
   		}
   	},
   	save() {
-  		console.log('saving device')
+  		if (this.type.id && this.name) {
+  			this.$api.devices.add({
+	  			name: this.name,
+	  			type: this.type.id,
+	  			meta: JSON.stringify({}),
+	  		}).then(() => {
+	  			this.$toaster.success(this.$strings[this.$language].rooms.add.success)
+	  			this.closeModal()
+	  		}).catch((error) => {
+	  			this.$toaster.error(error.message)
+	  		})
+  		}
+  		if (!this.type.id) {
+  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedType)
+  		}
+  		if (!this.name) {
+  			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedName)
+  		}
   	}
   }
 }

@@ -20,6 +20,10 @@ export default {
     // console.log(ApiServiceProvider)
     // ApiServiceProvider.testAxios()
 
+    this.$api.eventBus.$on('timeIsUp', () => {
+      this.$toaster.info(this.$strings[this.$language].devices.timer.timeIsUp)
+    })
+
     // ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
     //   console.log(response)
     // })
@@ -157,6 +161,50 @@ body
         background-color: #b1aeae
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
+.temp-input
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 1
+    padding-bottom: 10px
+    .form-field
+        align-self: flex-end
+        padding-right: 20px
+.temp-header
+    display: flex
+    flex: 1
+    width: 100%
+    align-items: center
+    justify-content: center
+.temp-body
+    display: flex
+    flex: 2
+    width: 100%
+    align-items: flex-start
+    justify-content: center
+.numberField
+    display: flex
+    flex: 1
+    width: 50%
+    margin-left: 25px
+    margin-top: 2px
+.save-btn
+    display: flex
+    flex: 1
+    justify-content: left
+    margin-left: 5px
+
+
+.save-txt
+    border: 1px solid black
+    cursor: pointer
+    padding: 3px
+.save-txt:hover
+    background-color: #b1aeae
+    box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+
   
 // Tarjetas
 .card
@@ -178,7 +226,7 @@ body
   border-radius: 5px
   cursor: pointer
   min-height: 60px
-
+  justify-content: center
 
 
 .card-icon
@@ -193,15 +241,6 @@ body
   margin: 5px 0px
   cursor: pointer
     
-.icon-container
-  justify-content: center
-  align-content: center
-  
-  border: 1px solid black
-  display: flex
-  position: relative
-  padding: 5px
-
 .submit-btn
   padding: 5px 15px
   border-radius: 10px

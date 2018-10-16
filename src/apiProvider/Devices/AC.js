@@ -50,17 +50,19 @@ class AC extends Device {
 				reject({
 					message: Strings[api.language].deviceTypes.ac.errors.invalidRange
 				})
-			}
-
-			this.perform("setTemperature", [ temperature ]).then((response) => {
-				let newMeta = this.copyMeta()
-				newMeta.temperature = temperature
-				this.updateMeta(newMeta).catch((error) => {
+			} else {
+				this.perform("setTemperature", [ temperature ]).then((response) => {
+					let newMeta = this.copyMeta()
+					newMeta.temperature = temperature
+					this.updateMeta(newMeta).catch((error) => {
+						reject(error)
+					}).then (() => {
+						resolve()
+					})
+				}).catch((error) => {
 					reject(error)
 				})
-			}).catch((error) => {
-				reject(error)
-			})
+			}
 		})
 	}
 
