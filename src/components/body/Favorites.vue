@@ -39,7 +39,7 @@ export default {
   flex-direction: column
 
 .favorites-title
-    margin: 17px 0
+    margin: 8px 0
     color: rgba(0, 0, 0, 0.61)
     font-size: 17px
 

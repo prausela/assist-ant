@@ -12,6 +12,9 @@
 				"unselectedName": "Must choose a name",
 				"success": "The device was added succesfully"
 			},
+			"edit": {
+				"success": "The device was edited succesfully"
+			},
 			"delete": {
 				"success": "Device succesfully deleted"
 			}
@@ -66,6 +69,9 @@
 				"unselectedName": "Debe elegir un nombre para el dispositivo",
 				"success": "El dispositivo se agrego correctamente"
 			},
+			"edit": {
+				"success": "El dispositivo se editó correctamente"
+			},
 			"delete": {
 				"success": "El dispositivo se eliminó correctamente"
 			}
@@ -103,7 +109,8 @@
 				}
 			},
 			"timer": {
-				"label": "Cronometro"
+				"label": "Cronometro",
+				"timeIsUp": "Se acabo el tiempo!"
 			}
 		}
 	}
