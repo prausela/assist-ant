@@ -1,5 +1,5 @@
 <template>
-	<div class="card" @click="pressedCard">
+	<div class="device-card" @click="pressedCard">
 		<div class="icon-container">
 			<img class="refri-img" src="@/assets/devices/refrigerator.png">
 		</div>

@@ -1,5 +1,5 @@
 <template>
-	<div class="card" @click="pressedCard">
+	<div class="device-card" @click="pressedCard">
 		<div class="icon-container">
 			<v-icon name="door-closed" class="card-icon" scale="2" />
 		</div>

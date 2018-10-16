@@ -6,6 +6,11 @@ import App from './App.vue'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('v-icon', Icon)
+import Icono from "./components/Icon.vue"
+Vue.component('icono', Icono)
+// Bulma
+import './../node_modules/bulma/css/bulma.css';
+
 
 // ControlButtonsFooter
 import ControlButtonsFooter from './components/ControlButtonsFooter'
@@ -48,6 +53,19 @@ Vue.prototype.$refreshDevices()
 
 ApiServiceProvider.eventBus.$on('refreshDevices', () => {
   Vue.prototype.$refreshDevices()
+})
+
+Vue.prototype.$refreshRooms = function() {
+	Vue.prototype.$api.rooms.getAll().then((rooms) => {
+		Vue.prototype.$rooms = rooms
+		ApiServiceProvider.eventBus.$emit('roomsRefreshed')
+		console.log("Rooms refreshsed")
+	})
+}
+Vue.prototype.$refreshRooms()
+
+ApiServiceProvider.eventBus.$on('refreshRooms', () => {
+  Vue.prototype.$refreshRooms()
 })
 
 Vue.prototype.$language = "spanish"

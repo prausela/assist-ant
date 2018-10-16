@@ -34,8 +34,19 @@ class Devices{
 		  		meta: device.meta
 			})
 			.then(function(response) {
-				api.eventBus.$emit('refreshDevices')
-				resolve(response)
+				if (device.room) {
+					let newDev = new Device(response.data.device)
+					newDev.dissociate().then(() => {
+						device.room.assign(newDev).then(() => {
+							api.eventBus.$emit('refreshDevices')
+							api.eventBus.$emit('refreshRooms')
+							resolve(response)
+						})
+					})
+				} else {
+					api.eventBus.$emit('refreshDevices')
+					resolve(response)
+				}
 			})
 			.catch((err) => {
 				let message = Strings[api.language].api.devices["addErr" + err.response.data.error.code]
@@ -112,7 +123,7 @@ class Devices{
 		return deviceObj
 	}
 
-	modify(device){
+	modify(device, clearRoom){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			//Remember to change to device.url
@@ -122,10 +133,33 @@ class Devices{
 		  		meta: JSON.stringify(device.meta)
 			})
 			.then(function(response) {
-				api.eventBus.$emit('refreshDevices')
-				resolve(response)
+				let newDev = new Device(device)
+				if (device.room) {
+					newDev.dissociate().then(() => {
+						device.room.assign(newDev).then(() => {
+							api.eventBus.$emit('refreshDevices')
+							api.eventBus.$emit('refreshRooms')
+							resolve(response)
+						})
+					})
+				} else {
+					if (clearRoom) {
+						newDev.dissociate().then(() => {
+							api.eventBus.$emit('refreshDevices')
+							api.eventBus.$emit('refreshRooms')
+							resolve(response)
+						}).catch((error) => {
+							console.log("error")
+						})  
+					} else {
+						api.eventBus.$emit('refreshDevices')
+						api.eventBus.$emit('refreshRooms')
+						resolve(response)
+					}
+				}
 			})
 			.catch(function(error){
+				console.log(error)
 				reject(error)
 			});
 		});
@@ -138,6 +172,7 @@ class Devices{
 			axios.delete(this.url + '/' + device.id)
 			.then(function(response) {
 				api.eventBus.$emit('refreshDevices')
+				api.eventBus.$emit('refreshRooms')
 				resolve(response)
 			})
 			.catch(function(error){

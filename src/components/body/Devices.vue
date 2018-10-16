@@ -3,20 +3,25 @@
     <div class="tabs">
       <div v-for="(tab,index) in tabs" :class="{selected: selectedTab == tab}" :key="index" class="devices-tab tab" @click="selectedTab = tab">{{tab.label}}</div>
     </div>
-    <DevicesList :add="true" :devices="devices" />
+    <DevicesList :add="true" :devices="devices" v-show="selectedTab == tabs.Dispositivos" />
+    <RoomsList :add="true" :rooms="rooms" v-show="selectedTab == tabs.Habitaciones" />
   </div>
 </template>
 <script>
 
+import RoomsList from "./RoomsList.vue"
 
 export default {
 
   name: 'Devices',
-
+  components: {
+    RoomsList
+  },
   data () {
     return {
       verBotones: true, 
       devices: [],
+      rooms: [],
       tabs: {
         Dispositivos: {
           label: "DISPOSITIVOS"
@@ -24,9 +29,6 @@ export default {
         Habitaciones: {
           label: "HABITACIONES"
         },
-        Pisos: {
-          label: "PISOS"
-        }
       },
       selectedTab: null
     }
@@ -38,13 +40,21 @@ export default {
     },
     refreshDevices() {
       this.devices = this.$devices
-    }
+    },
+    refreshRooms() {
+      this.rooms = this.$rooms
+      console.log("Rooms refreshed", this.rooms)
+    },
   },
   mounted() {
     this.selectedTab = this.tabs.Dispositivos
     this.refreshDevices()
+    this.refreshRooms() 
     this.$api.eventBus.$on('devicesRefreshed', () => {
       this.refreshDevices()
+    })
+    this.$api.eventBus.$on('roomsRefreshed', () => {
+      this.refreshRooms()
     })
   }
 }
@@ -99,7 +109,7 @@ export default {
   color: rgba(0, 0, 0, 0.61)
   font-size: 10px
   .tab 
-    flex: 0 1 33%
+    flex: 0 1 50%
     position: relative
     display: flex
     align-items: center

@@ -34,15 +34,15 @@
                         <div class="sliders">
                             <slider-picker v-model="colors" @input="changedColor" />
                         </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <cbfooter :device="device" @closeModal="closeModal" />
+                <div class="modal-footer">
+                    <cbfooter :device="device" @closeModal="closeModal" />
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>

@@ -63,7 +63,7 @@ body
 
 
 //  Modal
-.modal
+body .modal
   position: fixed
   left: 0
   top: 0
@@ -207,7 +207,7 @@ body
 
   
 // Tarjetas
-.card
+.device-card
   display: flex
   justify-content:center
   align-content:center
@@ -245,6 +245,8 @@ body
   padding: 5px 15px
   border-radius: 10px
   background-color: #06de06
-
+.empty
+  min-width: 1px
+  min-height: 1px
 
 </style>
