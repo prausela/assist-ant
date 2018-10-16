@@ -1,7 +1,7 @@
 <template>
 	<div class="device-card" @click="pressedCard">
 		<div class="icon-container">
-			<v-icon name="lightbulb" class="card-icon" scale="2" />
+			<icono :name="room.meta.icon" class="card-icon" scale="2" />
 		</div>
 		<div v-if="verModal" class="device">
 			<Room :room="room" @closeMe="closeMe" />

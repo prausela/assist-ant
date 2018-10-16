@@ -76,7 +76,9 @@
 		"rooms": {
 			"add": {
 				"success": "La habitación se agregó correctamente",
-				"unselectedName": "Debe elegir un nombre para la habitación"
+				"unselectedName": "Debe elegir un nombre para la habitación",
+				"addErr1": "El nombre de la habitación debe tener al menos 3 letras",
+				"addErr2": "El nombre de la habitación ya esta en uso"
 			},
 			"delete": {
 				"success": "La habitación se eliminó correctamente"

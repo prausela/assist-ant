@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			 <div class="modal-footer">
-			 	<div @click="save" class="submit-btn">Guardar</div>
+			 	<div @click="save" class="button is-primary">Guardar</div>
             </div>
 		</div>
 	</div>

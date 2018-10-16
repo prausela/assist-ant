@@ -16,7 +16,7 @@
                     <div class="r-body">
                         <div class="r-name">Nombre Rutina</div>
                         <div class="r-btn">
-                            <div class="active-btn">Activar</div>
+                            <a class="button is-primary">Activar</a>
                         </div>
                 </div>
                 </div>

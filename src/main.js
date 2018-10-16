@@ -6,8 +6,11 @@ import App from './App.vue'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('v-icon', Icon)
-
+import Icono from "./components/Icon.vue"
+Vue.component('icono', Icono)
 // Bulma
+import './../node_modules/bulma/css/bulma.css';
+
 
 // ControlButtonsFooter
 import ControlButtonsFooter from './components/ControlButtonsFooter'

@@ -6,16 +6,19 @@
 				<!-- <EditRoom :device="device" @closeEdit="closeEdit"/> -->
 			</div>
 		</div>
-		<div @click="remove" class="footer-icon">
+		<div @click="showRemoveModal" class="footer-icon">
 			<v-icon name="trash-alt" scale="2" />
 		</div>
-	</div>
+    <DeleteDevicesModal v-if="deleteModal" @cancel="deleteModal = false" @confirm="remove(true)" @decline="remove(false)" />
+  </div>
 </template>
 
 <script>
 // import EditRoom from "@/components/forms/EditRoom.vue"
+import DeleteDevicesModal from "./DeleteDevicesModal"
 export default {
   components:{
+    DeleteDevicesModal
     // EditRoom
   },
 
@@ -27,14 +30,18 @@ export default {
   data () {
     return {
         verEdit:false,
+        deleteModal: false
     }
   },
   methods: {
     edit(){
       this.verEdit = true
     },
-    remove() {
-      this.$api.rooms.delete(this.room).then(() => {
+    showRemoveModal() {
+      this.deleteModal = true
+    },
+    remove(clearDevices) {
+      this.$api.rooms.delete(this.room, clearDevices).then(() => {
           this.$toaster.success(this.$strings[this.$language].rooms.delete.success)
           this.$emit('closeModal')
       }).catch((error) => {

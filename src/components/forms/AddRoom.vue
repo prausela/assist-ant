@@ -18,54 +18,15 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div class="form-label">Tipo de Habitacion</div>
-						<div class="form-field select-field">
-							<select v-model="type">
-								<option disabled value=""></option>
-								<option>A</option>
-								<option>B</option>
-								<option>C</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-row">
 						<div class="form-label">Imagen de la habitacion</div>
 						<div class="devices-list">
-							<div class="icon-container1">
-								<v-icon name="bed" class="img1" scale="1.5" />
-							</div>
-							<div class="icon-container1">
-								<v-icon name="couch" class="img1" scale="1.5" />
-							</div>
-							<div class="icon-container1">
-								<img class="img1" src="@/assets/rooms/bathroom.png">
-							</div>
-							<div class="icon-container1">
-								<img class="img1" src="@/assets/rooms/dining-room.png">
-							</div>
-							<div class="icon-container1">
-								<img class="img1"  src="@/assets/rooms/garden.png">
-							</div>
-							<div class="icon-container1">
-								<img  class="img1" src="@/assets/rooms/kitchen.png">
-							</div>
-							<div class="icon-container1">
-								<img  class="img1" src="@/assets/rooms/office.png">
-							</div>
-							<div class="icon-container1">
-								<img  class="img1" src="@/assets/rooms/washing-room.png">
-							</div>
-							<div class="icon-container1">
-								<v-icon name="swimming-pool" class="img1" scale="1.5" />
-							</div>
-
-
+							<icono @click="selectedIcon = icon" :active="selectedIcon == icon" style="cursor: pointer" v-for="icon in icons" :name="icon" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<div @click="save" class="submit-btn">Agregar</div>
+				<div @click="save" class="button is-primary">Agregar</div>
 			</div>
 		</div>
 	</div>
@@ -85,8 +46,24 @@ export default {
     	devices: [],
     	showAddModal: false,
     	name: "",
-    	type: null
+    	type: null,
+    	selectedIcon: null,
+    	icons: [
+			"bed",
+			"couch",
+			"bathroom",
+			"dining-room",
+			"garden",
+			"kitchen",
+			"office",
+			"washing-room",
+			"swimming-pool",
+    	],
+
     }
+  },
+  mounted() {
+  	this.selectedIcon = this.icons[0]
   },
   methods: {
   	closeModal() {
@@ -104,7 +81,9 @@ export default {
   			this.$api.rooms.add({
 	  			name: this.name,
 	  			// type: this.type.id,
-	  			meta: JSON.stringify({}),
+	  			meta: JSON.stringify({
+	  				icon: this.selectedIcon
+	  			}),
 	  		}).then(() => {
 	  			this.$toaster.success(this.$strings[this.$language].rooms.add.success)
 	  			this.closeModal()
@@ -124,10 +103,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.img1
-	display: flex
-	width: 50px
-	height: 50px
 
 
 .devices-list

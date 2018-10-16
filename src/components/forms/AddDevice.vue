@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-		 		<div @click="submit" class="submit-btn">Agregar</div>
+		 		<a @click="submit" class="button is-primary">Agregar</a>
 	      	</div>
 		</div>
 	</div>

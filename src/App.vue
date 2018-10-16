@@ -63,7 +63,7 @@ body
 
 
 //  Modal
-.modal
+body .modal
   position: fixed
   left: 0
   top: 0

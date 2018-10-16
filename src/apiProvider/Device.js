@@ -38,6 +38,10 @@ class Device {
 		});
 	}
 
+	delete() {
+		return api.devices.delete(this)
+	}
+
 	perform(action, parameters){
 		if(!parameters){
 			parameters = [];
