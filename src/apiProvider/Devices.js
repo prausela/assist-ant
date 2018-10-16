@@ -1,6 +1,6 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
-
+import config from '@/config.js'
 import AC from './Devices/AC.js'
 import Alarm from './Devices/Alarm.js'
 import Blind from './Devices/Blind.js'
@@ -9,7 +9,7 @@ import Lamp from './Devices/Lamp.js'
 import Oven from './Devices/Oven.js'
 import Refrigerator from './Devices/Refrigerator.js'
 import Timer from './Devices/Timer.js'
-
+import Strings from '@/Strings.json'
 import Device from './Device.js'
 
 class Devices{
@@ -37,10 +37,17 @@ class Devices{
 				api.eventBus.$emit('refreshDevices')
 				resolve(response)
 			})
-			.catch(function(error){
-				reject(error)
-			});
-		});
+			.catch((err) => {
+				let message = Strings[api.language].api.devices["addErr" + err.response.data.error.code]
+				if (!message) {
+					message = Strings[api.language].api.devices.unknownError
+				}
+				console.log(message)
+				reject({
+					message: message
+				})
+			})
+		})
 	}
 
 	static getFrom(url){

@@ -78,8 +78,8 @@ export default {
         return {
             name: 'Heladera',
             mode: this.device.meta.mode,
-            temperature:this.meta.temperature,
-            freezerTemperature:this.meta.freezerTemperature
+            temperature:this.device.meta.temperature,
+            freezerTemperature:this.device.meta.freezerTemperature
         }
     },
     methods:{
