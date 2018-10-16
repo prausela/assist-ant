@@ -1,6 +1,6 @@
 import api from '../ApiServiceProvider.js'
 import { axios } from '../ApiServiceProvider.js'
-import Routines from './apiProvider/Routines.js'
+import Routines from './Routines.js'
 
 class Routine {
 	get url(){

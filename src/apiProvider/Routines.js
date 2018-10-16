@@ -43,7 +43,7 @@ class Routines {
 				console.log(meta)
 				axios.post(Routines.url, {
 			  		name: routine.name,
-			  		actions: JSON.stringify(actions)
+			  		actions: JSON.stringify(actions),
 			  		meta: JSON.stringify({})
 				})
 				.then(function(response) {
@@ -101,7 +101,7 @@ class Routines {
 			if(actionIsValid){
 				axios.put(this.url + '/' + routine.id, {
 					name: routine.name,
-			  		actions: JSON.stringify(actions)
+			  		actions: JSON.stringify(actions),
 			  		meta: JSON.stringify({})
 				})
 				.then(function(response) {
