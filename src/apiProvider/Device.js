@@ -12,7 +12,7 @@ class Device {
 		this.meta = device.meta
 
 		this.actions = []
-		actions.push("getState")
+		this.actions.push("getState")
 	}
 
 	get url(){
