@@ -12,6 +12,7 @@
     "bulma": "^0.7.2",
     "numeric-keyboard": "^0.3.0",
     "v-toaster": "^1.0.3",
+    "v-tooltip": "^2.0.0-rc.33",
     "vue": "^2.5.17",
     "vue-awesome": "^3.1.2",
     "vue-color": "^2.6.0",

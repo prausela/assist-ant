@@ -98,7 +98,6 @@ body .modal
 
 .modal-header
   padding-top: 30px
-  display: flex
   align-items: center
   justify-content: center
   width: 100%
@@ -106,6 +105,10 @@ body .modal
   font-size: 40px
   user-select: none
   position: relative
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  display: inline-block
 .modal-header::after
   content: ""
   position: absolute
@@ -182,14 +185,17 @@ body .modal
     display: flex
     flex: 2
     width: 100%
-    align-items: flex-start
+    align-items: center
     justify-content: center
 .numberField
+    height: 40px
+    align-self: center
     display: flex
     flex: 1
     width: 50%
     margin-left: 25px
     margin-top: 2px
+    margin-right: 5px
 .save-btn
     display: flex
     flex: 1
@@ -216,6 +222,10 @@ body .modal
   width: 30%
   height: 100px
   margin: 7px 1%
+  .card-name  
+    white-space: nowrap
+    overflow: hidden !important
+    text-overflow: ellipsis
 .icon-container
   align-items: center
   height: 100px
@@ -227,8 +237,24 @@ body .modal
   cursor: pointer
   min-height: 60px
   justify-content: center
+  &.add-container
+    height: 72px  
 
+.vue-tooltip-theme
+  background: black
+  color: white
+  border-radius: 16px
+  padding: 5px 10px 4px
+  z-index: 2000
 
+.tooltip-arrow 
+    width: 0
+    height: 0
+    border-style: solid
+    position: absolute
+    margin: 5px
+    border-color: black
+    z-index: 2000
 .card-icon
   max-widht: 100%
   object-fit: contain

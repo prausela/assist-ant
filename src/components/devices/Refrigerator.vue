@@ -14,24 +14,20 @@
                         <img class="refri-img" src="@/assets/devices/refrigerator.png">
                     </div>
                     <div class="switch-container">
-                        
+                                                
                         <div class="temp-input">
                             <div class="temp-header">Temperatura Freezer</div>
                             <div class="temp-body">
                                 <input class="numberField" type="number" placeholder="°C" v-model="freezerTemperature">
-                                <div class="save-btn">
-                                    <div class="save-txt" @click="setFreezerTemperature(freezerTemperature)">Guardar</div>
-                                </div>
+                                <a class="button is-primary"  @click="setFreezerTemperature(freezerTemperature)">Guardar</a>
                             </div>
                         </div>
                          <div class="temp-input">
                             <div class="temp-header">Temperatura Heladera</div>
                             <div class="temp-body">
                                 <input class="numberField" type="number" placeholder="°C" v-model="temperature">
-                                <div class="save-btn">
-                                    <div class="save-txt" @click="setTemperature(temperature)">Guardar</div>
-                                </div>
-                            </div>
+                                <a class="button is-primary"  @click="setTemperature(temperature)">Guardar</a>
+                             </div>
                         </div>
                     </div>
                     
@@ -164,6 +160,7 @@ export default {
 
 
 .switch-container
+    padding-right: 10px
     display: flex
     flex: 1
     flex-direction: column

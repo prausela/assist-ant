@@ -47,7 +47,7 @@
         display: flex
         flex-direction: column
     .body-columns
-        max-height: 380px
+        max-height: 580px
         display: flex
         flex-direction: row 
         position: relative
@@ -66,7 +66,7 @@
     .routines
         box-shadow: 2px 2px $shadowBg
         background-color:  $primaryBg
-        flex: 1
+        flex: 5
         border-radius: 5px
         display: flex
         flex-direction: column

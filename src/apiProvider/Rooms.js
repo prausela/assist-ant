@@ -84,7 +84,7 @@ class Rooms {
 				resolve(response)
 				console.log(response);
 			})
-			.catch(function(error){
+			.catch(function(err){
 				let message = Strings[api.language].rooms.add["addErr" + err.response.data.error.code]
 				if (!message) {
 					message = Strings[api.language].rooms.add.unknownError

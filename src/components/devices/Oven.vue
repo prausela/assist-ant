@@ -31,7 +31,7 @@
                     <div class="set heat">
                         <div class="name"> Calor </div>
                         <div class="body">
-                            <div class="mode-button" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
+                            <div class="mode-button" v-tooltip="'Modo convencional'" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
                                 <img class="op" src="@/assets/modes/oven-conventional.png">
                             </div>
                             <div class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">

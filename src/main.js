@@ -11,6 +11,9 @@ Vue.component('icono', Icono)
 // Bulma
 import './../node_modules/bulma/css/bulma.css';
 
+// Tooltips
+import VTooltip from 'v-tooltip'
+Vue.use(VTooltip)
 
 // ControlButtonsFooter
 import ControlButtonsFooter from './components/ControlButtonsFooter'
