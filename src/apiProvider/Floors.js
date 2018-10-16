@@ -4,8 +4,15 @@ import Floor from './APIRooms/Floor.js'
 
 class Floors extends Rooms{
 
+	add(floor){
+		floor.meta = JSON.stringify({category:"floor"})
+		return super.add(floor)
+	}
+
 	getAll(){
-		return this.getAllWithCategory("floor", Floor)
+		return this.getAllWithCriteria((meta)=>{
+			return meta.category == "floor"
+		}, Floor)
 	}
 
 	delete(floor){

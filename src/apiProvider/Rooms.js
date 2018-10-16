@@ -15,12 +15,14 @@ class Rooms {
 		return Rooms.url;
 	}
 
-	static add(room){
+	add(room){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
-			axios.post(this.url, {
+			let meta = room.meta || JSON.stringify({})
+			console.log(meta)
+			axios.post(Rooms.url, {
 		  		name: room.name,
-		  		meta: room.meta
+		  		meta: meta
 			})
 			.then(function(response) {
 				//api.eventBus.$emit('refreshDevices')
@@ -32,18 +34,14 @@ class Rooms {
 		});
 	}
 
-	add(room){
-		Rooms.add(room)
-	}
-
-	getAllWithCategory(category, object){
+	getAllWithCriteria(criteria, object){
 		return new Promise((resolve, reject) => {
 			axios.get(this.url)
 			.then(function(response) {
 				let roomsObjects = []
 
 				let a = response.data.rooms.filter((room) =>{
-					return JSON.parse(room.meta).category == category;
+					return criteria(JSON.parse(room.meta));
 				})
 				a.forEach((room)=>{
 					roomsObjects.push(new object(room))
@@ -58,14 +56,14 @@ class Rooms {
 	}
 
 	getAll(){
-		return this.getAllWithCategory("room", Room)
+		return this.getAllWithCriteria((meta)=>{
+			return !meta.category }, Room)
 	}
 
-	modify(rooms){
+	modify(room){
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			//Remember to change to device.url
-			console.log(device);
 			axios.put(this.url + '/' + room.id, {
 		  		name: room.name,
 		  		meta: room.meta

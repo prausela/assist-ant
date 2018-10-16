@@ -3,7 +3,7 @@ import { axios } from '../ApiServiceProvider.js'
 import Rooms from './Rooms.js'
 import Devices from './Devices.js'
 
-class APIRoom {
+class Room {
 	constructor(room){
 		this.id = room.id
 		this.name = room.name
@@ -12,10 +12,6 @@ class APIRoom {
 
 	get devices(){
 		return Devices.getFrom(this.url + Devices.urn);
-	}
-
-	assign(device){
-		return APIRoom.assign(device, this.urn)
 	}
 
 	get url(){
@@ -30,7 +26,7 @@ class APIRoom {
 		return Rooms.urn + '/' + id
 	}
 
-	static assign(device, urn){
+	assign(device, urn){
 		return new Promise((resolve, reject) => {
 			axios.post(device.url + urn)
 			.then((response)=>{
@@ -43,4 +39,4 @@ class APIRoom {
 	}
 }
 
-export default APIRoom
+export default Room
