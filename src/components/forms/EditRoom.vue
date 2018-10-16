@@ -3,7 +3,7 @@
 		<AddDevice v-if="showAddModal" @closeMe="showAddModal=false"/>
 		<div class="modal-inner" @click.stop>
 			<div class="modal-header">
-				Agregar Habitacion
+				Editar Habitacion
 				<div class="close-modal-btn" @click="closeModal">
 					<v-icon name="times-circle"  scale="1" />
 				</div>
@@ -20,50 +20,53 @@
 					<div class="form-row">
 						<div class="form-label">Imagen de la habitacion</div>
 						<div class="devices-list">
-							<icono :key="id" @clicked="selectedIcon = icon" :active="selectedIcon == icon" style="cursor: pointer" v-for="(icon, id) in icons" :name="icon" />
+							<icono @clicked="selectedIcon = icon" :active="selectedIcon == icon" style="cursor: pointer" :key="id" v-for="(icon, id) in icons" :name="icon" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<div @click="save" class="button is-primary">Agregar</div>
+				<div @click="save" class="button is-primary">Guardar</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import AddDevice from "./AddDevice.vue"
 
 export default {
 	components:{
-		AddDevice: AddDevice,
 	},
-  name: 'AddRoom',
 
+  name: 'EditRoom',
+  props: {
+  	room: {
+  		required: true
+  	}
+  },
   data () {
     return {
     	devices: [],
     	showAddModal: false,
-    	name: "",
+    	name: this.room.name,
     	type: null,
     	selectedIcon: null,
     	icons: [
-			"bed",
-			"couch",
-			"bathroom",
-			"dining-room",
-			"garden",
-			"kitchen",
-			"office",
-			"washing-room",
-			"swimming-pool",
+				"bed",
+				"couch",
+				"bathroom",
+				"dining-room",
+				"garden",
+				"kitchen",
+				"office",
+				"washing-room",
+				"swimming-pool",
     	],
 
     }
   },
   mounted() {
-  	this.selectedIcon = this.icons[0]
+  	this.selectedIcon = this.room.meta.icon
   },
   methods: {
   	closeModal() {
@@ -78,7 +81,8 @@ export default {
   	},
   	save() {
   		if (this.name) {
-  			this.$api.rooms.add({
+  			this.$api.rooms.modify({
+  				id: this.room.id,
 	  			name: this.name,
 	  			// type: this.type.id,
 	  			meta: JSON.stringify({
@@ -104,7 +108,8 @@ export default {
 
 <style lang="sass" scoped>
 
-
+.modal 
+	cursor: initial
 .devices-list
   flex-wrap: wrap
   position: relative

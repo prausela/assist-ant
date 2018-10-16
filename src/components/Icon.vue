@@ -1,5 +1,5 @@
 <template>
-	<div :class="{active: active}" @click.stop="$emit('click')" class='icon-wrapper'>
+	<div :class="{active: active}" @click="$emit('clicked')" class='icon-wrapper'>
 		<v-icon  v-if="name == 'bed'" name="bed" class="img1" scale="1.5" />
 		<v-icon  v-if="name == 'couch'" name="couch" class="img1" scale="1.5" />
 		<img     v-if="name == 'bathroom'" class="img1" src="@/assets/rooms/bathroom.png">

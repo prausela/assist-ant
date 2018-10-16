@@ -71,6 +71,7 @@ class Rooms {
 	}
 
 	modify(room){
+		console.log(room)
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			//Remember to change to device.url

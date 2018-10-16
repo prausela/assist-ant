@@ -3,7 +3,7 @@
 		<div class="footer-icon" @click="edit">
 			<v-icon name="pencil-alt" scale="2" />
 			<div v-if="verEdit" class="device">
-				<!-- <EditRoom :device="device" @closeEdit="closeEdit"/> -->
+				<EditRoom :room="room" @closeMe="closeEdit"/>
 			</div>
 		</div>
 		<div @click="showRemoveModal" class="footer-icon">
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-// import EditRoom from "@/components/forms/EditRoom.vue"
+import EditRoom from "@/components/forms/EditRoom.vue"
 import DeleteDevicesModal from "./DeleteDevicesModal"
 export default {
   components:{
-    DeleteDevicesModal
-    // EditRoom
+    DeleteDevicesModal,
+    EditRoom
   },
 
   name: 'RoomFooter',
