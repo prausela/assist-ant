@@ -122,9 +122,11 @@ export default {
                 this.$toaster.success(this.$strings[this.$language].devices.modify.success)
                 this.closeModal()
             }).catch((error) => {
-                console.log("unknown")
-
-                this.$toaster.error(this.$strings[this.$language].devices.unknown.error)
+                if (error.message == "Unknown error") {
+                    console.log(error)
+                } else {
+                    this.$toaster.error(error.message)
+                }
             })
         },
         setHeat(newHeat) {
