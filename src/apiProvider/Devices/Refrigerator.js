@@ -32,6 +32,8 @@ class Refrigerator extends Device {
 					newMeta.temperature = temperature
 					this.updateMeta(newMeta).catch((error) => {
 						reject(error)
+					}).then (() => {
+						resolve()
 					})
 				}).catch((error) => {
 					reject(error)
@@ -54,6 +56,8 @@ class Refrigerator extends Device {
 					newMeta.freezerTemperature = freezerTemperature
 					this.updateMeta(newMeta).catch((error) => {
 						reject(error)
+					}).then (() => {
+						resolve()
 					})
 				}).catch((error) => {
 					reject(error)

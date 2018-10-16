@@ -56,6 +56,8 @@ class AC extends Device {
 					newMeta.temperature = temperature
 					this.updateMeta(newMeta).catch((error) => {
 						reject(error)
+					}).then (() => {
+						resolve()
 					})
 				}).catch((error) => {
 					reject(error)
