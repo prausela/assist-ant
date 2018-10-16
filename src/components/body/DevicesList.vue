@@ -3,7 +3,7 @@
     <template v-for="(device, index) in devices">
       <component v-if="device && device.type" :device="device" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
     </template>
-    <AddDeviceCard :room="room" v-if="add" />
+    <AddDeviceCard :routine="routine" :room="room" v-if="add" />
   </div>
 </template>
 
@@ -53,6 +53,10 @@ export default {
     room: {
       required: false,
       deafult: null
+    },
+    routine: {
+      default: false,
+      required: false
     }
   },
   data () {

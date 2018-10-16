@@ -20,7 +20,7 @@
 					Dispositivos
 				</div>
 				<div class="routine-devices">
-					<DevicesList add="true" :devices="[]" />
+					<DevicesList :routine="true" :add="true" :devices="[]" />
 				</div>
 			</div>
 			<div class="modal-footer">

@@ -3,20 +3,25 @@
 		<div class="add-container icon-container">
 			<v-icon name="plus" class="card-icon" scale="1.5" />
 		</div>
-		<div v-if="verDevice" class="device">
+		<div v-if="!routine && verDevice" class="device">
 			<AddDevice :room="room" @closeMe="verDevice = false" />
+		</div>
+		<div v-if="routine && verDevice" class="device">
+			<AddDeviceToRoutine />
 		</div>
 	</div>
 </template>
-
+s
 <script>
 import AddDevice from "@/components/forms/AddDevice.vue"
+import AddDeviceToRoutine from "@/components/routines/AddDeviceToRoutine.vue"
 
 export default {
 
 	name: 'AddDeviceCard',
 	components: {
-		AddDevice
+		AddDevice,
+		AddDeviceToRoutine,
 	},
 	props: {
 		device: {
@@ -24,13 +29,21 @@ export default {
 		},
 		room: {
 			required: false
+		},
+		routine: {
+			required: false,
+			default: false
 		}
 	},
 	data () {
 		return {
 			name: 'Agregar',
 			verDevice: false,
+			devices: []
 		}
+	},
+	mounted() {
+		this.devices = this.$devices
 	}
 }
 </script>
