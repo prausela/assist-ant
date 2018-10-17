@@ -10,17 +10,18 @@
             </div>
             <div class="modal-body">
                 <div class="column-container"> 
-                    <div  class="state-container" @click="setState(false)"  v-if="this.state == true">
-                        <v-icon name="door-open" class="state" scale="10" />
-                       <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.open" name="door-closed" class="not-state" scale="3" />
-                    </div>
-                    <div class="state-container" @click="setState(true)"  v-if="this.state == false">
+                    <div  class="state-container" @click="setState(true)"  v-if="this.state == false">
                         <v-icon name="door-closed" class="state" scale="10" />
                         <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.close" name="door-open" class="not-state" scale="3" />
+
+                    </div>
+                    <div class="state-container" @click="setState(false)"  v-if="this.state == true">
+                        <v-icon name="door-open" class="state" scale="10" />
+                       <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.open" name="door-closed" class="not-state" scale="3" />
                       
                     </div>
                 </div>
-                 <div class="column-container">
+                <div class="column-container">
                     <div class="state-container" @click="setLock(false)" v-if="this.lock == true">
                         <v-icon name="lock" class="state" scale="10" />
                         <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.lock" name="lock-open" class="not-state" scale="3" />
@@ -32,9 +33,11 @@
 
                     </div>
                 </div>
+
             </div>
-            <div class="modal-footer">
-                <cbfooter :device="device" @closeModal="closeModal" />
+             <div class="modal-footer">
+                <a @click="closeModal" class="button is-primary">Guardar</a>
+                <a @click="removeFromRoutine" class="button is-danger">Sacar de la Rutina</a>
             </div>
         </div>
     </div>
@@ -44,42 +47,73 @@
 
 export default {
 
-    name: 'Door',
+    name: 'RDoor',
 
     components: {
        
     },
     props: [
-    'device'
+        'device', 'routine'
     ],
     data () {
         return {
             name: 'Door',
-            state:this.device.meta.state,
-            lock:this.device.meta.lock
-
-
+            state: false,
+            lock: false
         }
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
-        },
-        setState(state) {
-            console.log(state)
-            this.state=state
-            this.device.setState(state).catch((error) => {
-                console.log(error)
-                console.log(error)
+            this.routine.actions.forEach((action)=> {
+                console.log(action.actionName)
             })
         },
-            setLock(lock) {
-                console.log(lock)
-                this.lock=lock
-                this.device.setLock(lock).catch((error) => {
-                    console.log(error)
-                })
+        setState(state) {
+            if (state == this.state) {
+                return
             }
+            let action = "close"
+            if (state) {
+                action = "open"
+            }
+            let a = this.$api.routines.createAction(this.device, action, [])
+            this.routine.addAction(a)
+            this.state = state
+        },
+        setLock(lock) {
+            if (lock == this.lock) {
+                return
+            }
+            let action = "unlock"
+            if (lock) {
+                action = "lock"
+            }
+            let a = this.$api.routines.createAction(this.device, action, [])
+            this.routine.addAction(a)
+            this.lock = lock
+        },
+        removeFromRoutine() {
+            this.routine.removeDevice(this.device)
+            this.closeModal()
+        }
+    },
+    mounted() {
+        this.routine.actions.forEach((action) => {
+            if (action.deviceId == this.device.id) {
+                console.log(action)
+                if (action.actionName == 'close') {
+                    this.state = false
+                } else if( action.actionName == "open") {
+                    this.state = true
+                }
+                if (action.actionName == 'lock') {
+                    this.lock = true
+                } else if( action.actionName == "unlock") {
+                    this.lock = false
+                }
+            }
+        })
     }
 }
 </script>
@@ -139,6 +173,13 @@ export default {
     height: 100%
     justify-content: center
 
-
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
 
 </style>

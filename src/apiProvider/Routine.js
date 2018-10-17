@@ -64,6 +64,18 @@ class Routine {
 			case 'turnOff': 
 				reverseAction = 'turnOn'
 				break;
+			case 'open': 
+				reverseAction = 'close'
+				break;
+			case 'close': 
+				reverseAction = 'open'
+				break;
+			case 'lock': 
+				reverseAction = 'unlock'
+				break;
+			case 'unlock': 
+				reverseAction = 'lock'
+				break;
 			case 'setColor': 
 				reverseAction = 'setColor'
 				break;

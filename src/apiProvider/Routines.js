@@ -49,7 +49,6 @@ class Routines {
 			// })
 			// if(actionIsValid){
 				let meta = routine.meta || JSON.stringify({})
-				console.log(meta)
 				axios.post(Routines.url, routine)
 				.then(function(response) {
 					api.eventBus.$emit('refreshRoutines')
@@ -84,7 +83,6 @@ class Routines {
 		// eslint-disable-next-line
 		return new Promise((resolve, reject) => {
 			this.clearUnusedDevices(routine).then((clearRoutine) => {
-				console.log(clearRoutine)
 				axios.put(this.url + '/' + routine.id, routine)
 				.then(function(response) {
 					api.eventBus.$emit('refreshRoutines')
@@ -115,17 +113,13 @@ class Routines {
 
 	clearUnusedDevices(routine) {
 		return new Promise((resolve, reject) => {
-			console.log('clearing unused devices')
 			api.devices.getAll().then((devices) => {
-				console.log(devices)
 				let deviceIds = new Set()
 				routine.actions.forEach((action) => {
 					deviceIds.add(action.deviceId)
 				})
-				console.log('all devices IDS:', deviceIds)
 				let idsArrays = Array.from(deviceIds)
 
-				console.log(idsArrays)
 				let deletedDevs = idsArrays.filter((devId) => {
 					let found = false
 					devices.forEach((device) => {
@@ -138,7 +132,6 @@ class Routines {
 				deletedDevs.forEach((deletedDevId) => {
 					let modified = false
 					var filteredActions = routine.actions.filter((action) => {
-						console.log(deletedDevId == action.deviceId)
 						if (action.deviceId == deletedDevId) {
 							modified = true
 							return false

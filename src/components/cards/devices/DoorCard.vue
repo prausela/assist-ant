@@ -5,6 +5,7 @@
 		</div>
 		<div v-if="verDevice" class="device">
 			<Door :device="device" @closeMe="closeMe" />
+			<RDoor v-if="routine" :device="device" :routine="routine" @closeMe="closeMe" />
 		</div>
 		<div class="card-name">{{device.name}}</div>
 	</div>
@@ -12,15 +13,25 @@
 
 <script>
 import Door from "@/components/devices/Door.vue"
+import RDoor from "@/components/routines/devices/RDoor.vue"
 
 export default {
 	components:{
-		Door
+		Door,
+		RDoor
 	},
 	name: 'DoorCard',
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
+		},
+		routine: {
+			required: false,
+			default: null
 		}
 	},
 
@@ -35,6 +46,7 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
+			this.$emit('devicesChanged')
 			this.verDevice = false
 
 		}

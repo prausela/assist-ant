@@ -47,6 +47,30 @@ class Door extends Device {
 			})
 		})
 	}
+
+	refreshMeta() {
+		this.getState().then((state) => {
+			let result = state.result
+			let newMeta = this.copyMeta()
+			if (result.status == "closed") {
+				newMeta.state = false
+			} else if (result.status == "opened") {
+				newMeta.state = true
+			}
+			if (result.lock == "locked") {
+				newMeta.lock = true
+			} else if (result.lock == "unlocked") {
+				newMeta.lock = false
+			}
+			console.log(state)
+			console.log('newmeta', newMeta)
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
 }
 
 export default Door;
