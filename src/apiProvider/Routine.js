@@ -58,7 +58,12 @@ class Routine {
 		})
 		this.actions = filteredActions
 		this.actions.push(action)
-		console.log(this)
+	}
+	removeDevice(device) {
+		let filteredActions = this.actions.filter((action) => {
+			return !(action.deviceId == device.id)
+		})
+		this.actions = filteredActions
 	}
 }
 

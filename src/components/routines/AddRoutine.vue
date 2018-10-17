@@ -42,7 +42,7 @@ export default {
   },
   data () {
     return {
-    	name: this.currRoutine.name || "",
+    	name: "",
     	routine: null,
     	devices: []
     }
@@ -50,6 +50,7 @@ export default {
   mounted() {
 		if (this.currRoutine) {
 			this.routine = this.currRoutine
+			this.name = this.currRoutine.name
 		} else {
 			this.routine = this.$api.routines.createRoutine()
 		}

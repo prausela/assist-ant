@@ -39,6 +39,7 @@
 
                 <div class="modal-footer">
                     <a @click="closeModal" class="button is-primary">Guardar</a>
+                    <a @click="removeFromRoutine" class="button is-danger">Sacar de la Rutina</a>
                 </div>
             </div>
         </div>
@@ -66,7 +67,9 @@ export default {
         enabled: false,
         colors: '#EAFF4D',
         color: '#EAFF4D',
-        changeTimeout: null
+        changeTimeout: null,
+        initStateTimeout: null,
+        initStatevalue: false
     }
   },
   methods: {
@@ -79,12 +82,17 @@ export default {
 
     },
     updateState() {
+
         let action = null
+        if (!this.initStatevalue) {
+            return
+        }
         if (this.enabled) {
             action = this.$api.routines.createAction(this.device, 'turnOn', [])
         } else {
             action = this.$api.routines.createAction(this.device, 'turnOff', [])            
         }
+        console.log(action)
         this.routine.addAction(action)
     },
     updateColor() {
@@ -94,9 +102,24 @@ export default {
     closeModal(){
         this.$emit('closeMe')
     },
+    removeFromRoutine() {
+        this.routine.removeDevice(this.device)
+        this.closeModal()
+    }
   },
 
   mounted() {
+    setTimeout(() => {
+        this.initStatevalue = true
+    }, 250);
+    this.routine.actions.forEach((action) => {
+        if (action.actionName == 'turnOn') {
+            this.enabled = true
+        } else if( action.actionName == "setColor") {
+            this.colors = action.params[0]
+            this.color = action.params[0]
+        }
+    })
     // this.color = this.rgbToHex(this.colors)
   }
 }

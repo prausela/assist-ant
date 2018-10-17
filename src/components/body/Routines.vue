@@ -6,7 +6,7 @@
         </div>
         <div class="r-body">
           <div class="routines-list" >
-            <div class="routine-item" v-for="(routine, id) in routines">
+            <div class="routine-item" :key="id" v-for="(routine, id) in routines">
               <div @click="selectRoutine(routine)" class="r-name">{{routine.name}}</div>
               <div class="r-btn">
                   <a class="button is-primary">Activar</a>
