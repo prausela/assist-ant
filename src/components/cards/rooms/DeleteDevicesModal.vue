@@ -8,7 +8,7 @@
 				<div>
 					Desea tambien eliminar los dispositivos de la habitacion?
 				</div>
-				<div>
+				<div class="delete-body">
 					<a class="button is-success" @click="$emit('confirm')">Si</a>
 					<a class="button is-danger" @click="$emit('decline')">No</a>
 				</div>
@@ -36,6 +36,8 @@ export default {
 	.button	
 		width: 50px
 		margin: 0 10px
+		display: flex
+		flex-direction: row
 	.modal-inner
 		padding: 50px 0
 		height: 200px
@@ -48,4 +50,8 @@ export default {
 		justify-content: space-around
 	.close-modal-btn
 		top: 20px
+	.delete-body
+		display: flex
+		flex-direction: row
+	
 </style>

@@ -1,12 +1,12 @@
 <template>
 	<div class="control-buttons">
-		<div class="footer-icon" @click="edit">
+		<div class="footer-icon button is-primary" @click="edit">
 			<v-icon name="pencil-alt" scale="2" />
 			<div v-if="verEdit" class="device">
 				<EditRoom :room="room" @closeMe="closeEdit"/>
 			</div>
 		</div>
-		<div @click="showRemoveModal" class="footer-icon">
+		<div @click="showRemoveModal" class="footer-icon button is-primary">
 			<v-icon name="trash-alt" scale="2" />
 		</div>
     <DeleteDevicesModal v-if="deleteModal" @cancel="deleteModal = false" @confirm="remove(true)" @decline="remove(false)" />

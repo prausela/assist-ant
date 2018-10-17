@@ -110,6 +110,7 @@ export default {
   			this.$toaster.error(this.$strings[this.$language].devices.add.unselectedName)
   		}
   		
+  		
   	}
   },
 	mounted() {

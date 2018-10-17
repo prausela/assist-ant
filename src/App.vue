@@ -273,15 +273,30 @@ body .modal
     background-color: #b1aeae
     box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
+
+
 .button.is-primary
   box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5) !important
-  background-color: $shadowBg !important
+  background-color: $primaryBg !important
   font-size: 14px !important
   color: black !important
 .button.is-primary:hover
     background-color: #97989b !important
     border-color: transparent !important
-    color: #fff 
+    
+
+.button.is-danger
+  display: flex !important
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5) !important
+  font-size: 16px 
+  color: black !important
+
+
+
+.button.is-danger:hover
+    background-color: #97989b !important
+    border-color: transparent !important
+    
 
 
   

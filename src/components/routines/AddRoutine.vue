@@ -75,14 +75,19 @@ export default {
   		this.routine.name = this.name
 	  		if (this.routine.name && this.routine.actions.length > 0  ) {
 	  			if (!this.currRoutine) {
-		  			this.$api.routines.add(this.routine).then(() => {
-		  				this.$toaster.success(this.$strings[this.$language].routines.add.success)
-		  				this.closeModal()
-		  			}).catch((error) => {
-		  				console.log(error)
-		  			})
+	  				this.$api.routines.add(this.routine).then(() => {
+	  					this.$toaster.success(this.$strings[this.$language].routines.add.success)
+	  					this.closeModal()
+	  				}).catch((error) => {
+	  					if(this.routine.name.length<3){
+	  						this.$toaster.error(this.$strings[this.$language].routines.add.addErr1)
+	  					}
+	  					else{
+	  						this.$toaster.error(this.$strings[this.$language].routines.add.addErr2)
+	  					}
+	  				})
 
-		  		} else {
+	  			} else {
 		  			this.$api.routines.modify(this.routine).then(() => {
 		  				console.log('modifying', this.routine)
 		  				this.$toaster.success(this.$strings[this.$language].routines.modify.success)
@@ -98,6 +103,7 @@ export default {
 	  			if (this.routine.actions.length == 0) {
 	  				this.$toaster.error(this.$strings[this.$language].routines.add.unselectedActions)
 	  			}
+	  			
 	  		}
   		
 

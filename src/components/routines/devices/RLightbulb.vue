@@ -39,7 +39,7 @@
 
                 <div class="modal-footer">
                     <a @click="closeModal" class="button is-primary">Guardar</a>
-                    <a @click="removeFromRoutine" class="button is-danger">Sacar de la Rutina</a>
+                    <a @click="removeFromRoutine" class="button is-primary">Sacar de la Rutina</a>
                 </div>
             </div>
         </div>

@@ -5,10 +5,6 @@
 
             <Favorites />
             <div id="history-routines">
-                <div class="history">
-                        <h2 class="ultima">ULTIMA ACCION</h2>
-                        <v-icon name="redo-alt" class="redo" scale="1.5" />
-                </div>
                 <Routines />   
             </div>
         </div>
