@@ -117,7 +117,7 @@ export default {
 
   		this.$api.routines.delete(this.routine).then(() => {
   			this.$toaster.success(this.$strings[this.$language].routines.delete.success)
-  			this.$emit('closeModal')
+  			this.closeModal()
   		}).catch((error) => {
   			console.log(error)
   			this.$toaster.error(error)

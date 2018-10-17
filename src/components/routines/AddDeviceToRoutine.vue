@@ -12,7 +12,7 @@
               <div v-if="devices.length == 0">No hay dispositivos disponibles para agregar</div>
             </div>
             <div class="modal-footer">
-               <a @click="closeModal" class="button is-primary">Agregar</a>
+               <a @click="closeModal" class="button is-primary">Guardar</a>
 
             </div>
         </div>

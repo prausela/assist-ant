@@ -122,6 +122,7 @@ class Routines {
 			axios.delete(this.url + '/' + routine.id)
 			.then(function(response) {
 				//api.eventBus.$emit('refreshDevices')
+				api.eventBus.$emit('refreshRoutines')
 				resolve(response)
 			})
 			.catch(function(error){
