@@ -31,8 +31,8 @@
                     </div>
                     <div class="brightness set">
                         <div class="name"> Brillo</div>
-                        <div class="sliders">
-                            <slider-picker v-model="colors" @input="changedColor" />
+                        <div class="sliders-bulma">
+                            <vue-slider ref="slider" @input="changedBrightness" v-model="brightness"></vue-slider>
                         </div>
                     </div>
                 </div>
@@ -49,13 +49,15 @@
 <script>
 import { Slider } from 'vue-color'    
 import Switches from 'vue-switches'
+import vueSlider from 'vue-slider-component'
 
 export default {
 
   name: 'RLightbulb',
   components: {
     Switches,
-    'slider-picker': Slider
+    'slider-picker': Slider,
+    vueSlider
   },
   props: [
     'device',
@@ -67,6 +69,7 @@ export default {
         enabled: false,
         colors: '#EAFF4D',
         color: '#EAFF4D',
+        brightness: 100,
         changeTimeout: null,
         initStateTimeout: null,
         initStatevalue: false
@@ -79,7 +82,21 @@ export default {
         this.changeTimeout = setTimeout(() => {
             this.updateColor()
         }, 500);
-
+    },
+    changedBrightness() {
+        if (!this.initStatevalue) {
+            return
+        }
+        this.changeTimeout = setTimeout(() => {
+            this.updateBrightness()
+        }, 500);
+    },
+    updateBrightness() {
+        if (!this.initStatevalue) {
+            return
+        }
+        let action = this.$api.routines.createAction(this.device, 'setBrightness', [this.brightness])
+        this.routine.addAction(action)
     },
     updateState() {
 
@@ -119,6 +136,8 @@ export default {
             } else if( action.actionName == "setColor") {
                 this.colors = action.params[0]
                 this.color = action.params[0]
+            } else if( action.actionName == "setBrightness") {
+                this.brightness = action.params[0]
             }
         }
     })
@@ -164,7 +183,8 @@ export default {
     justify-content: center
     align-items: center
     margin-right: 5px
-
+.sliders-bulma
+    flex: 10
 .name
     display: flex
     flex: 1

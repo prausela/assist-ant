@@ -49,7 +49,18 @@ class Lamp extends Device {
 	}
 
 	setBrightness(brightness){
-		return this.perform("setBrightness", [ brightness ]);
+		return new Promise((resolve, reject) => {
+			this.perform("setBrightness", [brightness]).then((response) => {
+				let newMeta = this.copyMeta()
+				newMeta.brightness = brightness
+				console.log(newMeta)
+				this.updateMeta(newMeta).catch((error) => {
+					reject(error)
+				})
+			}).catch((error) => {
+				reject(error)
+			})
+		})
 	}
 
 	refreshMeta() {
@@ -65,6 +76,9 @@ class Lamp extends Device {
 			}
 			if (result.status == "off") {
 				newMeta.state = false
+			}
+			if (result.brightness) {
+				newMeta.brightness = result.brightness
 			}
 			this.updateMeta(newMeta).catch((error) => {
 				reject(error)

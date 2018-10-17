@@ -31,8 +31,8 @@
                     </div>
                     <div class="brightness set">
                         <div class="name"> Brillo</div>
-                        <div class="sliders">
-                            <slider-picker v-model="colors" @input="changedColor" />
+                        <div class="sliders-bulma">
+                            <vue-slider ref="slider" @input="changedBrightness" v-model="brightness"></vue-slider>
                         </div>
                     </div>
                 </div>
@@ -48,13 +48,15 @@
 <script>
 import { Slider } from 'vue-color'    
 import Switches from 'vue-switches'
+import vueSlider from 'vue-slider-component'
 
 export default {
 
   name: 'Lightbulb',
   components: {
     Switches,
-    'slider-picker': Slider
+    'slider-picker': Slider,
+    vueSlider
   },
   props: [
     'device'
@@ -65,9 +67,10 @@ export default {
         enabled: this.device.meta.state,
         colors: this.device.meta.color,
         color: this.device.meta.color,
+        brightness: this.device.meta.brightness,
         changeTimeout: null,
         initStateTimeout: null,
-        initStatevalue: false
+        initStatevalue: false,
     }
   },
   methods: {
@@ -81,14 +84,33 @@ export default {
     },
     updateState() {
         if (!this.initStatevalue) {
+            console.log('ignoring initStatevalue')
             return
         }
+        console.log('setting state0', this.enabled)
         this.device.setState(this.enabled).catch((error) => {
             // console.log(error)
         })
     },
     updateColor() {
         this.device.setColor(this.color).catch((error) => {
+            console.log(error)
+        })
+    },
+    changedBrightness() {
+        if (!this.initStatevalue) {
+            return
+        }
+        clearTimeout(this.changeTimeout)
+        this.changeTimeout = setTimeout(() => {
+            this.updateBrightness()
+        }, 500);
+    },
+    updateBrightness() {
+        if (!this.initStatevalue) {
+            return
+        }
+        this.device.setBrightness(this.brightness).catch((error) => {
             console.log(error)
         })
     },
@@ -144,6 +166,8 @@ export default {
     align-items: center
     margin-right: 5px
 
+.sliders-bulma
+    flex: 10
 .name
     display: flex
     flex: 1
