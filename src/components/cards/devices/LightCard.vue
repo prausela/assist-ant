@@ -4,7 +4,8 @@
 			<v-icon name="lightbulb" class="card-icon" scale="2" />
 		</div>
 		<div v-if="verDevice" class="device">
-			<Lightbulb :device="device" @closeMe="closeMe" />
+			<Lightbulb v-if="!routine" :device="device" @closeMe="closeMe" />
+			<RLightbulb v-if="routine" :device="device" :routine="routine" @closeMe="closeMe" />
 		</div>
 		<div class="card-name">{{device.name}}</div>
 	</div>
@@ -13,10 +14,12 @@
 
 <script>
 import Lightbulb from "@/components/devices/Lightbulb.vue"
+import RLightbulb from "@/components/routines/devices/RLightbulb.vue"
 
 export default {
 	components:{
-		Lightbulb
+		Lightbulb,
+		RLightbulb
 	},
 
 	name: 'LightCard',
@@ -27,6 +30,10 @@ export default {
 		openModals: {
 			required: false,
 			default: true
+		},
+		routine: {
+			required: false,
+			default: null
 		}
 	},
 	data () {
@@ -42,6 +49,7 @@ export default {
 			}
 		},
 		closeMe(){
+			this.$emit('devicesChanged')
 			this.verDevice = false
 
 		}

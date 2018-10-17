@@ -80,7 +80,7 @@
                         <div class="body">  
                             <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.auto" class="ac-img" src="@/assets/modes/h-auto.png" :class="{active: horizontalSwing == 'auto'}" @click="setHorizontalSwing('auto')" >
                             <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.minus_ninty" class="ac-img" src="@/assets/modes/h--90.png" :class="{active: horizontalSwing == '-90'}" @click="setHorizontalSwing('-90')">
-                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.minus_forty_five"class="ac-img" src="@/assets/modes/h--45.png" :class="{active: horizontalSwing == '-45'}" @click="setHorizontalSwing('-45')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.minus_forty_five" class="ac-img" src="@/assets/modes/h--45.png" :class="{active: horizontalSwing == '-45'}" @click="setHorizontalSwing('-45')">
                             <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.cero" class="ac-img" src="@/assets/modes/h-0.png" :class="{active: horizontalSwing == '0'}" @click="setHorizontalSwing('0')">
                             <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.forty_five" class="ac-img" src="@/assets/modes/h-45.png" :class="{active: horizontalSwing == '45'}" @click="setHorizontalSwing('45')">                            
                             <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.ninty" class="ac-img" src="@/assets/modes/h-90.png" :class="{active: horizontalSwing == '90'}" @click="setHorizontalSwing('90')">                            

@@ -43,7 +43,6 @@ export default {
     },
     refreshRooms() {
       this.rooms = this.$rooms
-      console.log("Rooms refreshed", this.rooms)
     },
   },
   mounted() {
