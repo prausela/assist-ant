@@ -23,13 +23,18 @@ class Routine {
 
 	execute(){
 		return new Promise((resolve, reject) => {
-			axios.put(this.url + '/' +'execute', parameters)
-			.then(function(response){
+			axios.put(this.url + '/' +'execute', {})
+			.then((response) => {
 				if (!response.data.result) {
 					reject({
 						message: "Unknown error"
 					})
 				}
+				let deviceIds = new Set()
+				this.actions.forEach((action) => {
+					deviceIds.add(action.deviceId)
+				})
+				api.devices.refreshDevices(deviceIds)
 				resolve(response.data);
 			})
 			.catch(function(error){
@@ -39,6 +44,7 @@ class Routine {
 	}
 
 	addAction(action) {
+		console.log('adding action', action)
 		let reverseAction = null
 		switch (action.actionName) {
 			case 'turnOn': 
@@ -53,8 +59,12 @@ class Routine {
 		}
 
 		let filteredActions = this.actions.filter((eAction) => {
-			return eAction.actionName != reverseAction
+			console.log(eAction.actionName, reverseAction)
+			if (eAction.actionName == reverseAction && action.deviceId == eAction.deviceId) {
+				return false 
+			}
 
+			return true
 		})
 		this.actions = filteredActions
 		this.actions.push(action)

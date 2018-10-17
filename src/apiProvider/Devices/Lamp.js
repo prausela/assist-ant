@@ -51,6 +51,28 @@ class Lamp extends Device {
 	setBrightness(brightness){
 		return this.perform("setBrightness", [ brightness ]);
 	}
+
+	refreshMeta() {
+		this.getState().then((state) => {
+			let result = state.result
+			console.log(result)
+			let newMeta = this.copyMeta()
+			if (result.color) {
+				newMeta.color = result.color
+			}
+			if (result.status == "on") {
+				newMeta.state = true
+			}
+			if (result.status == "off") {
+				newMeta.state = false
+			}
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
 };
 
 export default Lamp;

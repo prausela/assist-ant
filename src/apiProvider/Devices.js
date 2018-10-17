@@ -186,6 +186,17 @@ class Devices{
 		});
 	}
 
+	refreshDevices(deviceIds) {
+		this.getAll().then((devices) => {
+			devices.forEach((device) => {
+				if (deviceIds.has(device.id)) {
+					console.log(device)
+					device.refreshMeta()
+				}
+			})
+		})
+	}
+
 }
 
 export default Devices;

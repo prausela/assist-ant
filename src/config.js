@@ -8,7 +8,7 @@ export default {
 		"disabledDevices": ["alarm", "timer"],
 		"lamp": {
 			"defaultColor": "#EAFF4D",
-			"defaultBrightness": 10,
+			"defaultBrightness": 100,
 			"canAdd": true,
 			"component": "Light"
 		},
