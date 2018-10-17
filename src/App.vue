@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-show="false" id="no_conectivity">
+    <div v-show="!connection" id="no_conectivity">
       <div id="no_conectivity_message">    
         <v-icon id="wifi" scale="10" name="wifi"/>
         <strong><p>{{false ? $strings[$language].api.now_conected : $strings[$language].api.no_conectivity}}</p></strong>
@@ -22,6 +22,11 @@ export default {
     Header,
     Body,
   },
+  data() {
+    return {
+      connection: true
+    }
+  },
   mounted() {
 
     // console.log(ApiServiceProvider)
@@ -31,9 +36,27 @@ export default {
       this.$toaster.info(this.$strings[this.$language].devices.timer.timeIsUp)
     })
 
+    this.testConnection()
+
     // ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
     //   console.log(response)
     // })
+  },
+  methods: {
+    testConnection() {
+      console.log('testing connectionn....')
+      this.$api.testConnection().then(() => {
+        this.connection = true
+        setTimeout(() => {
+          this.testConnection()
+        }, 1000);
+      }).catch(() => {
+        this.connection = false
+        setTimeout(() => {
+          this.testConnection()
+        }, 1000);
+      })
+    }
   }
 }
 </script>

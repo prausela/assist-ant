@@ -50,6 +50,14 @@ class api {
 	setLanguage(language) {
 		this.language = language
 	} 
+
+	testConnection() {
+		console.log('testing connection')
+		let roomsUrl = this.rooms.url
+		return axios.get(roomsUrl, {
+			timeout: 1000
+		})
+	}
 }
 
 export default new api();
