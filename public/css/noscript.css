@@ -14,9 +14,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 25px;
+    font-size: 20px;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+    text-align: justify;
+}
+
+#no_js_es {
+	font-size: 15px;
 }
 
 #no_js #no_js_message div {
