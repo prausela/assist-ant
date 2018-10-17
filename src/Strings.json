@@ -71,7 +71,10 @@
 				"addErr2": "El nombre del dispositivo ya esta en uso",
 				"addErr1": "El nombre del dispositivo debe tener entre 3 y 6 caracteres",
 				"unknownError": "Hubo un error al agregar el dispositivo, por favor con el soporte tecnico"
-			}
+			},
+			"no_conectivity": "No hay conexión. Reintentando...",
+			"now_conected": "Ahora puede interactuar con el sitio",
+			"wait": "No se pudo conectar con el servidor. Revise su conexión y, en el caso de que persista el problema, consulte a servicio técnico."
 		},
 		"rooms": {
 			"add": {
