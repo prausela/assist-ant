@@ -62,6 +62,7 @@ class Device {
 				resolve(response.data);
 			})
 			.catch(function(error){
+				reject(error)
 				console.log(error)
 			});
 		});

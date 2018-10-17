@@ -65,7 +65,9 @@ export default {
         enabled: this.device.meta.state,
         colors: this.device.meta.color,
         color: this.device.meta.color,
-        changeTimeout: null
+        changeTimeout: null,
+        initStateTimeout: null,
+        initStatevalue: false
     }
   },
   methods: {
@@ -78,6 +80,9 @@ export default {
 
     },
     updateState() {
+        if (!this.initStatevalue) {
+            return
+        }
         this.device.setState(this.enabled).catch((error) => {
             // console.log(error)
         })
@@ -93,6 +98,9 @@ export default {
   },
 
   mounted() {
+    setTimeout(() => {
+        this.initStatevalue = true
+    }, 250);
     // this.color = this.rgbToHex(this.colors)
   }
 }

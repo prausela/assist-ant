@@ -1,6 +1,6 @@
 <template>
 	<div class="routines">
-        <AddRoutine :currRoutine="selectedRoutine" @closeMe="showAddRoutine = false" v-if="showAddRoutine"/>
+        <AddRoutine :currRoutine="selectedRoutine" @closeMe="showAddRoutine = false; selectedRoutine = null" v-if="showAddRoutine"/>
         <div class="r-header">
             RUTINAS
         </div>
@@ -9,7 +9,7 @@
             <div class="routine-item" :key="id" v-for="(routine, id) in routines">
               <div @click="selectRoutine(routine)" class="r-name">{{routine.name}}</div>
               <div class="r-btn">
-                  <a class="button is-primary">Activar</a>
+                  <a @click="executeRoutine(routine)" class="button is-primary">Activar</a>
               </div>
             </div>
           </div>
@@ -48,6 +48,15 @@ export default {
     selectRoutine(routine) {
       this.selectedRoutine = routine
       this.showAddRoutine = true
+    },
+    executeRoutine(routine) {
+      routine.execute().then(() => {
+        this.$toaster.success(this.$strings[this.$language].routines.execute.success)
+      }).catch((error) => {
+
+        console.log(error)
+        this.$toaster.error(this.$strings[this.$language].routines.execute.fail)
+      })
     }
   }
 }

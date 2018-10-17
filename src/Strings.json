@@ -111,6 +111,13 @@
 				"unselectedActions": "Debe elegir al menos una acción para la rutina",
 				"unselectedName": "Debe elegir un nombre para la rutina",
 				"success": "La rutina se agregó correctamente"
+			},
+			"execute": {
+				"success": "La rutina se ejecutó correctamente",
+				"fail": "Hubo un problema al ejecutar la rutina, por favor contactese con el vendedor para mas información"
+			},
+			"modify": {
+				"success": "La rutina se actualizó correctamente"	
 			}
 		},
 		"deviceTypes": {

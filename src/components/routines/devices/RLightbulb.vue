@@ -113,11 +113,13 @@ export default {
         this.initStatevalue = true
     }, 250);
     this.routine.actions.forEach((action) => {
-        if (action.actionName == 'turnOn') {
-            this.enabled = true
-        } else if( action.actionName == "setColor") {
-            this.colors = action.params[0]
-            this.color = action.params[0]
+        if (action.deviceId == this.device.id) {
+            if (action.actionName == 'turnOn') {
+                this.enabled = true
+            } else if( action.actionName == "setColor") {
+                this.colors = action.params[0]
+                this.color = action.params[0]
+            }
         }
     })
     // this.color = this.rgbToHex(this.colors)

@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-		 		<a @click="submit" class="button is-primary">Agregar</a>
+		 		<a @click="submit" class="button is-primary">{{currRoutine? 'Guardar' : 'Agregar'}}</a>
 	      	</div>
 		</div>
 	</div>
@@ -66,7 +66,7 @@ export default {
 	  		if (this.routine.name && this.routine.actions.length > 0  ) {
 	  			if (!this.currRoutine) {
 		  			this.$api.routines.add(this.routine).then(() => {
-		  				this.$toaster.success(this.$strings[this.$language].routines.modify.success)
+		  				this.$toaster.success(this.$strings[this.$language].routines.add.success)
 		  				this.closeModal()
 		  			}).catch((error) => {
 		  				console.log(error)
@@ -74,7 +74,8 @@ export default {
 
 		  		} else {
 		  			this.$api.routines.modify(this.routine).then(() => {
-		  				this.$toaster.success(this.$strings[this.$language].routines.add.success)
+		  				console.log('modifying', this.routine)
+		  				this.$toaster.success(this.$strings[this.$language].routines.modify.success)
 		  				this.closeModal()
 		  			}).catch((error) => {
 		  				console.log(error)
