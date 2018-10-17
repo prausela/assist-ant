@@ -85,12 +85,14 @@ export default {
     color: rgba(0, 0, 0, 0.61)
     font-size: 17px
     height: 30px
+    border-bottom: 1px solid #0000002e;
 .r-body
     display: flex
     flex: 1
     justify-content: center
 .r-footer
  	padding: 10px 0
+  border-top: 1px solid #0000002e
 .r-name
     display: flex
     margin-left: 7px
@@ -113,7 +115,13 @@ export default {
   justify-content: space-between
   width: 100%
 .button.is-link
-  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
-  background-color: rgb(0, 132, 204)
-  font-size: 14px
+ 
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5) !important
+  background-color: $shadowBg !important
+  font-size: 14px !important
+  color: black !important
+.button.is-link:hover
+    background-color: #97989b !important
+    border-color: transparent !important
+    color: #fff
 </style>

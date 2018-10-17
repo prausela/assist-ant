@@ -101,8 +101,8 @@ export default {
   color: black
   display: flex
   flex-direction: row
-  border-bottom: 1px solid black
-  height: 35px
+  border-bottom: 1px solid #0000002e
+  height: 32px
   min-height: 35px
   user-select: none
   color: rgba(0, 0, 0, 0.61)
@@ -117,6 +117,7 @@ export default {
     &.selected
       background-color: #bdb9b9
       font-weight: bold
+      font-size: 14px
 
 .tab:not(:last-child)::after
   top: 0
@@ -125,7 +126,7 @@ export default {
   right: -2px
   width: 1px
   height: 35px
-  background-color: black
+  background-color: #0000002e
   z-index: 5
 
 </style>

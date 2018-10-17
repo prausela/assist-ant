@@ -120,6 +120,7 @@
         font-size: 17px
         margin-top: 8px
         font-weight: bold
+        border-bottom: 1px solid #0000002e;
 
 
 

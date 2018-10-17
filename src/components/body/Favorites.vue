@@ -45,5 +45,6 @@ export default {
     color: rgba(0, 0, 0, 0.61)
     font-size: 17px
     font-weight: bold
+    border-bottom: 1px solid #0000002e
 
 </style>

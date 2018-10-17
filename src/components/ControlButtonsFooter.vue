@@ -1,15 +1,15 @@
 <template>
     <div class="control-buttons">
-        <div class="footer-icon" :class="{favorite: device.meta.favorite}" @click="star">
+        <div class="footer-icon button is-primary" :class="{favorite: device.meta.favorite}" @click="star">
           <v-icon name="star" scale="2" />
         </div>
-        <div class="footer-icon" @click="edit">
+        <div class="footer-icon button is-primary" @click="edit">
             <v-icon name="pencil-alt" scale="2" />
             <div v-if="verEdit" class="device">
               <EditDevice :device="device" @closeEdit="closeEdit"/>
               </div>
         </div>
-        <div @click="remove" class="footer-icon">
+        <div @click="remove" class="footer-icon button is-primary">
             <v-icon name="trash-alt" scale="2" />
         </div>
     </div>
@@ -70,7 +70,7 @@ export default {
     align-items: center
     cursor: pointer
 .favorite
-    color: yellow
+    color: yellow !important
 .footer-icon
     flex: 1
     justify-content: center
@@ -80,8 +80,8 @@ export default {
     cursor: pointer
 
 .footer-icon:first-child
-    border-right: 1px solid black
+    border-right: 1px solid grey
 .footer-icon:nth-child(2)
-    border-right: 1px solid black
+    border-right: 1px solid grey
 
 </style>
