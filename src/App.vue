@@ -49,12 +49,12 @@ export default {
         this.connection = true
         setTimeout(() => {
           this.testConnection()
-        }, 1000);
+        }, 2000);
       }).catch(() => {
         this.connection = false
         setTimeout(() => {
           this.testConnection()
-        }, 1000);
+        }, 2000);
       })
     }
   }

@@ -55,7 +55,7 @@ class api {
 		console.log('testing connection')
 		let roomsUrl = this.rooms.url
 		return axios.get(roomsUrl, {
-			timeout: 1000
+			timeout: 2000
 		})
 	}
 }
