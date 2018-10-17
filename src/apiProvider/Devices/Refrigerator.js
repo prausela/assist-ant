@@ -82,6 +82,30 @@ class Refrigerator extends Device {
 			})
 		})
 	}
+
+	refreshMeta() {
+		this.getState().then((state) => {
+			let result = state.result
+			console.log(result)
+			let newMeta = this.copyMeta()
+			if (result.temperature) {
+				newMeta.temperature = result.temperature
+			}
+			if (result.freezerTemperature) {
+				newMeta.freezerTemperature = result.freezerTemperature
+			}
+			if (result.mode) {
+				console.log(result.mode)
+				newMeta.mode = result.mode
+			}
+			console.log(newMeta)
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
 };
 
 export default Refrigerator;

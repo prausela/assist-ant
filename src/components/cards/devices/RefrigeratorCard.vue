@@ -5,6 +5,7 @@
 		</div>
 		<div v-if="verDevice" class="device">
 			<Refrigerator :device="device" @closeMe="closeMe" />
+			<RRefrigerator v-if="routine" :device="device" :routine="routine" @closeMe="closeMe" />
 		</div>
 		<div class="card-name">{{device.name}}</div>
 	</div>
@@ -13,16 +14,26 @@
 
 <script>
 import Refrigerator from "@/components/devices/Refrigerator.vue"
-
+import RRefrigerator from "@/components/routines/devices/RRefrigerator.vue"
 export default {
 	components:{
-		Refrigerator
+		Refrigerator,
+		RRefrigerator,
+
 	},
 
 	name: 'RefrigeratorCard',
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
+		},
+		routine: {
+			required: false,
+			default: null
 		}
 	},
 	data () {
@@ -36,8 +47,8 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
+			this.$emit('devicesChanged')
 			this.verDevice = false
-
 		}
 	}
 }

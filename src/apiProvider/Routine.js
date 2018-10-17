@@ -82,6 +82,9 @@ class Routine {
 			case 'setTemperature': 
 				reverseAction = 'setTemperature'
 				break;
+			case 'setFreezerTemperature': 
+				reverseAction = 'setFreezerTemperature'
+				break;
 			case 'setVerticalSwing': 
 				reverseAction = 'setVerticalSwing'
 				break;
