@@ -56,10 +56,14 @@ class Routine {
 			case 'setColor': 
 				reverseAction = 'setColor'
 				break;
+			case 'up':
+				reverseAction = 'down'
+				break;
+			case 'down': 
+				reverseAction = 'up'
+				break;
 		}
-
 		let filteredActions = this.actions.filter((eAction) => {
-			console.log(eAction.actionName, reverseAction)
 			if (eAction.actionName == reverseAction && action.deviceId == eAction.deviceId) {
 				return false 
 			}

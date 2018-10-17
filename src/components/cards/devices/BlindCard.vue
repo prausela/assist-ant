@@ -5,6 +5,7 @@
 		</div>
 		<div v-if="verDevice" class="device">
 			<Blind :device="device" @closeMe="closeMe" />
+			<RBlind v-if="routine" :device="device" :routine="routine" @closeMe="closeMe" />
 		</div>
 		<div class="card-name">{{device.name}}</div>
 	</div>
@@ -12,15 +13,25 @@
 
 <script>
 import Blind from "@/components/devices/Blind.vue"
+import RBlind from "@/components/routines/devices/RBlind.vue"
 export default {
 
 	name: 'BlindCard',
 	components:{
-		Blind
+		Blind,
+		RBlind
 	},
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
+		},
+		routine: {
+			required: false,
+			default: null
 		}
 	},
 
@@ -35,8 +46,8 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
+			this.$emit('devicesChanged')
 			this.verDevice = false
-
 		}
 	}
 }

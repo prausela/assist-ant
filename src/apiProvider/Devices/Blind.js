@@ -25,6 +25,28 @@ class Blind extends Device {
 			})
 		})
 	}
+
+	refreshMeta() {
+		this.getState().then((state) => {
+
+
+
+			let result = state.result
+			console.log(result)
+			let newMeta = this.copyMeta()
+			if (result.status == "opened" || result.status == "opening") {
+				newMeta.state = true
+			} else if (result.status == "opening") {
+				newMeta.state = false
+			}
+			console.log('newmeta', newMeta)
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
 }
 
 export default Blind;
