@@ -56,6 +56,7 @@ export default {
 	flex-direction: row
 	justify-content: center
 	align-items: center
+	margin-left: 69px
 
 .info 
 	display: flex

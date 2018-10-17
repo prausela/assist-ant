@@ -204,4 +204,12 @@ export default {
     height: 30px
     border: 1px solid black
     padding: 3px
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
 </style>

@@ -103,4 +103,8 @@ export default {
   display: flex
   justify-content: space-between
   width: 100%
+.button.is-link
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
 </style>

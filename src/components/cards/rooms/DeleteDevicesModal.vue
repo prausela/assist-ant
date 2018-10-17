@@ -6,7 +6,7 @@
                     <v-icon name="times-circle"  scale="1" />
                 </div>
 				<div>
-					Desea tambien eliminar los dispositivos de la habiatacioon?
+					Desea tambien eliminar los dispositivos de la habitacion?
 				</div>
 				<div>
 					<a class="button is-success" @click="$emit('confirm')">Si</a>

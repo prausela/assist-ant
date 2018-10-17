@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <div v-show="false" id="no_conectivity">
+      <div id="no_conectivity_message">    
+        <v-icon id="wifi" scale="10" name="wifi"/>
+        <strong><p>{{false ? $strings[$language].api.now_conected : $strings[$language].api.no_conectivity}}</p></strong>
+        <p>{{$strings[$language].api.wait}}</p>
+      </div>
+    </div>
     <Header/>
     <Body/>
   </div>
@@ -49,6 +56,38 @@ export default {
   position: relative
   justify-content: space-around
   height: 100vh
+
+#no_conectivity
+  position: absolute
+  width: 100%
+  height: 100%
+  z-index: 2
+  color: white
+  background-color: rgba(0,132,201, 0.95)
+
+#no_conectivity_message
+  position: absolute
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  text-align: justify;
+#no_conectivity_message strong
+  color: white
+  font-size: 25px
+
+#no_conectivity_wait
+  position: absolute
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  text-align: justify;
+
+#wifi
+  margin-bottom: 20px
 
 body 
   margin: 0
@@ -105,9 +144,9 @@ body .modal
   font-size: 40px
   user-select: none
   position: relative
-  white-space: nowrap;
-  overflow: hidden !important;
-  text-overflow: ellipsis;
+  white-space: nowrap
+  overflow: hidden !important
+  text-overflow: ellipsis
   display: inline-block
 .modal-header::after
   content: ""
@@ -211,6 +250,14 @@ body .modal
     background-color: #b1aeae
     box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
   
 // Tarjetas
 .device-card
@@ -222,10 +269,12 @@ body .modal
   width: 30%
   height: 100px
   margin: 7px 1%
+
   .card-name  
     white-space: nowrap
     overflow: hidden !important
     text-overflow: ellipsis
+    height: 32px
 .icon-container
   align-items: center
   height: 100px
