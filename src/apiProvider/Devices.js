@@ -195,11 +195,6 @@ class Devices{
 								return true
 							}
 						})
-						var t = 3
-						console.log('afuera del foreach')
-						console.log(routine.actions)
-						console.log(filteredActions)
-						console.log(t)
 						if (modified) {
 							routine.actions = filteredActions
 							api.routines.modify(routine)

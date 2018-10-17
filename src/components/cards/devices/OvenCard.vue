@@ -5,6 +5,7 @@
 		</div>
 		<div v-if="verDevice" class="device">
 			<Oven :device="device" @closeMe="closeMe" />
+			<ROven v-if="routine" :device="device" :routine="routine" @closeMe="closeMe" />
 		</div>
 		<div class="card-name">{{device.name}}</div>
 	</div>
@@ -12,19 +13,27 @@
 
 <script>
 import Oven from "@/components/devices/Oven.vue"
-
+import ROven from "@/components/routines/devices/ROven.vue"
 export default {
 	components:{
-		Oven
+		Oven,
+		ROven
 	},
 
 	name: 'OvenCard',
 	props: {
 		device: {
 			required: true	
+		},
+		openModals: {
+			required: false,
+			default: true
+		},
+		routine: {
+			required: false,
+			default: null
 		}
 	},
-
 	data () {
 		return {
 			verDevice: false,
@@ -36,8 +45,8 @@ export default {
 			this.verDevice = true
 		},
 		closeMe(){
+			this.$emit('devicesChanged')
 			this.verDevice = false
-
 		}
 	}
 }

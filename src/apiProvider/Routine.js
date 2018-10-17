@@ -23,23 +23,34 @@ class Routine {
 
 	execute(){
 		return new Promise((resolve, reject) => {
-			axios.put(this.url + '/' +'execute', {})
-			.then((response) => {
-				if (!response.data.result) {
-					reject({
-						message: "Unknown error"
+			api.routines.clearUnusedDevices(this).then((clearRoutine) => {
+				console.log('clear routines:')
+				if (clearRoutine.actions.length == 0) {
+					resolve()
+					return
+				} else {
+					this.actions = clearRoutine.actions
+					api.routines.modify(this).then(() => {
+						axios.put(this.url + '/' +'execute', {})
+						.then((response) => {
+							if (!response.data.result) {
+								reject({
+									message: "Unknown error"
+								})
+							}
+							let deviceIds = new Set()
+							this.actions.forEach((action) => {
+								deviceIds.add(action.deviceId)
+							})
+							api.devices.refreshDevices(deviceIds)
+							resolve(response.data);
+						})
+						.catch(function(error){
+							console.log(error)
+						});
 					})
 				}
-				let deviceIds = new Set()
-				this.actions.forEach((action) => {
-					deviceIds.add(action.deviceId)
-				})
-				api.devices.refreshDevices(deviceIds)
-				resolve(response.data);
 			})
-			.catch(function(error){
-				console.log(error)
-			});
 		});
 	}
 
@@ -70,6 +81,15 @@ class Routine {
 				break;
 			case 'setFanSpeed': 
 				reverseAction = 'setFanSpeed'
+				break;
+			case 'setConvection': 
+				reverseAction = 'setConvection'
+				break;
+			case 'setHeat': 
+				reverseAction = 'setHeat'
+				break;
+			case 'setGrill': 
+				reverseAction = 'setGrill'
 				break;
 			case 'up':
 				reverseAction = 'down'

@@ -112,6 +112,39 @@ class Oven extends Device {
 			})
 		})
 	}
+
+
+	refreshMeta() {
+		this.getState().then((state) => {
+			let result = state.result
+			console.log(result)
+			let newMeta = this.copyMeta()
+			if (result.heat) {
+				newMeta.heat = result.heat
+			}
+			if (result.status== "on") {
+				newMeta.state = true
+			}
+			if (result.status== "off") {
+				newMeta.state = false
+			}
+			if (result.temperature) {
+				newMeta.temperature = result.temperature
+			}
+			if (result.grill) {
+				newMeta.grill = result.grill
+			}
+			if (result.convection) {
+				newMeta.convection = result.convection
+			}
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
+
 };
 
 export default Oven;

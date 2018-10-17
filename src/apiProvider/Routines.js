@@ -82,28 +82,9 @@ class Routines {
 
 	modify(routine){
 		// eslint-disable-next-line
-		console.log('modifying to ', this.url + '/' + routine.id)
 		return new Promise((resolve, reject) => {
-			//Remember to change to device.url
-			// let actionIsValid = true
-			// let actions = []
-			// routine.actions.forEach((newAction) => {
-			// 	if (typeof(newAction.device[newAction.actionName] == "undefined")) {
-			// 		reject()
-			// 		actionIsValid = false
-			// 	} else if(newAction.device[newAction.actionName].length < newAction.actionParams.length){
-			// 		reject()
-			// 		actionIsValid = false
-			// 	} else {
-			// 		actions.push({
-			// 			deviceId: newAction.device.id,
-			// 			actionName: newAction.actionName,
-			// 			params: newAction.actionParams,
-			// 			meta: JSON.stringify({})
-			// 		})
-			// 	}
-			// })
-			// if(actionIsValid){
+			this.clearUnusedDevices(routine).then((clearRoutine) => {
+				console.log(clearRoutine)
 				axios.put(this.url + '/' + routine.id, routine)
 				.then(function(response) {
 					api.eventBus.$emit('refreshRoutines')
@@ -112,6 +93,7 @@ class Routines {
 				.catch(function(error){
 					console.log(error);
 				});
+			})
 			// }
 		});
 	}
@@ -129,6 +111,50 @@ class Routines {
 				reject(error)
 			});
 		});
+	}
+
+	clearUnusedDevices(routine) {
+		return new Promise((resolve, reject) => {
+			console.log('clearing unused devices')
+			api.devices.getAll().then((devices) => {
+				console.log(devices)
+				let deviceIds = new Set()
+				routine.actions.forEach((action) => {
+					deviceIds.add(action.deviceId)
+				})
+				console.log('all devices IDS:', deviceIds)
+				let idsArrays = Array.from(deviceIds)
+
+				console.log(idsArrays)
+				let deletedDevs = idsArrays.filter((devId) => {
+					let found = false
+					devices.forEach((device) => {
+						if( device.id == devId) {
+							found = true
+						}
+					})
+					return !found
+				})
+				deletedDevs.forEach((deletedDevId) => {
+					let modified = false
+					var filteredActions = routine.actions.filter((action) => {
+						console.log(deletedDevId == action.deviceId)
+						if (action.deviceId == deletedDevId) {
+							modified = true
+							return false
+						} else {
+							return true
+						}
+					})
+					if (modified) {
+						routine.actions = filteredActions
+					}
+				})
+				resolve(routine)
+			}).catch((error) => {
+				console.log('unabled to get devices', error)
+			})
+		})
 	}
 
 }
