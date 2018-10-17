@@ -67,24 +67,24 @@ export default {
 
 #no_conectivity_message
   position: absolute
-  top: 50%;
-  left: 50%;
-  font-size: 20px;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  text-align: justify;
+  top: 50%
+  left: 50%
+  font-size: 20px
+  transform: translate(-50%,-50%)
+  -ms-transform: translate(-50%,-50%)
+  text-align: justify
 #no_conectivity_message strong
   color: white
   font-size: 25px
 
 #no_conectivity_wait
   position: absolute
-  top: 50%;
-  left: 50%;
-  font-size: 20px;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  text-align: justify;
+  top: 50%
+  left: 50%
+  font-size: 20px
+  transform: translate(-50%,-50%)
+  -ms-transform: translate(-50%,-50%)
+  text-align: justify
 
 #wifi
   margin-bottom: 20px
@@ -193,7 +193,7 @@ body .modal
   justify-content: center
   align-items: center
   height: 50px
-  border-top: 1px solid black
+  border-top: 1px solid #00000085
 
 .mode-button
     display: flex
@@ -252,12 +252,15 @@ body .modal
 
 .button.is-primary
   box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5) !important
-  background-color: $logo !important
+  background-color: $shadowBg !important
   font-size: 14px !important
+  color: black !important
 .button.is-primary:hover
-    background-color: #276cda !important
+    background-color: #97989b !important
     border-color: transparent !important
-    color: #fff !important
+    color: #fff 
+
+
   
 // Tarjetas
 .device-card

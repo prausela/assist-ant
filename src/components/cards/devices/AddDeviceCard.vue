@@ -56,7 +56,8 @@ export default {
 
 <style lang="sass" scoped>
 
-
+.add-container
+	height: 100px
 .name
 	text-align: center
 	margin: 5px 0px

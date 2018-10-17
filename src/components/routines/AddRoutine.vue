@@ -1,8 +1,14 @@
 <template>
 		<div class="modal" @click.stop="closeModal">
 		<div class="modal-inner" @click.stop>
-			<div class="modal-header">
+			<div v-if="!currRoutine" class="modal-header">
 				Agregar Rutina
+				<div class="close-modal-btn" @click="closeModal">
+					<v-icon name="times-circle"  scale="1" />
+				</div>
+			</div>
+			<div v-if="currRoutine" class="modal-header">
+				{{this.name}}
 				<div class="close-modal-btn" @click="closeModal">
 					<v-icon name="times-circle"  scale="1" />
 				</div>
@@ -21,19 +27,18 @@
 							<div class="routine-devices">
 								<DevicesList @devicesChanged="updateDevices" :routine="routine" :add="true" :devices="devices" />
 							</div>
-						
+
+						</div>
 					</div>
 				</div>
+				<div class="modal-footer">
+					<a @click="submit" class=" button is-primary">{{currRoutine? 'Guardar' : 'Agregar'}}</a>
+					<a v-if="currRoutine" @click="remove" class=" button is-primary">Eliminar</a>
+				</div>
+
 			</div>
-			<div class="modal-footer">
-		 		<a @click="submit" class="button is-primary">{{currRoutine? 'Guardar' : 'Agregar'}}</a>
-		 		<a v-if="currRoutine" @click="remove" class="button is-primary">Eliminar</a>
-
-	      	</div>
-
 		</div>
-	</div>
-</template>
+	</template>
 
 <script>
 export default {
@@ -170,4 +175,12 @@ input
   justify-content: flex-start
   overflow: auto
   flex: 2
+
+.footer-icon
+    flex: 1
+    justify-content: center
+    display: flex
+    height: 100%
+    align-items: center
+    cursor: pointer
 </style>
