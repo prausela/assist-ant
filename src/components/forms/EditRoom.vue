@@ -89,7 +89,7 @@ export default {
 	  				icon: this.selectedIcon
 	  			}),
 	  		}).then(() => {
-	  			this.$toaster.success(this.$strings[this.$language].rooms.add.success)
+	  			this.$toaster.success(this.$strings[this.$language].rooms.edit.success)
 	  			this.closeModal()
 	  		}).catch((error) => {
 	  			this.$toaster.error(error.message)
