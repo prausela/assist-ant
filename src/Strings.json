@@ -83,6 +83,9 @@
 				"addErr1": "El nombre de la habitación debe tener entre 3 y 60 caracteres",
 				"addErr2": "El nombre de la habitación ya esta en uso"
 			},
+			"edit":{
+				"success": "La habitación se editó correctamente"
+			},
 			"delete": {
 				"success": "La habitación se eliminó correctamente"
 			}
