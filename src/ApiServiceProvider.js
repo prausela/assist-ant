@@ -34,7 +34,7 @@ class api {
 		this.devicesTypes.getAll()
 		this.source.addEventListener('message', (e) =>{
 			// Se recibio un evento (emito el refresh)
-		  console.log('new event', e.data)
+		  // console.log('new event', e.data)
 		  this.eventBus.$emit('refreshDevices')
 
 

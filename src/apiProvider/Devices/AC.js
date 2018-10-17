@@ -131,6 +131,40 @@ class AC extends Device {
 			})
 		})
 	}
+
+	refreshMeta() {
+		this.getState().then((state) => {
+			let result = state.result
+			console.log(result)
+			let newMeta = this.copyMeta()
+			if (result.fanSpeed) {
+				newMeta.speed = result.fanSpeed
+			}
+			if (result.status== "on") {
+				newMeta.state = true
+			}
+			if (result.status== "off") {
+				newMeta.state = false
+			}
+			if (result.temperature) {
+				newMeta.temperature = result.temperature
+			}
+			if (result.mode) {
+				newMeta.mode = result.mode
+			}
+			if (result.verticalSwing) {
+				newMeta.verticalSwing = result.verticalSwing
+			}
+			if (result.horizontalSwing) {
+				newMeta.horizontalSwing = result.horizontalSwing
+			}
+			this.updateMeta(newMeta).catch((error) => {
+				reject(error)
+			})
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
 };
 
 export default AC;

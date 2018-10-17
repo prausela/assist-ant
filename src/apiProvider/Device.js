@@ -41,6 +41,15 @@ class Device {
 		});
 	}
 
+	refreshMeta() {
+		console.log('undefined method for this device')
+		this.getState().then((state) => {
+			let result = state.result
+			console.log('printing state')
+			console.log(result)
+		})
+	}
+
 	delete() {
 		return api.devices.delete(this)
 	}

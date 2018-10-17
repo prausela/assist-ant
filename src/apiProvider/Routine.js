@@ -56,6 +56,21 @@ class Routine {
 			case 'setColor': 
 				reverseAction = 'setColor'
 				break;
+			case 'setTemperature': 
+				reverseAction = 'setTemperature'
+				break;
+			case 'setVerticalSwing': 
+				reverseAction = 'setVerticalSwing'
+				break;
+			case 'setHorizontalSwing': 
+				reverseAction = 'setHorizontalSwing'
+				break;
+			case 'setMode': 
+				reverseAction = 'setMode'
+				break;
+			case 'setFanSpeed': 
+				reverseAction = 'setFanSpeed'
+				break;
 			case 'up':
 				reverseAction = 'down'
 				break;
@@ -64,7 +79,7 @@ class Routine {
 				break;
 		}
 		let filteredActions = this.actions.filter((eAction) => {
-			if (eAction.actionName == reverseAction && action.deviceId == eAction.deviceId) {
+				if (eAction.actionName == reverseAction && action.deviceId == eAction.deviceId) {
 				return false 
 			}
 

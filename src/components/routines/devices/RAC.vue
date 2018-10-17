@@ -88,9 +88,10 @@
                     </div>
                 </div>    
             </div>
-            <div class="modal-footer">
-                <cbfooter :device="device" @closeModal="closeModal" />
-            </div>
+                <div class="modal-footer">
+                    <a @click="closeModal" class="button is-primary">Guardar</a>
+                    <a @click="removeFromRoutine" class="button is-danger">Sacar de la Rutina</a>
+                </div>
         </div>
     </div>
 </template>
@@ -106,17 +107,18 @@ export default {
         Switches
     },
     props: [
-    'device'
+    'device',
+    'routine'
     ],
     data () {
         return {
             name: 'AC',
-            enabled: this.device.meta.state,
-            temperature: this.device.meta.temperature,
-            mode: this.device.meta.mode,
-            horizontalSwing: this.device.meta.horizontalSwing,
-            verticalSwing: this.device.meta.verticalSwing,
-            speed: this.device.meta.speed,
+            enabled: false,
+            temperature: this.$config.deviceTypes.ac.defaults.temperature,
+            mode: this.$config.deviceTypes.ac.defaults.mode,
+            horizontalSwing: this.$config.deviceTypes.ac.defaults.horizontalSwing,
+            verticalSwing: this.$config.deviceTypes.ac.defaults.verticalSwing,
+            speed: this.$config.deviceTypes.ac.defaults.speed,
             initStateTimeout: null,
             initStatevalue: false
         }
@@ -125,91 +127,106 @@ export default {
         setTimeout(() => {
             this.initStatevalue = true
         }, 250);
+        this.routine.actions.forEach((action) => {
+            if (action.deviceId == this.device.id) {
+                console.log(action)
+                if (action.actionName == 'turnOn') {
+                    this.enabled = true
+                } else if( action.actionName == "setMode") {
+                    this.mode = action.params[0]
+                } else if( action.actionName == "setTemperature") {
+                    this.temperature = action.params[0]
+                } else if( action.actionName == "setVerticalSwing") {
+                    this.verticalSwing = action.params[0]
+                } else if( action.actionName == "setHorizontalSwing") {
+                    this.horizontalSwing = action.params[0]
+                } else if( action.actionName == "setFanSpeed") {
+                    this.speed = action.params[0]
+                }
+
+            }
+        })
     },
     methods:{
         closeModal(){
             this.$emit('closeMe')
         },
+        removeFromRoutine() {
+            this.routine.removeDevice(this.device)
+            this.closeModal()
+        },
         updateState() {
             if (!this.initStatevalue) {
                 return
             }
-            this.device.setState(this.enabled).catch((error) => {
-                console.log(error)
-            })
+
+            let action = null
+            if (this.enabled) {
+                action = this.$api.routines.createAction(this.device, 'turnOn', [])
+            } else {
+                action = this.$api.routines.createAction(this.device, 'turnOff', [])            
+            }
+            console.log(action)
+            this.routine.addAction(action)
         },
         setTemperature(temperature){
+            if( temperature < 18 || temperature > 38) {
+                this.$toaster.error(this.$strings[this.$language].deviceTypes.ac.errors.invalidRange)
+                return
+            }
             this.temperature=temperature
-            this.device.setTemperature(temperature).then(()=>{
-                console.log("exito")
-                this.$toaster.success(this.$strings[this.$language].devices.modify.success)
-            }).catch((error) => {
-                if (error.message == "Unknown error") {
-                    console.log(error)
-                } else {
-                    this.$toaster.error(error.message)
-                }
-            }) 
+            let action = this.$api.routines.createAction(this.device, 'setTemperature', [temperature])
+            this.routine.addAction(action)
         },
         setMode(newMode) {
             this.mode = newMode
-            this.device.setMode(newMode).catch((error) => {
-                console.log(error)
-            })
+            let action = this.$api.routines.createAction(this.device, 'setMode', [newMode])
+            this.routine.addAction(action)
         },
         setVerticalSwing(newVS){
             this.verticalSwing=newVS
-            this.device.setVerticalSwing(newVS).catch((error)=>{
-                console.log(error)
-            })
+            let action = this.$api.routines.createAction(this.device, 'setVerticalSwing', [newVS])
+            this.routine.addAction(action)
         },
         setHorizontalSwing(newHS){
             this.horizontalSwing=newHS
-            this.device.setHorizontalSwing(newHS).catch((error)=>{
-                console.log(error)
-            })
+            let action = this.$api.routines.createAction(this.device, 'setHorizontalSwing', [newHS])
+            this.routine.addAction(action)
         },
         setFanSpeed(newFS){
 
             console.log(this.speed)
             if(newFS=='auto'){
                 this.speed=newFS
-                this.device.setFanSpeed(this.speed).catch((error)=>{
-                    console.log(error)
-                })
             }
             else if(newFS=='-25'){
                 if(this.speed=='auto'){
                     this.speed='25'
                 }
-               this.speed= parseInt(this.speed)
+                this.speed= parseInt(this.speed)
 
-               if(this.speed!=25){
-                this.speed-=25
-                this.speed=this.speed.toString()
-                this.device.setFanSpeed(this.speed).catch((error)=>{
-                    console.log(error)
-                })
+                if(this.speed!=25){
+                    this.speed-=25
+                    this.speed=this.speed.toString()
+                }
             }
-        }
-        else if(newFS=='25'){
-            if(this.speed=='auto'){
+            else if(newFS=='25'){
+                if(this.speed=='auto'){
                     this.speed='0'
                 }
-            this.speed= parseInt(this.speed)
+                this.speed= parseInt(this.speed)
 
-            if(this.speed!=100){
-                this.speed+=25
-                this.speed=this.speed.toString()
+                if(this.speed!=100){
+                    this.speed+=25
+                    this.speed=this.speed.toString()
+                }
+            }  
 
-                this.device.setFanSpeed(this.speed).catch((error)=>{
-                    console.log(error)
-                })
-            }
+            let action = this.$api.routines.createAction(this.device, 'setFanSpeed', [this.speed])
+            this.routine.addAction(action)
+
         }
-
     }
-}
 }
 </script>
 
@@ -225,7 +242,7 @@ export default {
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
 .invisible
-    opacity: 0
+    opacity: 1
 
 
 

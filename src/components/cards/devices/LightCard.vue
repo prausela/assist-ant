@@ -44,14 +44,11 @@ export default {
 	},
 	methods:{
 		pressedCard(){
-			if (this.openModals) {
-				this.verDevice = true
-			}
+			this.verDevice = true
 		},
 		closeMe(){
 			this.$emit('devicesChanged')
 			this.verDevice = false
-
 		}
 	}
 }
