@@ -9,6 +9,7 @@
 		<div v-if="routine && verDevice" class="device">
 			<AddDeviceToRoutine />
 		</div>
+		<div class="card-name">{{$strings[$language].deviceTypes.device.tooltips.add}}</div>
 	</div>
 </template>
 s

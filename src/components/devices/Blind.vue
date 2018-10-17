@@ -16,10 +16,10 @@
                             
                     </div>
                     <div class="arrow-container">
-                        <div class="arrow-s" @click="setState(true)"  :class="{active: state == true}">
+                        <div v-tooltip="state ? $strings[$language].deviceTypes.blind.tooltips.up.upped : $strings[$language].deviceTypes.blind.tooltips.up.to_up" class="arrow-s" @click="setState(true)"  :class="{active: state == true}">
                             <v-icon name="arrow-up" class="arrow" scale="3" />
                         </div>
-                        <div class="arrow-s" @click="setState(false)"   :class="{active: state == false}">
+                        <div v-tooltip="state ? $strings[$language].deviceTypes.blind.tooltips.down.to_down : $strings[$language].deviceTypes.blind.tooltips.down.downed" class="arrow-s" @click="setState(false)"   :class="{active: state == false}">
                             <v-icon name="arrow-down"  class="arrow" scale="3"  />
                         </div>
                     </div>

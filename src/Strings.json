@@ -101,11 +101,29 @@
 			}
 		},
 		"deviceTypes": {
+			"device": {
+				"tooltips": {
+					"on" : "Encender",
+					"off" : "Apagar",
+					"eco" : "Modo Económico",
+					"add" : "Agregar"
+				}
+			},
 			"lamp": {
 				"label": "Lampara"
 			},
 			"blind": {
-				"label": "Persiana"
+				"label": "Persiana",
+				"tooltips": {
+					"up": {
+						"to_up": "Levantar",
+						"upped": "Levantada"
+					},
+					"down": {
+						"to_down": "Bajar",
+						"downed": "Bajada"
+					}
+				}
 			},
 			"oven": {
 				"label": "Horno",
@@ -113,17 +131,69 @@
 					"invalidRange": "La temperatura debe estar entre 90°C y 230°C"
 				},
 				"tooltips": {
-					"convectionMode1": "test"
+					"allModes": {
+						"deactivate": "Desactivar"
+					},
+					"heatMode":{
+						"conventional": "Abajo y Arriba",
+						"bottom": "Solo Abajo",
+						"top": "Solo Arriba"
+					},
+					"grillMode":{
+						"large": "Potencia Máxima"
+					},
+					"convectionMode": {
+						"normal" : "Activar"
+					}
 				}
 			},
 			"ac": {
 				"label": "Aire Acondicionado",
 				"errors": {
 					"invalidRange": "La temperatura debe estar entre 18°C y 38°C"
+				},
+				"tooltips":{
+					"fan":{
+						"up": "Mayor Potencia",
+						"down": "Menor Potencia",
+						"strength": {
+							"auto": "Automático",
+							"twenty_five": "Potencia Mínima",
+							"fifty": "Potencia Media",
+							"seventy_five": "Potencia Alta",
+							"hundred": "Potencia Máxima"
+						}
+					},
+					"modes":{
+						"heatMode": "Calor",
+						"coldMode": "Frío",
+						"fanMode": "Ventilador"
+					},
+					"vertical":{
+						"auto" : "Automático",
+						"twenty_two": "22°",
+						"forty_five": "45°",
+						"sixty_seven": "67°",
+						"ninty": "90°"
+					},
+					"horizontal":{
+						"auto": "Automático",
+						"minus_ninty": "Izquierda",
+						"minus_forty_five": "Izquierda del Centro",
+						"cero": "Sin Inclinación",
+						"forty_five": "Derecha del Centro",
+						"ninty": "Derecha"
+					}
 				}
 			},
 			"door": {
-				"label": "Puerta"
+				"label": "Puerta",
+				"tooltips":{
+					"open": "Abrir",
+					"close": "Cerrar",
+					"lock": "Trabar",
+					"unlock": "Destrabar"
+				}
 			},
 			"alarm": {
 				"label": "Alarma"
@@ -133,6 +203,13 @@
 				"errors": {
 					"invalidRange": "La temperatura debe estar entre 2 y 8",
 					"invalidFreezerRange": "La temperatura del freezer debe estar entre -20 y -8"
+				},
+				"tooltips": {
+					"modes":{
+						"default": "De Fábrica",
+						"party": "Fiesta",
+						"vacation": "Vacaciones"
+					}
 				}
 			},
 			"timer": {

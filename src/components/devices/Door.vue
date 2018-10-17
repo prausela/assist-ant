@@ -10,14 +10,14 @@
             </div>
             <div class="modal-body">
                 <div class="column-container"> 
-                    <div class="state-container" @click="setState(false)"  v-if="this.state == true">
+                    <div  class="state-container" @click="setState(false)"  v-if="this.state == true">
                         <v-icon name="door-closed" class="state" scale="10" />
-                        <v-icon name="door-open" class="not-state" scale="3" />
+                        <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.close" name="door-open" class="not-state" scale="3" />
 
                     </div>
                     <div class="state-container" @click="setState(true)"  v-if="this.state == false">
                         <v-icon name="door-open" class="state" scale="10" />
-                       <v-icon name="door-closed" class="not-state" scale="3" />
+                       <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.open" name="door-closed" class="not-state" scale="3" />
                       
                     </div>
                 </div>
@@ -25,12 +25,12 @@
 
                     <div class="state-container" @click="setLock(true)" v-if="this.lock == false">
                         <v-icon name="lock" class="state" scale="10" />
-                        <v-icon name="lock-open" class="not-state" scale="3" />
+                        <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.lock" name="lock-open" class="not-state" scale="3" />
 
                     </div>
                     <div  class="state-container" @click="setLock(false)" v-if="this.lock == true">
                         <v-icon name="lock-open" class="state" scale="10" />
-                        <v-icon name="lock" class="not-state" scale="3" />
+                        <v-icon v-tooltip="$strings[$language].deviceTypes.door.tooltips.unlock" name="lock" class="not-state" scale="3" />
 
                     </div>
                 </div>

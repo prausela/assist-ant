@@ -36,13 +36,13 @@
                     <div class="op-body">
                         <div class="name"> Modo </div>
                         <div class="body">
-                            <div class="mode-button mode" :class="{active: mode == 'default'}" @click="setMode('default')">
+                            <div v-tooltip="$strings[$language].deviceTypes.refrigerator.tooltips.modes.default" class="mode-button mode" :class="{active: mode == 'default'}" @click="setMode('default')">
                                 Default
                             </div>
-                            <div class="mode-button" :class="{active: mode == 'party'}" @click="setMode('party')">
+                            <div v-tooltip="$strings[$language].deviceTypes.refrigerator.tooltips.modes.party" class="mode-button" :class="{active: mode == 'party'}" @click="setMode('party')">
                                 <img class="mode" src="@/assets/modes/party.png">
                             </div>
-                            <div class="mode-button" :class="{active: mode == 'vacation'}" @click="setMode('vacation')">
+                            <div v-tooltip="$strings[$language].deviceTypes.refrigerator.tooltips.modes.vacation" class="mode-button" :class="{active: mode == 'vacation'}" @click="setMode('vacation')">
                                 <v-icon name="suitcase" class="mode" scale="2" />
                             </div>
                         </div>

@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
+                        <switches v-tooltip="!enabled ? $strings[$language].deviceTypes.device.tooltips.on : $strings[$language].deviceTypes.device.tooltips.off" class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                     </div>                        
                 </div>
                 <div class="setting-op" :class="{invisible: !enabled}">

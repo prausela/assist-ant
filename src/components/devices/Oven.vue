@@ -14,7 +14,7 @@
                         <img class="oven-img" src="@/assets/devices/oven.png">
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
+                        <switches v-tooltip="!enabled ? $strings[$language].deviceTypes.device.tooltips.on : $strings[$language].deviceTypes.device.tooltips.off" class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                         <div class="temp-input" :class="{invisible: !enabled}">
                             <div class="temp-header">Temperatura</div>
                             <div class="temp-body">
@@ -29,13 +29,13 @@
                     <div class="set heat">
                         <div class="name"> Calor </div>
                         <div class="body">
-                            <div class="mode-button" v-tooltip="'Modo convencional'" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.heatMode.conventional" class="mode-button" :class="{active: heat == 'conventional'}" @click="setHeat('conventional')">
                                 <img class="op" src="@/assets/modes/oven-conventional.png">
                             </div>
-                            <div class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.heatMode.bottom" class="mode-button" :class="{active: heat == 'bottom'}" @click="setHeat('bottom')">
                                 <img class="op" src="@/assets/modes/oven-bottom.png">
                             </div>
-                            <div class="mode-button" :class="{active: heat == 'top'}" @click="setHeat('top')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.heatMode.top" class="mode-button" :class="{active: heat == 'top'}" @click="setHeat('top')">
                                 <img class="op" src="@/assets/modes/oven-top.png">
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                     <div class="set grill">
                         <div class="name"> Grill </div>
                         <div class="body">
-                            <div class="mode-button" :class="{active: grill == 'large'}" @click="setGrill('large')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.grillMode.large" class="mode-button" :class="{active: grill == 'large'}" @click="setGrill('large')">
                                 <img class="op" src="@/assets/modes/oven-top.png">
                             </div>
-                            <div class="mode-button" :class="{active: grill == 'eco'}" @click="setGrill('eco')">
+                            <div v-tooltip="$strings[$language].deviceTypes.device.tooltips.eco" class="mode-button" :class="{active: grill == 'eco'}" @click="setGrill('eco')">
                                 <v-icon name="leaf" class="op"  scale="1" />
                             </div>
-                            <div class="mode-button" :class="{active: grill == 'off'}" @click="setGrill('off')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.allModes.deactivate" class="mode-button" :class="{active: grill == 'off'}" @click="setGrill('off')">
                                 <div class="op">Off</div>
                             </div>
                         </div>
@@ -58,13 +58,13 @@
                     <div class="set conv">
                         <div class="name">Convección</div>
                         <div class="body">
-                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.convectionMode1" class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.convectionMode.normal" class="mode-button" :class="{active: convection == 'normal'}" @click="setConvection('normal')">
                                 <img class="op" src="@/assets/devices/fan.png">
                             </div>
-                            <div class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
+                            <div v-tooltip="$strings[$language].deviceTypes.device.tooltips.eco" class="mode-button" :class="{active: convection == 'eco'}" @click="setConvection('eco')">
                                 <v-icon name="leaf" class="op"  scale="1" />
                             </div>
-                            <div class="mode-button" :class="{active: convection == 'off'}" @click="setConvection('off')">
+                            <div v-tooltip="$strings[$language].deviceTypes.oven.tooltips.allModes.deactivate" class="mode-button" :class="{active: convection == 'off'}" @click="setConvection('off')">
                                 <div class="op">Off</div>
                             </div>
                         </div>
@@ -226,5 +226,6 @@ export default {
     border: 1px solid black
     padding: 3px
     cursor: pointer
+
 
 </style>

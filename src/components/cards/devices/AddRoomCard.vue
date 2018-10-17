@@ -6,6 +6,7 @@
 		<div v-if="verDevice" class="device">
 			<AddRoom @closeMe="verDevice = false" />
 		</div>
+		<div class="card-name">{{$strings[$language].deviceTypes.device.tooltips.add}}</div>
 	</div>
 </template>
 

@@ -13,7 +13,10 @@ import './../node_modules/bulma/css/bulma.css';
 
 // Tooltips
 import VTooltip from 'v-tooltip'
-Vue.use(VTooltip)
+/*
+*********** DISABLED AUTOHIDE ***************
+*/
+Vue.use(VTooltip, {defaultHideOnTargetClick: false, defaultOffset: "2px"})
 
 // ControlButtonsFooter
 import ControlButtonsFooter from './components/ControlButtonsFooter'

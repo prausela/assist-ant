@@ -14,7 +14,7 @@
                         <img class="ac-pimg" src="@/assets/devices/AC.png">
                     </div>
                     <div class="switch-container">
-                        <switches class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
+                        <switches v-tooltip="!enabled ? $strings[$language].deviceTypes.device.tooltips.on : $strings[$language].deviceTypes.device.tooltips.off" class="switch" type-bold="true" theme="bulma" color="blue" @input="updateState" v-model="enabled"></switches>
                         <div class="temp-input" :class="{invisible: !enabled}">
                             <div class="temp-header">Temperatura</div>
                             <div class="temp-body">
@@ -28,22 +28,22 @@
                     <div class="op-body">
                         <div class="name">Ventilador</div>
                         <div class="body">
-                            <div class="minus-container" @click="setFanSpeed('-25')">
+                            <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.down" class="minus-container" @click="setFanSpeed('-25')">
                                <v-icon name="minus" class="mode" scale="1" />
                            </div>
 
-                           <img class="fan-img" src="@/assets/modes/fan-25.png" v-if="this.speed == '25' ">
-                           <img class="fan-img" src="@/assets/modes/fan-50.png" v-if="this.speed == '50' ">
-                           <img class="fan-img" src="@/assets/modes/fan-75.png" v-if="this.speed == '75' ">
+                           <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.twenty_five" class="fan-img" src="@/assets/modes/fan-25.png" v-if="this.speed == '25' ">
+                           <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.fifty" class="fan-img" src="@/assets/modes/fan-50.png" v-if="this.speed == '50' ">
+                           <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.seventy_five" class="fan-img" src="@/assets/modes/fan-75.png" v-if="this.speed == '75' ">
 
-                           <img class="fan-img" src="@/assets/modes/fan-100.png" v-if="this.speed == '100' ">
+                           <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.hundred" class="fan-img" src="@/assets/modes/fan-100.png" v-if="this.speed == '100' ">
 
-                           <img class="fan-img" src="@/assets/modes/fan-auto.png" v-if="this.speed == 'auto' ">
-                           <div class="plus-container" @click="setFanSpeed('25')">
+                           <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.auto" class="fan-img" src="@/assets/modes/fan-auto.png" v-if="this.speed == 'auto' ">
+                           <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.up" class="plus-container" @click="setFanSpeed('25')">
 
                             <v-icon name="plus" class="mode" scale="1" />
                         </div>
-                        <div class="fan-auto" @click="setFanSpeed('auto')" :class="{active: speed == 'auto'}">Auto</div>
+                        <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.fan.strength.auto" class="fan-auto" @click="setFanSpeed('auto')" :class="{active: speed == 'auto'}">Auto</div>
                         <div class="empty"></div>
                         <div class="empty"></div>
 
@@ -53,9 +53,9 @@
                         <div class="name">Modo</div>
                         <div class="body">
                             <!-- String "cool", "heat", "fan" -->
-                            <div class="mode-button" :class="{active: mode == 'heat'}" @click="setMode('heat')"><v-icon name="sun" class="ac-img"  /></div>
-                            <div class="mode-button" :class="{active: mode == 'cool'}" @click="setMode('cool')" ><v-icon name="snowflake" class="ac-img"  /></div>
-                            <div class="mode-button" :class="{active: mode == 'fan'}"  @click="setMode('fan')"><img class="fan-img3 ac-img" src="@/assets/devices/fan.png"> </div>
+                            <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.modes.heatMode" class="mode-button" :class="{active: mode == 'heat'}" @click="setMode('heat')"><v-icon name="sun" class="ac-img"  /></div>
+                            <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.modes.coldMode" class="mode-button" :class="{active: mode == 'cool'}" @click="setMode('cool')" ><v-icon name="snowflake" class="ac-img"  /></div>
+                            <div v-tooltip="$strings[$language].deviceTypes.ac.tooltips.modes.fanMode" class="mode-button" :class="{active: mode == 'fan'}"  @click="setMode('fan')"><img class="fan-img3 ac-img" src="@/assets/devices/fan.png"> </div>
                             <div class="empty"></div>
                             <div class="empty"></div>
                             <div class="empty"></div>
@@ -66,11 +66,11 @@
                     <div class="op-body">
                         <div class="name">Swing Vertical</div>
                         <div class="body">
-                            <img class="ac-img" src="@/assets/modes/swing.png" :class="{active: verticalSwing == 'auto'}" @click="setVerticalSwing('auto')">
-                            <img class="ac-img" src="@/assets/modes/swing-22.png" :class="{active: verticalSwing == '22'}" @click="setVerticalSwing('22')">
-                            <img class="ac-img" src="@/assets/modes/swing-45.png" :class="{active: verticalSwing == '45'}" @click="setVerticalSwing('45')">
-                            <img class="ac-img" src="@/assets/modes/swing-67.png" :class="{active: verticalSwing == '67'}" @click="setVerticalSwing('67')">
-                            <img class="ac-img" src="@/assets/modes/swing-90.png" :class="{active: verticalSwing == '90'}" @click="setVerticalSwing('90')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.vertical.auto" class="ac-img" src="@/assets/modes/swing.png" :class="{active: verticalSwing == 'auto'}" @click="setVerticalSwing('auto')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.vertical.twenty_two" class="ac-img" src="@/assets/modes/swing-22.png" :class="{active: verticalSwing == '22'}" @click="setVerticalSwing('22')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.vertical.forty_five" class="ac-img" src="@/assets/modes/swing-45.png" :class="{active: verticalSwing == '45'}" @click="setVerticalSwing('45')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.vertical.sixty_seven" class="ac-img" src="@/assets/modes/swing-67.png" :class="{active: verticalSwing == '67'}" @click="setVerticalSwing('67')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.vertical.ninty" class="ac-img" src="@/assets/modes/swing-90.png" :class="{active: verticalSwing == '90'}" @click="setVerticalSwing('90')">
                             <div class="empty"></div>
 
                         </div>
@@ -78,12 +78,12 @@
                     <div class="op-body">
                         <div class="name">Swing Horizontal</div>
                         <div class="body">  
-                            <img class="ac-img" src="@/assets/modes/h-auto.png" :class="{active: horizontalSwing == 'auto'}" @click="setHorizontalSwing('auto')" >
-                            <img class="ac-img" src="@/assets/modes/h--90.png" :class="{active: horizontalSwing == '-90'}" @click="setHorizontalSwing('-90')">
-                            <img class="ac-img" src="@/assets/modes/h--45.png" :class="{active: horizontalSwing == '-45'}" @click="setHorizontalSwing('-45')">
-                            <img class="ac-img" src="@/assets/modes/h-0.png" :class="{active: horizontalSwing == '0'}" @click="setHorizontalSwing('0')">
-                            <img class="ac-img" src="@/assets/modes/h-45.png" :class="{active: horizontalSwing == '45'}" @click="setHorizontalSwing('45')">                            
-                            <img class="ac-img" src="@/assets/modes/h-90.png" :class="{active: horizontalSwing == '90'}" @click="setHorizontalSwing('90')">                            
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.auto" class="ac-img" src="@/assets/modes/h-auto.png" :class="{active: horizontalSwing == 'auto'}" @click="setHorizontalSwing('auto')" >
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.minus_ninty" class="ac-img" src="@/assets/modes/h--90.png" :class="{active: horizontalSwing == '-90'}" @click="setHorizontalSwing('-90')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.minus_forty_five"class="ac-img" src="@/assets/modes/h--45.png" :class="{active: horizontalSwing == '-45'}" @click="setHorizontalSwing('-45')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.cero" class="ac-img" src="@/assets/modes/h-0.png" :class="{active: horizontalSwing == '0'}" @click="setHorizontalSwing('0')">
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.forty_five" class="ac-img" src="@/assets/modes/h-45.png" :class="{active: horizontalSwing == '45'}" @click="setHorizontalSwing('45')">                            
+                            <img v-tooltip="$strings[$language].deviceTypes.ac.tooltips.horizontal.ninty" class="ac-img" src="@/assets/modes/h-90.png" :class="{active: horizontalSwing == '90'}" @click="setHorizontalSwing('90')">                            
                         </div>
                     </div>
                 </div>    
