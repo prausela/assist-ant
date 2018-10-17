@@ -176,6 +176,33 @@ class Devices{
 			//Remember to change to device.url
 			axios.delete(this.url + '/' + device.id)
 			.then(function(response) {
+				console.log('deleting device')
+				api.routines.getAll().then((routines) => {
+					routines.forEach((routine) => {
+						let modified = false
+						var filteredActions = routine.actions.filter((action) => {
+							console.log(device.id == action.deviceId)
+							if (action.deviceId == device.id) {
+								modified = true
+								return false
+							} else {
+								return true
+							}
+						})
+						var t = 3
+						console.log('afuera del foreach')
+						console.log(routine.actions)
+						console.log(filteredActions)
+						console.log(t)
+						if (modified) {
+							routine.actions = filteredActions
+							api.routines.modify(routine)
+						}
+
+					})
+				}).catch(() => {
+
+				})
 				api.eventBus.$emit('refreshDevices')
 				api.eventBus.$emit('refreshRooms')
 				resolve(response)

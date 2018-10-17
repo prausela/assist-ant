@@ -8,7 +8,8 @@
                 </div>
             </div>
             <div class="modal-body">
-            	<DevicesList @devicesChanged="updateDevices" :routine="routine" :devices="devices" />
+            	<DevicesList v-show="devices.length > 0" @devicesChanged="updateDevices" :routine="routine" :devices="devices" />
+              <div v-if="devices.length == 0">No hay dispositivos disponibles para agregar</div>
             </div>
         </div>
     </div>
