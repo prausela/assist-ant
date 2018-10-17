@@ -1,6 +1,6 @@
 <template>
 	<div class="device-card"  @click="verDevice = true">
-		<div class="icon-container">
+		<div class="icon-container add-container">
 			<v-icon name="plus" class="card-icon" scale="1.5" />
 		</div>
 		<div v-if="verDevice" class="device">
@@ -34,11 +34,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
-
-
-.icon-container
-	height: 60px
 
 .name
 	text-align: center

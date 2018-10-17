@@ -73,7 +73,9 @@ class Devices{
 						device.type = types[device.typeId]
 						device.meta = JSON.parse(device.meta) || {}
 						let deviceObj = Devices.initDevice(device)
-						devicesObjects.push(deviceObj)
+						if (deviceObj) {
+							devicesObjects.push(deviceObj)
+						}
 					})
 					resolve(devicesObjects);
 				})
@@ -91,6 +93,9 @@ class Devices{
 
 	static initDevice(device) {
 		let deviceObj = {}
+		if (!device.type) {
+			return null
+		}
 		switch (device.type.name) {
 			case "ac":
 				deviceObj = new AC(device)

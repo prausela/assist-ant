@@ -65,13 +65,25 @@ Vue.prototype.$refreshRooms = function() {
 	Vue.prototype.$api.rooms.getAll().then((rooms) => {
 		Vue.prototype.$rooms = rooms
 		ApiServiceProvider.eventBus.$emit('roomsRefreshed')
-		console.log("Rooms refreshsed")
 	})
 }
 Vue.prototype.$refreshRooms()
 
 ApiServiceProvider.eventBus.$on('refreshRooms', () => {
   Vue.prototype.$refreshRooms()
+})
+
+
+Vue.prototype.$refreshRoutines = function() {
+	Vue.prototype.$api.routines.getAll().then((routines) => {
+		Vue.prototype.$routines = routines
+		ApiServiceProvider.eventBus.$emit('routinesRefreshed')
+	})
+}
+Vue.prototype.$refreshRoutines()
+
+ApiServiceProvider.eventBus.$on('refreshRoutines', () => {
+  Vue.prototype.$refreshRoutines()
 })
 
 Vue.prototype.$language = "spanish"

@@ -1,9 +1,9 @@
 <template>
 	<div class="devices-list">
     <template v-for="(device, index) in devices">
-      <component v-if="device && device.type" :device="device" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
+      <component @devicesChanged="$emit('devicesChanged')" v-if="device && device.type" :device="device" :routine="routine" :is="device.type.component + 'Card'" :key="index" :openModals="openModals"/>
     </template>
-    <AddDeviceCard :routine="routine" :room="room" v-if="add" />
+    <AddDeviceCard @devicesChanged="$emit('devicesChanged')" :routine="routine" :room="room" v-if="add" />
   </div>
 </template>
 
@@ -55,7 +55,7 @@ export default {
       deafult: null
     },
     routine: {
-      default: false,
+      default: null,
       required: false
     }
   },

@@ -11,10 +11,14 @@ class Routine {
 		return '/' + this.id
 	}
 
-	construct(routine){
-		this.actions = routine.actions
-		this.id = routine.id
-		this.name = routine.name
+	constructor(routine){
+		if (routine) {
+			this.actions = routine.actions
+			this.id = routine.id
+			this.name = routine.name
+		} else {
+			this.actions = []
+		}
 	}
 
 	execute(){
@@ -32,6 +36,29 @@ class Routine {
 				console.log(error)
 			});
 		});
+	}
+
+	addAction(action) {
+		let reverseAction = null
+		switch (action.actionName) {
+			case 'turnOn': 
+				reverseAction = 'turnOff'
+				break;
+			case 'turnOff': 
+				reverseAction = 'turnOn'
+				break;
+			case 'setColor': 
+				reverseAction = 'setColor'
+				break;
+		}
+
+		let filteredActions = this.actions.filter((eAction) => {
+			return eAction.actionName != reverseAction
+
+		})
+		this.actions = filteredActions
+		this.actions.push(action)
+		console.log(this)
 	}
 }
 

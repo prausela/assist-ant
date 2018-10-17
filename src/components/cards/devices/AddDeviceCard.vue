@@ -6,10 +6,10 @@
 		<div v-if="!routine && verDevice" class="device">
 			<AddDevice :room="room" @closeMe="verDevice = false" />
 		</div>
-		<div v-if="routine && verDevice" class="device">
-			<AddDeviceToRoutine />
+		<div v-if="routine && verDevice" class="device" >
+			<AddDeviceToRoutine @devicesChanged="$emit('devicesChanged')" :routine="routine" @closeMe="closeModal" />
 		</div>
-		<div class="card-name">{{$strings[$language].deviceTypes.device.tooltips.add}}</div>
+		<div class="card-name"></div>
 	</div>
 </template>
 s
@@ -45,6 +45,11 @@ export default {
 	},
 	mounted() {
 		this.devices = this.$devices
+	},
+	methods: {
+		closeModal() {
+			this.verDevice = false
+		}
 	}
 }
 </script>

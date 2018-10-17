@@ -103,6 +103,13 @@
 				"success": "El dispositivo se modificó correctamente"
 			}
 		},
+		"routines": {
+			"add": {
+				"unselectedActions": "Debe elegir al menos una acción para la rutina",
+				"unselectedName": "Debe elegir un nombre para la rutina",
+				"success": "La rutina se agregó correctamente"
+			}
+		},
 		"deviceTypes": {
 			"device": {
 				"tooltips": {

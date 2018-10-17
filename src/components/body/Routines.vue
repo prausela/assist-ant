@@ -1,14 +1,18 @@
 <template>
 	<div class="routines">
-        <AddRoutine @closeMe="showAddRoutine = false" v-if="showAddRoutine"/>
+        <AddRoutine :currRoutine="selectedRoutine" @closeMe="showAddRoutine = false" v-if="showAddRoutine"/>
         <div class="r-header">
             RUTINAS
         </div>
         <div class="r-body">
-            <div class="r-name">Nombre Rutina</div>
-            <div class="r-btn">
-                <a class="button is-primary">Activar</a>
+          <div class="routines-list" >
+            <div class="routine-item" v-for="(routine, id) in routines">
+              <div @click="selectRoutine(routine)" class="r-name">{{routine.name}}</div>
+              <div class="r-btn">
+                  <a class="button is-primary">Activar</a>
+              </div>
             </div>
+          </div>
          </div>
          <div class="r-footer">
          	<a class="button is-link" @click="showAddRoutine = true">Agregar Rutina</a>
@@ -26,7 +30,24 @@ export default {
   },
   data () {
     return {
-      showAddRoutine: false
+      showAddRoutine: false,
+      routines: [],
+      selectedRoutine: null
+    }
+  },
+  mounted() {
+    this.$api.eventBus.$on('routinesRefreshed', () => {
+      this.refreshRoutines()
+    })
+    this.refreshRoutines()
+  },
+  methods: {
+    refreshRoutines() {
+      this.routines = this.$routines
+    },
+    selectRoutine(routine) {
+      this.selectedRoutine = routine
+      this.showAddRoutine = true
     }
   }
 }
@@ -58,17 +79,28 @@ export default {
 .r-body
     display: flex
     flex: 1
+    justify-content: center
 .r-footer
  	padding: 10px 0
 .r-name
     display: flex
-    flex: 2
     margin-left: 7px
+    cursor: pointer
+
 
 .r-btn
     display: flex
-    flex: 1
     cursor: pointer
  
     justify-content: center
+.routines-list
+  display: flex
+  flex-direction: column
+  width: 90%
+
+.routine-item
+  margin: 5px 0
+  display: flex
+  justify-content: space-between
+  width: 100%
 </style>

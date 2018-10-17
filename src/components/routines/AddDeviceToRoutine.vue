@@ -2,13 +2,13 @@
 	<div class="modal" @click.stop="closeModal">
         <div class="modal-inner" @click.stop>
             <div class="modal-header">
-                Agregar Dispositivo a la rutina
+                Agregar a la rutina
                 <div class="close-modal-btn" @click="closeModal">
                     <v-icon name="times-circle"  scale="1" />
                 </div>
             </div>
             <div class="modal-body">
-            	<DevicesList :devices="$devices" />
+            	<DevicesList @devicesChanged="updateDevices" :routine="routine" :devices="devices" />
             </div>
         </div>
     </div>
@@ -18,17 +18,40 @@
 export default {
 
   name: 'AddDeviceToRoutine',
-
+  props: {
+    routine: {
+      required: true
+    }
+  },
   data () {
     return {
-
+      devices: []
     }
   },
   methods: {
   	closeModal(){
-        this.$emit('closeMe')
+      this.$emit('devicesChanged')
+      this.$emit('closeMe')
     },
-  }
+    updateDevices() {
+      let filteredDevices = this.$devices.filter((dev) => {
+        // console.log(dev.id)
+        let found = false
+        this.routine.actions.forEach((action) => {
+          // console.log(action.deviceId == dev.id)
+          if (action.deviceId == dev.id) { 
+            found = true
+          }
+        })
+        return !found
+      })
+      this.devices = filteredDevices
+    }
+  },
+  mounted() {
+    this.updateDevices()
+  },
+
 }
 </script>
 

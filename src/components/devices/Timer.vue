@@ -19,14 +19,14 @@
                         <div class="temp-input">
                             <div class="temp-header">Set Tiempo</div>
                             <div class="temp-body">
-                                <input class="numberField" type="number" placeholder="°C" v-model="this.perform("start")">
+                                <input class="numberField" type="number" placeholder="°C" >
                                 <div class="save-btn">
-                                    <div class="save-txt" @click="this.perform('start')">
+                                    <div class="save-txt" >
                                         Comenzar
                                     </div>
                                 </div>
                                 <div class="save-btn">
-                                    <div class="save-txt" @click="this.perform('stop')">
+                                    <div class="save-txt" >
                                         Parar
                                     </div>
                                 </div>
