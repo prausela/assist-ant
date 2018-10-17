@@ -251,13 +251,13 @@ body .modal
     box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
 .button.is-primary
-  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
-  background-color: rgb(0, 132, 204)
-  font-size: 14px
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5) !important
+  background-color: $logo !important
+  font-size: 14px !important
 .button.is-primary:hover
-    background-color: #276cda
-    border-color: transparent
-    color: #fff
+    background-color: #276cda !important
+    border-color: transparent !important
+    color: #fff !important
   
 // Tarjetas
 .device-card

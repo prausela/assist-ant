@@ -118,6 +118,9 @@
 			},
 			"modify": {
 				"success": "La rutina se actualizó correctamente"	
+			},
+			"delete":{
+				"success": "La rutina se eliminó correctamente"
 			}
 		},
 		"deviceTypes": {

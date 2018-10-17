@@ -84,7 +84,7 @@ class Devices{
 					message: error
 				})
 			});
-		});
+		});	
 	}
 
 	getAll(){
@@ -163,9 +163,15 @@ class Devices{
 					}
 				}
 			})
-			.catch(function(error){
-				console.log(error)
-				reject(error)
+			.catch(function(err){
+				let message = Strings[api.language].api.devices["addErr" + err.response.data.error.code]
+				if (!message) {
+					message = Strings[api.language].api.devices.unknownError
+				}
+				console.log(message)
+				reject({
+					message: message
+				})
 			});
 		});
 	}
