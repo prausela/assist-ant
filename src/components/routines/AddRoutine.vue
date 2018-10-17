@@ -15,17 +15,22 @@
 							<input v-model="name" placeholder="Nombre">
 						</div>
 					</div>
-				</div>
-				<div class="form-row">
-					Dispositivos
-				</div>
-				<div class="routine-devices">
-					<DevicesList @devicesChanged="updateDevices" :routine="routine" :add="true" :devices="devices" />
+					<div class="form-row">
+						<div class="form-label">Dispositivos</div>
+
+							<div class="routine-devices">
+								<DevicesList @devicesChanged="updateDevices" :routine="routine" :add="true" :devices="devices" />
+							</div>
+						
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 		 		<a @click="submit" class="button is-primary">{{currRoutine? 'Guardar' : 'Agregar'}}</a>
+		 		<a v-if="currRoutine" @click="remove" class="button is-primary">Eliminar</a>
+
 	      	</div>
+
 		</div>
 	</div>
 </template>
@@ -107,14 +112,62 @@ export default {
 	    return found
 	})
   		this.devices = filteredDevices
-  	}
-  },
-  
+  	},
+  	remove(){
+
+  		this.$api.routines.delete(this.routine).then(() => {
+  			this.$toaster.success(this.$strings[this.$language].routines.delete.success)
+  			this.$emit('closeModal')
+  		}).catch((error) => {
+  			console.log(error)
+  			this.$toaster.error(error)
+  		})
+  	},
+  }
 }
 </script>
 
 <style lang="sass" scoped>
+.modal-body
+	width: 100%
+.form
+	width: 100%
+	padding: 15px
+.form-row
+	display: flex
+	margin: 10px 0
+.form-label
+	padding-right: 15px
+	width: 150px
+	display: flex
+	justify-content: flex-end
+	align-items: center
+.form-field
+	flex: 1
+	justify-content: flex-start
+	display: flex
+select
+	width: 70%
+input
+	width: 69%
+.submit-btn
+	cursor: pointer
+	background-color: $logo
+	color: black
+
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
 .routine-devices
-	width: 100%	
-	height: 200px
+  flex-wrap: wrap
+  position: relative
+  display: flex
+  justify-content: flex-start
+  overflow: auto
+  flex: 2
 </style>

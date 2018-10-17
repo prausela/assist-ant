@@ -10,6 +10,10 @@
             <div class="modal-body">
             	<DevicesList @devicesChanged="updateDevices" :routine="routine" :devices="devices" />
             </div>
+            <div class="modal-footer">
+               <a @click="closeModal" class="button is-primary">Agregar</a>
+
+            </div>
         </div>
     </div>
 </template>
@@ -55,5 +59,15 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="sass" scoped>
+
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
 </style>
