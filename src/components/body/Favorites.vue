@@ -37,11 +37,13 @@ export default {
   border-radius: 5px
   display: flex
   flex-direction: column
+  height: 450px
 
 .favorites-title
     margin-top: 8px
     margin-bottom: 28px
     color: rgba(0, 0, 0, 0.61)
     font-size: 17px
+    font-weight: bold
 
 </style>

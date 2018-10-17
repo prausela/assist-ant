@@ -67,7 +67,7 @@ export default {
   background-color: $primaryBg
   box-shadow: 2px 2px $shadowBg
   border-radius: 5px
-
+  height: 450px
 
 .card-icon
   display: row
@@ -116,6 +116,7 @@ export default {
     cursor: pointer
     &.selected
       background-color: #bdb9b9
+      font-weight: bold
 
 .tab:not(:last-child)::after
   top: 0

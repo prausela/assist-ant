@@ -144,9 +144,9 @@ body .modal
   font-size: 40px
   user-select: none
   position: relative
-  white-space: nowrap;
-  overflow: hidden !important;
-  text-overflow: ellipsis;
+  white-space: nowrap
+  overflow: hidden !important
+  text-overflow: ellipsis
   display: inline-block
 .modal-header::after
   content: ""
@@ -250,6 +250,14 @@ body .modal
     background-color: #b1aeae
     box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
+.button.is-primary
+  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
+  background-color: rgb(0, 132, 204)
+  font-size: 14px
+.button.is-primary:hover
+    background-color: #276cda
+    border-color: transparent
+    color: #fff
   
 // Tarjetas
 .device-card
@@ -261,10 +269,12 @@ body .modal
   width: 30%
   height: 100px
   margin: 7px 1%
+
   .card-name  
     white-space: nowrap
     overflow: hidden !important
     text-overflow: ellipsis
+    height: 32px
 .icon-container
   align-items: center
   height: 100px

@@ -52,6 +52,7 @@
         flex-direction: column
         width: 30%
         border-radius: 5px
+        height: 450px
 
 
     .routines
@@ -111,12 +112,14 @@
     .redo
         position: absolute
         right: 27px
-        top: 20px
+        top: 8px
         cursor: pointer
     .ultima
         margin-right: 30px
         color: rgba(0, 0, 0, 0.61)
         font-size: 17px
+        margin-top: 8px
+        font-weight: bold
 
 
 

@@ -69,7 +69,7 @@
 			"devices": {
 				"addSuccessful": "El dispositivo se agrego correctamente",
 				"addErr2": "El nombre del dispositivo ya esta en uso",
-				"addErr1": "El nombre del dispositivo debe tener entre 3 y 6 caracteres",
+				"addErr1": "El nombre del dispositivo debe tener entre 3 y 60 caracteres",
 				"unknownError": "Hubo un error al agregar el dispositivo, por favor con el soporte tecnico"
 			},
 			"no_conectivity": "No hay conexión. Reintentando...",
@@ -80,7 +80,7 @@
 			"add": {
 				"success": "La habitación se agregó correctamente",
 				"unselectedName": "Debe elegir un nombre para la habitación",
-				"addErr1": "El nombre de la habitación debe tener entre 3 y 6 caracteres",
+				"addErr1": "El nombre de la habitación debe tener entre 3 y 60 caracteres",
 				"addErr2": "El nombre de la habitación ya esta en uso"
 			},
 			"delete": {
