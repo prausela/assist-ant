@@ -9,7 +9,7 @@
               <EditDevice :device="device" @closeEdit="closeEdit"/>
               </div>
         </div>
-        <div @click="remove" class="footer-icon button is-primary">
+        <div @click="remove" class="footer-icon button is-primary ">
             <v-icon name="trash-alt" scale="2" />
         </div>
     </div>

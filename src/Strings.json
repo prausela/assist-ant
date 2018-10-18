@@ -110,6 +110,8 @@
 			"add": {
 				"unselectedActions": "Debe elegir al menos una acción para la rutina",
 				"unselectedName": "Debe elegir un nombre para la rutina",
+				"addErr1": "El nombre de la habitación debe tener entre 3 y 60 caracteres",
+				"addErr2": "El nombre de la habitación ya esta en uso",
 				"success": "La rutina se agregó correctamente"
 			},
 			"execute": {
@@ -117,7 +119,8 @@
 				"fail": "Hubo un problema al ejecutar la rutina, por favor contactese con el vendedor para mas información"
 			},
 			"modify": {
-				"success": "La rutina se actualizó correctamente"	
+				"success": "La rutina se actualizó correctamente"
+
 			},
 			"delete":{
 				"success": "La rutina se eliminó correctamente"

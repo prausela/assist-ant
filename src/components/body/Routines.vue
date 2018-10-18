@@ -15,7 +15,7 @@
           </div>
          </div>
          <div class="r-footer">
-         	<a class="button is-link" @click="showAddRoutine = true">Agregar Rutina</a>
+         	<a class="button is-primary" @click="showAddRoutine = true">Agregar Rutina</a>
          </div>
     </div>
 </template>
@@ -84,8 +84,9 @@ export default {
     font-weight: bold
     color: rgba(0, 0, 0, 0.61)
     font-size: 17px
-    height: 30px
-    border-bottom: 1px solid #0000002e;
+    border-bottom: 1px solid #0000002e
+    margin-top: 8px
+    margin-bottom: 28px
 .r-body
     display: flex
     flex: 1
@@ -94,9 +95,12 @@ export default {
  	padding: 10px 0
   border-top: 1px solid #0000002e
 .r-name
-    display: flex
-    margin-left: 7px
-    cursor: pointer
+  display: flex
+  margin-left: 7px
+  cursor: pointer
+  border: 1px solid black
+  padding: 5px
+  border-radius: 5px
 
 
 .r-btn

@@ -90,7 +90,7 @@
             </div>
                 <div class="modal-footer">
                     <a @click="closeModal" class="button is-primary">Guardar</a>
-                    <a @click="removeFromRoutine" class="button is-danger">Sacar de la Rutina</a>
+                    <a @click="removeFromRoutine" class="button is-primary ">Sacar de la Rutina</a>
                 </div>
         </div>
     </div>
@@ -367,13 +367,6 @@ export default {
         background-color: #b1aeae
         box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
 
-.button.is-primary
-  box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.5)
-  background-color: rgb(0, 132, 204)
-  font-size: 14px
-.button.is-primary:hover
-    background-color: #276cda
-    border-color: transparent
-    color: #fff
+
 
 </style>
