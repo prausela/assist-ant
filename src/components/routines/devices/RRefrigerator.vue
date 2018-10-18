@@ -104,7 +104,7 @@ export default {
         },
         setFreezerTemperature(freezerTemperature){
             if( freezerTemperature < -20 || freezerTemperature > -8) {
-                this.$toaster.error(this.$strings[this.$language].deviceTypes.refrigerator.errors.invalidRange)
+                this.$toaster.error(this.$strings[this.$language].deviceTypes.refrigerator.errors.invalidFreezerRange)
                 return
             }
             this.freezerTemperature = freezerTemperature
