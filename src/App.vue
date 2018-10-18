@@ -36,7 +36,7 @@ export default {
       this.$toaster.info(this.$strings[this.$language].devices.timer.timeIsUp)
     })
 
-    this.testConnection()
+    // this.testConnection()
 
     // ApiServiceProvider.devices.add({nsme: "trdt"}).then((response) => {
     //   console.log(response)

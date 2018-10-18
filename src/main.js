@@ -36,63 +36,68 @@ Vue.use(Toaster, {timeout: 5000})
 import config from './config.js'
 import ApiServiceProvider from './ApiServiceProvider'
 import Strings from './Strings.json'
-ApiServiceProvider.initialize()
-Vue.prototype.$strings = Strings
-Vue.prototype.$api = ApiServiceProvider
-Vue.prototype.$config = config
+ApiServiceProvider.initialize().then(() => {
 
-Vue.prototype.$refreshDeviceTypes = function() {
-	Vue.prototype.$api.devicesTypes.getAll().then((deviceTypes) => {
-		Vue.prototype.$deviceTypes = deviceTypes
+
+	Vue.prototype.$strings = Strings
+	Vue.prototype.$api = ApiServiceProvider
+	Vue.prototype.$config = config
+
+	Vue.prototype.$refreshDeviceTypes = function() {
+		Vue.prototype.$api.devicesTypes.getAll().then((deviceTypes) => {
+			Vue.prototype.$deviceTypes = deviceTypes
+		})
+	}
+	Vue.prototype.$refreshDeviceTypes()
+
+
+	Vue.prototype.$refreshDevices = function() {
+		Vue.prototype.$api.devices.getAll().then((devices) => {
+			Vue.prototype.$devices = devices
+			ApiServiceProvider.eventBus.$emit('devicesRefreshed')
+		})
+	}
+	Vue.prototype.$refreshDevices()
+
+	ApiServiceProvider.eventBus.$on('refreshDevices', () => {
+	  Vue.prototype.$refreshDevices()
 	})
-}
-Vue.prototype.$refreshDeviceTypes()
 
+	Vue.prototype.$refreshRooms = function() {
+		Vue.prototype.$api.rooms.getAll().then((rooms) => {
+			Vue.prototype.$rooms = rooms
+			ApiServiceProvider.eventBus.$emit('roomsRefreshed')
+		})
+	}
+	Vue.prototype.$refreshRooms()
 
-Vue.prototype.$refreshDevices = function() {
-	Vue.prototype.$api.devices.getAll().then((devices) => {
-		Vue.prototype.$devices = devices
-		ApiServiceProvider.eventBus.$emit('devicesRefreshed')
+	ApiServiceProvider.eventBus.$on('refreshRooms', () => {
+	  Vue.prototype.$refreshRooms()
 	})
-}
-Vue.prototype.$refreshDevices()
 
-ApiServiceProvider.eventBus.$on('refreshDevices', () => {
-  Vue.prototype.$refreshDevices()
+
+	Vue.prototype.$refreshRoutines = function() {
+		Vue.prototype.$api.routines.getAll().then((routines) => {
+			Vue.prototype.$routines = routines
+			ApiServiceProvider.eventBus.$emit('routinesRefreshed')
+		})
+	}
+	Vue.prototype.$refreshRoutines()
+
+	ApiServiceProvider.eventBus.$on('refreshRoutines', () => {
+	  Vue.prototype.$refreshRoutines()
+	})
+
+	Vue.prototype.$language = "spanish"
+
+
+
+
+	Vue.config.productionTip = false
+
+	new Vue({
+	  render: h => h(App)
+	}).$mount('#app')
+}).catch((error) => {
+	console.log(error)
 })
-
-Vue.prototype.$refreshRooms = function() {
-	Vue.prototype.$api.rooms.getAll().then((rooms) => {
-		Vue.prototype.$rooms = rooms
-		ApiServiceProvider.eventBus.$emit('roomsRefreshed')
-	})
-}
-Vue.prototype.$refreshRooms()
-
-ApiServiceProvider.eventBus.$on('refreshRooms', () => {
-  Vue.prototype.$refreshRooms()
-})
-
-
-Vue.prototype.$refreshRoutines = function() {
-	Vue.prototype.$api.routines.getAll().then((routines) => {
-		Vue.prototype.$routines = routines
-		ApiServiceProvider.eventBus.$emit('routinesRefreshed')
-	})
-}
-Vue.prototype.$refreshRoutines()
-
-ApiServiceProvider.eventBus.$on('refreshRoutines', () => {
-  Vue.prototype.$refreshRoutines()
-})
-
-Vue.prototype.$language = "spanish"
-
-
-
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')

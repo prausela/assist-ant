@@ -17,13 +17,21 @@ class api {
 		this.rooms = new Rooms()
 		this.source = new EventSource(this.baseUrl + "/devices/events");
 		this.routines = new Routines()
+		this.urls = {}
+		
+		console.log('initializing')
 		
 	}
 
 	get baseUrl(){
-		return Config.api.uri 
-			+ ':' + Config.api.port
-			+ '/' + Config.api.url;
+		console.log('getting urls', this.urls)
+		if (!this.urls) {
+			return "http://127.0.0.1:8080/api"
+		} else {
+			return this.urls.uri 
+				+ ':' + this.urls.port
+				+ '/' + this.urls.url;
+		}
 	}
 
 	get timeout() {
@@ -31,20 +39,27 @@ class api {
 	}
 
 	initialize() {
-		this.devicesTypes.getAll()
-		this.source.addEventListener('message', (e) =>{
-			// Se recibio un evento (emito el refresh)
-		  // console.log('new event', e.data)
-		  this.eventBus.$emit('refreshDevices')
+		return new Promise((resolve, reject) => {
+			axios.get(('./config.json')).then((response) => {
+				this.urls = response.data.api
+				
+				this.devicesTypes.getAll()
+				this.source.addEventListener('message', (e) =>{
+					// Se recibio un evento (emito el refresh)
+				  // console.log('new event', e.data)
+				  this.eventBus.$emit('refreshDevices')
 
 
-		  // Para Timers, avisar que se terminó
-		  if (e.data.event == "timeIsUp") {
-		  	this.eventBus.$emit("timeIsUp", e.data.deviceId)
-		  }
+				  // Para Timers, avisar que se terminó
+				  if (e.data.event == "timeIsUp") {
+				  	this.eventBus.$emit("timeIsUp", e.data.deviceId)
+				  }
 
 
-		}, false)
+				}, false)
+				resolve()
+			})
+		})
 	}
 
 	setLanguage(language) {
