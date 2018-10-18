@@ -110,8 +110,8 @@
 			"add": {
 				"unselectedActions": "Debe elegir al menos una acción para la rutina",
 				"unselectedName": "Debe elegir un nombre para la rutina",
-				"addErr1": "El nombre de la habitación debe tener entre 3 y 60 caracteres",
-				"addErr2": "El nombre de la habitación ya esta en uso",
+				"addErr1": "El nombre de la rutina debe tener entre 3 y 60 caracteres",
+				"addErr2": "El nombre de la rutina ya esta en uso",
 				"success": "La rutina se agregó correctamente"
 			},
 			"execute": {
