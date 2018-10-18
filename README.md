@@ -14,5 +14,4 @@
 
 - Cambiar la url de la dist en dist/config.json
 
-- Hostear con algun servidor apuntando a la carpeta dist. Por ejemplo con python, estando parando en la carpeta dist, ejecutar el comando "python -m SimpleHTTPServer
-"
+- Hostear con algun servidor apuntando a la carpeta dist. Por ejemplo con python, estando parando en la carpeta dist, ejecutar el comando "python -m SimpleHTTPServer"
