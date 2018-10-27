@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Configuracion</string>
+    <string name="nav_header_desc">Encabezado de navegacion</string>
+    <string name="navigation_drawer_open">Abrir cajon de navegacion</string>
+    <string name="navigation_drawer_close">Cerrar cajon de navegacion</string>
+</resources>
