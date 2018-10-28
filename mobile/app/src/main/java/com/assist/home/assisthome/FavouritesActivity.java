@@ -5,7 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-public class FavouritesActivity extends DeviceListActivity {
+public class FavouritesActivity extends CardListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
