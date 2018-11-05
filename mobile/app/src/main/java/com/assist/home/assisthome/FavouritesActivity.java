@@ -1,8 +1,10 @@
 package com.assist.home.assisthome;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MenuItem;
 import android.view.View;
 
 public class FavouritesActivity extends CardListActivity {
@@ -18,5 +20,10 @@ public class FavouritesActivity extends CardListActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
     }
 }

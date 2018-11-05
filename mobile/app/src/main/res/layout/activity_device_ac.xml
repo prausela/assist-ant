@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeviceAC">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <!--//arriba-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
+        </LinearLayout>
+
+        <!--//modos-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:weightSum="4">
+
+
+            <!--//modo1-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="430dp">
+
+                <TextView
+                    android:id="@+id/acFanSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Fan Speed"
+                    android:textAlignment="center" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/b25"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="15dp"
+                        android:text="25"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark" />
+
+                    <Button
+                        android:id="@+id/b50"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="15dp"
+                        android:text="50"
+                        android:textAlignment="center"
+
+                        android:textColor="@color/colorSecondDark" />
+
+                    <Button
+                        android:id="@+id/b75"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="15dp"
+                        android:text="75"
+                        android:textAlignment="center"
+
+                        android:textColor="@color/colorSecondDark" />
+
+                    <Button
+                        android:id="@+id/b100"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="10dp"
+                        android:text="100"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark"
+
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/bauto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="5dp"
+                        android:text="Auto"
+                        android:textAlignment="center"
+
+                        android:textColor="@color/colorSecondDark" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--//modo2-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="430dp">
+
+                <TextView
+                    android:id="@+id/acMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Modo"
+                    android:textAlignment="center" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/bAcSun"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="5dp"
+                        android:textSize="12dp"
+                        android:text="Calor"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark" />
+
+                    <Button
+                        android:id="@+id/bAcCold"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="5dp"
+                        android:text="Frio"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark" />
+                    <Button
+                        android:id="@+id/bAcAuto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="5dp"
+
+                        android:text="Auto"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--//modo3-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="430dp">
+
+                <TextView
+                    android:id="@+id/acSwigfV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Swing Vertical"
+                    android:textAlignment="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/bSwing1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg_round"
+                        android:padding="5dp"
+                        android:textSize="12dp"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorSecondDark" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--//modo4-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="430dp">
+
+                <TextView
+                    android:id="@+id/acSwingH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Fan Speed"
+                    android:textAlignment="center" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
