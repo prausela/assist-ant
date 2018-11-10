@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ViewStubCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,10 @@ public class DeviceAC extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_ac);
+
+        super.setContent(R.layout.activity_device_ac);
+
+        android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
         ac_power.setOnClickListener(ac_power_Handler);
 
