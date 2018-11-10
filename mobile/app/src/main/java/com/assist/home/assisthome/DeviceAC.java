@@ -167,7 +167,7 @@ public class DeviceAC extends AppActivity {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_fan_speed_high_inactive".equals(ac_fan_speed_high.getTag())) {
                     ac_fan_speed_high.setBackgroundResource(R.drawable.ac_fan_high_active);
-                    ac_fan_speed_high.setTag("aac_fan_speed_high_active");
+                    ac_fan_speed_high.setTag("ac_fan_speed_high_active");
                     ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_inactive);
                     ac_fan_speed_mid.setTag("ac_fan_speed_mid_inactive");
                     ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_inactive);
@@ -185,7 +185,7 @@ public class DeviceAC extends AppActivity {
             if ("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_fan_speed_auto_inactive".equals(ac_fan_speed_auto.getTag())) {
                     ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_active);
-                    ac_fan_speed_auto.setTag("aac_fan_speed_auto_active");
+                    ac_fan_speed_auto.setTag("ac_fan_speed_auto_active");
                     ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_inactive);
                     ac_fan_speed_mid.setTag("ac_fan_speed_mid_inactive");
                     ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_inactive);

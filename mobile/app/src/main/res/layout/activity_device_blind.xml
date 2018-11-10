@@ -76,7 +76,9 @@
             <ImageView
                 android:layout_width="184dp"
                 android:layout_height="180dp"
-                android:src="@drawable/blind_close" />
+                android:src="@drawable/blind_close"
+                android:id="@+id/blind_img"
+                android:tag="blind_close"/>
 
         </LinearLayout>
 
@@ -102,16 +104,45 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/temp_circle"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
+
+                <Button
+                    android:id="@+id/blind_up"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cerrado"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="40sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/blind_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cerrado"
+                        android:tag="state_down"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="40sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/blind_down"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/transparent"
+                    android:text=""
+                    />
 
             </LinearLayout>
 

@@ -14,7 +14,7 @@ public class DeviceFridge extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_ac);
+        setContentView(R.layout.activity_device_fridge);
         f_temp_up = (Button) findViewById(R.id.fridge_temp_up);
         f_temp_down = (Button) findViewById(R.id.fridge_temp_down);
         f_temp = (TextView) findViewById(R.id.fridge_temp);

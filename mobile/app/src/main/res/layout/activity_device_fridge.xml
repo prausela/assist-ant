@@ -280,7 +280,7 @@
                 <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/fridge_def_active"
+                    android:background="@drawable/fridge_def_inactive"
                     android:tag="fridge_def_inactive"
                     android:id="@+id/fridge_def"/>
             </LinearLayout>

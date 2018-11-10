@@ -203,7 +203,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="4"
-                                android:src="@drawable/blind_open" />
+                                android:src="@drawable/blind_close" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -222,6 +222,8 @@
                     <!--Row 3-->
                     <!--Column 1-->
                     <android.support.v7.widget.CardView
+                        android:id="@+id/oven"
+
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="16dp"
@@ -245,13 +247,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="4"
-                                android:src="@drawable/ac" />
+                                android:src="@drawable/oven" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Aire"
+                                android:text="Horno"
                                 android:textAlignment="center"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"

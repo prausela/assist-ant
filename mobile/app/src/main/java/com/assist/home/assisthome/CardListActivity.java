@@ -56,17 +56,30 @@ public abstract class CardListActivity extends AppActivity {
         //Loop all child item of Main Grid
 
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
-            //Toast.makeText(CardListActivity.this, "Cant:" + i, Toast.LENGTH_SHORT).show();
 
-            //You can see , all child item is CardView , so we just cast object to CardView
             CardView cardView = (CardView) mainGrid.getChildAt(i);
             final int finalI = i;
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(CardListActivity.this, "Cliked at" + finalI, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CardListActivity.this, "Cliked at " + finalI, Toast.LENGTH_SHORT).show();
                     if(finalI==0){
                         Intent intent = new Intent(CardListActivity.this,DeviceAC.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+                        startActivity(intent);
+                    }
+                    if(finalI==1){
+                        Intent intent = new Intent(CardListActivity.this,DeviceBlind.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+                        startActivity(intent);
+                    }
+                    if(finalI==2){
+                        Intent intent = new Intent(CardListActivity.this,DeviceFridge.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+                        startActivity(intent);
+                    }
+                    if(finalI==4){
+                        Intent intent = new Intent(CardListActivity.this,DeviceOven.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     }
