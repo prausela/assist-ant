@@ -24,6 +24,8 @@
         <activity android:name=".DeviceFridge"></activity>
         <activity android:name=".DeviceBlind"></activity>
         <activity android:name=".DeviceOven"></activity>
+        <activity android:name=".DeviceDoor"></activity>
+
     </application>
 
 </manifest>

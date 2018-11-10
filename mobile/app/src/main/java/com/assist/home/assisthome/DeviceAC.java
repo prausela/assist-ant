@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DeviceAC extends AppActivity {
@@ -19,6 +20,7 @@ public class DeviceAC extends AppActivity {
     ImageButton ac_mode_heat, ac_mode_cold, ac_mode_auto;
     TextView ac_temp;
     Button ac_temp_up, ac_temp_down;
+    LinearLayout ac_modes,ac_temp_displ;
 
 
     @Override
@@ -30,6 +32,10 @@ public class DeviceAC extends AppActivity {
         android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
         ac_power.setOnClickListener(ac_power_Handler);
+        ac_modes=(LinearLayout) findViewById(R.id.ac_modes);
+        ac_temp_displ=(LinearLayout) findViewById(R.id.ac_temp_displ);
+
+
 
         ac_temp_up = (Button) findViewById(R.id.ac_temp_up);
         ac_temp_down = (Button) findViewById(R.id.ac_temp_down);
@@ -204,9 +210,15 @@ public class DeviceAC extends AppActivity {
             if ("ac_power_on".equals(ac_power.getTag())) {
                 ac_power.setBackgroundResource(R.drawable.ac_power_off);
                 ac_power.setTag("ac_power_off");
+                ac_temp_displ.setVisibility(View.INVISIBLE);
+                ac_modes.setVisibility(View.INVISIBLE);
+
             } else {
                 ac_power.setBackgroundResource(R.drawable.ac_power_on);
                 ac_power.setTag("ac_power_on");
+                ac_modes.setVisibility(View.VISIBLE);
+                ac_temp_displ.setVisibility(View.VISIBLE);
+
             }
         }
     };

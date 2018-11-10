@@ -16,7 +16,8 @@ public class DeviceBlind extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_blind);
+        super.setContent(R.layout.activity_device_blind);
+
 
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);

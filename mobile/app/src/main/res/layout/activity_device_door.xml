@@ -24,7 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/doorimg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -48,7 +48,8 @@
                 <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/door_open_btn" />
+                    android:background="@drawable/door_open_btn"
+                    android:id="@+id/door_open"/>
             </LinearLayout>
 
             <LinearLayout
@@ -62,7 +63,8 @@
                 <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/door_clossed_btn" />
+                    android:background="@drawable/door_clossed_btn"
+                    android:id="@+id/door_closed"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -84,11 +86,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/lock_close" />
+                app:srcCompat="@drawable/lock_close"
+                android:id="@+id/lock"
+                />
 
         </LinearLayout>
 
@@ -115,7 +118,8 @@
                     <ImageButton
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/door_unlock_btn" />
+                        android:background="@drawable/door_locked1_btn"
+                        android:id="@+id/door_locked"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -129,7 +133,9 @@
                     <ImageButton
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/door_unlocked_btn" />
+                        android:background="@drawable/door_unlocked_btn"
+                        android:id="@+id/door_unlocked"
+                        />
                 </LinearLayout>
 
             </LinearLayout>

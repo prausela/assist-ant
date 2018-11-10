@@ -6,63 +6,10 @@
     android:background="#ffffffff"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:weightSum="7">
+    android:weightSum="6">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="5">
 
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            >
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floatingActionButton4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:backgroundTint="@color/colorPrimary"
-                app:srcCompat="?attr/actionModeCloseDrawable"
-                app:useCompatPadding="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Horno"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@android:color/white"
-                android:textSize="40sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -79,7 +26,8 @@
             android:layout_weight="1"
             android:background="@drawable/temp_circle"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/oven_temp_displ">
 
 
             <Button
@@ -142,8 +90,8 @@
                     android:id="@+id/power"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/ac_power_off"
-                    android:tag="power_off" />
+                    android:background="@drawable/ac_power_on"
+                    android:tag="power_on" />
 
             </LinearLayout>
 
@@ -155,250 +103,259 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:weightSum="3"
+        android:id="@+id/oven_modes">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5.0dp"
-            android:layout_marginBottom="5.0dp"
-            android:gravity="center"
-            android:weightSum="5">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Calor"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_heat_up_active"
-                    android:id="@+id/oven_heat_up"
-                    android:tag="heat_up_active"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_heat_down"
-                    android:id="@+id/oven_heat_down"
-                    android:tag="heat_down_inactive"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_heat_both"
-                    android:id="@+id/oven_heat_both"
-                    android:tag="heat_both_inactive"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5.0dp"
-            android:layout_marginBottom="5.0dp"
-            android:gravity="center"
-            android:weightSum="5">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Grill"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_grill_def_active"
-                    android:id="@+id/oven_grill_def"
-                    android:tag="grill_def_active"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_grill_eco_inactive"
-                    android:id="@+id/oven_grill_eco"
-                    android:tag="grill_eco_inactive"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/oven_grill_off_inactive"
-                    android:id="@+id/oven_grill_off"
-                    android:tag="grill_off_inactive"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5.0dp"
-        android:layout_marginBottom="5.0dp"
-        android:gravity="center"
-        android:weightSum="5">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Conveccion"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ac_fan_auto_inactive"
-                android:id="@+id/oven_conv_auto"
-                android:tag="conv_auto_inactive"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calor"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_heat_up"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_heat_up_active"
+                        android:tag="heat_up_active" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_heat_down"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_heat_down"
+                        android:tag="heat_down_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_heat_both"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_heat_both"
+                        android:tag="heat_both_inactive" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/oven_grill_eco_inactive"
-                android:id="@+id/oven_conv_eco"
-                android:tag="conv_eco_inactive"
-                />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Grill"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_grill_def"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_grill_def_active"
+                        android:tag="grill_def_active" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_grill_eco"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_grill_eco_inactive"
+                        android:tag="grill_eco_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_grill_off"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_grill_off_inactive"
+                        android:tag="grill_off_inactive" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/oven_grill_off_active"
-                android:id="@+id/oven_conv_off"
-                android:tag="conv_off_active"
-                />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Conveccion"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_conv_auto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:tag="conv_auto_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_conv_eco"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_grill_eco_inactive"
+                        android:tag="conv_eco_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/oven_conv_off"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/oven_grill_off_active"
+                        android:tag="conv_off_active" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
 
     </LinearLayout>
-</LinearLayout>
 
 
 

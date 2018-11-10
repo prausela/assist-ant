@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DeviceOven extends AppActivity {
@@ -12,17 +13,22 @@ public class DeviceOven extends AppActivity {
     ImageButton power;
     Button oven_temp_up, oven_temp_down;
     TextView oven_temp;
+    LinearLayout oven_modes,oven_temp_disp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device_oven);
+        super.setContent(R.layout.activity_device_oven);
+
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);
         oven_temp_up = (Button) findViewById(R.id.oven_temp_up);
         oven_temp_down = (Button) findViewById(R.id.oven_temp_down);
         oven_temp = (TextView) findViewById(R.id.oven_temp);
+        oven_modes = (LinearLayout) findViewById(R.id.oven_modes);
+        oven_temp_disp = (LinearLayout) findViewById(R.id.oven_temp_displ);
+
 
         oven_temp_up.setOnClickListener(oven_temp_up_Handler);
         oven_temp_down.setOnClickListener(oven_temp_down_Handler);
@@ -218,9 +224,14 @@ public class DeviceOven extends AppActivity {
             if ("power_on".equals(power.getTag())) {
                 power.setBackgroundResource(R.drawable.ac_power_off);
                 power.setTag("power_off");
+                oven_modes.setVisibility(View.INVISIBLE);
+                oven_temp_disp.setVisibility(View.INVISIBLE);
+
             } else {
                 power.setBackgroundResource(R.drawable.ac_power_on);
                 power.setTag("power_on");
+                oven_modes.setVisibility(View.VISIBLE);
+                oven_temp_disp.setVisibility(View.VISIBLE);
             }
         }
     };

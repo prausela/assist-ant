@@ -78,8 +78,18 @@ public abstract class CardListActivity extends AppActivity {
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     }
+                    if(finalI==3){
+                        Intent intent = new Intent(CardListActivity.this,DeviceDoor.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+                        startActivity(intent);
+                    }
                     if(finalI==4){
                         Intent intent = new Intent(CardListActivity.this,DeviceOven.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+                        startActivity(intent);
+                    }
+                    if(finalI==5){
+                        Intent intent = new Intent(CardListActivity.this,RoutinesActivity.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     }

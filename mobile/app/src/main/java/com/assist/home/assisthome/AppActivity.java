@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public abstract class AppActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    View nav_dev,nav_routines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,8 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -38,6 +42,8 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         navigationView.setNavigationItemSelectedListener(this);
 
     }
+
+
 
     protected void setContent(@LayoutRes int content){
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
@@ -83,9 +89,10 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_dev) {
+
+        } else if (id == R.id.nav_routines) {
+
 
         }  else if (id == R.id.nav_manage) {
 

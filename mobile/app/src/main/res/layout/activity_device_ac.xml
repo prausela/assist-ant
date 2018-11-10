@@ -6,74 +6,20 @@
     android:background="#ffffffff"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:weightSum="8">
+    android:weightSum="7">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="5">
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            >
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floatingActionButton4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:backgroundTint="@color/colorPrimary"
-                app:srcCompat="?attr/actionModeCloseDrawable"
-                app:useCompatPadding="false" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="AC"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@android:color/white"
-                android:textSize="40sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
-        android:weightSum="2"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="2">
 
 
         <LinearLayout
+            android:id="@+id/ac_temp_displ"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -124,6 +70,7 @@
                 android:text="" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -142,9 +89,9 @@
                     android:id="@+id/ac_power"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="@drawable/ac_power_off"
+                    android:background="@drawable/ac_power_on"
                     android:clickable="true"
-                    android:tag="ac_power_off"/>
+                    android:tag="ac_power_on" />
 
             </LinearLayout>
 
@@ -156,333 +103,343 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:id="@+id/ac_modes">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5.0dp"
-            android:layout_marginBottom="5.0dp"
-            android:gravity="center"
-            android:weightSum="6">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fan Speed"
-                    android:textAlignment="center"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/ac_fan_speed_low"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_fan_low_inactive"
-                    android:tag="ac_fan_speed_low_inactive"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/ac_fan_speed_mid"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_fan_mid_active"
-                    android:tag="ac_fan_speed_mid_active"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_fan_high_inactive"
-                    android:tag="ac_fan_speed_high_inactive" android:id="@+id/ac_fan_speed_high"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/ac_fan_speed_auto"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_fan_auto_inactive"
-                    android:tag="ac_fan_speed_auto_inactive"/>
-
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5.0dp"
-            android:layout_marginBottom="5.0dp"
-            android:gravity="center"
-            android:weightSum="5">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modo"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_heat_mode_inactive"
-                    android:tag="ac_mode_heat_inactive"
-                    android:id="@+id/ac_mode_heat"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_cool_mode_active"
-                    android:tag="ac_mode_cold_inactive"
-                    android:id="@+id/ac_mode_cold"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_fan_auto_inactive"
-                    android:tag="ac_mode_auto_inactive"
-                    android:id="@+id/ac_mode_auto"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5.0dp"
-            android:layout_marginBottom="5.0dp"
-            android:gravity="center"
-            android:weightSum="5">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modo"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_heat_mode_inactive" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_cool_mode_active" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_auto_mode_inactive" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5.0dp"
-        android:layout_marginBottom="5.0dp"
-        android:gravity="center"
-        android:weightSum="5">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Modo"
-                android:textSize="24sp" />
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="6">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fan Speed"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_fan_speed_low"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_low_inactive"
+                        android:tag="ac_fan_speed_low_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_fan_speed_mid"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_mid_active"
+                        android:tag="ac_fan_speed_mid_active" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+
+                        android:id="@+id/ac_fan_speed_high"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_high_inactive"
+                        android:tag="ac_fan_speed_high_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_fan_speed_auto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:tag="ac_fan_speed_auto_inactive" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modo"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_mode_heat"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_heat_mode_inactive"
+                        android:tag="ac_mode_heat_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_mode_cold"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_cool_mode_active"
+                        android:tag="ac_mode_cold_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_mode_auto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:tag="ac_mode_auto_inactive" />
+
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ac_heat_mode_inactive" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modo"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_heat_mode_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_cool_mode_active" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_auto_mode_inactive" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30.0dip"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ac_cool_mode_active" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="5">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30.0dip"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modo"
+                        android:textSize="24sp" />
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ac_auto_mode_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_heat_mode_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_cool_mode_active" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ac_auto_mode_inactive" />
+
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
 
 </LinearLayout>
