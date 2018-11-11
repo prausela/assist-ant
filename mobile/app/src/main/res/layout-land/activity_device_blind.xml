@@ -6,7 +6,6 @@
     android:layout_height="fill_parent"
     android:background="#ffffffff"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
     android:weightSum="6">
 
 
@@ -77,7 +76,7 @@
                         android:text="Cerrado"
                         android:textAppearance="?android:textAppearanceLarge"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="40sp" />
+                        android:textSize="30sp" />
 
                 </LinearLayout>
 

@@ -43,8 +43,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
     }
 
-
-
     protected void setContent(@LayoutRes int content){
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
         stub.setLayoutResource(content);

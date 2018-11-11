@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.Toast;
 
 public abstract class CardListActivity extends AppActivity {
@@ -19,11 +20,9 @@ public abstract class CardListActivity extends AppActivity {
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
         stub.setLayoutResource(R.layout.activity_card_list);
         stub.inflate();
-        android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
+        android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid2);
 
-        //Set Event
         setSingleEvent(mainGrid);
-        //setToggleEvent(mainGrid);
 
     }
 
@@ -89,7 +88,7 @@ public abstract class CardListActivity extends AppActivity {
                         startActivity(intent);
                     }
                     if(finalI==5){
-                        Intent intent = new Intent(CardListActivity.this,RoutinesActivity.class);
+                        Intent intent = new Intent(CardListActivity.this,DeviceActivity.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     }

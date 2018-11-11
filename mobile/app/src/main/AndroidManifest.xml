@@ -25,6 +25,8 @@
         <activity android:name=".DeviceBlind"></activity>
         <activity android:name=".DeviceOven"></activity>
         <activity android:name=".DeviceDoor"></activity>
+        <activity android:name=".DeviceActivity"></activity>
+
 
     </application>
 

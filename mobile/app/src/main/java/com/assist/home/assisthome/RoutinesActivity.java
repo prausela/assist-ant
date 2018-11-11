@@ -12,7 +12,6 @@ public class RoutinesActivity extends AppCompatActivity {
     private ListView RView;
     private RoutinesAdapter RAdapter;
     ArrayList<Routine> routines = new ArrayList<>();
-    ArrayList<Routine> productOrders = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

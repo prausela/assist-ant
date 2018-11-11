@@ -13,14 +13,15 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <GridView
-        android:id="@+id/prueba"
+        android:id="@+id/mainGrid"
         android:layout_width="match_parent"
-        android:layout_height="560dp"
-        android:padding="14dp"
-        android:alignmentMode="alignMargins"
-        android:numColumns="2"
-        android:columnOrderPreserved="false"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:numColumns="2"
+        android:padding="14dp"
+        android:columnWidth="250dp"
 
         />
 </LinearLayout>
