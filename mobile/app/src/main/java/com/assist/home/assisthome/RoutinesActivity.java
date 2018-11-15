@@ -8,14 +8,14 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class RoutinesActivity extends AppCompatActivity {
+public class RoutinesActivity extends AppActivity {
     private ListView RView;
     private RoutinesAdapter RAdapter;
     ArrayList<Routine> routines = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_routines);
+        super.setContent(R.layout.activity_routines);
 
         getRoutine();
         RView = (ListView) findViewById(R.id.customListView);

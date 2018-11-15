@@ -88,9 +88,13 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
 
         if (id == R.id.nav_dev) {
-
+            Intent intent = new Intent(AppActivity.this,DeviceActivity.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
         } else if (id == R.id.nav_routines) {
-
+            Intent intent = new Intent(AppActivity.this,RoutinesActivity.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
 
         }  else if (id == R.id.nav_manage) {
 
