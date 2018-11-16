@@ -21,9 +21,11 @@
         <TextView
             android:id="@+id/r_name"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="3"
-
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
             android:text="R1"
             android:textSize="24sp" />
 

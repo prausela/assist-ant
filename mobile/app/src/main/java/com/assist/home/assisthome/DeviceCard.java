@@ -11,4 +11,5 @@ public class DeviceCard {
         this.DeviceName = dName;
         this.Deviceimage=img;
     }
+
 }

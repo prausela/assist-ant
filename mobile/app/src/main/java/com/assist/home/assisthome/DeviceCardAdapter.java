@@ -2,6 +2,7 @@ package com.assist.home.assisthome;
 
 import android.app.AppComponentFactory;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,6 @@ public class DeviceCardAdapter extends BaseAdapter {
 
         deviceCardViewHolder.d_name.setText(deviceCard.DeviceName);
         deviceCardViewHolder.d_img.setImageResource(deviceCard.Deviceimage);
-
-
 
 
 

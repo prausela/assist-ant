@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
-        android:numColumns="2"
+        android:numColumns="3"
         android:padding="14dp"
         android:columnWidth="250dp"
 

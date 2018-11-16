@@ -15,15 +15,18 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.ViewStubCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.assist.home.assisthome.api.API;
 
 public abstract class AppActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     View nav_dev,nav_routines;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +47,18 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    protected void setContent(@LayoutRes int content){
+    protected void setContent(@LayoutRes int content, String tittle){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
+        TextView Ttittle = toolbar.findViewById(R.id.toolbarTittle);
+        Ttittle.setText(tittle);
         stub.setLayoutResource(content);
         stub.inflate();
     }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -89,9 +99,14 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
 
         if (id == R.id.nav_dev) {
-
+            Intent intent = new Intent(AppActivity.this,DeviceActivity.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
         } else if (id == R.id.nav_routines) {
 
+            Intent intent = new Intent(AppActivity.this,RoutinesActivity.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
 
         }  else if (id == R.id.nav_manage) {
 
