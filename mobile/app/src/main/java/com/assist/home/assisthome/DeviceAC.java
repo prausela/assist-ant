@@ -11,8 +11,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.android.volley.*;
+import com.assist.home.assisthome.api.API;
 
 public class DeviceAC extends AppActivity {
+
+
+//    Requests
+
+
+//    Variables de funcionalidad
+    int temp;
+
 
     ImageButton ac_power;
     ImageButton ac_mode;
@@ -34,8 +44,6 @@ public class DeviceAC extends AppActivity {
         ac_power.setOnClickListener(ac_power_Handler);
         ac_modes=(LinearLayout) findViewById(R.id.ac_modes);
         ac_temp_displ=(LinearLayout) findViewById(R.id.ac_temp_displ);
-
-
 
         ac_temp_up = (Button) findViewById(R.id.ac_temp_up);
         ac_temp_down = (Button) findViewById(R.id.ac_temp_down);
@@ -62,14 +70,18 @@ public class DeviceAC extends AppActivity {
         ac_mode_cold.setOnClickListener(ac_mode_cold_Handler);
         ac_mode_auto.setOnClickListener(ac_mode_auto_Handler);
 
+        temp = 26;
+        ac_temp.setText(Integer.toString(temp));
+
+
     }
 
     View.OnClickListener ac_temp_up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
-                int temp = Integer.valueOf(ac_temp.getText().toString());
-                ac_temp.setText(Integer.toString(temp + 1));
+                temp++;
+                ac_temp.setText(Integer.toString(temp));
             }
         }
     };
