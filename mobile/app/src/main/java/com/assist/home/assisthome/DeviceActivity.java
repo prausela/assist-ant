@@ -23,12 +23,9 @@ public class DeviceActivity extends AppActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_devices_cards);
-        super.setContent(R.layout.activity_devices_cards);
+        super.setContent(R.layout.activity_devices_cards,"Dispositivos");
 
-
-
-
-        getRoutine();
+        getDevices();
         dView = (GridView) findViewById(R.id.mainGrid);
         dAdapter = new DeviceCardAdapter(this,devices);
         dView.setAdapter(dAdapter);
@@ -70,7 +67,7 @@ public class DeviceActivity extends AppActivity {
         });
     }
 
-    public void getRoutine(){
+    public void getDevices(){
         devices.add(new DeviceCard("Aire",R.drawable.ac));
         devices.add(new DeviceCard("Horno",R.drawable.oven));
         devices.add(new DeviceCard("Heladera",R.drawable.fridge));

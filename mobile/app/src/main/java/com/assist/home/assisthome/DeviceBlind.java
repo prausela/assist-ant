@@ -16,7 +16,7 @@ public class DeviceBlind extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_blind);
+        super.setContent(R.layout.activity_device_blind,"Persiana");
 
 
         up = (Button) findViewById(R.id.blind_up);

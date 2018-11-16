@@ -53,6 +53,8 @@ public class RoutinesAdapter extends BaseAdapter {
 
         routineViewHolder.r_name.setText(routines.RoutineName);
 
+
+
         routineViewHolder.r_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
