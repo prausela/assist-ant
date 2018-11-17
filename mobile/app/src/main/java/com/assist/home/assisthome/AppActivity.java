@@ -55,7 +55,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
 
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,6 +81,9 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(AppActivity.this,Settings.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
             return true;
         }
 

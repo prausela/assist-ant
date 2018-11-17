@@ -19,4 +19,5 @@
     <string name="refrigerator_title">Heladera</string>
     <string name="blind_title">Persiana</string>
     <string name="door_title">Puerta</string>
+    <string name="settings">Ajustes</string>
 </resources>
