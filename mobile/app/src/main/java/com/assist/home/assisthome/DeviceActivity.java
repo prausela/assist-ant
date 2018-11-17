@@ -142,23 +142,27 @@ public class DeviceActivity extends AppActivity {
                     Log.d("Shipu", d.toString());
                     Log.d("Shipu", d.typeId.toString());
                     Log.d("Shipu", "Device type:" + API.deviceTypes.get(d.typeId).name.toString());
-                    switch(d.type.name) {
-                        case "ad":
-                            devices.add(new DeviceCard(d.name, R.drawable.ac));
-                            break;
-                        case "refrigerator":
-                            devices.add(new DeviceCard(d.name,R.drawable.fridge));
-                            break;
-                        case  "door":
-                            devices.add(new DeviceCard(d.name,R.drawable.door_close));
-                            break;
-                        case "blind":
-                            devices.add(new DeviceCard(d.name,R.drawable.blind_close));
-                            break;
-                        case "oven":
-                            devices.add(new DeviceCard(d.name,R.drawable.oven));
-                            break;
+                    if (d.type != null) {
+
+                        switch(d.type.name) {
+                            case "ad":
+                                devices.add(new DeviceCard(d.name, R.drawable.ac));
+                                break;
+                            case "refrigerator":
+                                devices.add(new DeviceCard(d.name,R.drawable.fridge));
+                                break;
+                            case  "door":
+                                devices.add(new DeviceCard(d.name,R.drawable.door_close));
+                                break;
+                            case "blind":
+                                devices.add(new DeviceCard(d.name,R.drawable.blind_close));
+                                break;
+                            case "oven":
+                                devices.add(new DeviceCard(d.name,R.drawable.oven));
+                                break;
+                        }
                     }
+
                 }
                 loadGridView();
 

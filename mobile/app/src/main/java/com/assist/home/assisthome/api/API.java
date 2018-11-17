@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class API {
-    static String url = "http://192.168.0.9:8080/api";
+    static String url = "http://186.136.83.173:9090/api";
 
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
     public static String getUrl() {
