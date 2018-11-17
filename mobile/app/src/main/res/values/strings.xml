@@ -26,5 +26,11 @@
     <string name="blind_title">Bind</string>
     <string name="door_title">Door</string>
     <string name="blind_closed">Closed</string>
-    <string name="blind_opened">Opened</string>\
+    <string name="blind_opened">Opened</string>
+    <string name="oven_heat">Heat</string>
+    <string name="oven_grill">Grill</string>
+    <string name="oven_convection">Convection</string>
+    <string name="refrigerator_freezer_temp">Freezer Temperature</string>
+    <string name="refrigerator_refrigerator_temp">Refrigerator Temperature</string>
+    <string name="refrigerator_mode">Mode</string>\
 </resources>

@@ -75,7 +75,7 @@
                         android:id="@+id/blind_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cerrado"
+                        android:text="@string/blind_closed"
                         android:tag="state_down"
                         android:textAppearance="?android:textAppearanceLarge"
                         android:textColor="@color/colorPrimary"
