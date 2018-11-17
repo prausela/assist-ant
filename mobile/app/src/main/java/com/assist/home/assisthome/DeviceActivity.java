@@ -37,7 +37,7 @@ public class DeviceActivity extends AppActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_devices_cards);
-        super.setContent(R.layout.activity_devices_cards,"Dispositivos");
+        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         requestQueue = Volley.newRequestQueue(this);
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
