@@ -13,4 +13,7 @@
     <string name="notification_settings">Notificaciones</string>
     <string name="checkbox_inactive">Desactivadas</string>
     <string name="checkbox_active">Activadas</string>
+    <string name="settings">Ajustes</string>
+
+
 </resources>

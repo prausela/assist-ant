@@ -15,7 +15,7 @@ public class Settings extends AppActivity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_devices_cards);
-        super.setContent(R.layout.activity_settings,"Ajustes");
+        super.setContent(R.layout.activity_settings,getString(R.string.settings));
 
         Spinner spinner=findViewById(R.id.spinner_language);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.languageOp,android.R.layout.simple_spinner_item);
