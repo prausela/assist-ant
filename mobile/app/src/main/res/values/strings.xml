@@ -20,5 +20,11 @@
     <string-array name="languageOp">
         <item>Spanish</item>
         <item>English</item>
-    </string-array>\
+    </string-array>
+    <string name="devices_title">Devices</string>
+    <string name="ac_title_short">AC</string>
+    <string name="oven_title">Oven</string>
+    <string name="refrigerator_title">Refrigerator</string>
+    <string name="blind_title">Bind</string>
+    <string name="door_title">Door</string>\
 </resources>
