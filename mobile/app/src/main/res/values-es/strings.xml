@@ -4,15 +4,6 @@
     <string name="nav_header_desc">Encabezado de navegación</string>
     <string name="navigation_drawer_open">Abrir cajón de navegación</string>
     <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
-<<<<<<< Updated upstream
     <string name="ac_title">Aire Acondicionado</string>
     <string name="ac_fan_speed">Velocidad del Ventilador</string>
-=======
-    <string name="language_settings">Idioma</string>
-    <string name="notification_settings">Notificaciones</string>
-    <string name="checkbox_inactive">Desactivadas</string>
-    <string name="checkbox_active">Activadas</string>
-
-
->>>>>>> Stashed changes
 </resources>
