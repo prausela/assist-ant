@@ -21,4 +21,10 @@
     <string name="settings">Ajustes</string>
     <string name="blind_closed">Cerrada</string>
     <string name="blind_opened">Abierta</string>
+    <string name="oven_heat">Calor</string>
+    <string name="oven_grill">Grill</string>
+    <string name="oven_convection">Convección</string>
+    <string name="refrigerator_freezer_temp">Temperatura Freezer</string>
+    <string name="refrigerator_refrigerator_temp">Temperatura Heladera</string>
+    <string name="refrigerator_mode">Modo</string>
 </resources>
