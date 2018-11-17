@@ -28,7 +28,7 @@ public class DeviceAC extends AppActivity {
         super.onCreate(savedInstanceState);
         super.setContent(R.layout.activity_device_ac,"AC");
 
-        android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
+        //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
         ac_power.setOnClickListener(ac_power_Handler);
         ac_modes=(LinearLayout) findViewById(R.id.ac_modes);

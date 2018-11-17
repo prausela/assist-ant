@@ -7,7 +7,7 @@
 //import android.view.MenuItem;
 //import android.view.View;
 //
-//public class FavouritesActivity extends CardListActivity {
+//public class FavouritesActivity extends AppActivity {
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
