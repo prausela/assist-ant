@@ -6,4 +6,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="nav_header_title" translatable="false">AssistHOME</string>
+    <string name="ac_title">Air Conditioner</string>
+    <string name="ac_fan_speed">Fan Speed</string>
 </resources>
