@@ -46,21 +46,33 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notification_settings"
                 android:textSize="24sp" />
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_active" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/checkbox_inactive" />
+                android:layout_height="match_parent" >
 
+                <RadioButton
+                    android:id="@+id/active_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/checkbox_active"
+                    android:checked="true"
+                    android:onClick="notificationStatus"/>/>
+
+                <RadioButton
+                    android:id="@+id/inactive_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/checkbox_inactive"
+                    android:checked="false"
+                    android:onClick="notificationStatus"/>/>
+            </RadioGroup>
 
 
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

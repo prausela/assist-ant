@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,5 +37,28 @@ public class Settings extends AppActivity implements AdapterView.OnItemSelectedL
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void notificationStatus(View view) {
+
+        // Is the button now checked?
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // hacemos un case con lo que ocurre cada vez que pulsemos un botón
+
+        switch (view.getId()) {
+            case R.id.active_notifications:
+                if (checked)
+                    Toast.makeText(Settings.this, "Activas", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.inactive_notifications:
+                if (checked) {
+                    Toast.makeText(Settings.this, "Desactividas", Toast.LENGTH_SHORT).show();
+
+                }
+        }
+    }
+
 }
 
