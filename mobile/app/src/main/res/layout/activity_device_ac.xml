@@ -231,7 +231,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Modo"
+                        android:text="@string/ac_mode"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -313,7 +313,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Modo"
+                        android:text="@string/ac_horizontal_swing"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -389,7 +389,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Modo"
+                        android:text="@string/ac_vertical_swing"
                         android:textSize="24sp" />
 
                 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false"></string>
+    <string name="app_name" translatable="false">AssistHOME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
@@ -8,4 +8,7 @@
     <string name="nav_header_title" translatable="false">AssistHOME</string>
     <string name="ac_title">Air Conditioner</string>
     <string name="ac_fan_speed">Fan Speed</string>
+    <string name="ac_mode">Mode</string>
+    <string name="ac_vertical_swing">Vertical Swing</string>
+    <string name="ac_horizontal_swing">Horizontal Swing</string>
 </resources>

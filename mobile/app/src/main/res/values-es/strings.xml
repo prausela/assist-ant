@@ -6,4 +6,7 @@
     <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
     <string name="ac_title">Aire Acondicionado</string>
     <string name="ac_fan_speed">Velocidad del Ventilador</string>
+    <string name="ac_mode">Modo</string>
+    <string name="ac_vertical_swing">Movimiento Vertical</string>
+    <string name="ac_horizontal_swing">Movimiento Horizontal</string>
 </resources>
