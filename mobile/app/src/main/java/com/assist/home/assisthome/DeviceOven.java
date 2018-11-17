@@ -19,7 +19,7 @@ public class DeviceOven extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_oven,"Horno");
+        super.setContent(R.layout.activity_device_oven,getString(R.string.oven_title));
 
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);

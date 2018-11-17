@@ -49,12 +49,12 @@ public class Settings extends AppActivity implements AdapterView.OnItemSelectedL
         switch (view.getId()) {
             case R.id.active_notifications:
                 if (checked)
-                    Toast.makeText(Settings.this, "Activas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Settings.this, getString(R.string.checkbox_active), Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.inactive_notifications:
                 if (checked) {
-                    Toast.makeText(Settings.this, "Desactividas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Settings.this, getString(R.string.checkbox_inactive), Toast.LENGTH_SHORT).show();
 
                 }
         }

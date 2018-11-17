@@ -111,10 +111,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
             startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
