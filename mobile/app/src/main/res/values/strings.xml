@@ -4,7 +4,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="nav_header_title" translatable="false">AssistHOME</string>
     <string name="ac_title">Air Conditioner</string>
     <string name="ac_fan_speed">Fan Speed</string>
@@ -15,10 +14,23 @@
     <string name="notification_settings" translatable="true">Notifications</string>
     <string name="checkbox_active" translatable="true">Active</string>
     <string name="checkbox_inactive" translatable="true">Inactive</string>
-
-
+    <string name="settings" translatable="true">Settings</string>
     <string-array name="languageOp">
         <item>Spanish</item>
         <item>English</item>
-    </string-array>\
+    </string-array>
+    <string name="devices_title">Devices</string>
+    <string name="ac_title_short">AC</string>
+    <string name="oven_title">Oven</string>
+    <string name="refrigerator_title">Refrigerator</string>
+    <string name="blind_title">Bind</string>
+    <string name="door_title">Door</string>
+    <string name="blind_closed">Closed</string>
+    <string name="blind_opened">Opened</string>
+    <string name="oven_heat">Heat</string>
+    <string name="oven_grill">Grill</string>
+    <string name="oven_convection">Convection</string>
+    <string name="refrigerator_freezer_temp">Freezer Temperature</string>
+    <string name="refrigerator_refrigerator_temp">Refrigerator Temperature</string>
+    <string name="refrigerator_mode">Mode</string>\
 </resources>

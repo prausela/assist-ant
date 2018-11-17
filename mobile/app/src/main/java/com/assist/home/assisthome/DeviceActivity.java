@@ -39,6 +39,7 @@ public class DeviceActivity extends AppActivity {
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards,"Dispositivos");
         requestQueue = Volley.newRequestQueue(this);
+//        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
 
     }
@@ -55,27 +56,27 @@ public class DeviceActivity extends AppActivity {
                                     long arg3) {
                 Toast.makeText(DeviceActivity.this, "Cliked at " + dAdapter.getItem(position).DeviceName, Toast.LENGTH_SHORT).show();
                 String name=dAdapter.getItem(position).DeviceName;
-                if(name.equals("Aire")){
+                if(name.equals(getString(R.string.ac_title_short))){
                     Intent intent = new Intent(DeviceActivity.this,DeviceAC.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
-                else if(name.equals("Heladera")){
+                else if(name.equals(getString(R.string.refrigerator_title))){
                     Intent intent = new Intent(DeviceActivity.this,DeviceFridge.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
-                else if(name.equals("Horno")){
+                else if(name.equals(getString(R.string.oven_title))){
                     Intent intent = new Intent(DeviceActivity.this,DeviceOven.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
-                else if(name.equals("Persiana")){
+                else if(name.equals(getString(R.string.blind_title))){
                     Intent intent = new Intent(DeviceActivity.this,DeviceBlind.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
-                else if(name.equals("Puerta")){
+                else if(name.equals(getString(R.string.door_title))){
                     Intent intent = new Intent(DeviceActivity.this,DeviceDoor.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
@@ -175,7 +176,6 @@ public class DeviceActivity extends AppActivity {
                 return new HashMap<>();
             };
         };
-
         requestQueue.add(request);
 
     }

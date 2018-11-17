@@ -131,7 +131,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calor"
+                        android:text="@string/oven_heat"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
@@ -213,7 +213,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Grill"
+                        android:text="@string/oven_grill"
                         android:textAlignment="center"
                         android:textSize="24sp" />
 
@@ -295,7 +295,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Conveccion"
+                        android:text="@string/oven_convection"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 

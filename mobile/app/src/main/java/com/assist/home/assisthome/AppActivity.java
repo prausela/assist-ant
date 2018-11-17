@@ -33,8 +33,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -46,16 +44,14 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
     }
 
-    protected void setContent(@LayoutRes int content, String tittle){
+    protected void setContent(@LayoutRes int content, String title){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
-        TextView Ttittle = toolbar.findViewById(R.id.toolbarTittle);
-        Ttittle.setText(tittle);
+        setTitle(title);
         stub.setLayoutResource(content);
         stub.inflate();
     }
-
 
 
 
@@ -85,6 +81,9 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(AppActivity.this,Settings.class);
+//                        intent.putExtra("info","This is activity from card item index  "+finalI);
+            startActivity(intent);
             return true;
         }
 
@@ -111,10 +110,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
             Intent intent = new Intent(AppActivity.this,Settings.class);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
             startActivity(intent);
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 

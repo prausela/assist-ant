@@ -89,7 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Temperatura Freezer"
+                    android:text="@string/refrigerator_freezer_temp"
                     android:textAlignment="center"
                     android:textSize="25sp" />
 
@@ -181,7 +181,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Temperatura Heladera"
+                    android:text="@string/refrigerator_refrigerator_temp"
                     android:textAlignment="center"
                     android:textSize="25sp" />
 
@@ -218,7 +218,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Modo"
+                    android:text="@string/refrigerator_mode"
                     android:textAlignment="center"
                     android:textSize="24sp" />
 
