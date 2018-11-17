@@ -16,7 +16,7 @@ public class DeviceBlind extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_blind,"Persiana");
+        super.setContent(R.layout.activity_device_blind,getString(R.string.blind_title));
 
 
         up = (Button) findViewById(R.id.blind_up);
@@ -31,7 +31,7 @@ public class DeviceBlind extends AppActivity {
     View.OnClickListener up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            state.setText("Abierto");
+            state.setText(getString(R.string.blind_opened));
             img.setImageResource(R.drawable.blind_open);
         }
 
@@ -40,7 +40,7 @@ public class DeviceBlind extends AppActivity {
     View.OnClickListener down_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            state.setText("Cerrado");
+            state.setText(R.string.blind_closed);
             img.setImageResource(R.drawable.blind_close);
         }
 

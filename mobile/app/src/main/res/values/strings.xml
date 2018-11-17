@@ -25,5 +25,7 @@
     <string name="oven_title">Oven</string>
     <string name="refrigerator_title">Refrigerator</string>
     <string name="blind_title">Bind</string>
-    <string name="door_title">Door</string>\
+    <string name="door_title">Door</string>
+    <string name="blind_closed">Closed</string>
+    <string name="blind_opened">Opened</string>\
 </resources>
