@@ -9,4 +9,8 @@
     <string name="ac_mode">Modo</string>
     <string name="ac_vertical_swing">Movimiento Vertical</string>
     <string name="ac_horizontal_swing">Movimiento Horizontal</string>
+    <string name="language_settings">Idioma</string>
+    <string name="notification_settings">Notificaciones</string>
+    <string name="checkbox_inactive">Desactivadas</string>
+    <string name="checkbox_active">Activadas</string>
 </resources>
