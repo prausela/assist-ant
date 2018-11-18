@@ -162,7 +162,7 @@ public class DeviceActivity extends AppActivity {
                     API.devices.put(d.id, d);
 
                     if (d.type != null) {
-
+                        String state;
                         switch (d.type.name) {
                             case "ac":
                                 devices.add(new DeviceCard(d.name, R.drawable.ac, d));
@@ -171,10 +171,20 @@ public class DeviceActivity extends AppActivity {
                                 devices.add(new DeviceCard(d.name, R.drawable.fridge, d));
                                 break;
                             case "door":
-                                devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
+                                state = d.decodedMeta.get("state");
+                                if (state != null && state.equals("true")) {
+                                    devices.add(new DeviceCard(d.name, R.drawable.door_open, d));
+                                } else {
+                                    devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
+                                }
                                 break;
                             case "blind":
-                                devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
+                                state = d.decodedMeta.get("state");
+                                if (state != null && state.equals("true")) {
+                                    devices.add(new DeviceCard(d.name, R.drawable.blind_open, d));
+                                } else {
+                                    devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
+                                }
                                 break;
                             case "oven":
                                 devices.add(new DeviceCard(d.name, R.drawable.oven, d));
