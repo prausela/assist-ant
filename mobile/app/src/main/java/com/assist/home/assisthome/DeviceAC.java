@@ -26,15 +26,15 @@ public class DeviceAC extends AppActivity {
     Button ac_temp_up, ac_temp_down;
     LinearLayout ac_modes,ac_temp_displ;
     Intent myIntent = getIntent();
-    Device  d = (Device) myIntent.getSerializableExtra("device");
+    Device  d;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Device device = API.devices.get(savedInstanceState.getString("device"));
-        super.setContent(R.layout.activity_device_ac, device.name);
+        d = API.devices.get(savedInstanceState.getString("device"));
+        super.setContent(R.layout.activity_device_ac, d.name);
 
         //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
