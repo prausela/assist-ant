@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fridge_all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
@@ -12,12 +13,12 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical"
-        android:weightSum="2"
-        android:layout_margin="5dp">
+        android:weightSum="2">
 
 
         <LinearLayout
@@ -87,7 +88,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="194dp"
                     android:layout_height="wrap_content"
                     android:text="@string/refrigerator_freezer_temp"
                     android:textAlignment="center"
@@ -103,13 +104,13 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical"
-        android:weightSum="2"
 
-        android:layout_margin="5dp">
+        android:weightSum="2">
 
 
         <LinearLayout
@@ -136,7 +137,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/fridge_temp"
+                    android:id="@+id/refri_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="26"
@@ -179,7 +180,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="184dp"
                     android:layout_height="wrap_content"
                     android:text="@string/refrigerator_refrigerator_temp"
                     android:textAlignment="center"

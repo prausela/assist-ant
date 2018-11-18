@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
@@ -16,6 +17,7 @@ public class DeviceFridge extends AppActivity {
     Button f_temp_up, f_temp_down, r_temp_up, r_temp_down;
     Intent myIntent = getIntent();
     Device d;
+    LinearLayout all;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class DeviceFridge extends AppActivity {
         d = API.devices.get(this.getIntent().getStringExtra("device"));
 
         super.setContent(R.layout.activity_device_fridge,d.name);
-
+        all=(LinearLayout) findViewById(R.id.fridge_all);
         f_temp_up = (Button) findViewById(R.id.fridge_temp_up);
         f_temp_down = (Button) findViewById(R.id.fridge_temp_down);
         f_temp = (TextView) findViewById(R.id.fridge_temp);
@@ -44,6 +46,14 @@ public class DeviceFridge extends AppActivity {
         party.setOnClickListener(party_Handler);
         trip.setOnClickListener(trip_Handler);
 
+    }
+
+    public void Loading(){
+        all.setVisibility(View.GONE);
+    }
+
+    public void Loaded(){
+        all.setVisibility(View.VISIBLE);
     }
 
     View.OnClickListener def_Handler = new View.OnClickListener() {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fridge_all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
@@ -9,14 +10,13 @@
     android:weightSum="7">
 
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
-        android:weightSum="2"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="2">
 
 
         <LinearLayout
@@ -70,6 +70,7 @@
                 android:text="" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -97,13 +98,14 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
-        android:weightSum="2"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="2">
 
 
         <LinearLayout
@@ -157,6 +159,7 @@
                 android:text="" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -224,11 +227,11 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/fridge_def"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/fridge_def_inactive"
-                    android:tag="fridge_def_inactive"
-                    android:id="@+id/fridge_def"/>
+                    android:tag="fridge_def_inactive" />
             </LinearLayout>
 
             <LinearLayout
@@ -240,11 +243,11 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/fridge_party"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/fridge_party_active"
-                    android:tag="fridge_party_active"
-                    android:id="@+id/fridge_party"/>
+                    android:tag="fridge_party_active" />
 
             </LinearLayout>
 
@@ -257,17 +260,16 @@
                 android:orientation="vertical">
 
                 <ImageButton
+                    android:id="@+id/fridge_trip"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/fridge_trip_inactive"
-                    android:tag="fridge_trip_active"
-                    android:id="@+id/fridge_trip"/>
+                    android:tag="fridge_trip_active" />
             </LinearLayout>
 
 
         </LinearLayout>
     </LinearLayout>
-
 
 
 </LinearLayout>

@@ -3,10 +3,12 @@ package com.assist.home.assisthome;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
@@ -16,6 +18,7 @@ public class DeviceDoor extends AppActivity{
     ImageView doorimg,lockimg;
     //Intent myIntent = getIntent();
     Device d;
+    LinearLayout all;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class DeviceDoor extends AppActivity{
 
         super.setContent(R.layout.activity_device_door,d.name);
 
+        all=(LinearLayout) findViewById(R.id.door_all);
         open=(ImageButton) findViewById(R.id.door_open);
         close=(ImageButton) findViewById(R.id.door_closed);
         lock=(ImageButton) findViewById(R.id.door_locked);
@@ -38,6 +42,14 @@ public class DeviceDoor extends AppActivity{
         unlocked.setOnClickListener(unlocked_Handler);
 
     }
+    public void Loading(){
+        all.setVisibility(View.GONE);
+    }
+
+    public void Loaded(){
+        all.setVisibility(View.VISIBLE);
+    }
+
 
     View.OnClickListener open_Handler = new View.OnClickListener() {
         @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/oven_all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
@@ -9,25 +10,23 @@
     android:weightSum="6">
 
 
-
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="3"
-        android:weightSum="2"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="2">
 
 
         <LinearLayout
+            android:id="@+id/oven_temp_displ"
             android:layout_width="0dp"
             android:layout_height="198dp"
             android:layout_weight="1"
             android:background="@drawable/temp_circle"
             android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/oven_temp_displ">
+            android:orientation="vertical">
 
 
             <Button
@@ -72,6 +71,7 @@
                 android:text="" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -101,12 +101,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/oven_modes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:orientation="vertical"
-        android:weightSum="3"
-        android:id="@+id/oven_modes">
+        android:weightSum="3">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -356,7 +356,6 @@
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>

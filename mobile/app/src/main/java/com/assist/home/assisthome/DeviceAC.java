@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
-import com.assist.home.assisthome.api.devices.AC;
 
 public class DeviceAC extends AppActivity{
 
@@ -27,17 +26,19 @@ public class DeviceAC extends AppActivity{
     ImageButton ac_svauto,ac_sv22,ac_sv45,ac_sv67,ac_sv90;
     TextView ac_temp;
     Button ac_temp_up, ac_temp_down;
-    LinearLayout ac_modes,ac_temp_displ;
+    LinearLayout ac_modes,ac_temp_displ,ac_all;
     Intent myIntent = getIntent();
-    AC d;
+    Device  d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = (AC) API.devices.get(this.getIntent().getStringExtra("device"));
+        d = API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_ac, d.name);
 
+
         //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
+        ac_all=(LinearLayout) findViewById(R.id.ac_all);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
         ac_power.setOnClickListener(ac_power_Handler);
         ac_modes=(LinearLayout) findViewById(R.id.ac_modes);
@@ -102,6 +103,15 @@ public class DeviceAC extends AppActivity{
 
 
     }
+
+    public void Loading(){
+        ac_all.setVisibility(View.GONE);
+    }
+
+    public void Loaded(){
+        ac_all.setVisibility(View.VISIBLE);
+    }
+
     View.OnClickListener ac_sv90_Handler=new View.OnClickListener() {
         @Override
         public void onClick(View v) {

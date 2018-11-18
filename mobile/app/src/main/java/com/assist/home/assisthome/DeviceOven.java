@@ -20,6 +20,7 @@ public class DeviceOven extends AppActivity {
     LinearLayout oven_modes,oven_temp_disp;
     //Intent myIntent = getIntent();
     Device d;
+    LinearLayout all;
 
 
     @Override
@@ -28,7 +29,7 @@ public class DeviceOven extends AppActivity {
         d = API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_oven,d.name);
 
-
+        all=(LinearLayout) findViewById(R.id.oven_all);
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);
         oven_temp_up = (Button) findViewById(R.id.oven_temp_up);
@@ -63,6 +64,14 @@ public class DeviceOven extends AppActivity {
         c_eco.setOnClickListener(c_eco_Handler);
         c_off.setOnClickListener(c_off_Handler);
 
+    }
+
+    public void Loading(){
+        all.setVisibility(View.GONE);
+    }
+
+    public void Loaded(){
+        all.setVisibility(View.VISIBLE);
     }
 
     View.OnClickListener c_off_Handler = new View.OnClickListener() {

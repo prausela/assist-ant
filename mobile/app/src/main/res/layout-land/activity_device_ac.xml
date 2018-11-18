@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ac_all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
@@ -326,10 +327,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sv1"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing1_inactive" />
+                        android:background="@drawable/ac_swing1_inactive"
+                        android:tag="ac_sv22_inactive" />
 
                 </LinearLayout>
 
@@ -341,10 +345,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sv2"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing2_inactive" />
+                        android:background="@drawable/ac_swing2_inactive"
+                        android:tag="ac_sv45_inactive" />
 
                 </LinearLayout>
 
@@ -356,10 +363,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sv3"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing3_inactive" />
+                        android:background="@drawable/ac_swing3_inactive"
+                        android:tag="ac_sv67_inactive" />
 
                 </LinearLayout>
 
@@ -371,10 +381,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sv4"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing4_inactive" />
+                        android:background="@drawable/ac_swing4_inactive"
+                        android:tag="ac_sv90_inactive" />
 
                 </LinearLayout>
 
@@ -386,10 +399,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_svauto"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swingauto_inactive" />
+                        android:background="@drawable/ac_swingauto_inactive"
+                        android:tag="ac_svauto_inactive" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -435,10 +451,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sh_90"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh90_inactive" />
+                        android:background="@drawable/ac_sh_90_inactive"
+                        android:tag="ac_sh_90_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -449,10 +468,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sh_45"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh45_inactive" />
+                        android:background="@drawable/ac_sh_45_inactive"
+                        android:tag="ac_sh_45_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -463,10 +485,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sh0"
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh0_inactive" />
+                        android:background="@drawable/ac_sh0_inactive"
+                        android:tag="ac_sh0_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -477,26 +502,12 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sh45"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh_45_inactive" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5.dip"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/ac_sh_90_inactive" />
-
+                        android:background="@drawable/ac_sh45_inactive"
+                        android:tag="ac_sh45_inactive" />
 
                 </LinearLayout>
 
@@ -508,10 +519,30 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
+                        android:id="@+id/ac_sh90"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh_90_inactive" />
+                        android:background="@drawable/ac_sh90_inactive"
+                        android:tag="ac_sh90_inactive" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_shauto"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh90_inactive"
+                        android:tag="ac_shauto_inactive" />
                 </LinearLayout>
 
 
@@ -519,4 +550,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ac_all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
@@ -327,11 +328,11 @@
 
                     <ImageButton
                         android:id="@+id/ac_sv1"
-                        android:tag="ac_sv22_inactive"
-
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing1_inactive" />
+                        android:background="@drawable/ac_swing1_inactive"
+                        android:tag="ac_sv22_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -344,11 +345,11 @@
 
                     <ImageButton
                         android:id="@+id/ac_sv2"
-                        android:tag="ac_sv45_inactive"
-
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing2_inactive" />
+                        android:background="@drawable/ac_swing2_inactive"
+                        android:tag="ac_sv45_inactive" />
 
                 </LinearLayout>
 
@@ -362,11 +363,11 @@
 
                     <ImageButton
                         android:id="@+id/ac_sv3"
-                        android:tag="ac_sv67_inactive"
-
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing3_inactive" />
+                        android:background="@drawable/ac_swing3_inactive"
+                        android:tag="ac_sv67_inactive" />
 
                 </LinearLayout>
 
@@ -380,11 +381,11 @@
 
                     <ImageButton
                         android:id="@+id/ac_sv4"
-                        android:tag="ac_sv90_inactive"
-
                         android:layout_width="40dp"
+
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_swing4_inactive" />
+                        android:background="@drawable/ac_swing4_inactive"
+                        android:tag="ac_sv90_inactive" />
 
                 </LinearLayout>
 
