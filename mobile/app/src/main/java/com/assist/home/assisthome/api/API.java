@@ -1,5 +1,6 @@
 package com.assist.home.assisthome.api;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -15,6 +16,31 @@ public class API {
     public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {
         return url;
+    }
+    private static API api;
+    private Context context;
+    private RequestQueue requestQueue;
+
+    private API(Context context){
+        this.context = context;
+    }
+
+    static API getInstance(){
+        return api;
+    }
+
+    public RequestQueue getRequestQueue() {
+        if (requestQueue == null){
+            requestQueue = Volley.newRequestQueue(context);
+        }
+        return requestQueue;
+    }
+
+    public static API getInstance(Context context){
+        if (api == null){
+            api = new API(context);
+        }
+        return api;
     }
 
     public static void loadTypes(List<DeviceType> types) {

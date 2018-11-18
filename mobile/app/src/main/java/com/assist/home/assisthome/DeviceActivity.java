@@ -233,7 +233,7 @@ public class DeviceActivity extends AppActivity {
                                 }
                             }
                     );
-                    API.getInstance().getRequestQueue().add(postRequest);
+                    //API.getInstance().getRequestQueue().add(postRequest);
                 }
             }
         }, new Response.ErrorListener() {
