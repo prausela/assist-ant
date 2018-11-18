@@ -20,8 +20,9 @@ public class DeviceDoor extends AppActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_door,d.name);
         d = API.devices.get(this.getIntent().getStringExtra("device"));
+
+        super.setContent(R.layout.activity_device_door,d.name);
 
         open=(ImageButton) findViewById(R.id.door_open);
         close=(ImageButton) findViewById(R.id.door_closed);

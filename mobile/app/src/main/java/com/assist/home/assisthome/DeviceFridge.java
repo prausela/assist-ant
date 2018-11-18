@@ -14,14 +14,15 @@ public class DeviceFridge extends AppActivity {
     ImageButton def, party, trip;
     TextView f_temp, r_temp;
     Button f_temp_up, f_temp_down, r_temp_up, r_temp_down;
-    //Intent myIntent = getIntent();
+    Intent myIntent = getIntent();
     Device d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_fridge,d.name);
         d = API.devices.get(this.getIntent().getStringExtra("device"));
+
+        super.setContent(R.layout.activity_device_fridge,d.name);
 
         f_temp_up = (Button) findViewById(R.id.fridge_temp_up);
         f_temp_down = (Button) findViewById(R.id.fridge_temp_down);
@@ -96,7 +97,9 @@ public class DeviceFridge extends AppActivity {
         @Override
         public void onClick(View v) {
             int tempF = Integer.valueOf(f_temp.getText().toString());
-            f_temp.setText(Integer.toString(tempF + 1));
+            if(tempF<-8) {
+                f_temp.setText(Integer.toString(tempF + 1));
+            }
         }
     };
 
@@ -104,7 +107,9 @@ public class DeviceFridge extends AppActivity {
         @Override
         public void onClick(View v) {
             int tempF = Integer.valueOf(f_temp.getText().toString());
-            f_temp.setText(Integer.toString(tempF - 1));
+            if(tempF>-20) {
+                f_temp.setText(Integer.toString(tempF - 1));
+            }
         }
     };
 
@@ -112,14 +117,18 @@ public class DeviceFridge extends AppActivity {
         @Override
         public void onClick(View v) {
             int tempR = Integer.valueOf(r_temp.getText().toString());
-            r_temp.setText(Integer.toString(tempR - 1));
+            if(tempR>2) {
+                r_temp.setText(Integer.toString(tempR - 1));
+            }
         }
     };
     View.OnClickListener r_temp_up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int tempR = Integer.valueOf(r_temp.getText().toString());
-            r_temp.setText(Integer.toString(tempR + 1));
+            if(tempR<8) {
+                r_temp.setText(Integer.toString(tempR + 1));
+            }
         }
     };
 

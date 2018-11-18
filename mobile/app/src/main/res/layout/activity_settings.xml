@@ -26,10 +26,13 @@
                 android:text="@string/language_settings"
                 android:textSize="24sp" />
 
-            <Spinner
-                android:id="@+id/spinner_language"
+            <CheckedTextView
+                android:id="@+id/language"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorIcons"/>
+
 
         </LinearLayout>
 

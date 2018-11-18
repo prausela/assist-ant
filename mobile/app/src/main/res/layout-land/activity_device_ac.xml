@@ -115,8 +115,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="5.0dp"
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
@@ -126,7 +126,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="center"
+                    android:gravity="center|start"
                     android:orientation="vertical">
 
                     <TextView
@@ -225,7 +225,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="center"
+                    android:gravity="left|center"
                     android:orientation="vertical">
 
                     <TextView
@@ -301,7 +301,7 @@
                 android:layout_marginTop="5.0dp"
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
-                android:weightSum="5">
+                android:weightSum="7">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -321,43 +321,75 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_heat_mode_inactive" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_cool_mode_active" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing1_inactive" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing2_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing3_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing4_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swingauto_inactive" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -377,7 +409,7 @@
                 android:layout_marginTop="5.0dp"
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
-                android:weightSum="5">
+                android:weightSum="8">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -394,52 +426,97 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_heat_mode_inactive" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh90_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_cool_mode_active" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh45_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh0_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh_45_inactive" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh_90_inactive" />
+
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh_90_inactive" />
+                </LinearLayout>
+
+
             </LinearLayout>
-
-
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 </LinearLayout>

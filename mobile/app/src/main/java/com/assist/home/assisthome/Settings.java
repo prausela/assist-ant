@@ -1,42 +1,45 @@
 package com.assist.home.assisthome;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.ResourceCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Settings extends AppActivity implements AdapterView.OnItemSelectedListener  {
-    CheckBox active,inactive;
+import java.util.Locale;
+
+import io.paperdb.Paper;
+
+public class Settings extends AppActivity   {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_settings,getString(R.string.settings));
+        CheckedTextView language= (CheckedTextView) findViewById(R.id.language);
 
-        Spinner spinner=findViewById(R.id.spinner_language);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.languageOp,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text=parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-
+       String lang=Locale.getDefault().getLanguage();
+       if(lang.equals("en"))
+       {
+           language.setText("English");
+       }
+       else {
+           language.setText("Espanol");
+       }
 
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     public void notificationStatus(View view) {
 
@@ -49,16 +52,18 @@ public class Settings extends AppActivity implements AdapterView.OnItemSelectedL
         switch (view.getId()) {
             case R.id.active_notifications:
                 if (checked)
-                    Toast.makeText(Settings.this, getString(R.string.checkbox_active), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Settings.this, getString(R.string.notifications)+" "+getString(R.string.checkbox_active), Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.inactive_notifications:
                 if (checked) {
-                    Toast.makeText(Settings.this, getString(R.string.checkbox_inactive), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Settings.this, getString(R.string.notifications)+ " "+getString(R.string.checkbox_inactive), Toast.LENGTH_SHORT).show();
 
                 }
         }
     }
+
+
 
 }
 

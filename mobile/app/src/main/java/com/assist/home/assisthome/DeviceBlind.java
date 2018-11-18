@@ -16,14 +16,15 @@ public class DeviceBlind extends AppActivity {
     TextView state;
     Button up, down;
     ImageView img;
-    //Intent myIntent = getIntent();
+    Intent myIntent = getIntent();
     Device d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_blind,"blind");
         d = API.devices.get(this.getIntent().getStringExtra("device"));
+        super.setContent(R.layout.activity_device_blind,d.name);
+
 
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);

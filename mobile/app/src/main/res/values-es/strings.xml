@@ -6,8 +6,8 @@
     <string name="ac_title">Aire Acondicionado</string>
     <string name="ac_fan_speed">Velocidad</string>
     <string name="ac_mode">Modo</string>
-    <string name="ac_vertical_swing">Movimiento Vertical</string>
-    <string name="ac_horizontal_swing">Movimiento Horizontal</string>
+    <string name="ac_vertical_swing">Swing Vertical</string>
+    <string name="ac_horizontal_swing">Swing Horizontal</string>
     <string name="language_settings">Idioma</string>
     <string name="notification_settings">Notificaciones</string>
     <string name="checkbox_inactive">Desactivadas</string>
@@ -27,4 +27,5 @@
     <string name="refrigerator_freezer_temp">Temperatura Freezer</string>
     <string name="refrigerator_refrigerator_temp">Temperatura Heladera</string>
     <string name="refrigerator_mode">Modo</string>
+    <string name="notifications">Notificaciones</string>
 </resources>

@@ -25,8 +25,9 @@ public class DeviceOven extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_oven,d.name);
         d = API.devices.get(this.getIntent().getStringExtra("device"));
+        super.setContent(R.layout.activity_device_oven,d.name);
+
 
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);

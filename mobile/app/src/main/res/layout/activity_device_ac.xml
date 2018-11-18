@@ -101,12 +101,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ac_modes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="vertical"
-        android:weightSum="4"
-        android:id="@+id/ac_modes">
+        android:weightSum="4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -173,7 +173,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -190,7 +190,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -210,8 +210,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -254,7 +254,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -271,7 +271,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -292,8 +292,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -302,110 +302,6 @@
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
                 android:weightSum="7">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ac_horizontal_swing"
-                        android:textSize="24sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/ac_swing1_inactive" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/ac_swing2_inactive" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_swing3_inactive" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_swing4_inactive" />
-
-                </LinearLayout>
-                <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30.0dip"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ac_swingauto_inactive" />
-
-            </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5.0dp"
-                android:layout_marginBottom="5.0dp"
-                android:gravity="center"
-                android:weightSum="5">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -429,41 +325,224 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_heat_mode_inactive" />
+                    <ImageButton
+                        android:id="@+id/ac_sv1"
+                        android:tag="ac_sv22_inactive"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing1_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_cool_mode_active" />
+                    <ImageButton
+                        android:id="@+id/ac_sv2"
+                        android:tag="ac_sv45_inactive"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing2_inactive" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive" />
+                    <ImageButton
+                        android:id="@+id/ac_sv3"
+                        android:tag="ac_sv67_inactive"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing3_inactive" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sv4"
+                        android:tag="ac_sv90_inactive"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing4_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_svauto"
+                        android:layout_width="40dp"
+
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swingauto_inactive"
+                        android:tag="ac_svauto_inactive" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dp"
+                android:layout_marginBottom="5.0dp"
+                android:gravity="center"
+                android:weightSum="8">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ac_horizontal_swing"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sh_90"
+                        android:layout_width="40dp"
+
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh_90_inactive"
+                        android:tag="ac_sh_90_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sh_45"
+                        android:layout_width="40dp"
+
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh_45_inactive"
+                        android:tag="ac_sh_45_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sh0"
+                        android:layout_width="40dp"
+
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh0_inactive"
+                        android:tag="ac_sh0_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sh45"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh45_inactive"
+                        android:tag="ac_sh45_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_sh90"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh90_inactive"
+                        android:tag="ac_sh90_inactive" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_shauto"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_sh90_inactive"
+                        android:tag="ac_shauto_inactive" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
 
