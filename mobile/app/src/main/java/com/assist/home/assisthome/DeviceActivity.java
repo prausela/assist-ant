@@ -75,7 +75,7 @@ public class DeviceActivity extends AppActivity {
                         startActivity(intent1);
                         break;
                     case "door":
-                        Intent intent2 = new Intent(DeviceActivity.this, DeviceFridge.class);
+                        Intent intent2 = new Intent(DeviceActivity.this, DeviceDoor.class);
                         intent2.putExtra("device",dAdapter.getItem(position).d.id);
 
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
