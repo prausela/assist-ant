@@ -2,12 +2,15 @@ package com.assist.home.assisthome.api;
 
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class API {
-    static String url = "http://192.168.0.20:8080/api";
+    static String url = "http://192.168.1.198:8080/api";
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
     public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {

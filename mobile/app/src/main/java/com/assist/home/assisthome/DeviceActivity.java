@@ -17,9 +17,12 @@ import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.DeviceElementAdapter;
 import com.assist.home.assisthome.api.DeviceType;
 import com.assist.home.assisthome.api.JSONResponses;
+import com.assist.home.assisthome.api.devices.AC;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
@@ -143,13 +146,19 @@ public class DeviceActivity extends AppActivity {
             public void onResponse(JSONObject response) {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
-                Gson gson = new Gson();
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.registerTypeAdapter(Device.class, new DeviceElementAdapter());
+                Gson gson = gsonBuilder.create();
+
                 API.devices = new HashMap<>();
+                Log.d("HelloMoto", response.toString());
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
                 List<Device> objDevices = rp.devices;
+                Log.d("Whatever", objDevices.toString());
 
                 for (Device d : objDevices) {
+                    Log.d("HelloMoto", d.toString());
                     d.type = API.deviceTypes.get(d.typeId);
 
                     Type type = new TypeToken<Map<String, String>>(){}.getType();
@@ -162,7 +171,7 @@ public class DeviceActivity extends AppActivity {
                     API.devices.put(d.id, d);
 
                     if (d.type != null) {
-                        String state;
+                        //String state;
                         switch (d.type.name) {
                             case "ac":
                                 devices.add(new DeviceCard(d.name, R.drawable.ac, d));
@@ -171,20 +180,20 @@ public class DeviceActivity extends AppActivity {
                                 devices.add(new DeviceCard(d.name, R.drawable.fridge, d));
                                 break;
                             case "door":
-                                state = d.decodedMeta.get("state");
-                                if (state != null && state.equals("true")) {
+                                //state = d.decodedMeta.get("state");
+                                //if (state != null && state.equals("true")) {
                                     devices.add(new DeviceCard(d.name, R.drawable.door_open, d));
-                                } else {
-                                    devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
-                                }
-                                break;
+                                //} else {
+                                  //  devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
+                                //}
+                                //break;
                             case "blind":
-                                state = d.decodedMeta.get("state");
-                                if (state != null && state.equals("true")) {
+                                //state = d.decodedMeta.get("state");
+                                //if (state != null && state.equals("true")) {
                                     devices.add(new DeviceCard(d.name, R.drawable.blind_open, d));
-                                } else {
-                                    devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
-                                }
+                                //} else {
+                                  //  devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
+                                //}
                                 break;
                             case "oven":
                                 devices.add(new DeviceCard(d.name, R.drawable.oven, d));
