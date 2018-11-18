@@ -8,7 +8,8 @@ public class Device {
     public String typeId;
     public DeviceType type;
     public String meta;
-//    Map<String,String> decodedMeta;
+    public Map<String,String> decodedMeta;
+
     public String toString() {
         return id + ": " + name;
     }

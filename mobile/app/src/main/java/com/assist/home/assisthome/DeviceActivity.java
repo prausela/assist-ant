@@ -19,13 +19,16 @@ import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.DeviceType;
 import com.assist.home.assisthome.api.JSONResponses;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class DeviceActivity extends AppActivity {
     private GridView dView;
@@ -119,14 +122,6 @@ public class DeviceActivity extends AppActivity {
             loadDeviceTypes();
             return;
         }
-//        devices.add(new DeviceCard("Aire",R.drawable.ac));
-//        devices.add(new DeviceCard("Horno",R.drawable.oven));
-//        devices.add(new DeviceCard("Heladera",R.drawable.fridge));
-//        devices.add(new DeviceCard("Puerta",R.drawable.door_close));
-//        devices.add(new DeviceCard("Persiana",R.drawable.blind_close));
-//        devices.add(new DeviceCard("Persiana",R.drawable.blind_close));
-//        devices.add(new DeviceCard("Persiana",R.drawable.blind_close));
-//
 
         JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devices", (String)null, new Response.Listener<JSONObject>() {
             @Override
@@ -134,14 +129,23 @@ public class DeviceActivity extends AppActivity {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
                 Gson gson = new Gson();
+                API.devices = new HashMap<>();
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
                 List<Device> objDevices = rp.devices;
+
                 for (Device d : objDevices) {
                     d.type = API.deviceTypes.get(d.typeId);
+
+                    Type type = new TypeToken<Map<String, String>>(){}.getType();
+                    Map<String, String> myMap = gson.fromJson(d.meta, type);
+                    d.decodedMeta = myMap;
+
                     Log.d("Shipu", d.toString());
-                    Log.d("Shipu", d.typeId.toString());
-                    Log.d("Shipu", "Device type:" + API.deviceTypes.get(d.typeId).name.toString());
+//                    Log.d("Shipu", d.typeId.toString());
+//                    Log.d("Shipu", "Device type:" + API.deviceTypes.get(d.typeId).name.toString());
+                    API.devices.put(d.id, d);
+
                     if (d.type != null) {
 
                         switch(d.type.name) {

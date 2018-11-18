@@ -10,6 +10,7 @@ public class API {
     static String url = "http://186.136.83.173:9090/api";
 
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
+    public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {
         return url;
     }
