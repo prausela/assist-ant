@@ -161,7 +161,9 @@ public class DeviceActivity extends AppActivity {
             public void onResponse(JSONObject response) {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
-                Gson gson = new Gson();
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.registerTypeAdapter(Device.class, new DeviceElementAdapter());
+                Gson gson = gsonBuilder.create();
                 API.devices = new HashMap<>();
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
