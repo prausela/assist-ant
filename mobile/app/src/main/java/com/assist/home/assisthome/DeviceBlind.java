@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 
 public class DeviceBlind extends AppActivity {
@@ -16,13 +17,13 @@ public class DeviceBlind extends AppActivity {
     Button up, down;
     ImageView img;
     //Intent myIntent = getIntent();
-    //Device d = (Device) myIntent.getSerializableExtra("device");
+    Device d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContent(R.layout.activity_device_blind,"blind");
-
+        d = API.devices.get(this.getIntent().getStringExtra("device"));
 
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);

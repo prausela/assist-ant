@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 
 public class DeviceOven extends AppActivity {
@@ -17,14 +18,15 @@ public class DeviceOven extends AppActivity {
     Button oven_temp_up, oven_temp_down;
     TextView oven_temp;
     LinearLayout oven_modes,oven_temp_disp;
-    Intent myIntent = getIntent();
-    Device d = (Device) myIntent.getSerializableExtra("device");
+    //Intent myIntent = getIntent();
+    Device d;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContent(R.layout.activity_device_oven,d.name);
+        d = API.devices.get(this.getIntent().getStringExtra("device"));
 
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);

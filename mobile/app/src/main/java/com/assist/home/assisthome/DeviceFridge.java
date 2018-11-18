@@ -7,19 +7,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 
 public class DeviceFridge extends AppActivity {
     ImageButton def, party, trip;
     TextView f_temp, r_temp;
     Button f_temp_up, f_temp_down, r_temp_up, r_temp_down;
-    Intent myIntent = getIntent();
-    Device d = (Device) myIntent.getSerializableExtra("device");
+    //Intent myIntent = getIntent();
+    Device d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContent(R.layout.activity_device_fridge,d.name);
+        d = API.devices.get(this.getIntent().getStringExtra("device"));
 
         f_temp_up = (Button) findViewById(R.id.fridge_temp_up);
         f_temp_down = (Button) findViewById(R.id.fridge_temp_down);
