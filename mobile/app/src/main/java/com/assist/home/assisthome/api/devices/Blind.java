@@ -13,6 +13,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.assist.home.assisthome.DeviceAC;
 import com.assist.home.assisthome.DeviceBlind;
+import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 
 import org.json.JSONArray;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Blind extends Device {
-    public void init(RequestQueue queue, final DeviceBlind blind){
+    public void init(final DeviceBlind blind){
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, this.getUrl() + "/" + "getState",
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -51,14 +52,14 @@ public class Blind extends Device {
                     }
                 }
         );
-        queue.add(postRequest);
+        getAPI().getRequestQueue().add(postRequest);
     }
     private class BlindStatus{
         String status;
         int level;
     }
 
-    public boolean switchState(boolean state, RequestQueue queue){
+    public void switchState(boolean state){
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, this.getUrl() + "/" + (state ? "up" : "down"),
                 new Response.Listener<JSONObject>() {
@@ -74,7 +75,6 @@ public class Blind extends Device {
                     }
                 }
         );
-        queue.add(postRequest);
-        return true;
+        getAPI().getRequestQueue().add(postRequest);
     }
 }

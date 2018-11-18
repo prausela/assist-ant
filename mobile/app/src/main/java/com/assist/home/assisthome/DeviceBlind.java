@@ -24,7 +24,6 @@ public class DeviceBlind extends AppActivity {
     Button up, down;
     ImageView img;
     Blind d;
-    RequestQueue requestQueue;
     Intent myIntent = getIntent();
     LinearLayout blind_all;
     RelativeLayout loading;
@@ -34,8 +33,7 @@ public class DeviceBlind extends AppActivity {
         d = (Blind) API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_blind,d.name);
 
-        requestQueue = Volley.newRequestQueue(this);
-        d.init(requestQueue, this);
+        API.getInstance(this).getRequestQueue();
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);
@@ -60,7 +58,7 @@ public class DeviceBlind extends AppActivity {
     View.OnClickListener up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            d.switchState(true, requestQueue);
+            d.switchState(true);
             open();
         }
 
@@ -69,7 +67,7 @@ public class DeviceBlind extends AppActivity {
     View.OnClickListener down_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            d.switchState(false, requestQueue);
+            d.switchState(false);
             close();
         }
 

@@ -1,5 +1,6 @@
 package com.assist.home.assisthome.api;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -32,6 +33,10 @@ public class Device implements Serializable {
 
     public String getUrl(){
         return API.getUrl() + "/" + DEVICES_API + "/" + this.id;
+    }
+
+    protected API getAPI(){
+        return API.getInstance();
     }
 
     /*public Device deserialize(JsonElement json, JsonDeserializationContext context) throws JsonParseException {

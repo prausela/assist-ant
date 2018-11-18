@@ -40,7 +40,6 @@ public class DeviceActivity extends AppActivity {
     private GridView dView;
     private DeviceCardAdapter dAdapter;
     ArrayList<DeviceCard> devices = new ArrayList<>();
-    private RequestQueue requestQueue;
     LinearLayout all;
     RelativeLayout loading;
     @Override
@@ -50,7 +49,6 @@ public class DeviceActivity extends AppActivity {
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
-        requestQueue = Volley.newRequestQueue(this);
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
 
@@ -147,7 +145,7 @@ public class DeviceActivity extends AppActivity {
             ;
         };
 
-        requestQueue.add(request);
+        API.getInstance(this).getRequestQueue().add(request);
     }
 
     public void getDevices() {
@@ -231,7 +229,7 @@ public class DeviceActivity extends AppActivity {
 
             ;
         };
-        requestQueue.add(request);
+        API.getInstance(this).getRequestQueue().add(request);
 
     }
 }
