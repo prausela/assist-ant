@@ -24,35 +24,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Blind extends Device {
-    public void init(RequestQueue queue, final DeviceBlind blind){
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, this.getUrl() + "/" + "getState",
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("Response57", response.toString());
-                        try {
-                            Log.d("Response54", response.getJSONObject("result").getInt("level") + "");
-                            String status = response.getJSONObject("result").getString("status");
-                            Log.d("response54", status);
-                            if (status.equals("opened") || status.equals("opening")){
-                                blind.open();
-                            } else {
-                                blind.close();
-                            }
-                        } catch (JSONException e){
-                            Log.d("Response54", "No status");
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Response57", "Wrong");
-                    }
-                }
-        );
-        queue.add(postRequest);
-    }
+//    public void init(RequestQueue queue, final DeviceBlind blind){
+//        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, this.getUrl() + "/" + "getState",
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.d("Response57", response.toString());
+//                        try {
+//                            Log.d("Response54", response.getJSONObject("result").getInt("level") + "");
+//                            String status = response.getJSONObject("result").getString("status");
+//                            Log.d("response54", status);
+//                            if (status.equals("opened") || status.equals("opening")){
+//                                blind.open();
+//                            } else {
+//                                blind.close();
+//                            }
+//                        } catch (JSONException e){
+//                            Log.d("Response54", "No status");
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.d("Response57", "Wrong");
+//                    }
+//                }
+//        );
+//        queue.add(postRequest);
+//    }
     private class BlindStatus{
         String status;
         int level;

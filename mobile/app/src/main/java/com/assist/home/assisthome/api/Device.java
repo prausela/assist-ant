@@ -25,6 +25,7 @@ public class Device implements Serializable {
     public DeviceType type;
     public String meta;
     public Map<String,String> decodedMeta;
+    public Map<String,String> state;
 
     public String toString() {
         return id + ": " + name;
@@ -33,6 +34,7 @@ public class Device implements Serializable {
     public String getUrl(){
         return API.getUrl() + "/" + DEVICES_API + "/" + this.id;
     }
+
 
     /*public Device deserialize(JsonElement json, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();

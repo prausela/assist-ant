@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -146,7 +148,7 @@ public class DeviceActivity extends AppActivity {
             public void onResponse(JSONObject response) {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
-                Gson gson = new Gson();
+                final Gson gson = new Gson();
                 API.devices = new HashMap<>();
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
@@ -155,49 +157,65 @@ public class DeviceActivity extends AppActivity {
                 for (Device d : objDevices) {
                     d.type = API.deviceTypes.get(d.typeId);
 
-                    Type type = new TypeToken<Map<String, String>>(){}.getType();
+                    final Type type = new TypeToken<Map<String, String>>(){}.getType();
                     Map<String, String> myMap = gson.fromJson(d.meta, type);
                     d.decodedMeta = myMap;
-
-                    Log.d("Shipu", d.toString());
-//                    Log.d("Shipu", d.typeId.toString());
-//                    Log.d("Shipu", "Device type:" + API.deviceTypes.get(d.typeId).name.toString());
-                    API.devices.put(d.id, d);
-
-                    if (d.type != null) {
-                        String state;
-                        switch (d.type.name) {
-                            case "ac":
-                                devices.add(new DeviceCard(d.name, R.drawable.ac, d));
-                                break;
-                            case "refrigerator":
-                                devices.add(new DeviceCard(d.name, R.drawable.fridge, d));
-                                break;
-                            case "door":
-                                state = d.decodedMeta.get("state");
-                                if (state != null && state.equals("true")) {
-                                    devices.add(new DeviceCard(d.name, R.drawable.door_open, d));
-                                } else {
-                                    devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
+                    String stateUrl = API.getUrl() + "/devices/" + d.id + "/getState";
+                    Log.d("Shipu", stateUrl);
+                    final Device dev = d;
+                    JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, stateUrl,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Log.d("Shipu7", response.toString());
+                                    try {
+                                        Map<String,String> state = gson.fromJson(response.getJSONObject("result").toString(), type);
+                                        dev.state = state;
+                                        Log.d("Shipu", "switching devtype" + dev.type.name);
+                                        if (dev.type != null) {
+                                            switch (dev.type.name) {
+                                                case "ac":
+                                                    devices.add(new DeviceCard(dev.name, R.drawable.ac, dev));
+                                                    break;
+                                                case "refrigerator":
+                                                    devices.add(new DeviceCard(dev.name, R.drawable.fridge, dev));
+                                                    break;
+                                                case "door":
+                                                    if (dev.state.get("status") != null && dev.state.get("status").equals("true")) {
+                                                        devices.add(new DeviceCard(dev.name, R.drawable.door_open, dev));
+                                                    } else {
+                                                        devices.add(new DeviceCard(dev.name, R.drawable.door_close, dev));
+                                                    }
+                                                    break;
+                                                case "blind":
+                                                    String s = dev.state.get("status");
+                                                    Log.d("Shipu", "Deciding which blind: " + s);
+                                                    if (s != null && (s.equals("open") || s.equals("opening")) ) {
+                                                        devices.add(new DeviceCard(dev.name, R.drawable.blind_open, dev));
+                                                    } else {
+                                                        devices.add(new DeviceCard(dev.name, R.drawable.blind_close, dev));
+                                                    }
+                                                    break;
+                                                case "oven":
+                                                    devices.add(new DeviceCard(dev.name, R.drawable.oven, dev));
+                                                    break;
+                                            }
+                                        }
+                                        loadGridView();
+                                    } catch (JSONException e){
+                                        Log.d("Shipu4", "No status");
+                                    }
                                 }
-                                break;
-                            case "blind":
-                                state = d.decodedMeta.get("state");
-                                if (state != null && state.equals("true")) {
-                                    devices.add(new DeviceCard(d.name, R.drawable.blind_open, d));
-                                } else {
-                                    devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.d("Shipu7", "Wrong");
                                 }
-                                break;
-                            case "oven":
-                                devices.add(new DeviceCard(d.name, R.drawable.oven, d));
-                                break;
-                        }
-                    }
-
+                            }
+                    );
+                    requestQueue.add(postRequest);
                 }
-                loadGridView();
-
             }
         }, new Response.ErrorListener() {
             @Override
