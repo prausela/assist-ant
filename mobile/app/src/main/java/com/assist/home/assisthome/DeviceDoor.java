@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
@@ -19,6 +20,7 @@ public class DeviceDoor extends AppActivity{
     //Intent myIntent = getIntent();
     Device d;
     LinearLayout all;
+    RelativeLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,19 @@ public class DeviceDoor extends AppActivity{
         close.setOnClickListener(close_Handler);
         lock.setOnClickListener(lock_Handler);
         unlocked.setOnClickListener(unlocked_Handler);
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
 
     }
     public void Loading(){
         all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
+
     }
 
     public void Loaded(){
         all.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
+
     }
 
 

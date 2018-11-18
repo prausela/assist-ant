@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
@@ -21,6 +22,7 @@ public class DeviceOven extends AppActivity {
     //Intent myIntent = getIntent();
     Device d;
     LinearLayout all;
+    RelativeLayout loading;
 
 
     @Override
@@ -30,6 +32,7 @@ public class DeviceOven extends AppActivity {
         super.setContent(R.layout.activity_device_oven,d.name);
 
         all=(LinearLayout) findViewById(R.id.oven_all);
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);
         oven_temp_up = (Button) findViewById(R.id.oven_temp_up);
@@ -68,10 +71,14 @@ public class DeviceOven extends AppActivity {
 
     public void Loading(){
         all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
+
     }
 
     public void Loaded(){
         all.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
+
     }
 
     View.OnClickListener c_off_Handler = new View.OnClickListener() {

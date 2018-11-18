@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,17 +42,28 @@ public class DeviceActivity extends AppActivity {
     private GridView dView;
     private DeviceCardAdapter dAdapter;
     ArrayList<DeviceCard> devices = new ArrayList<>();
-    private RequestQueue requestQueue;
-
+    LinearLayout all;
+    RelativeLayout loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        all=(LinearLayout) findViewById(R.id.activity_all);
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
-        requestQueue = Volley.newRequestQueue(this);
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
 
+    }
+
+    public void Loading(){
+        all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
+
+    }
+    public void Loaded(){
+        all.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
     }
 
     public void loadGridView() {
@@ -121,7 +134,7 @@ public class DeviceActivity extends AppActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.d("Shipu", "Failere");
+                Log.d("Shipu", "Failere1");
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
             }
@@ -134,7 +147,7 @@ public class DeviceActivity extends AppActivity {
             ;
         };
 
-        requestQueue.add(request);
+        API.getInstance(this).getRequestQueue().add(request);
     }
 
     public void getDevices() {
@@ -148,7 +161,12 @@ public class DeviceActivity extends AppActivity {
             public void onResponse(JSONObject response) {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
-                final Gson gson = new Gson();
+
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.registerTypeAdapter(Device.class, new DeviceElementAdapter());
+                final Gson gson = gsonBuilder.create();
+
+
                 API.devices = new HashMap<>();
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
@@ -172,6 +190,7 @@ public class DeviceActivity extends AppActivity {
                                         Map<String,String> state = gson.fromJson(response.getJSONObject("result").toString(), type);
                                         dev.state = state;
                                         Log.d("Shipu", "switching devtype" + dev.type.name);
+                                        API.devices.put(dev.id, dev);
                                         if (dev.type != null) {
                                             switch (dev.type.name) {
                                                 case "ac":
@@ -190,7 +209,7 @@ public class DeviceActivity extends AppActivity {
                                                 case "blind":
                                                     String s = dev.state.get("status");
                                                     Log.d("Shipu", "Deciding which blind: " + s);
-                                                    if (s != null && (s.equals("open") || s.equals("opening")) ) {
+                                                    if (s != null && (s.equals("opened") || s.equals("opening")) ) {
                                                         devices.add(new DeviceCard(dev.name, R.drawable.blind_open, dev));
                                                     } else {
                                                         devices.add(new DeviceCard(dev.name, R.drawable.blind_close, dev));
@@ -214,13 +233,13 @@ public class DeviceActivity extends AppActivity {
                                 }
                             }
                     );
-                    requestQueue.add(postRequest);
+                    API.getInstance().getRequestQueue().add(postRequest);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.d("Shipu", "Failere");
+                Log.d("Shipu", "Failere2");
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
             }
@@ -232,7 +251,7 @@ public class DeviceActivity extends AppActivity {
 
             ;
         };
-        requestQueue.add(request);
+        API.getInstance(this).getRequestQueue().add(request);
 
     }
 }

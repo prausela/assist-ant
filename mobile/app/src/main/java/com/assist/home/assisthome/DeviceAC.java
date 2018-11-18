@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
@@ -30,7 +31,7 @@ public class DeviceAC extends AppActivity{
     LinearLayout ac_modes,ac_temp_displ,ac_all;
     Intent myIntent = getIntent();
     AC d;
-
+    RelativeLayout loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class DeviceAC extends AppActivity{
 
         //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_all=(LinearLayout) findViewById(R.id.ac_all);
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         ac_power = (ImageButton) findViewById(R.id.ac_power);
         ac_power.setOnClickListener(ac_power_Handler);
         ac_modes=(LinearLayout) findViewById(R.id.ac_modes);
@@ -107,9 +109,12 @@ public class DeviceAC extends AppActivity{
 
     public void Loading(){
         ac_all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
     }
 
     public void Loaded(){
+        loading.setVisibility(View.GONE);
+
         ac_all.setVisibility(View.VISIBLE);
     }
 
