@@ -63,34 +63,34 @@ public class DeviceActivity extends AppActivity {
                 switch (name) {
                     case "ac":
                         Intent intent = new Intent(DeviceActivity.this, DeviceAC.class);
-                        intent.putExtra("device",dAdapter.getItem(position).d);
+                        intent.putExtra("device",dAdapter.getItem(position).d.id);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                         break;
                     case "refrigerator":
                         Intent intent1 = new Intent(DeviceActivity.this, DeviceFridge.class);
-                        intent1.putExtra("device",dAdapter.getItem(position).d);
+                        intent1.putExtra("device",dAdapter.getItem(position).d.id);
 
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent1);
                         break;
                     case "door":
                         Intent intent2 = new Intent(DeviceActivity.this, DeviceFridge.class);
-                        intent2.putExtra("device",dAdapter.getItem(position).d);
+                        intent2.putExtra("device",dAdapter.getItem(position).d.id);
 
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent2);
                         break;
                     case "blind":
                         Intent intent3 = new Intent(DeviceActivity.this, DeviceBlind.class);
-                        intent3.putExtra("device",dAdapter.getItem(position).d);
+                        intent3.putExtra("device",dAdapter.getItem(position).d.id);
 
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent3);
                         break;
                     case "oven":
                         Intent intent4 = new Intent(DeviceActivity.this, DeviceOven.class);
-                        intent4.putExtra("device",dAdapter.getItem(position).d);
+                        intent4.putExtra("device",dAdapter.getItem(position).d.id);
 
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent4);
