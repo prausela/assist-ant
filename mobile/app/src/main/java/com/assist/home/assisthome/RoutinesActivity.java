@@ -40,17 +40,17 @@ public class RoutinesActivity extends AppActivity {
     }
 
     public void getRoutine(){
-        List<DeviceCard> list=new ArrayList<>();
-        list.add(new DeviceCard("Aire",R.drawable.ac));
-        list.add(new DeviceCard("Puerta",R.drawable.door_close));
-        list.add(new DeviceCard("Persiana",R.drawable.blind_close));
-        list.add(new DeviceCard("Heladera",R.drawable.fridge));
-        list.add(new DeviceCard("Horno",R.drawable.oven));
-
-        routines.add(new Routine("Viaje",list));
-        routines.add(new Routine("Casa",list));
-        routines.add(new Routine("Noche",list));
-        routines.add(new Routine("Plantas",list));
+//        List<DeviceCard> list=new ArrayList<>();
+//        list.add(new DeviceCard("Aire",R.drawable.ac));
+//        list.add(new DeviceCard("Puerta",R.drawable.door_close));
+//        list.add(new DeviceCard("Persiana",R.drawable.blind_close));
+//        list.add(new DeviceCard("Heladera",R.drawable.fridge));
+//        list.add(new DeviceCard("Horno",R.drawable.oven));
+//
+//        routines.add(new Routine("Viaje",list));
+//        routines.add(new Routine("Casa",list));
+//        routines.add(new Routine("Noche",list));
+//        routines.add(new Routine("Plantas",list));
 
     }
 }

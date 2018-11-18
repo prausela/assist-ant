@@ -199,7 +199,7 @@
                         android:id="@+id/ac_fan_speed_auto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:background="@drawable/ac_auto_mode_inactive"
                         android:tag="ac_fan_speed_auto_inactive" />
 
                 </LinearLayout>
@@ -280,7 +280,7 @@
                         android:id="@+id/ac_mode_auto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:background="@drawable/ac_auto_mode_inactive"
                         android:tag="ac_mode_auto_inactive" />
 
                 </LinearLayout>
@@ -301,7 +301,7 @@
                 android:layout_marginTop="5.0dp"
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
-                android:weightSum="5">
+                android:weightSum="7">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -326,9 +326,24 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_heat_mode_inactive" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_swing1_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ac_swing2_inactive" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -342,10 +357,9 @@
                     <Button
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_cool_mode_active" />
+                        android:background="@drawable/ac_swing3_inactive" />
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -357,9 +371,23 @@
                     <Button
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive" />
+                        android:background="@drawable/ac_swing4_inactive" />
 
                 </LinearLayout>
+                <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30.0dip"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ac_swingauto_inactive" />
+
+            </LinearLayout>
             </LinearLayout>
 
 

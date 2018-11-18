@@ -60,13 +60,13 @@ public class RoutineInnerActivity  extends AppActivity {
     }
 
     public void getRoutine() {
-        devices.add(new DeviceCard("Aire", R.drawable.ac));
-        devices.add(new DeviceCard("Horno", R.drawable.oven));
-        devices.add(new DeviceCard("Heladera", R.drawable.fridge));
-        devices.add(new DeviceCard("Puerta", R.drawable.door_close));
-        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
-        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
-        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
+//        devices.add(new DeviceCard("Aire", R.drawable.ac));
+//        devices.add(new DeviceCard("Horno", R.drawable.oven));
+//        devices.add(new DeviceCard("Heladera", R.drawable.fridge));
+//        devices.add(new DeviceCard("Puerta", R.drawable.door_close));
+//        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
+//        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
+//        devices.add(new DeviceCard("Persiana", R.drawable.blind_close));
 
 
     }

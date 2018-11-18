@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -8,15 +9,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.Device;
+
 public class DeviceBlind extends AppActivity {
     TextView state;
     Button up, down;
     ImageView img;
+    //Intent myIntent = getIntent();
+    //Device d = (Device) myIntent.getSerializableExtra("device");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_blind,getString(R.string.blind_title));
+        super.setContent(R.layout.activity_device_blind,"blind");
 
 
         up = (Button) findViewById(R.id.blind_up);
