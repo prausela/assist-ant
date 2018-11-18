@@ -28,12 +28,10 @@ public class DeviceAC extends AppActivity {
     Intent myIntent = getIntent();
     Device  d;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(savedInstanceState.getString("device"));
+        d = API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_ac, d.name);
 
         //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
