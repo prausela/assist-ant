@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -39,16 +40,26 @@ public class DeviceActivity extends AppActivity {
     private DeviceCardAdapter dAdapter;
     ArrayList<DeviceCard> devices = new ArrayList<>();
     private RequestQueue requestQueue;
-
+    LinearLayout all;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        all=(LinearLayout) findViewById(R.id.activity_all);
+
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
         requestQueue = Volley.newRequestQueue(this);
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
 
+    }
+
+    public void Loading(){
+        all.setVisibility(View.GONE);
+
+    }
+    public void Loaded(){
+        all.setVisibility(View.VISIBLE);
     }
 
     public void loadGridView() {
