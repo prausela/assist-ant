@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.devices.AC;
 
 public class DeviceAC extends AppActivity{
 
@@ -28,12 +29,12 @@ public class DeviceAC extends AppActivity{
     Button ac_temp_up, ac_temp_down;
     LinearLayout ac_modes,ac_temp_displ,ac_all;
     Intent myIntent = getIntent();
-    Device  d;
+    AC d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(this.getIntent().getStringExtra("device"));
+        d = (AC) API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_ac, d.name);
 
 

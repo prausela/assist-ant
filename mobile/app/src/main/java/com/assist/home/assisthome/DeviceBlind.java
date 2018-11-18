@@ -10,22 +10,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
+import com.android.volley.RequestQueue;
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.devices.Blind;
 
 public class DeviceBlind extends AppActivity {
     TextView state;
     Button up, down;
     ImageView img;
+    Blind d;
+    RequestQueue requestQueue;
     Intent myIntent = getIntent();
-    Device d;
     LinearLayout blind_all;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(this.getIntent().getStringExtra("device"));
+        d = (Blind) API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_blind,d.name);
 
+        requestQueue = Volley.newRequestQueue(this);
+        d.init(requestQueue, this);
 
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);
@@ -37,18 +45,21 @@ public class DeviceBlind extends AppActivity {
         down.setOnClickListener(down_Handler);
     }
 
-    public void Loading(){
-        blind_all.setVisibility(View.GONE);
+    public void open(){
+        state.setText(getString(R.string.blind_opened));
+        img.setImageResource(R.drawable.blind_open);
     }
 
-    public void Loaded(){
-        blind_all.setVisibility(View.VISIBLE);
+    public void close(){
+        state.setText(R.string.blind_closed);
+        img.setImageResource(R.drawable.blind_close);
     }
+
     View.OnClickListener up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            state.setText(getString(R.string.blind_opened));
-            img.setImageResource(R.drawable.blind_open);
+            d.switchState(true, requestQueue);
+            open();
         }
 
     };
@@ -56,9 +67,18 @@ public class DeviceBlind extends AppActivity {
     View.OnClickListener down_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            state.setText(R.string.blind_closed);
-            img.setImageResource(R.drawable.blind_close);
+            d.switchState(false, requestQueue);
+            close();
         }
 
     };
+
+    public void Loading(){
+        blind_all.setVisibility(View.GONE);
+    }
+
+    public void Loaded(){
+        blind_all.setVisibility(View.VISIBLE);
+    }
+
 }
