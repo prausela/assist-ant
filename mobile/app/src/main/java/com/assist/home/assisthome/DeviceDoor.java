@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -7,14 +8,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.assist.home.assisthome.api.Device;
+
 public class DeviceDoor extends AppActivity{
     ImageButton open,close,lock,unlocked;
     ImageView doorimg,lockimg;
+    Intent myIntent = getIntent();
+    Device d = (Device) myIntent.getSerializableExtra("device");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_door,getString(R.string.door_title));
+        super.setContent(R.layout.activity_device_door,d.name);
 
         open=(ImageButton) findViewById(R.id.door_open);
         close=(ImageButton) findViewById(R.id.door_closed);

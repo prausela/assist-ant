@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.Device;
+
 public class DeviceAC extends AppActivity {
 
     ImageButton ac_power;
@@ -21,12 +24,15 @@ public class DeviceAC extends AppActivity {
     TextView ac_temp;
     Button ac_temp_up, ac_temp_down;
     LinearLayout ac_modes,ac_temp_displ;
+    Intent myIntent = getIntent();
+    Device  d = (Device) myIntent.getSerializableExtra("device");
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_ac, getString(R.string.ac_title));
+        super.setContent(R.layout.activity_device_ac, d.name);
 
         //android.support.v7.widget.GridLayout mainGrid = (android.support.v7.widget.GridLayout) findViewById(R.id.mainGrid);
         ac_power = (ImageButton) findViewById(R.id.ac_power);

@@ -2,6 +2,7 @@ package com.assist.home.assisthome;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,7 +41,7 @@ public class DeviceActivity extends AppActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_devices_cards);
-        super.setContent(R.layout.activity_devices_cards,"Dispositivos");
+        super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
         requestQueue = Volley.newRequestQueue(this);
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
         getDevices();
@@ -49,41 +50,53 @@ public class DeviceActivity extends AppActivity {
 
     public void loadGridView() {
         dView = (GridView) findViewById(R.id.mainGrid);
-        dAdapter = new DeviceCardAdapter(this,devices);
+        dAdapter = new DeviceCardAdapter(this, devices);
         dView.setAdapter(dAdapter);
 
-        dView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
+        dView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long arg3) {
-                Toast.makeText(DeviceActivity.this, "Cliked at " + dAdapter.getItem(position).DeviceName, Toast.LENGTH_SHORT).show();
-                String name=dAdapter.getItem(position).DeviceName;
-                if(name.equals(getString(R.string.ac_title_short))){
-                    Intent intent = new Intent(DeviceActivity.this,DeviceAC.class);
+                Toast.makeText(DeviceActivity.this, "Cliked at " + dAdapter.getItem(position).d.type.name, Toast.LENGTH_SHORT).show();
+                String name = dAdapter.getItem(position).d.type.name;
+
+                switch (name) {
+                    case "ac":
+                        Intent intent = new Intent(DeviceActivity.this, DeviceAC.class);
+                        intent.putExtra("device",dAdapter.getItem(position).d);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
-                }
-                else if(name.equals(getString(R.string.refrigerator_title))){
-                    Intent intent = new Intent(DeviceActivity.this,DeviceFridge.class);
+                        startActivity(intent);
+                        break;
+                    case "refrigerator":
+                        Intent intent1 = new Intent(DeviceActivity.this, DeviceFridge.class);
+                        intent1.putExtra("device",dAdapter.getItem(position).d);
+
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
-                }
-                else if(name.equals(getString(R.string.oven_title))){
-                    Intent intent = new Intent(DeviceActivity.this,DeviceOven.class);
+                        startActivity(intent1);
+                        break;
+                    case "door":
+                        Intent intent2 = new Intent(DeviceActivity.this, DeviceFridge.class);
+                        intent2.putExtra("device",dAdapter.getItem(position).d);
+
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
-                }
-                else if(name.equals(getString(R.string.blind_title))){
-                    Intent intent = new Intent(DeviceActivity.this,DeviceBlind.class);
+                        startActivity(intent2);
+                        break;
+                    case "blind":
+                        Intent intent3 = new Intent(DeviceActivity.this, DeviceBlind.class);
+                        intent3.putExtra("device",dAdapter.getItem(position).d);
+
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
-                }
-                else if(name.equals(getString(R.string.door_title))){
-                    Intent intent = new Intent(DeviceActivity.this,DeviceDoor.class);
+                        startActivity(intent3);
+                        break;
+                    case "oven":
+                        Intent intent4 = new Intent(DeviceActivity.this, DeviceOven.class);
+                        intent4.putExtra("device",dAdapter.getItem(position).d);
+
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
-                    startActivity(intent);
+                        startActivity(intent4);
+                        break;
                 }
+
 
             }
         });
@@ -91,9 +104,9 @@ public class DeviceActivity extends AppActivity {
 
 
     public void loadDeviceTypes() {
-        JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devicetypes", (String)null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devicetypes", (String) null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONObject response){
+            public void onResponse(JSONObject response) {
                 Log.d("Shipu", response.toString());
                 Gson gson = new Gson();
                 JSONResponses.DeviceTypesResponse rp = gson.fromJson(response.toString(), JSONResponses.DeviceTypesResponse.class);
@@ -107,25 +120,27 @@ public class DeviceActivity extends AppActivity {
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams(){
+            protected Map<String, String> getParams() {
                 return new HashMap<>();
-            };
+            }
+
+            ;
         };
 
         requestQueue.add(request);
     }
 
-    public void getDevices(){
+    public void getDevices() {
         if (API.deviceTypes.isEmpty()) {
             loadDeviceTypes();
             return;
         }
 
-        JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devices", (String)null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devices", (String) null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONObject response){
+            public void onResponse(JSONObject response) {
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
                 Gson gson = new Gson();
@@ -148,21 +163,21 @@ public class DeviceActivity extends AppActivity {
 
                     if (d.type != null) {
 
-                        switch(d.type.name) {
-                            case "ad":
-                                devices.add(new DeviceCard(d.name, R.drawable.ac));
+                        switch (d.type.name) {
+                            case "ac":
+                                devices.add(new DeviceCard(d.name, R.drawable.ac, d));
                                 break;
                             case "refrigerator":
-                                devices.add(new DeviceCard(d.name,R.drawable.fridge));
+                                devices.add(new DeviceCard(d.name, R.drawable.fridge, d));
                                 break;
-                            case  "door":
-                                devices.add(new DeviceCard(d.name,R.drawable.door_close));
+                            case "door":
+                                devices.add(new DeviceCard(d.name, R.drawable.door_close, d));
                                 break;
                             case "blind":
-                                devices.add(new DeviceCard(d.name,R.drawable.blind_close));
+                                devices.add(new DeviceCard(d.name, R.drawable.blind_close, d));
                                 break;
                             case "oven":
-                                devices.add(new DeviceCard(d.name,R.drawable.oven));
+                                devices.add(new DeviceCard(d.name, R.drawable.oven, d));
                                 break;
                         }
                     }
@@ -178,11 +193,13 @@ public class DeviceActivity extends AppActivity {
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
             }
-        }){
+        }) {
             @Override
-            protected Map<String, String> getParams(){
+            protected Map<String, String> getParams() {
                 return new HashMap<>();
-            };
+            }
+
+            ;
         };
         requestQueue.add(request);
 

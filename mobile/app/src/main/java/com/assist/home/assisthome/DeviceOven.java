@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,18 +9,22 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.assist.home.assisthome.api.Device;
+
 public class DeviceOven extends AppActivity {
     ImageButton h_up, h_down, h_both, g_def, g_eco, g_off, c_auto, c_eco, c_off;
     ImageButton power;
     Button oven_temp_up, oven_temp_down;
     TextView oven_temp;
     LinearLayout oven_modes,oven_temp_disp;
+    Intent myIntent = getIntent();
+    Device d = (Device) myIntent.getSerializableExtra("device");
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_device_oven,getString(R.string.oven_title));
+        super.setContent(R.layout.activity_device_oven,d.name);
 
         power = (ImageButton) findViewById(R.id.power);
         power.setOnClickListener(power_Handler);

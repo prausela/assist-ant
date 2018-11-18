@@ -199,7 +199,7 @@
                         android:id="@+id/ac_fan_speed_auto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:background="@drawable/ac_auto_mode_inactive"
                         android:tag="ac_fan_speed_auto_inactive" />
 
                 </LinearLayout>
@@ -280,7 +280,7 @@
                         android:id="@+id/ac_mode_auto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_auto_inactive"
+                        android:background="@drawable/ac_auto_mode_inactive"
                         android:tag="ac_mode_auto_inactive" />
 
                 </LinearLayout>

@@ -1,8 +1,9 @@
 package com.assist.home.assisthome.api;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Device {
+public class Device implements Serializable {
     public String id;
     public String name;
     public String typeId;
