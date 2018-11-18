@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -41,11 +42,12 @@ public class DeviceActivity extends AppActivity {
     ArrayList<DeviceCard> devices = new ArrayList<>();
     private RequestQueue requestQueue;
     LinearLayout all;
+    RelativeLayout loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         all=(LinearLayout) findViewById(R.id.activity_all);
-
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
         requestQueue = Volley.newRequestQueue(this);
@@ -56,10 +58,12 @@ public class DeviceActivity extends AppActivity {
 
     public void Loading(){
         all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
 
     }
     public void Loaded(){
         all.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
     }
 
     public void loadGridView() {
