@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -26,6 +27,7 @@ public class DeviceBlind extends AppActivity {
     RequestQueue requestQueue;
     Intent myIntent = getIntent();
     LinearLayout blind_all;
+    RelativeLayout loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class DeviceBlind extends AppActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         d.init(requestQueue, this);
-
+        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         up = (Button) findViewById(R.id.blind_up);
         down=(Button) findViewById(R.id.blind_down);
         state = (TextView) findViewById(R.id.blind_state);
@@ -75,10 +77,14 @@ public class DeviceBlind extends AppActivity {
 
     public void Loading(){
         blind_all.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
+
     }
 
     public void Loaded(){
         blind_all.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
+
     }
 
 }
