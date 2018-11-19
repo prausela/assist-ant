@@ -10,6 +10,6 @@ import com.assist.home.assisthome.AppActivity;
 public class AlarmNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
+//        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
     }
 }

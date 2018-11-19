@@ -1,5 +1,6 @@
 package com.assist.home.assisthome.api.devices;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -11,6 +12,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.assist.home.assisthome.SingleDevice;
 import com.assist.home.assisthome.api.Device;
 
 import org.json.JSONObject;
@@ -107,14 +109,16 @@ public class Fridge extends Device {
         getAPI().getRequestQueue().add(stringRequest);
     }
 
-    public void setMode(String mode) {
+    public void setMode(String mode, final SingleDevice context) {
         String URL = getUrl() + "/" + "setMode";
         final String requestBody = "[\"" + mode + "\"]";
-
+        final Fridge that = this;
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                that.refreshState(context);
                 Log.i("VOLLEY", response);
+
             }
         }, new Response.ErrorListener() {
             @Override

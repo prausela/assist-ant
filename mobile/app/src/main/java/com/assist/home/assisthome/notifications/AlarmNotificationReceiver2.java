@@ -7,7 +7,8 @@ import android.util.Log;
 
 public class AlarmNotificationReceiver2 extends AlarmNotificationReceiver {
     public void onReceive(Context context, Intent intent) {
-        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
+        super.onReceive(context,intent);
+//        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
         NotificationChecker.checkIn40();
     }
 }

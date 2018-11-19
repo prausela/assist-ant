@@ -8,7 +8,7 @@ import android.util.Log;
 public class AlarmNotificationReceiver4 extends AlarmNotificationReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
+        super.onReceive(context,intent);
         NotificationChecker.checkIn20();
     }
 }

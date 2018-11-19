@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -184,7 +185,12 @@ public class DeviceActivity extends AppActivity {
                 JSONResponses.DevicesResponse rp = gson.fromJson(response.toString(), JSONResponses.DevicesResponse.class);
 
                 List<Device> objDevices = rp.devices;
-
+                objDevices.sort(new Comparator<Device>() {
+                    @Override
+                    public int compare(Device o1, Device o2) {
+                        return o1.name.compareTo(o2.name);
+                    }
+                });
                 for (Device d : objDevices) {
                     d.type = API.deviceTypes.get(d.typeId);
 
@@ -213,7 +219,7 @@ public class DeviceActivity extends AppActivity {
                                                     devices.add(new DeviceCard(dev.name, R.drawable.fridge, dev));
                                                     break;
                                                 case "door":
-                                                    if (dev.state.get("status") != null && dev.state.get("status").equals("true")) {
+                                                    if (dev.state.get("status") != null && dev.state.get("status").equals("opened")) {
                                                         devices.add(new DeviceCard(dev.name, R.drawable.door_open, dev));
                                                     } else {
                                                         devices.add(new DeviceCard(dev.name, R.drawable.door_close, dev));
