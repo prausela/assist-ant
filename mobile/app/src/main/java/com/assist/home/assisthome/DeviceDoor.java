@@ -44,6 +44,16 @@ public class DeviceDoor extends AppActivity{
         lock.setOnClickListener(lock_Handler);
         unlocked.setOnClickListener(unlocked_Handler);
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
+        if (d.state.get("status").equals("opened")){
+            open();
+        } else {
+            close();
+        }
+        if (d.state.get("lock").equals("locked")){
+            lock();
+        } else {
+            unlock();
+        }
 
     }
     public void Loading(){
@@ -86,7 +96,7 @@ public class DeviceDoor extends AppActivity{
     View.OnClickListener open_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            d.switchState(false);
+            d.switchState(true);
             open();
         }
 
@@ -94,7 +104,7 @@ public class DeviceDoor extends AppActivity{
     View.OnClickListener close_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            d.switchState(true);
+            d.switchState(false);
             close();
         }
 
@@ -110,7 +120,7 @@ public class DeviceDoor extends AppActivity{
     View.OnClickListener unlocked_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            d.switchState(false);
+            d.switchLock(false);
             unlock();
         }
 
