@@ -24,6 +24,7 @@ import com.assist.home.assisthome.api.DeviceElementAdapter;
 import com.assist.home.assisthome.api.DeviceType;
 import com.assist.home.assisthome.api.JSONResponses;
 import com.assist.home.assisthome.api.devices.AC;
+import com.assist.home.assisthome.notifications.NotificationBroadcastReceiver;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -41,7 +42,7 @@ import java.util.Set;
 public class DeviceActivity extends AppActivity {
     private GridView dView;
     private DeviceCardAdapter dAdapter;
-    ArrayList<DeviceCard> devices = new ArrayList<>();
+    ArrayList<DeviceCard> devices;
     LinearLayout all;
     RelativeLayout loading;
     @Override
@@ -52,8 +53,14 @@ public class DeviceActivity extends AppActivity {
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
-        getDevices();
+//        getDevices();
+        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceAC.class));
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDevices();
     }
 
     public void Loading(){
@@ -155,7 +162,8 @@ public class DeviceActivity extends AppActivity {
             loadDeviceTypes();
             return;
         }
-
+        Log.d("Shipu", "Getting devices");
+        devices = new ArrayList<>();
         JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devices", (String) null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -233,7 +241,7 @@ public class DeviceActivity extends AppActivity {
                                 }
                             }
                     );
-                    //API.getInstance().getRequestQueue().add(postRequest);
+                    API.getInstance().getRequestQueue().add(postRequest);
                 }
             }
         }, new Response.ErrorListener() {

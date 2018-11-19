@@ -48,6 +48,7 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
     }
 
+
     protected void setContent(@LayoutRes int content, String title){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
