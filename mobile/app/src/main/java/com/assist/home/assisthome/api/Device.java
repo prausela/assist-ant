@@ -79,23 +79,8 @@ public class Device implements Serializable {
                 });
         API.getInstance().getRequestQueue().add(postRequest);
     }
-    /*public Device deserialize(JsonElement json, JsonDeserializationContext context) throws JsonParseException {
-        JsonObject jsonObject = json.getAsJsonObject();
-        String type = jsonObject.get("type").getAsString();
-        Log.d("Whatever", "Hello");
-        String typeName = API.deviceTypes.get(type).name;
-        switch (typeName){
-            case "ac":
-                return context.deserialize(json, AC.class);
-            case "oven":
-                return context.deserialize(json, Oven.class);
-            case "door":
-                return context.deserialize(json, Door.class);
-            case "blind":
-                return context.deserialize(json, Blind.class);
-            case "fridge":
-                return context.deserialize(json, Fridge.class);
-        }
-        return null;
-    }*/
+
+    public void notifyEvent(DeviceEvent e) {
+        Log.v("Shipu", "Notify event not implemented for device " + this.getClass());
+    }
 }

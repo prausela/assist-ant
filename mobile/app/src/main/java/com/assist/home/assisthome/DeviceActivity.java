@@ -60,7 +60,7 @@ public class DeviceActivity extends AppActivity {
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
 //        getDevices();
         NotificationChecker.init(this);
-        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceActivity.class));
+//        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceActivity.class));
     }
 
     @Override

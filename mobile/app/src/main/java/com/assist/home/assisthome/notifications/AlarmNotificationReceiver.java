@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.assist.home.assisthome.AppActivity;
+import com.assist.home.assisthome.api.API;
 
 public class AlarmNotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 //        Log.d("Shipu ALARM", "Received alarm! " + this.getClass().toString());
+        API.getInstance().checkEvents();
     }
 }
