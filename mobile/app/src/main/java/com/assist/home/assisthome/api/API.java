@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class API {
-    static String url = "http://192.168.1.208:8080/api";
+    static String url = "http://192.168.0.20:8080/api";
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
     public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {
@@ -25,7 +25,7 @@ public class API {
         this.context = context;
     }
 
-    static API getInstance(){
+    public static API getInstance(){
         return api;
     }
 

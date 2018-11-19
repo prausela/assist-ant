@@ -22,7 +22,7 @@ public class DeviceAC extends AppActivity{
 
     ImageButton ac_power;
     ImageButton ac_mode;
-    ImageButton ac_fan_speed_low, ac_fan_speed_mid, ac_fan_speed_high, ac_fan_speed_auto;
+    ImageButton ac_fan_speed_25, ac_fan_speed_50, ac_fan_speed_75,ac_fan_speed_100, ac_fan_speed_auto;
     ImageButton ac_mode_heat, ac_mode_cold, ac_mode_auto;
     ImageButton ac_sh_45,ac_sh_90,ac_sh45,ac_sh90,ac_sh0,ac_shauto;
     ImageButton ac_svauto,ac_sv22,ac_sv45,ac_sv67,ac_sv90;
@@ -54,14 +54,18 @@ public class DeviceAC extends AppActivity{
         ac_temp_up.setOnClickListener(ac_temp_up_Handler);
         ac_temp_down.setOnClickListener(ac_temp_down_Handler);
 
-        ac_fan_speed_low = (ImageButton) findViewById(R.id.ac_fan_speed_low);
-        ac_fan_speed_mid = (ImageButton) findViewById(R.id.ac_fan_speed_mid);
-        ac_fan_speed_high = (ImageButton) findViewById(R.id.ac_fan_speed_high);
+        ac_fan_speed_25 = (ImageButton) findViewById(R.id.ac_fan_speed_25);
+        ac_fan_speed_50 = (ImageButton) findViewById(R.id.ac_fan_speed_50);
+        ac_fan_speed_75 = (ImageButton) findViewById(R.id.ac_fan_speed_75);
+
+        ac_fan_speed_100 = (ImageButton) findViewById(R.id.ac_fan_speed_100);
         ac_fan_speed_auto = (ImageButton) findViewById(R.id.ac_fan_speed_auto);
 
-        ac_fan_speed_low.setOnClickListener(ac_fan_speed_low_Handler);
-        ac_fan_speed_mid.setOnClickListener(ac_fan_speed_mid_Handler);
-        ac_fan_speed_high.setOnClickListener(ac_fan_speed_high_Handler);
+        ac_fan_speed_25.setOnClickListener(ac_fan_speed_25_Handler);
+        ac_fan_speed_75.setOnClickListener(ac_fan_speed_75_Handler);
+
+        ac_fan_speed_50.setOnClickListener(ac_fan_speed_50_Handler);
+        ac_fan_speed_100.setOnClickListener(ac_fan_speed_100_Handler);
         ac_fan_speed_auto.setOnClickListener(ac_fan_speed_auto_Handler);
 
         ac_mode_heat = (ImageButton) findViewById(R.id.ac_mode_heat);
@@ -223,7 +227,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_shauto_inactive".equals(ac_shauto.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_active);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto);
                     ac_shauto.setTag("ac_shauto_active");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_inactive);
                     ac_sh_90.setTag("ac_sh_90_inactive");
@@ -244,7 +248,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_sh_90_inactive".equals(ac_sh_90.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto_inactive);
                     ac_shauto.setTag("ac_shauto_inactive");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_active);
                     ac_sh_90.setTag("ac_sh_90_active");
@@ -265,7 +269,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_sh0_inactive".equals(ac_sh0.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto_inactive);
                     ac_shauto.setTag("ac_shauto_inactive");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_inactive);
                     ac_sh_90.setTag("ac_sh_90_inactive");
@@ -286,7 +290,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_sh_45_inactive".equals(ac_sh_45.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto_inactive);
                     ac_shauto.setTag("ac_shauto_inactive");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_inactive);
                     ac_sh_90.setTag("ac_sh_90_inactive");
@@ -307,7 +311,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_sh45_inactive".equals(ac_sh45.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto_inactive);
                     ac_shauto.setTag("ac_shauto_inactive");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_inactive);
                     ac_sh_90.setTag("ac_sh_90_inactive");
@@ -328,7 +332,7 @@ public class DeviceAC extends AppActivity{
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
                 if ("ac_sh90_inactive".equals(ac_sh90.getTag())) {
-                    ac_shauto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_shauto.setBackgroundResource(R.drawable.ac_shauto_inactive);
                     ac_shauto.setTag("ac_shauto_inactive");
                     ac_sh_90.setBackgroundResource(R.drawable.ac_sh_90_inactive);
                     ac_sh_90.setTag("ac_sh_90_inactive");
@@ -421,54 +425,79 @@ public class DeviceAC extends AppActivity{
         }
     };
 
-    View.OnClickListener ac_fan_speed_low_Handler = new View.OnClickListener() {
+    View.OnClickListener ac_fan_speed_75_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
-                if ("ac_fan_speed_low_inactive".equals(ac_fan_speed_low.getTag())) {
-                    ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_active);
-                    ac_fan_speed_low.setTag("ac_fan_speed_low_active");
-                    ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_inactive);
-                    ac_fan_speed_mid.setTag("ac_fan_speed_mid_inactive");
-                    ac_fan_speed_high.setBackgroundResource(R.drawable.ac_fan_high_inactive);
-                    ac_fan_speed_high.setTag("ac_fan_speed_high_inactive");
+                if ("ac_fan_speed_75_inactive".equals(ac_fan_speed_75.getTag())) {
+                    ac_fan_speed_75.setBackgroundResource(R.drawable.ac_75);
+                    ac_fan_speed_75.setTag("ac_fan_speed_75_active");
+                    ac_fan_speed_25.setBackgroundResource(R.drawable.ac_25_inactive);
+                    ac_fan_speed_25.setTag("ac_fan_speed_25_inactive");
+                    ac_fan_speed_50.setBackgroundResource(R.drawable.ac_50_inactive);
+                    ac_fan_speed_50.setTag("ac_fan_speed_50_inactive");
+                    ac_fan_speed_100.setBackgroundResource(R.drawable.ac_100_inactive);
+                    ac_fan_speed_100.setTag("ac_fan_speed_100_inactive");
                     ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
                     ac_fan_speed_auto.setTag("ac_fan_speed_auto_inactive");
                 }
             }
         }
     };
-    View.OnClickListener ac_fan_speed_mid_Handler = new View.OnClickListener() {
+    View.OnClickListener ac_fan_speed_25_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
-                if ("ac_fan_speed_mid_inactive".equals(ac_fan_speed_mid.getTag())) {
-                    ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_active);
-                    ac_fan_speed_mid.setTag("ac_fan_speed_mid_active");
-                    ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_inactive);
-                    ac_fan_speed_low.setTag("ac_fan_speed_low_inactive");
-                    ac_fan_speed_high.setBackgroundResource(R.drawable.ac_fan_high_inactive);
-                    ac_fan_speed_high.setTag("ac_fan_speed_high_inactive");
+                if ("ac_fan_speed_25_inactive".equals(ac_fan_speed_25.getTag())) {
+                    ac_fan_speed_25.setBackgroundResource(R.drawable.ac_25);
+                    ac_fan_speed_25.setTag("ac_fan_speed_25_active");
+                    ac_fan_speed_50.setBackgroundResource(R.drawable.ac_50_inactive);
+                    ac_fan_speed_50.setTag("ac_fan_speed_50_inactive");
+                    ac_fan_speed_100.setBackgroundResource(R.drawable.ac_100_inactive);
+                    ac_fan_speed_100.setTag("ac_fan_speed_100_inactive");
                     ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
                     ac_fan_speed_auto.setTag("ac_fan_speed_auto_inactive");
+                    ac_fan_speed_75.setBackgroundResource(R.drawable.ac_75_inactive);
+                    ac_fan_speed_75.setTag("ac_fan_speed_75_inactive");
+                }
+            }
+        }
+    };
+    View.OnClickListener ac_fan_speed_50_Handler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if("ac_power_on".equals(ac_power.getTag())) {
+                if ("ac_fan_speed_50_inactive".equals(ac_fan_speed_50.getTag())) {
+                    ac_fan_speed_50.setBackgroundResource(R.drawable.ac_50);
+                    ac_fan_speed_50.setTag("ac_fan_speed_50_active");
+                    ac_fan_speed_25.setBackgroundResource(R.drawable.ac_25_inactive);
+                    ac_fan_speed_25.setTag("ac_fan_speed_25_inactive");
+                    ac_fan_speed_100.setBackgroundResource(R.drawable.ac_100_inactive);
+                    ac_fan_speed_100.setTag("ac_fan_speed_100_inactive");
+                    ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+                    ac_fan_speed_auto.setTag("ac_fan_speed_auto_inactive");
+                    ac_fan_speed_75.setBackgroundResource(R.drawable.ac_75_inactive);
+                    ac_fan_speed_75.setTag("ac_fan_speed_75_inactive");
 
                 }
             }
         }
     };
-    View.OnClickListener ac_fan_speed_high_Handler = new View.OnClickListener() {
+    View.OnClickListener ac_fan_speed_100_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if("ac_power_on".equals(ac_power.getTag())) {
-                if ("ac_fan_speed_high_inactive".equals(ac_fan_speed_high.getTag())) {
-                    ac_fan_speed_high.setBackgroundResource(R.drawable.ac_fan_high_active);
-                    ac_fan_speed_high.setTag("ac_fan_speed_high_active");
-                    ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_inactive);
-                    ac_fan_speed_mid.setTag("ac_fan_speed_mid_inactive");
-                    ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_inactive);
-                    ac_fan_speed_low.setTag("ac_fan_speed_low_inactive");
+                if ("ac_fan_speed_100_inactive".equals(ac_fan_speed_100.getTag())) {
+                    ac_fan_speed_100.setBackgroundResource(R.drawable.ac_100);
+                    ac_fan_speed_100.setTag("ac_fan_speed_100_active");
+                    ac_fan_speed_50.setBackgroundResource(R.drawable.ac_50_inactive);
+                    ac_fan_speed_50.setTag("ac_fan_speed_50_inactive");
+                    ac_fan_speed_25.setBackgroundResource(R.drawable.ac_25_inactive);
+                    ac_fan_speed_25.setTag("ac_fan_speed_25_inactive");
                     ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
                     ac_fan_speed_auto.setTag("ac_fan_speed_auto_inactive");
+                    ac_fan_speed_75.setBackgroundResource(R.drawable.ac_75_inactive);
+                    ac_fan_speed_75.setTag("ac_fan_speed_75_inactive");
 
                 }
             }
@@ -481,12 +510,14 @@ public class DeviceAC extends AppActivity{
                 if ("ac_fan_speed_auto_inactive".equals(ac_fan_speed_auto.getTag())) {
                     ac_fan_speed_auto.setBackgroundResource(R.drawable.ac_fan_auto_active);
                     ac_fan_speed_auto.setTag("ac_fan_speed_auto_active");
-                    ac_fan_speed_mid.setBackgroundResource(R.drawable.ac_fan_mid_inactive);
-                    ac_fan_speed_mid.setTag("ac_fan_speed_mid_inactive");
-                    ac_fan_speed_low.setBackgroundResource(R.drawable.ac_fan_low_inactive);
-                    ac_fan_speed_low.setTag("ac_fan_speed_low_inactive");
-                    ac_fan_speed_high.setBackgroundResource(R.drawable.ac_fan_high_inactive);
-                    ac_fan_speed_high.setTag("ac_fan_speed_high_inactive");
+                    ac_fan_speed_50.setBackgroundResource(R.drawable.ac_50_inactive);
+                    ac_fan_speed_50.setTag("ac_fan_speed_50_inactive");
+                    ac_fan_speed_25.setBackgroundResource(R.drawable.ac_25_inactive);
+                    ac_fan_speed_25.setTag("ac_fan_speed_25_inactive");
+                    ac_fan_speed_100.setBackgroundResource(R.drawable.ac_100_inactive);
+                    ac_fan_speed_100.setTag("ac_fan_speed_100_inactive");
+                    ac_fan_speed_75.setBackgroundResource(R.drawable.ac_75_inactive);
+                    ac_fan_speed_75.setTag("ac_fan_speed_75_inactive");
 
                 }
             }
