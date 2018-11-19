@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.devices.Oven;
 
 public class DeviceOven extends AppActivity {
     ImageButton h_up, h_down, h_both, g_def, g_eco, g_off, c_auto, c_eco, c_off;
@@ -20,7 +21,7 @@ public class DeviceOven extends AppActivity {
     TextView oven_temp;
     LinearLayout oven_modes,oven_temp_disp;
     //Intent myIntent = getIntent();
-    Device d;
+    Oven d;
     LinearLayout all;
     RelativeLayout loading;
 
@@ -28,7 +29,7 @@ public class DeviceOven extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(this.getIntent().getStringExtra("device"));
+        d = (Oven) API.devices.get(this.getIntent().getStringExtra("device"));
         super.setContent(R.layout.activity_device_oven,d.name);
 
         all=(LinearLayout) findViewById(R.id.oven_all);
@@ -92,6 +93,7 @@ public class DeviceOven extends AppActivity {
                     c_auto.setTag("conv_auto_inactive");
                     c_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
                     c_eco.setTag("conv_eco_inactive");
+                    d.setConvection("off");
                 }
             }
         }
@@ -103,6 +105,7 @@ public class DeviceOven extends AppActivity {
             if("power_on".equals(power.getTag())) {
                 int temp = Integer.valueOf(oven_temp.getText().toString());
                 oven_temp.setText(Integer.toString(temp + 1));
+                d.setTemperature(temp + 1);
             }
         }
     };
@@ -113,6 +116,7 @@ public class DeviceOven extends AppActivity {
             if ("power_on".equals(power.getTag())) {
                 int temp = Integer.valueOf(oven_temp.getText().toString());
                 oven_temp.setText(Integer.toString(temp - 1));
+                d.setTemperature(temp - 1);
             }
         }
     };
@@ -128,6 +132,7 @@ public class DeviceOven extends AppActivity {
                     c_auto.setTag("conv_auto_inactive");
                     c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
                     c_off.setTag("conv_off_inactive");
+                    d.setConvection("eco");
                 }
             }
         }
@@ -144,6 +149,7 @@ public class DeviceOven extends AppActivity {
                     c_eco.setTag("conv_eco_inactive");
                     c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
                     c_off.setTag("conv_off_inactive");
+                    d.setConvection("auto");
                 }
             }
         }
@@ -160,6 +166,7 @@ public class DeviceOven extends AppActivity {
                     g_def.setTag("grill_def_inactive");
                     g_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
                     g_eco.setTag("grill_eco_inactive");
+                    d.setGrill("off");
                 }
             }
         }
@@ -175,6 +182,7 @@ public class DeviceOven extends AppActivity {
                     g_def.setTag("grill_def_inactive");
                     g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
                     g_off.setTag("grill_off_inactive");
+                    d.setGrill("eco");
                 }
             }
         }
@@ -190,6 +198,7 @@ public class DeviceOven extends AppActivity {
                     g_eco.setTag("grill_eco_inactive");
                     g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
                     g_off.setTag("grill_off_inactive");
+                    d.setGrill("large");
                 }
             }
         }
@@ -206,6 +215,7 @@ public class DeviceOven extends AppActivity {
                     h_up.setTag("heat_up_inactive");
                     h_down.setBackgroundResource(R.drawable.oven_heat_down);
                     h_down.setTag("heat_down_inactive");
+                    d.setHeat("conventional");
                 }
             }
         }
@@ -221,6 +231,7 @@ public class DeviceOven extends AppActivity {
                     h_up.setTag("heat_up_inactive");
                     h_both.setBackgroundResource(R.drawable.oven_heat_both);
                     h_both.setTag("heat_both_inactive");
+                    d.setHeat("bottom");
                 }
             }
         }
@@ -237,10 +248,13 @@ public class DeviceOven extends AppActivity {
                     h_down.setTag("heat_down_inactive");
                     h_both.setBackgroundResource(R.drawable.oven_heat_both);
                     h_both.setTag("heat_both_inactive");
+                    d.setHeat("up");
                 }
             }
         }
     };
+
+
 
     View.OnClickListener power_Handler = new View.OnClickListener() {
         @Override
@@ -250,12 +264,13 @@ public class DeviceOven extends AppActivity {
                 power.setTag("power_off");
                 oven_modes.setVisibility(View.INVISIBLE);
                 oven_temp_disp.setVisibility(View.INVISIBLE);
-
+                d.switchState(true);
             } else {
                 power.setBackgroundResource(R.drawable.ac_power_on);
                 power.setTag("power_on");
                 oven_modes.setVisibility(View.VISIBLE);
                 oven_temp_disp.setVisibility(View.VISIBLE);
+                d.switchState(false);
             }
         }
     };
