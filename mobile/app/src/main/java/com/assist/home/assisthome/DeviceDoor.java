@@ -13,19 +13,20 @@ import android.widget.RelativeLayout;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.devices.Door;
 
 public class DeviceDoor extends AppActivity{
     ImageButton open,close,lock,unlocked;
     ImageView doorimg,lockimg;
     //Intent myIntent = getIntent();
-    Device d;
+    Door d;
     LinearLayout all;
     RelativeLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(this.getIntent().getStringExtra("device"));
+        d = (Door) API.devices.get(this.getIntent().getStringExtra("device"));
 
         super.setContent(R.layout.activity_device_door,d.name);
 
@@ -57,40 +58,60 @@ public class DeviceDoor extends AppActivity{
 
     }
 
+    public void lock(){
+        lock.setBackgroundResource(R.drawable.door_locked1_btn);
+        unlocked.setBackgroundResource(R.drawable.door_unlocked_btn);
+        lockimg.setImageResource(R.drawable.lock_close);
+    }
+
+    public void unlock(){
+        lock.setBackgroundResource(R.drawable.door_lock_btn);
+        unlocked.setBackgroundResource(R.drawable.door_unlock_btn);
+        lockimg.setImageResource(R.drawable.lock_open);
+    }
+
+    public void open(){
+        open.setBackgroundResource(R.drawable.door_opened_btn);
+        close.setBackgroundResource(R.drawable.door_close_btn);
+        doorimg.setImageResource(R.drawable.door_open);
+    }
+
+    public void close(){
+        close.setBackgroundResource(R.drawable.door_clossed_btn);
+        open.setBackgroundResource(R.drawable.door_open_btn);
+        doorimg.setImageResource(R.drawable.door_close);
+    }
+
 
     View.OnClickListener open_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            open.setBackgroundResource(R.drawable.door_opened_btn);
-            close.setBackgroundResource(R.drawable.door_close_btn);
-            doorimg.setImageResource(R.drawable.door_open);
+            d.switchState(false);
+            open();
         }
 
     };
     View.OnClickListener close_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            close.setBackgroundResource(R.drawable.door_clossed_btn);
-            open.setBackgroundResource(R.drawable.door_open_btn);
-            doorimg.setImageResource(R.drawable.door_close);
+            d.switchState(true);
+            close();
         }
 
     };
     View.OnClickListener lock_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            lock.setBackgroundResource(R.drawable.door_locked1_btn);
-            unlocked.setBackgroundResource(R.drawable.door_unlocked_btn);
-            lockimg.setImageResource(R.drawable.lock_close);
+            d.switchLock(true);
+            lock();
         }
 
     };
     View.OnClickListener unlocked_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            lock.setBackgroundResource(R.drawable.door_lock_btn);
-            unlocked.setBackgroundResource(R.drawable.door_unlock_btn);
-            lockimg.setImageResource(R.drawable.lock_open);
+            d.switchState(false);
+            unlock();
         }
 
     };
