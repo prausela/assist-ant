@@ -84,7 +84,7 @@ public class AC extends Device {
 
     public void setMode(String mode) {
         String URL = getUrl() + "/" + "setMode";
-        final String requestBody = "[" + mode + "]";
+        final String requestBody = "[\"" + mode + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
@@ -128,7 +128,7 @@ public class AC extends Device {
 
     public void setVerticalSwing(String swing) {
         String URL = getUrl() + "/" + "setVerticalSwing";
-        final String requestBody = "[" + swing + "]";
+        final String requestBody = "[\"" + swing + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
@@ -172,7 +172,7 @@ public class AC extends Device {
 
     public void setHorizontalSwing(String swing) {
         String URL = getUrl() + "/" + "setHorizontalSwing";
-        final String requestBody = "[" + swing + "]";
+        final String requestBody = "[\"" + swing + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
@@ -216,7 +216,7 @@ public class AC extends Device {
 
     public void setFanSpeed(String speed) {
         String URL = getUrl() + "/" + "setFanSpeed";
-        final String requestBody = "[" + speed + "]";
+        final String requestBody = "[\"" + speed + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override

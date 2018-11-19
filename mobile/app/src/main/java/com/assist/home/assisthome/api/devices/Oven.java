@@ -85,7 +85,7 @@ public class Oven extends Device {
 
     public void setHeat(String heatMode) {
         String URL = getUrl() + "/" + "setHeat";
-        final String requestBody = "[" + heatMode + "]";
+        final String requestBody = "[\"" + heatMode + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
@@ -128,8 +128,8 @@ public class Oven extends Device {
     }
 
     public void setGrill(String grillMode) {
-        String URL = getUrl() + "/" + "setHeat";
-        final String requestBody = "[" + grillMode + "]";
+        String URL = getUrl() + "/" + "setGrill";
+        final String requestBody = "[\"" + grillMode + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override
@@ -172,8 +172,8 @@ public class Oven extends Device {
     }
 
     public void setConvection(String convectionMode) {
-        String URL = getUrl() + "/" + "setHeat";
-        final String requestBody = "[" + convectionMode + "]";
+        String URL = getUrl() + "/" + "setConvection";
+        final String requestBody = "[\"" + convectionMode + "\"]";
 
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL, new Response.Listener<String>() {
             @Override

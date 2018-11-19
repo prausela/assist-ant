@@ -68,6 +68,37 @@ public class DeviceOven extends AppActivity {
         c_eco.setOnClickListener(c_eco_Handler);
         c_off.setOnClickListener(c_off_Handler);
 
+
+        if(d.state.get("status").equals("off")) {
+            powerOff();
+        } else {
+            powerOn();
+        }
+        if(d.state.get("status").equals("on")) {
+            setTemperature(Integer.valueOf(d.state.get("temperature")));
+            if (d.state.get("heat").equals("conventional")) {
+                setHeatConventional();
+            } else if (d.state.get("heat").equals("up")) {
+                setHeatUp();
+            } else {
+                setHeatBottom();
+            }
+            if (d.state.get("grill").equals("large")) {
+                setGrillLarge();
+            } else if (d.state.get("grill").equals("eco")) {
+                setGrillEco();
+            } else {
+                setGrillOff();
+            }
+            if (d.state.get("convection").equals("auto")) {
+                setConvectionAuto();
+            } else if (d.state.get("convection").equals("eco")) {
+                setConvectionEco();
+            } else {
+                setConvectionOff();
+            }
+        }
+
     }
 
     public void Loading(){
@@ -82,22 +113,40 @@ public class DeviceOven extends AppActivity {
 
     }
 
+    public void powerOff(){
+        power.setBackgroundResource(R.drawable.ac_power_off);
+        power.setTag("power_off");
+        oven_modes.setVisibility(View.INVISIBLE);
+        oven_temp_disp.setVisibility(View.INVISIBLE);
+    }
+
+    public void powerOn(){
+        power.setBackgroundResource(R.drawable.ac_power_on);
+        power.setTag("power_on");
+        oven_modes.setVisibility(View.VISIBLE);
+        oven_temp_disp.setVisibility(View.VISIBLE);
+    }
+
     View.OnClickListener c_off_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("conv_off_inactive".equals(c_off.getTag())) {
-                    c_off.setBackgroundResource(R.drawable.oven_grill_off_active);
-                    c_off.setTag("conv_off_active");
-                    c_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
-                    c_auto.setTag("conv_auto_inactive");
-                    c_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
-                    c_eco.setTag("conv_eco_inactive");
+                    setConvectionOff();
                     d.setConvection("off");
                 }
             }
         }
     };
+
+    public void setConvectionOff(){
+        c_off.setBackgroundResource(R.drawable.oven_grill_off_active);
+        c_off.setTag("conv_off_active");
+        c_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+        c_auto.setTag("conv_auto_inactive");
+        c_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
+        c_eco.setTag("conv_eco_inactive");
+    }
 
     View.OnClickListener oven_temp_up_Handler = new View.OnClickListener() {
         @Override
@@ -121,138 +170,178 @@ public class DeviceOven extends AppActivity {
         }
     };
 
+    public void setTemperature(Integer temp){
+        oven_temp.setText(Integer.toString(temp));
+    }
+
     View.OnClickListener c_eco_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("conv_eco_inactive".equals(c_eco.getTag())) {
-                    c_eco.setBackgroundResource(R.drawable.oven_grill_eco_active);
-                    c_eco.setTag("conv_eco_active");
-                    c_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
-                    c_auto.setTag("conv_auto_inactive");
-                    c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
-                    c_off.setTag("conv_off_inactive");
+                    setConvectionEco();
                     d.setConvection("eco");
                 }
             }
         }
     };
 
+    public void setConvectionEco(){
+        c_eco.setBackgroundResource(R.drawable.oven_grill_eco_active);
+        c_eco.setTag("conv_eco_active");
+        c_auto.setBackgroundResource(R.drawable.ac_fan_auto_inactive);
+        c_auto.setTag("conv_auto_inactive");
+        c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
+        c_off.setTag("conv_off_inactive");
+    }
+
     View.OnClickListener c_auto_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("conv_auto_inactive".equals(c_auto.getTag())) {
-                    c_auto.setBackgroundResource(R.drawable.ac_fan_auto_active);
-                    c_auto.setTag("conv_auto_active");
-                    c_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
-                    c_eco.setTag("conv_eco_inactive");
-                    c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
-                    c_off.setTag("conv_off_inactive");
+                    setConvectionAuto();
                     d.setConvection("auto");
                 }
             }
         }
     };
 
+    public void setConvectionAuto(){
+        c_auto.setBackgroundResource(R.drawable.ac_fan_auto_active);
+        c_auto.setTag("conv_auto_active");
+        c_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
+        c_eco.setTag("conv_eco_inactive");
+        c_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
+        c_off.setTag("conv_off_inactive");
+    }
+
     View.OnClickListener g_off_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("grill_off_inactive".equals(g_off.getTag())) {
-                    g_off.setBackgroundResource(R.drawable.oven_grill_off_active);
-                    g_off.setTag("grill_off_active");
-                    g_def.setBackgroundResource(R.drawable.oven_grill_def_inactive);
-                    g_def.setTag("grill_def_inactive");
-                    g_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
-                    g_eco.setTag("grill_eco_inactive");
+                    setGrillOff();
                     d.setGrill("off");
                 }
             }
         }
     };
+
+    public void setGrillOff(){
+        g_off.setBackgroundResource(R.drawable.oven_grill_off_active);
+        g_off.setTag("grill_off_active");
+        g_def.setBackgroundResource(R.drawable.oven_grill_def_inactive);
+        g_def.setTag("grill_def_inactive");
+        g_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
+        g_eco.setTag("grill_eco_inactive");
+    }
+
     View.OnClickListener g_eco_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("grill_eco_inactive".equals(g_eco.getTag())) {
-                    g_eco.setBackgroundResource(R.drawable.oven_grill_eco_active);
-                    g_eco.setTag("grill_eco_active");
-                    g_def.setBackgroundResource(R.drawable.oven_grill_def_inactive);
-                    g_def.setTag("grill_def_inactive");
-                    g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
-                    g_off.setTag("grill_off_inactive");
+                    setGrillEco();
                     d.setGrill("eco");
                 }
             }
         }
     };
+
+    public void setGrillEco(){
+        g_eco.setBackgroundResource(R.drawable.oven_grill_eco_active);
+        g_eco.setTag("grill_eco_active");
+        g_def.setBackgroundResource(R.drawable.oven_grill_def_inactive);
+        g_def.setTag("grill_def_inactive");
+        g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
+        g_off.setTag("grill_off_inactive");
+    }
+
     View.OnClickListener g_def_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("grill_def_inactive".equals(g_def.getTag())) {
-                    g_def.setBackgroundResource(R.drawable.oven_grill_def_active);
-                    g_def.setTag("grill_def_active");
-                    g_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
-                    g_eco.setTag("grill_eco_inactive");
-                    g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
-                    g_off.setTag("grill_off_inactive");
+                    setGrillLarge();
                     d.setGrill("large");
                 }
             }
         }
     };
 
+    public void setGrillLarge(){
+        g_def.setBackgroundResource(R.drawable.oven_grill_def_active);
+        g_def.setTag("grill_def_active");
+        g_eco.setBackgroundResource(R.drawable.oven_grill_eco_inactive);
+        g_eco.setTag("grill_eco_inactive");
+        g_off.setBackgroundResource(R.drawable.oven_grill_off_inactive);
+        g_off.setTag("grill_off_inactive");
+    }
+
     View.OnClickListener h_both_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("heat_both_inactive".equals(h_both.getTag())) {
-                    h_both.setBackgroundResource(R.drawable.oven_heat_both_active);
-                    h_both.setTag("heat_both_active");
-                    h_up.setBackgroundResource(R.drawable.oven_heat_up);
-                    h_up.setTag("heat_up_inactive");
-                    h_down.setBackgroundResource(R.drawable.oven_heat_down);
-                    h_down.setTag("heat_down_inactive");
+                    setHeatConventional();
                     d.setHeat("conventional");
                 }
             }
         }
     };
+
+    public void setHeatConventional(){
+        h_both.setBackgroundResource(R.drawable.oven_heat_both_active);
+        h_both.setTag("heat_both_active");
+        h_up.setBackgroundResource(R.drawable.oven_heat_up);
+        h_up.setTag("heat_up_inactive");
+        h_down.setBackgroundResource(R.drawable.oven_heat_down);
+        h_down.setTag("heat_down_inactive");
+    }
+
+
     View.OnClickListener h_down_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("heat_down_inactive".equals(h_down.getTag())) {
-                    h_down.setBackgroundResource(R.drawable.oven_heat_down_active);
-                    h_down.setTag("heat_down_active");
-                    h_up.setBackgroundResource(R.drawable.oven_heat_up);
-                    h_up.setTag("heat_up_inactive");
-                    h_both.setBackgroundResource(R.drawable.oven_heat_both);
-                    h_both.setTag("heat_both_inactive");
+                    setHeatBottom();
                     d.setHeat("bottom");
                 }
             }
         }
     };
 
+    public void setHeatBottom(){
+        h_down.setBackgroundResource(R.drawable.oven_heat_down_active);
+        h_down.setTag("heat_down_active");
+        h_up.setBackgroundResource(R.drawable.oven_heat_up);
+        h_up.setTag("heat_up_inactive");
+        h_both.setBackgroundResource(R.drawable.oven_heat_both);
+        h_both.setTag("heat_both_inactive");
+    }
+
     View.OnClickListener h_up_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
                 if ("heat_up_inactive".equals(h_up.getTag())) {
-                    h_up.setBackgroundResource(R.drawable.oven_heat_up_active);
-                    h_up.setTag("heat_up_active");
-                    h_down.setBackgroundResource(R.drawable.oven_heat_down);
-                    h_down.setTag("heat_down_inactive");
-                    h_both.setBackgroundResource(R.drawable.oven_heat_both);
-                    h_both.setTag("heat_both_inactive");
+                    setHeatUp();
                     d.setHeat("up");
                 }
             }
         }
     };
+
+    public void setHeatUp(){
+        h_up.setBackgroundResource(R.drawable.oven_heat_up_active);
+        h_up.setTag("heat_up_active");
+        h_down.setBackgroundResource(R.drawable.oven_heat_down);
+        h_down.setTag("heat_down_inactive");
+        h_both.setBackgroundResource(R.drawable.oven_heat_both);
+        h_both.setTag("heat_both_inactive");
+    }
 
 
 
@@ -260,17 +349,11 @@ public class DeviceOven extends AppActivity {
         @Override
         public void onClick(View v) {
             if ("power_on".equals(power.getTag())) {
-                power.setBackgroundResource(R.drawable.ac_power_off);
-                power.setTag("power_off");
-                oven_modes.setVisibility(View.INVISIBLE);
-                oven_temp_disp.setVisibility(View.INVISIBLE);
-                d.switchState(true);
-            } else {
-                power.setBackgroundResource(R.drawable.ac_power_on);
-                power.setTag("power_on");
-                oven_modes.setVisibility(View.VISIBLE);
-                oven_temp_disp.setVisibility(View.VISIBLE);
+                powerOff();
                 d.switchState(false);
+            } else {
+                powerOn();
+                d.switchState(true);
             }
         }
     };
