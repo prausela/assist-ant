@@ -121,7 +121,7 @@
                 android:layout_marginTop="5.0dp"
                 android:layout_marginBottom="5.0dp"
                 android:gravity="center"
-                android:weightSum="6">
+                android:weightSum="7">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -147,60 +147,74 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/ac_fan_speed_low"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_low_inactive"
-                        android:tag="ac_fan_speed_low_inactive" />
+                        android:id="@+id/ac_fan_speed_25"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_25_inactive"
+                        android:tag="ac_fan_speed_25_inactive" />
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/ac_fan_speed_mid"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_mid_active"
-                        android:tag="ac_fan_speed_mid_active" />
+                        android:id="@+id/ac_fan_speed_50"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_50_inactive"
+                        android:tag="ac_fan_speed_50_inactive" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ac_fan_speed_75"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_75"
+                        android:tag="ac_fan_speed_75_active" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
 
-                        android:id="@+id/ac_fan_speed_high"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_fan_high_inactive"
-                        android:tag="ac_fan_speed_high_inactive" />
+                        android:id="@+id/ac_fan_speed_100"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_100_inactive"
+                        android:tag="ac_fan_speed_100_inactive" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30.0dip"
+                    android:layout_marginLeft="5.0dip"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/ac_fan_speed_auto"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ac_fan_auto_inactive"
                         android:tag="ac_fan_speed_auto_inactive" />
 
                 </LinearLayout>
@@ -281,7 +295,7 @@
                         android:id="@+id/ac_mode_auto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/ac_auto_mode_inactive"
+                        android:background="@drawable/ac_fan_auto_inactive"
                         android:tag="ac_mode_auto_inactive" />
 
                 </LinearLayout>
@@ -541,7 +555,7 @@
                         android:id="@+id/ac_shauto"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/ac_sh90_inactive"
+                        android:background="@drawable/ac_shauto_inactive"
                         android:tag="ac_shauto_inactive" />
                 </LinearLayout>
 

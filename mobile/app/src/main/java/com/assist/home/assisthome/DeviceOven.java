@@ -68,37 +68,33 @@ public class DeviceOven extends AppActivity {
         c_eco.setOnClickListener(c_eco_Handler);
         c_off.setOnClickListener(c_off_Handler);
 
-
+        setTemperature(Integer.valueOf(d.state.get("temperature")));
+        if (d.state.get("heat").equals("conventional")) {
+            setHeatConventional();
+        } else if (d.state.get("heat").equals("up")) {
+            setHeatUp();
+        } else {
+            setHeatBottom();
+        }
+        if (d.state.get("grill").equals("large")) {
+            setGrillLarge();
+        } else if (d.state.get("grill").equals("eco")) {
+            setGrillEco();
+        } else {
+            setGrillOff();
+        }
+        if (d.state.get("convection").equals("auto")) {
+            setConvectionAuto();
+        } else if (d.state.get("convection").equals("eco")) {
+            setConvectionEco();
+        } else {
+            setConvectionOff();
+        }
         if(d.state.get("status").equals("off")) {
             powerOff();
         } else {
             powerOn();
         }
-        if(d.state.get("status").equals("on")) {
-            setTemperature(Integer.valueOf(d.state.get("temperature")));
-            if (d.state.get("heat").equals("conventional")) {
-                setHeatConventional();
-            } else if (d.state.get("heat").equals("up")) {
-                setHeatUp();
-            } else {
-                setHeatBottom();
-            }
-            if (d.state.get("grill").equals("large")) {
-                setGrillLarge();
-            } else if (d.state.get("grill").equals("eco")) {
-                setGrillEco();
-            } else {
-                setGrillOff();
-            }
-            if (d.state.get("convection").equals("auto")) {
-                setConvectionAuto();
-            } else if (d.state.get("convection").equals("eco")) {
-                setConvectionEco();
-            } else {
-                setConvectionOff();
-            }
-        }
-
     }
 
     public void Loading(){

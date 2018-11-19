@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import io.paperdb.Paper;
 
 public class Settings extends AppActivity   {
 
