@@ -31,7 +31,7 @@ public class DeviceElementAdapter implements JsonDeserializer<Device> {
                 return context.deserialize(json, Door.class);
             case "blind":
                 return context.deserialize(json, Blind.class);
-            case "fridge":
+            case "refrigerator":
                 return context.deserialize(json, Fridge.class);
         }
         return null;

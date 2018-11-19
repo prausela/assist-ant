@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -46,6 +47,7 @@ public class DeviceActivity extends AppActivity {
     ArrayList<DeviceCard> devices;
     LinearLayout all;
     RelativeLayout loading;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,7 @@ public class DeviceActivity extends AppActivity {
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
         //setContentView(R.layout.activity_devices_cards);
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
+        context = this;
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
 //        getDevices();
         NotificationChecker.init(this);
@@ -243,7 +246,7 @@ public class DeviceActivity extends AppActivity {
                                 }
                             }
                     );
-                    API.getInstance().getRequestQueue().add(postRequest);
+                    API.getInstance(context).getRequestQueue().add(postRequest);
                 }
             }
         }, new Response.ErrorListener() {

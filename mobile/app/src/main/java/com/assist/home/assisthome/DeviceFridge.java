@@ -11,24 +11,25 @@ import android.widget.TextView;
 
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.devices.Fridge;
 
 public class DeviceFridge extends AppActivity {
     ImageButton def, party, trip;
     TextView f_temp, r_temp;
     Button f_temp_up, f_temp_down, r_temp_up, r_temp_down;
     Intent myIntent = getIntent();
-    Device d;
+    Fridge d;
     LinearLayout all;
     RelativeLayout loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d = API.devices.get(this.getIntent().getStringExtra("device"));
+        d = (Fridge) API.devices.get(this.getIntent().getStringExtra("device"));
 
-        super.setContent(R.layout.activity_device_fridge,d.name);
-        loading=(RelativeLayout) findViewById(R.id.loadingPanel);
-        all=(LinearLayout) findViewById(R.id.fridge_all);
+        super.setContent(R.layout.activity_device_fridge, d.name);
+        loading = (RelativeLayout) findViewById(R.id.loadingPanel);
+        all = (LinearLayout) findViewById(R.id.fridge_all);
         f_temp_up = (Button) findViewById(R.id.fridge_temp_up);
         f_temp_down = (Button) findViewById(R.id.fridge_temp_down);
         f_temp = (TextView) findViewById(R.id.fridge_temp);
@@ -49,6 +50,16 @@ public class DeviceFridge extends AppActivity {
         party.setOnClickListener(party_Handler);
         trip.setOnClickListener(trip_Handler);
 
+
+        setTemperature(Integer.valueOf(d.state.get("temperature")));
+        setFreezerTemperature(Integer.valueOf(d.state.get("freezerTemperature")));
+        if (d.state.get("mode").equals("default")) {
+            setModeDefault();
+        } else if (d.state.get("mode").equals("vacation")) {
+            setModeVacation();
+        } else {
+            setModeParty();
+        }
     }
 
     public void Loading(){
@@ -63,48 +74,65 @@ public class DeviceFridge extends AppActivity {
 
     }
 
+    public void setModeDefault(){
+        def.setBackgroundResource(R.drawable.fridge_def_active);
+        def.setTag("fridge_def_active");
+        party.setBackgroundResource(R.drawable.fridge_party_inactive);
+        party.setTag("fridge_party_inactive");
+        trip.setBackgroundResource(R.drawable.fridge_trip_inactive);
+        trip.setTag("fridge_trip_inactive");
+    }
+
     View.OnClickListener def_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if ("fridge_def_inactive".equals(def.getTag())) {
-                def.setBackgroundResource(R.drawable.fridge_def_active);
-                def.setTag("fridge_def_active");
-                party.setBackgroundResource(R.drawable.fridge_party_inactive);
-                party.setTag("fridge_party_inactive");
-                trip.setBackgroundResource(R.drawable.fridge_trip_inactive);
-                trip.setTag("fridge_trip_inactive");
+                setModeDefault();
+                d.setMode("default");
             }
         }
 
     };
+
+    public void setModeParty(){
+        party.setBackgroundResource(R.drawable.fridge_party_active);
+        party.setTag("fridge_def_active");
+        def.setBackgroundResource(R.drawable.fridge_def_inactive);
+        def.setTag("fridge_def_inactive");
+        trip.setBackgroundResource(R.drawable.fridge_trip_inactive);
+        trip.setTag("fridge_trip_inactive");
+    }
 
     View.OnClickListener party_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if ("fridge_party_inactive".equals(party.getTag())) {
-                party.setBackgroundResource(R.drawable.fridge_party_active);
-                party.setTag("fridge_def_active");
-                def.setBackgroundResource(R.drawable.fridge_def_inactive);
-                def.setTag("fridge_def_inactive");
-                trip.setBackgroundResource(R.drawable.fridge_trip_inactive);
-                trip.setTag("fridge_trip_inactive");
+                setModeParty();
+                d.setMode("party");
             }
         }
 
     };
+
+
+    public void setModeVacation(){
+        trip.setBackgroundResource(R.drawable.fridge_trip_active);
+        trip.setTag("fridge_trip_active");
+        party.setBackgroundResource(R.drawable.fridge_party_inactive);
+        party.setTag("fridge_party_inactive");
+        def.setBackgroundResource(R.drawable.fridge_def_inactive);
+        def.setTag("fridge_def_inactive");
+    }
+
     View.OnClickListener trip_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if ("fridge_trip_inactive".equals(trip.getTag())) {
-                trip.setBackgroundResource(R.drawable.fridge_trip_active);
-                trip.setTag("fridge_trip_active");
-                party.setBackgroundResource(R.drawable.fridge_party_inactive);
-                party.setTag("fridge_party_inactive");
-                def.setBackgroundResource(R.drawable.fridge_def_inactive);
-                def.setTag("fridge_def_inactive");
+                setModeVacation();
+                d.setMode("vacation");
             }
         }
 
@@ -116,9 +144,14 @@ public class DeviceFridge extends AppActivity {
             int tempF = Integer.valueOf(f_temp.getText().toString());
             if(tempF<-8) {
                 f_temp.setText(Integer.toString(tempF + 1));
+                d.setFreezerTemperature(tempF + 1);
             }
         }
     };
+
+    public void setFreezerTemperature(Integer temp){
+        f_temp.setText(Integer.toString(temp));
+    }
 
     View.OnClickListener f_temp_down_Handler = new View.OnClickListener() {
         @Override
@@ -126,9 +159,14 @@ public class DeviceFridge extends AppActivity {
             int tempF = Integer.valueOf(f_temp.getText().toString());
             if(tempF>-20) {
                 f_temp.setText(Integer.toString(tempF - 1));
+                d.setFreezerTemperature(tempF -1);
             }
         }
     };
+
+    public void setTemperature(Integer temp){
+        r_temp.setText(Integer.toString(temp));
+    }
 
     View.OnClickListener r_temp_down_Handler = new View.OnClickListener() {
         @Override
@@ -136,6 +174,7 @@ public class DeviceFridge extends AppActivity {
             int tempR = Integer.valueOf(r_temp.getText().toString());
             if(tempR>2) {
                 r_temp.setText(Integer.toString(tempR - 1));
+                d.setTemperature(tempR -1);
             }
         }
     };
@@ -145,6 +184,7 @@ public class DeviceFridge extends AppActivity {
             int tempR = Integer.valueOf(r_temp.getText().toString());
             if(tempR<8) {
                 r_temp.setText(Integer.toString(tempR + 1));
+                d.setTemperature(tempR+1);
             }
         }
     };
