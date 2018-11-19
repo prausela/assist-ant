@@ -25,6 +25,7 @@ import com.assist.home.assisthome.api.DeviceType;
 import com.assist.home.assisthome.api.JSONResponses;
 import com.assist.home.assisthome.api.devices.AC;
 import com.assist.home.assisthome.notifications.NotificationBroadcastReceiver;
+import com.assist.home.assisthome.notifications.NotificationChecker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -54,7 +55,8 @@ public class DeviceActivity extends AppActivity {
         super.setContent(R.layout.activity_devices_cards, getString(R.string.devices_title));
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
 //        getDevices();
-        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceAC.class));
+        NotificationChecker.init(this);
+        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceActivity.class));
     }
 
     @Override
