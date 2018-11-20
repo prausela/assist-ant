@@ -230,6 +230,8 @@ class Devices{
 					device.refreshMeta()
 				}
 			})
+			api.eventBus.$emit('refreshDevices')
+			api.eventBus.$emit('refreshRooms')
 		})
 	}
 
