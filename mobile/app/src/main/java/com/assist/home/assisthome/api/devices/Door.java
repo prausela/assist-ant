@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.assist.home.assisthome.AppActivity;
 import com.assist.home.assisthome.DeviceActivity;
 import com.assist.home.assisthome.DeviceDoor;
+import com.assist.home.assisthome.R;
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.DeviceEvent;
@@ -66,15 +67,15 @@ public class Door extends Device {
         String title = e.device.name;
         if (e.event.equals("statusChanged")) {
             if (e.args.get("newStatus") == "closed") {
-                title += " se ha cerrado";
+                title += R.string.device_closed;
             }  else {
-                title += " se ha abierto";
+                title += R.string.device_opened;
             }
         } else if ( e.event.equals("lockChanged")) {
             if (e.args.get("newLock") == "locked") {
-                title += " se ha trabado";
+                title += R.string.door_locked;
             }  else {
-                title += " se ha destrabado";
+                title += R.string.door_unlocked;
             }
         }
         new NotificationBroadcastReceiver().sendNotification(c, intent2, title);

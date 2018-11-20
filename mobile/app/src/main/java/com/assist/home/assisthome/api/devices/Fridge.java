@@ -1,6 +1,8 @@
 package com.assist.home.assisthome.api.devices;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -12,14 +14,22 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.assist.home.assisthome.AppActivity;
+import com.assist.home.assisthome.DeviceBlind;
+import com.assist.home.assisthome.R;
 import com.assist.home.assisthome.SingleDevice;
+import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
+import com.assist.home.assisthome.api.DeviceEvent;
+import com.assist.home.assisthome.notifications.NotificationBroadcastReceiver;
 
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
 public class Fridge extends Device {
+    public static Resources resources;
+
 
     public void setTemperature(int temperature) {
         String URL = getUrl() + "/" + "setTemperature";
@@ -153,5 +163,36 @@ public class Fridge extends Device {
         };
 
         getAPI().getRequestQueue().add(stringRequest);
+    }
+
+    @Override
+    public void notifyEvent(DeviceEvent e) {
+        Log.v("Shipu", "sending notification...");
+        Context c = API.getInstance().context;
+        Intent intent2 = new Intent(c, DeviceBlind.class);
+        intent2.putExtra("device",e.device.id);
+        String title = e.device.name;
+        Log.d("EStado", e.args.get("newMode"));
+        Log.d("Notif", AppActivity.getContext().getString(R.string.fridge_party));
+
+
+        if (e.event.equals("statusChanged")) {
+
+            if (e.args.get("newStatus").equals("party")) {
+
+                Log.v("Notif", AppActivity.getContext().getString(R.string.fridge_party));
+                title+=" "+AppActivity.getContext().getString(R.string.fridge_party);
+
+
+            } else if(e.args.get("newStatus").equals("vacation")){
+                Log.v("Notif", AppActivity.getContext().getString(R.string.fridge_trip));
+                title+=" "+ AppActivity.getContext().getString(R.string.fridge_trip);
+            }else{
+                Log.v("Notif", AppActivity.getContext().getString(R.string.fridge_def));
+                title+=" "+ AppActivity.getContext().getString(R.string.fridge_def);
+            }
+
+        }
+        new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
     }
 }

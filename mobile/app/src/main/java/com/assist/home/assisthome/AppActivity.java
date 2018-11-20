@@ -28,11 +28,15 @@ import android.widget.Toast;
 
 public abstract class AppActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     View nav_dev,nav_routines;
+    private static Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
+        mContext = this;
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +54,9 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 
     public void checkForNotifications() {
 
+    }
+    public static Context getContext(){
+        return mContext;
     }
 
     protected void setContent(@LayoutRes int content, String title){

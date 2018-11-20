@@ -12,8 +12,18 @@
     <string name="ac_horizontal_swing">Horizontal Swing</string>
     <string name="language_settings" translatable="true">Language</string>
     <string name="notification_settings" translatable="true">Notifications</string>
-    <string name="checkbox_active" translatable="true">Active</string>
+    <string name="checkbox_active">Active</string>
     <string name="checkbox_inactive" translatable="true">Inactive</string>
+    <string name="device_opened" translatable="true">has been opened</string>
+    <string name="device_closed" translatable="true">has been closed</string>
+    <string name="door_locked" translatable="true">has been locked</string>
+    <string name="door_unlocked" translatable="true">has been unlocked</string>
+    <string name="fridge_def" translatable="true">has changed to Default Mode</string>
+    <string name="fridge_party" translatable="true">has changed to Party Mode</string>
+    <string name="fridge_trip" translatable="true">has changed to Trip Mode</string>
+
+
+
     <string name="settings" translatable="true">Settings</string>
     <string-array name="languageOp">
         <item>English</item>
@@ -33,5 +43,6 @@
     <string name="refrigerator_freezer_temp">Freezer Temperature</string>
     <string name="refrigerator_refrigerator_temp">Refrigerator Temperature</string>
     <string name="refrigerator_mode">Mode</string>
-    <string name="notifications">Notifications</string>\
+    <string name="notifications">Notifications</string>
+    \
 </resources>
