@@ -67,16 +67,17 @@ public class Door extends Device {
         String title = e.device.name;
         if (e.event.equals("statusChanged")) {
             if (e.args.get("newStatus") == "closed") {
-                title += R.string.device_closed;
+                title += " "+AppActivity.getContext().getString(R.string.device_closed);
             }  else {
-                title += R.string.device_opened;
+                title += " "+AppActivity.getContext().getString(R.string.device_opened);
+
             }
         } else if ( e.event.equals("lockChanged")) {
             if (e.args.get("newLock") == "locked") {
-                title += R.string.door_locked;
-            }  else {
-                title += R.string.door_unlocked;
-            }
+                title +=" "+ AppActivity.getContext().getString(R.string.door_locked);
+                }  else {
+                title +=" "+ AppActivity.getContext().getString(R.string.door_unlocked);
+                }
         }
         new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
     }

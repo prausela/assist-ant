@@ -173,18 +173,12 @@ public class Fridge extends Device {
         intent2.putExtra("device",e.device.id);
         String title = e.device.name;
         Log.d("EStado", e.args.get("newMode"));
-        Log.d("Notif", AppActivity.getContext().getString(R.string.fridge_party));
 
-
-        if (e.event.equals("statusChanged")) {
-
-            if (e.args.get("newStatus").equals("party")) {
-
+        if (e.event.equals("modeChanged")) {
+            if (e.args.get("newMode").equals("party")) {
                 Log.v("Notif", AppActivity.getContext().getString(R.string.fridge_party));
                 title+=" "+AppActivity.getContext().getString(R.string.fridge_party);
-
-
-            } else if(e.args.get("newStatus").equals("vacation")){
+            } else if(e.args.get("newMode").equals("vacation")){
                 Log.v("Notif", AppActivity.getContext().getString(R.string.fridge_trip));
                 title+=" "+ AppActivity.getContext().getString(R.string.fridge_trip);
             }else{
@@ -195,4 +189,6 @@ public class Fridge extends Device {
         }
         new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
     }
+
+
 }

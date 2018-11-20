@@ -16,6 +16,9 @@
     <string name="checkbox_inactive" translatable="true">Inactive</string>
     <string name="device_opened" translatable="true">has been opened</string>
     <string name="device_closed" translatable="true">has been closed</string>
+    <string name="device_off" translatable="true">has been turned off</string>
+    <string name="device_on" translatable="true">has been turned on</string>
+
     <string name="door_locked" translatable="true">has been locked</string>
     <string name="door_unlocked" translatable="true">has been unlocked</string>
     <string name="fridge_def" translatable="true">has changed to Default Mode</string>

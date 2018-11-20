@@ -30,6 +30,8 @@
     <string name="notifications">Notificaciones</string>
     <string name="device_opened">se ha abierto</string>
     <string name="device_closed">se ha cerrado</string>
+    <string name="device_off">se ha apagado</string>
+    <string name="device_on">se ha prendido</string>
 
     <string name="door_locked">se ha trabado</string>
     <string name="door_unlocked">se ha destrabado</string>
