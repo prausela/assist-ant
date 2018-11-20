@@ -15,7 +15,7 @@ import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.devices.Door;
 
-public class DeviceDoor extends AppActivity{
+public class DeviceDoor extends SingleDevice{
     ImageButton open,close,lock,unlocked;
     ImageView doorimg,lockimg;
     //Intent myIntent = getIntent();
@@ -44,6 +44,12 @@ public class DeviceDoor extends AppActivity{
         lock.setOnClickListener(lock_Handler);
         unlocked.setOnClickListener(unlocked_Handler);
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
+        d.refreshState(this);
+        updateState();
+
+    }
+
+    public void updateState() {
         if (d.state.get("status").equals("opened")){
             open();
         } else {
@@ -54,7 +60,6 @@ public class DeviceDoor extends AppActivity{
         } else {
             unlock();
         }
-
     }
     public void Loading(){
         all.setVisibility(View.GONE);
