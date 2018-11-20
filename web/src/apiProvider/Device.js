@@ -86,12 +86,11 @@ class Device {
 	}
 
 	updateMeta(newMeta) {
-		return api.devices.modify({
-			type: this.type,
-			name: this.name,
-			meta: newMeta,
-			id: this.id
+		return new Promise((resolve,reject) => {
+			this.meta = newMeta
+			resolve();
 		})
+		
 	}
 
 	favorite(value) {

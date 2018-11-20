@@ -41,6 +41,8 @@ class Door extends Device {
 				newMeta.lock = lock
 				this.updateMeta(newMeta).catch((error) => {
 					reject(error)
+				}).then(() => {
+					resolve()
 				})
 			}).catch((error) => {
 				reject(error)
@@ -49,26 +51,30 @@ class Door extends Device {
 	}
 
 	refreshMeta() {
-		this.getState().then((state) => {
-			let result = state.result
-			let newMeta = this.copyMeta()
-			if (result.status == "closed") {
-				newMeta.state = false
-			} else if (result.status == "opened") {
-				newMeta.state = true
-			}
-			if (result.lock == "locked") {
-				newMeta.lock = true
-			} else if (result.lock == "unlocked") {
-				newMeta.lock = false
-			}
-			console.log(state)
-			console.log('newmeta', newMeta)
-			this.updateMeta(newMeta).catch((error) => {
-				reject(error)
+		return new Promise((resolve,reject) => {
+			this.getState().then((state) => {
+				let result = state.result
+				let newMeta = this.copyMeta()
+				if (result.status == "closed") {
+					newMeta.state = false
+				} else if (result.status == "opened") {
+					newMeta.state = true
+				}
+				if (result.lock == "locked") {
+					newMeta.lock = true
+				} else if (result.lock == "unlocked") {
+					newMeta.lock = false
+				}
+				console.log(state)
+				console.log('newmeta', newMeta)
+				this.meta = newMeta
+				resolve()
+				this.updateMeta(newMeta).catch((error) => {
+					console.log(error)
+				})
+			}).catch((error) => {
+				console.log(error)
 			})
-		}).catch((error) => {
-			console.log(error)
 		})
 	}
 }

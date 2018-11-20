@@ -33,7 +33,12 @@ class Devices{
 		  		name: device.name,
 		  		meta: device.meta
 			})
-			.then(function(response) {
+			.then((response) => {
+				console.log('device response')
+				console.log(response)
+				let deviceIds = new Set()
+				deviceIds.add(response.data.device.id)
+				this.refreshDevices(deviceIds)
 				if (device.room) {
 					let newDev = new Device(response.data.device)
 					newDev.dissociate().then(() => {
@@ -49,6 +54,7 @@ class Devices{
 				}
 			})
 			.catch((err) => {
+				console.log(err)
 				let message = Strings[api.language].api.devices["addErr" + err.response.data.error.code]
 				if (!message) {
 					message = Strings[api.language].api.devices.unknownError
@@ -74,6 +80,7 @@ class Devices{
 						device.meta = JSON.parse(device.meta) || {}
 						let deviceObj = Devices.initDevice(device)
 						if (deviceObj) {
+							deviceObj.refreshMeta()
 							devicesObjects.push(deviceObj)
 						}
 					})
@@ -215,6 +222,7 @@ class Devices{
 	}
 
 	refreshDevices(deviceIds) {
+		console.log('refreshing devices')
 		this.getAll().then((devices) => {
 			devices.forEach((device) => {
 				if (deviceIds.has(device.id)) {
