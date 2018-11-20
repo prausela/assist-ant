@@ -2,6 +2,7 @@ package com.assist.home.assisthome.api.devices;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -172,7 +173,6 @@ public class Fridge extends Device {
         Intent intent2 = new Intent(c, DeviceBlind.class);
         intent2.putExtra("device",e.device.id);
         String title = e.device.name;
-        Log.d("EStado", e.args.get("newMode"));
 
         if (e.event.equals("modeChanged")) {
             if (e.args.get("newMode").equals("party")) {
@@ -189,6 +189,7 @@ public class Fridge extends Device {
         }
         new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
     }
+
 
 
 }

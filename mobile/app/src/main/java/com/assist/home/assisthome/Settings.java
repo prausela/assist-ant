@@ -17,6 +17,8 @@ import android.widget.ResourceCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.assist.home.assisthome.api.API;
+
 import java.util.Locale;
 
 
@@ -37,6 +39,12 @@ public class Settings extends AppActivity   {
            language.setText("Espanol");
        }
 
+       Boolean activeNotifications = API.getInstance().notificationsEnabled();
+       if (activeNotifications) {
+//           Marcar la primera opcion
+       } else {
+//           Marcar la segunda opcion
+       }
     }
 
 

@@ -50,7 +50,11 @@ public class DeviceFridge extends SingleDevice {
         def.setOnClickListener(def_Handler);
         party.setOnClickListener(party_Handler);
         trip.setOnClickListener(trip_Handler);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         d.refreshState(this);
         updateState();
     }

@@ -1,10 +1,14 @@
 package com.assist.home.assisthome;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
+
+import com.assist.home.assisthome.api.API;
 
 import java.util.ArrayList;
 
@@ -51,20 +55,24 @@ public class RoutinesAdapter extends BaseAdapter {
         }
         final Routine routines = getItem(position);
 
-        routineViewHolder.r_name.setText(routines.RoutineName);
-
+        routineViewHolder.r_name.setText(routines.name);
 
 
         routineViewHolder.r_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                routines.activate();
+                Toast.makeText(AppActivity.getContext(), "Routine " + routines.name + " activated.", Toast.LENGTH_SHORT).show();
                 routineViewHolder.r_on.setBackgroundResource(R.drawable.r_on_active);
                 routineViewHolder.r_off.setBackgroundResource(R.drawable.r_off_inactive);
+
+
             }
         });
         routineViewHolder.r_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.v("Shipu", "Clicked button off?");
                 routineViewHolder.r_on.setBackgroundResource(R.drawable.r_on_inactive);
                 routineViewHolder.r_off.setBackgroundResource(R.drawable.r_off_active);
             }

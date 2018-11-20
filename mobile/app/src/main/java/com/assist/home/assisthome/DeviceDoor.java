@@ -44,9 +44,13 @@ public class DeviceDoor extends SingleDevice{
         lock.setOnClickListener(lock_Handler);
         unlocked.setOnClickListener(unlocked_Handler);
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         d.refreshState(this);
         updateState();
-
     }
 
     public void updateState() {

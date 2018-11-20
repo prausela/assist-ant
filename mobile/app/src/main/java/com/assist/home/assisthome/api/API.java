@@ -1,6 +1,7 @@
 package com.assist.home.assisthome.api;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -11,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.assist.home.assisthome.AppActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -32,7 +34,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class API {
-    static String url = "http://192.168.0.20:8080/api";
+    static String url = "http://192.168.0.9:8080/api";
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
     public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {
@@ -75,6 +77,10 @@ public class API {
 
     public void checkEvents() {
         if (System.currentTimeMillis() - lastCheck < 2000) {
+            return;
+        }
+
+        if (!notificationsEnabled()) {
             return;
         }
         lastCheck = System.currentTimeMillis();
@@ -145,11 +151,13 @@ public class API {
                                     Log.v("Shipu", "unable to parse, " + e.toString());
                                 }
                             }
-
-
-                            DeviceEvent previousEvent = toNotifyEvents.get(de.deviceId);
-                            if (previousEvent == null || de.cal.getTime().compareTo(previousEvent.cal.getTime()) > 0) {
-                                toNotifyEvents.put(de.deviceId,de);
+                            Log.v("Shipu",e.toString());
+                            Log.v("Shipu", "Checking if favorite...");
+                            if (de.device.decodedMeta.containsKey("favorite") && de.device.decodedMeta.get("favorite").equals("true")) {
+                                DeviceEvent previousEvent = toNotifyEvents.get(de.deviceId);
+                                if (previousEvent == null || de.cal.getTime().compareTo(previousEvent.cal.getTime()) > 0) {
+                                    toNotifyEvents.put(de.deviceId,de);
+                                }
                             }
 
                         }
@@ -187,5 +195,17 @@ public class API {
             entry.getValue().sendNotification();
             toNotifyEvents.remove(entry.getKey());
         }
+    }
+
+    public void saveNotificationsSettings(Boolean value) {
+        SharedPreferences preferences = AppActivity.getContext().getSharedPreferences("NotificationsInfo", 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("enabled", value);
+        editor.commit();
+    }
+
+    public Boolean notificationsEnabled() {
+        SharedPreferences preferences = AppActivity.getContext().getSharedPreferences("NotificationsInfo", 0);
+        return preferences.getBoolean("enabled", true);
     }
 }

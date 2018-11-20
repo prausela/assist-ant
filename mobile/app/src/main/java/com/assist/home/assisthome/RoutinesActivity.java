@@ -10,8 +10,21 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.assist.home.assisthome.api.API;
+import com.assist.home.assisthome.api.JSONResponses;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RoutinesActivity extends AppActivity {
     private ListView RView;
@@ -23,12 +36,18 @@ public class RoutinesActivity extends AppActivity {
         super.setContent(R.layout.activity_routines,"Rutinas");
 
         getRoutine();
+
+        renderView();
+
+
+
+    }
+
+    public void renderView() {
         RView = (ListView) findViewById(R.id.customListView);
         RAdapter = new RoutinesAdapter(this,routines);
         RView.setAdapter(RAdapter);
         RView.setClickable(true);
-
-
         RView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -36,21 +55,49 @@ public class RoutinesActivity extends AppActivity {
                 Toast.makeText(RoutinesActivity.this, "Cliked at " + position, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     public void getRoutine(){
-//        List<DeviceCard> list=new ArrayList<>();
-//        list.add(new DeviceCard("Aire",R.drawable.ac));
-//        list.add(new DeviceCard("Puerta",R.drawable.door_close));
-//        list.add(new DeviceCard("Persiana",R.drawable.blind_close));
-//        list.add(new DeviceCard("Heladera",R.drawable.fridge));
-//        list.add(new DeviceCard("Horno",R.drawable.oven));
-//
-//        routines.add(new Routine("Viaje",list));
-//        routines.add(new Routine("Casa",list));
-//        routines.add(new Routine("Noche",list));
-//        routines.add(new Routine("Plantas",list));
+        List<DeviceCard> list=new ArrayList<>();
+        routines = new ArrayList<>();
+        JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/routines", (String) null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Gson gson = new Gson();
+                try {
 
+                    Routine[] jsonRoutines = gson.fromJson(response.getJSONArray("routines").toString(), Routine[].class);
+                    Log.v("Shipu", "got routines...");
+                    Log.v("Shipu", jsonRoutines.length + "");
+                    if (jsonRoutines.length > 0) {
+                        Log.v("Shipu", jsonRoutines[0].name);
+                        Log.v("Shipu", jsonRoutines[0].id);
+                    }
+                    for (Routine r : jsonRoutines) {
+                        routines.add(r);
+                    }
+                    renderView();
+
+                } catch (Exception exc) {
+                    Log.e("Shipu", "Unable to parse routines");
+                    Log.e("Shipu", response.toString());
+                    Log.e("Shipu", exc.toString());
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.d("Shipu", "Failere2");
+                Log.d("Shipu", volleyError.toString());
+                volleyError.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return new HashMap<>();
+            }
+        };
+        API.getInstance().getRequestQueue().add(request);
     }
 }

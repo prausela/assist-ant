@@ -47,6 +47,12 @@ public class DeviceBlind extends SingleDevice {
 
         up.setOnClickListener(up_Handler);
         down.setOnClickListener(down_Handler);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         d.refreshState(this);
         updateState();
     }

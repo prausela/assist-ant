@@ -27,6 +27,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.assist.home.assisthome.api.API;
+
 public abstract class AppActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static Boolean notif;
     View nav_dev,nav_routines;
@@ -73,7 +75,7 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
     }
 
     public static void setNotif(Boolean n){
-        notif=n;
+        API.getInstance().saveNotificationsSettings(n);
     }
 
     protected void setContent(@LayoutRes int content, String title){
