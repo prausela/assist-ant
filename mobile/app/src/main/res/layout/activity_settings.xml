@@ -60,7 +60,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/checkbox_active"
-                    android:checked="true"
                     android:onClick="notificationStatus"/>/>
 
                 <RadioButton
@@ -69,7 +68,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/checkbox_inactive"
-                    android:checked="false"
                     android:onClick="notificationStatus"/>/>
             </RadioGroup>
 

@@ -23,12 +23,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class AppActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static Boolean notif;
     View nav_dev,nav_routines;
     private static Context mContext;
+    RadioButton notifButton;
 
 
     @Override
@@ -36,7 +39,13 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
         mContext = this;
-
+        //notifButton=(RadioButton) findViewById(R.id.active_notifications);
+//        if(notifButton.isChecked()==null || notifButton.isChecked()){
+//            notif=true;
+//        }
+//        else {
+//            notif=false;
+//        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,6 +66,14 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
     }
     public static Context getContext(){
         return mContext;
+    }
+
+    public static Boolean getNotif(){
+        return notif;
+    }
+
+    public static void setNotif(Boolean n){
+        notif=n;
     }
 
     protected void setContent(@LayoutRes int content, String title){
@@ -127,7 +144,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
             startActivity(intent);
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

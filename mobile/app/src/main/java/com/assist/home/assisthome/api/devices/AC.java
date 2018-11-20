@@ -27,6 +27,7 @@ import java.io.UnsupportedEncodingException;
 
 public class AC extends Device {
 
+
     public void switchState(boolean state) {
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.PUT, this.getUrl() + "/" + (state ? "turnOn" : "turnOff"),
@@ -268,23 +269,25 @@ public class AC extends Device {
 
     @Override
     public void notifyEvent(DeviceEvent e) {
-        Log.v("Shipu", "sending notification...");
-        Context c = API.getInstance().context;
-        Intent intent2 = new Intent(c, DeviceBlind.class);
-        intent2.putExtra("device", e.device.id);
-        String title = e.device.name;
-        if (e.event.equals("statusChanged")) {
-            if (e.args.get("newStatus").equals("off")) {
-                Log.v("Notif", AppActivity.getContext().getString(R.string.device_off));
-                title += " " + AppActivity.getContext().getString(R.string.device_off);
-                
-            }
-            else if (e.args.get("newStatus").equals("on")) {
-                Log.v("Notif", AppActivity.getContext().getString(R.string.device_on));
-                title += " " + AppActivity.getContext().getString(R.string.device_on);
+        if (AppActivity.getNotif()) {
+            Log.v("Shipu", "sending notification...");
+            Context c = API.getInstance().context;
+            Intent intent2 = new Intent(c, DeviceBlind.class);
+            intent2.putExtra("device", e.device.id);
+            String title = e.device.name;
+            if (e.event.equals("statusChanged")) {
+                if (e.args.get("newStatus").equals("off")) {
+                    Log.v("Notif", AppActivity.getContext().getString(R.string.device_off));
+                    title += " " + AppActivity.getContext().getString(R.string.device_off);
 
+                } else if (e.args.get("newStatus").equals("on")) {
+                    Log.v("Notif", AppActivity.getContext().getString(R.string.device_on));
+                    title += " " + AppActivity.getContext().getString(R.string.device_on);
+
+                }
+                new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
             }
-            new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
         }
     }
+
 }

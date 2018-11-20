@@ -46,18 +46,20 @@ public class Settings extends AppActivity   {
 
         boolean checked = ((RadioButton) view).isChecked();
 
+
         // hacemos un case con lo que ocurre cada vez que pulsemos un botón
 
         switch (view.getId()) {
             case R.id.active_notifications:
                 if (checked)
                     Toast.makeText(Settings.this, getString(R.string.notifications)+" "+getString(R.string.checkbox_active), Toast.LENGTH_SHORT).show();
+                    setNotif(true);
 
                 break;
             case R.id.inactive_notifications:
                 if (checked) {
                     Toast.makeText(Settings.this, getString(R.string.notifications)+ " "+getString(R.string.checkbox_inactive), Toast.LENGTH_SHORT).show();
-
+                    setNotif(false);
                 }
         }
     }
