@@ -43,6 +43,7 @@ class Routine {
 								deviceIds.add(action.deviceId)
 							})
 							api.devices.refreshDevices(deviceIds)
+							
 							resolve(response.data);
 						})
 						.catch(function(error){

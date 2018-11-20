@@ -96,6 +96,8 @@ class Device {
 	favorite(value) {
 		let newMeta = JSON.parse(JSON.stringify(this.meta))
 		newMeta.favorite = value
+		this.meta = newMeta
+		api.devices.modify(this,false)
 		this.updateMeta(newMeta)
 		
 	}
