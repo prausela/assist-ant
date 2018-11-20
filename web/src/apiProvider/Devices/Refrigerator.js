@@ -72,10 +72,8 @@ class Refrigerator extends Device {
 	setMode(mode){
 		return new Promise((resolve, reject) => {
 			this.perform("setMode", [ mode ]).then((response) => {
-				let newMeta = this.copyMeta()
-				newMeta.mode = mode
-				this.updateMeta(newMeta).catch((error) => {
-					reject(error)
+				this.refreshMeta().then(() => {
+					resolve()
 				})
 			}).catch((error) => {
 				reject(error)
@@ -84,26 +82,31 @@ class Refrigerator extends Device {
 	}
 
 	refreshMeta() {
-		this.getState().then((state) => {
-			let result = state.result
-			console.log(result)
-			let newMeta = this.copyMeta()
-			if (result.temperature) {
-				newMeta.temperature = result.temperature
-			}
-			if (result.freezerTemperature) {
-				newMeta.freezerTemperature = result.freezerTemperature
-			}
-			if (result.mode) {
-				console.log(result.mode)
-				newMeta.mode = result.mode
-			}
-			console.log(newMeta)
-			this.updateMeta(newMeta).catch((error) => {
-				reject(error)
+		return new Promise((resolve,reject) => {
+			this.getState().then((state) => {
+				let result = state.result
+				console.log(result)
+				let newMeta = this.copyMeta()
+				if (result.temperature) {
+					newMeta.temperature = result.temperature
+				}
+				if (result.freezerTemperature) {
+					newMeta.freezerTemperature = result.freezerTemperature
+				}
+				if (result.mode) {
+					console.log(result.mode)
+					newMeta.mode = result.mode
+				}
+				console.log(newMeta)
+				this.meta = newMeta
+				this.updateMeta(newMeta).catch((error) => {
+					reject(error)
+				}).then(() => {
+					resolve()
+				})
+			}).catch((error) => {
+				console.log(error)
 			})
-		}).catch((error) => {
-			console.log(error)
 		})
 	}
 };

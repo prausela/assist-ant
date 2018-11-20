@@ -13,7 +13,7 @@ import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.devices.Fridge;
 
-public class DeviceFridge extends AppActivity {
+public class DeviceFridge extends SingleDevice {
     ImageButton def, party, trip;
     TextView f_temp, r_temp;
     Button f_temp_up, f_temp_down, r_temp_up, r_temp_down;
@@ -21,6 +21,7 @@ public class DeviceFridge extends AppActivity {
     Fridge d;
     LinearLayout all;
     RelativeLayout loading;
+    DeviceFridge that = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,11 @@ public class DeviceFridge extends AppActivity {
         party.setOnClickListener(party_Handler);
         trip.setOnClickListener(trip_Handler);
 
+        d.refreshState(this);
+        updateState();
+    }
 
+    public void updateState() {
         setTemperature(Integer.valueOf(d.state.get("temperature")));
         setFreezerTemperature(Integer.valueOf(d.state.get("freezerTemperature")));
         if (d.state.get("mode").equals("default")) {
@@ -89,7 +94,7 @@ public class DeviceFridge extends AppActivity {
 
             if ("fridge_def_inactive".equals(def.getTag())) {
                 setModeDefault();
-                d.setMode("default");
+                d.setMode("default",  that);
             }
         }
 
@@ -104,13 +109,14 @@ public class DeviceFridge extends AppActivity {
         trip.setTag("fridge_trip_inactive");
     }
 
+
     View.OnClickListener party_Handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             if ("fridge_party_inactive".equals(party.getTag())) {
                 setModeParty();
-                d.setMode("party");
+                d.setMode("party", that);
             }
         }
 
@@ -132,7 +138,7 @@ public class DeviceFridge extends AppActivity {
 
             if ("fridge_trip_inactive".equals(trip.getTag())) {
                 setModeVacation();
-                d.setMode("vacation");
+                d.setMode("vacation", that);
             }
         }
 

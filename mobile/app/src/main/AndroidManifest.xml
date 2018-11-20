@@ -27,7 +27,10 @@
         <activity android:name=".DeviceOven"></activity>
         <activity android:name=".DeviceDoor"></activity>
         <activity android:name=".Settings"></activity>
-
+        <receiver android:name=".notifications.AlarmNotificationReceiver"/>
+        <receiver android:name=".notifications.AlarmNotificationReceiver2"/>
+        <receiver android:name=".notifications.AlarmNotificationReceiver3"/>
+        <receiver android:name=".notifications.AlarmNotificationReceiver4"/>
     </application>
 
 </manifest>

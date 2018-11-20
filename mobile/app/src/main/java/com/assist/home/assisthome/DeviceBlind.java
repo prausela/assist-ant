@@ -20,7 +20,7 @@ import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.devices.Blind;
 
-public class DeviceBlind extends AppActivity {
+public class DeviceBlind extends SingleDevice {
     TextView state;
     Button up, down;
     ImageView img;
@@ -47,6 +47,11 @@ public class DeviceBlind extends AppActivity {
 
         up.setOnClickListener(up_Handler);
         down.setOnClickListener(down_Handler);
+        d.refreshState(this);
+        updateState();
+    }
+
+    public void updateState() {
         if (d.isOpen()) {
             open();
         } else {

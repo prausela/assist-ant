@@ -69,8 +69,9 @@ export default {
             console.log(state)
             this.state=state
             this.device.setState(state).catch((error) => {
-                console.log(error)
-                console.log(error)
+                
+            }).then(() => {
+                this.refreshState()
             })
         },
             setLock(lock) {
@@ -78,6 +79,15 @@ export default {
                 this.lock=lock
                 this.device.setLock(lock).catch((error) => {
                     console.log(error)
+                }).then(() => {
+                    this.refreshState()
+                })
+            },
+            refreshState() {
+                this.device.refreshMeta().then(() => {
+                    console.log(this.device)
+                    this.state = this.device.meta.state
+                    this.lock = this.device.meta.lock
                 })
             }
     }
