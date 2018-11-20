@@ -82,12 +82,21 @@ export default {
         closeModal(){
             this.$emit('closeMe')
         },
+        refreshData() {
+            this.mode =  this.device.meta.mode,
+            this.temperature = this.device.meta.temperature,
+            this.freezerTemperature = this.device.meta.freezerTemperature   
+        },
         setMode(newMode) {
 
 
-            this.mode = newMode
+            // this.mode = newMode
             this.device.setMode(newMode).catch((error) => {
-                console.log(error)
+            }).then(() => {
+                this.refreshData()
+                setTimeout(() => {
+                    this.refreshData()
+                }, 2000);
             })
         },
         setTemperature(temperature){

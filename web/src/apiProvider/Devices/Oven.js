@@ -23,7 +23,7 @@ class Oven extends Device {
 			this.meta.convection = config.deviceTypes.oven.defaults.convection
 		}
 		this.actions.push("setState", "setTemperature", "setHeat", "setGrill", "setConvection")
-
+		
 	}
 
 	//Boolean true turns on, false off
