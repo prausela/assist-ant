@@ -277,13 +277,11 @@ public class AC extends Device {
             if (e.args.get("newStatus").equals("off")) {
                 Log.v("Notif", AppActivity.getContext().getString(R.string.device_off));
                 title += " " + AppActivity.getContext().getString(R.string.device_off);
-
-
+                
             }
             else if (e.args.get("newStatus").equals("on")) {
                 Log.v("Notif", AppActivity.getContext().getString(R.string.device_on));
                 title += " " + AppActivity.getContext().getString(R.string.device_on);
-
 
             }
             new NotificationBroadcastReceiver().sendNotification(c, intent2, title);
