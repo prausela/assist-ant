@@ -18,7 +18,7 @@ import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.devices.AC;
 
-public class DeviceAC extends AppActivity {
+public class DeviceAC extends SingleDevice {
 
     ImageButton ac_power;
     ImageButton ac_mode;
@@ -107,6 +107,17 @@ public class DeviceAC extends AppActivity {
 
         ac_sv90 = (ImageButton) findViewById(R.id.ac_sv4);
         ac_sv90.setOnClickListener(ac_sv90_Handler);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        d.refreshState(this);
+        updateState();
+    }
+
+    public void updateState(){
         setTemperature(Integer.valueOf(d.state.get("temperature")));
         if (d.state.get("mode").equals("heat")) {
             setModeHeat();

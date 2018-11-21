@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ac_fan_speed"
-                        android:textAlignment="center"
+                        android:textAlignment="viewStart"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -240,7 +240,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                     <TextView

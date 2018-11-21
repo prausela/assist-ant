@@ -36,6 +36,8 @@
     <string name="routine_inactive" >Inactiva</string>
     <string name="routine" >Rutina</string>
     <string name="routine_isactive"> se ha activado</string>
+    <string name="routines_title">Rutinas</string>
+
 
 
     <string name="door_locked">se ha trabado</string>

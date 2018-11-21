@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ResourceCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -41,8 +42,13 @@ public class Settings extends AppActivity   {
 
        Boolean activeNotifications = API.getInstance().notificationsEnabled();
        if (activeNotifications) {
+           RadioButton r= (RadioButton) findViewById(R.id.active_notifications);
+           r.setChecked(true);
+
 //           Marcar la primera opcion
        } else {
+           RadioButton r= (RadioButton) findViewById(R.id.inactive_notifications);
+           r.setChecked(true);
 //           Marcar la segunda opcion
        }
     }

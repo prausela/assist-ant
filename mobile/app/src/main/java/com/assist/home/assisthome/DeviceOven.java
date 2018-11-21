@@ -14,7 +14,7 @@ import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.devices.Oven;
 
-public class DeviceOven extends AppActivity {
+public class DeviceOven extends SingleDevice {
     ImageButton h_up, h_down, h_both, g_def, g_eco, g_off, c_auto, c_eco, c_off;
     ImageButton power;
     Button oven_temp_up, oven_temp_down;

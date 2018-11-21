@@ -39,6 +39,8 @@
         <item>Spanish</item>
     </string-array>
     <string name="devices_title">Devices</string>
+    <string name="routines_title" translatable="true">Routines</string>
+
     <string name="ac_title_short">AC</string>
     <string name="oven_title">Oven</string>
     <string name="refrigerator_title">Refrigerator</string>

@@ -63,7 +63,7 @@ public class RoutinesAdapter extends BaseAdapter {
             public void onClick(View v) {
                 
                 routines.activate();
-                Toast.makeText(AppActivity.getContext(), AppActivity.getContext().getText(R.string.routine) + routines.name +AppActivity.getContext().getText(R.string.routine_isactive), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AppActivity.getContext(), AppActivity.getContext().getText(R.string.routine) +" "+ routines.name +" "+AppActivity.getContext().getText(R.string.routine_isactive), Toast.LENGTH_SHORT).show();
                 routineViewHolder.r_on.setBackgroundResource(R.drawable.circle);
                 routineViewHolder.r_on.setText(R.string.routine_active);
                 routineViewHolder.r_on.setTextColor(Color.parseColor("#1b87c9"));

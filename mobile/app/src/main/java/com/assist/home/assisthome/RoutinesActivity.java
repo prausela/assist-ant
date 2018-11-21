@@ -33,7 +33,7 @@ public class RoutinesActivity extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContent(R.layout.activity_routines,"Rutinas");
+        super.setContent(R.layout.activity_routines,getString(R.string.routines_title));
 
         getRoutine();
 

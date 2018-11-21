@@ -88,7 +88,7 @@ public class DeviceActivity extends AppActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long arg3) {
-                Toast.makeText(DeviceActivity.this, "Cliked at " + dAdapter.getItem(position).d.type.name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DeviceActivity.this, "Cliked at " + dAdapter.getItem(position).d.type.name, Toast.LENGTH_SHORT).show();
                 String name = dAdapter.getItem(position).d.type.name;
 
                 switch (name) {
