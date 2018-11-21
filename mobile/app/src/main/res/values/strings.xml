@@ -24,6 +24,12 @@
     <string name="fridge_def" translatable="true">has changed to Default Mode</string>
     <string name="fridge_party" translatable="true">has changed to Party Mode</string>
     <string name="fridge_trip" translatable="true">has changed to Trip Mode</string>
+    <string name="routine_active" translatable="true">Active</string>
+    <string name="routine_inactive" translatable="true">Inactive</string>
+    <string name="routine" translatable="true">Routine</string>
+    <string name="routine_isactive" translatable="true"> has been active</string>
+
+
 
 
 

@@ -68,6 +68,17 @@ public class DeviceOven extends AppActivity {
         c_eco.setOnClickListener(c_eco_Handler);
         c_off.setOnClickListener(c_off_Handler);
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        d.refreshState(this);
+        updateState();
+    }
+
+    public void updateState() {
         setTemperature(Integer.valueOf(d.state.get("temperature")));
         if (d.state.get("heat").equals("conventional")) {
             setHeatConventional();

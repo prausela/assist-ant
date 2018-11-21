@@ -1,6 +1,7 @@
 package com.assist.home.assisthome;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,6 @@ public class RoutinesAdapter extends BaseAdapter {
             routineViewHolder = new RoutineViewHolder();
             routineViewHolder.r_name = row.findViewById(R.id.r_name);
             routineViewHolder.r_on = row.findViewById(R.id.r_on);
-            routineViewHolder.r_off = row.findViewById(R.id.r_off);
 
             row.setTag(routineViewHolder);
         } else {
@@ -61,22 +61,15 @@ public class RoutinesAdapter extends BaseAdapter {
         routineViewHolder.r_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 routines.activate();
-                Toast.makeText(AppActivity.getContext(), "Routine " + routines.name + " activated.", Toast.LENGTH_SHORT).show();
-                routineViewHolder.r_on.setBackgroundResource(R.drawable.r_on_active);
-                routineViewHolder.r_off.setBackgroundResource(R.drawable.r_off_inactive);
-
-
+                Toast.makeText(AppActivity.getContext(), AppActivity.getContext().getText(R.string.routine) + routines.name +AppActivity.getContext().getText(R.string.routine_isactive), Toast.LENGTH_SHORT).show();
+                routineViewHolder.r_on.setBackgroundResource(R.drawable.circle);
+                routineViewHolder.r_on.setText(R.string.routine_active);
+                routineViewHolder.r_on.setTextColor(Color.parseColor("#1b87c9"));
             }
         });
-        routineViewHolder.r_off.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.v("Shipu", "Clicked button off?");
-                routineViewHolder.r_on.setBackgroundResource(R.drawable.r_on_inactive);
-                routineViewHolder.r_off.setBackgroundResource(R.drawable.r_off_active);
-            }
-        });
+       
 
         return row;
     }
