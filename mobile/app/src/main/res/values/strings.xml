@@ -56,6 +56,5 @@
     <string name="no_conectivity">Network link failed!</string>
     <string name="retry">RETRY</string>
     <string name="connected">Network link successful!</string>
-    <string name="title_activity_test">test</string>
     \
 </resources>

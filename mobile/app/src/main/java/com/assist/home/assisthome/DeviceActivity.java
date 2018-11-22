@@ -65,8 +65,8 @@ public class DeviceActivity extends AppActivity {
                         getDevices();
                     }
                 });
-        connecting = Snackbar.make(drawer, getString(R.string.connecting), Snackbar.LENGTH_LONG);
-        connected = Snackbar.make(drawer, getString(R.string.connected), Snackbar.LENGTH_LONG);
+        connecting = Snackbar.make(drawer, getString(R.string.connecting), Snackbar.LENGTH_SHORT);
+        connected = Snackbar.make(drawer, getString(R.string.connected), Snackbar.LENGTH_SHORT);
 //        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceActivity.class));
     }
 

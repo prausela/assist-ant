@@ -2,6 +2,7 @@ package com.assist.home.assisthome.api.devices;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 
 import com.android.volley.Request;
