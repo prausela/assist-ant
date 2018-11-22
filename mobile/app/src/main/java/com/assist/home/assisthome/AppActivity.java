@@ -1,5 +1,6 @@
 package com.assist.home.assisthome;
 
+import android.app.ActionBar;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ClipData;
@@ -34,7 +35,10 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
     View nav_dev,nav_routines;
     private static Context mContext;
     RadioButton notifButton;
-
+    DrawerLayout drawer;
+    ActionBar actionBar;
+    ActionBarDrawerToggle toggle;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +53,24 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
 //            notif=false;
 //        }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
 
@@ -79,8 +90,6 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
     }
 
     protected void setContent(@LayoutRes int content, String title){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         ViewStubCompat stub = (ViewStubCompat) findViewById(R.id.content);
         setTitle(title);
         stub.setLayoutResource(content);
@@ -130,18 +139,21 @@ public abstract class AppActivity extends AppCompatActivity implements Navigatio
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_dev) {
+        if (id == R.id.nav_dev && !this.getClass().equals(DeviceActivity.class)) {
             Intent intent = new Intent(AppActivity.this,DeviceActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
             startActivity(intent);
-        } else if (id == R.id.nav_routines) {
+        } else if (id == R.id.nav_routines && !this.getClass().equals(RoutinesActivity.class)) {
 
             Intent intent = new Intent(AppActivity.this,RoutinesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
             startActivity(intent);
 
-        }  else if (id == R.id.nav_manage) {
+        }  else if (id == R.id.nav_manage && !this.getClass().equals(Settings.class)) {
             Intent intent = new Intent(AppActivity.this,Settings.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
             startActivity(intent);
 

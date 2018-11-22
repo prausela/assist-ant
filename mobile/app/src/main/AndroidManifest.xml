@@ -3,6 +3,7 @@
     package="com.assist.home.assisthome">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,16 +22,38 @@
             </intent-filter>
         </activity>
         <activity android:name=".RoutinesActivity" />
-        <activity android:name=".DeviceAC"></activity>
-        <activity android:name=".DeviceFridge"></activity>
-        <activity android:name=".DeviceBlind"></activity>
-        <activity android:name=".DeviceOven"></activity>
-        <activity android:name=".DeviceDoor"></activity>
-        <activity android:name=".Settings"></activity>
-        <receiver android:name=".notifications.AlarmNotificationReceiver"/>
-        <receiver android:name=".notifications.AlarmNotificationReceiver2"/>
-        <receiver android:name=".notifications.AlarmNotificationReceiver3"/>
-        <receiver android:name=".notifications.AlarmNotificationReceiver4"/>
+        <activity android:name=".DeviceAC">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DeviceActivity" />
+        </activity>
+        <activity android:name=".DeviceFridge">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DeviceActivity" />
+        </activity>
+        <activity android:name=".DeviceBlind">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DeviceActivity" />
+        </activity>
+        <activity android:name=".DeviceOven">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DeviceActivity" />
+        </activity>
+        <activity android:name=".DeviceDoor">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DeviceActivity" />
+        </activity>
+        <activity android:name=".Settings" />
+
+        <receiver android:name=".notifications.AlarmNotificationReceiver" />
+        <receiver android:name=".notifications.AlarmNotificationReceiver2" />
+        <receiver android:name=".notifications.AlarmNotificationReceiver3" />
+        <receiver android:name=".notifications.AlarmNotificationReceiver4" />
+
     </application>
 
 </manifest>

@@ -3,29 +3,23 @@ package com.assist.home.assisthome;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
 import com.assist.home.assisthome.api.API;
 import com.assist.home.assisthome.api.Device;
 import com.assist.home.assisthome.api.DeviceElementAdapter;
-import com.assist.home.assisthome.api.DeviceType;
 import com.assist.home.assisthome.api.JSONResponses;
-import com.assist.home.assisthome.api.devices.AC;
-import com.assist.home.assisthome.notifications.NotificationBroadcastReceiver;
 import com.assist.home.assisthome.notifications.NotificationChecker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -36,11 +30,9 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class DeviceActivity extends AppActivity {
     private GridView dView;
@@ -49,8 +41,13 @@ public class DeviceActivity extends AppActivity {
     LinearLayout all;
     RelativeLayout loading;
     Context context;
+    Snackbar no_conection;
+    Snackbar connecting;
+    Snackbar connected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         all=(LinearLayout) findViewById(R.id.activity_all);
         loading=(RelativeLayout) findViewById(R.id.loadingPanel);
@@ -60,12 +57,23 @@ public class DeviceActivity extends AppActivity {
 //        super.setContent(R.layout.activity_devices_cards,getString(R.string.devices_title));
 //        getDevices();
         NotificationChecker.init(this);
+        no_conection = Snackbar.make(drawer, getString(R.string.no_conectivity), Snackbar.LENGTH_INDEFINITE)
+                .setAction(getString(R.string.retry), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        no_conection.dismiss();
+                        getDevices();
+                    }
+                });
+        connecting = Snackbar.make(drawer, getString(R.string.connecting), Snackbar.LENGTH_LONG);
+        connected = Snackbar.make(drawer, getString(R.string.connected), Snackbar.LENGTH_LONG);
 //        new NotificationBroadcastReceiver().sendNotification(this, new Intent(DeviceActivity.this, DeviceActivity.class));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        connecting.show();
         getDevices();
     }
 
@@ -95,34 +103,35 @@ public class DeviceActivity extends AppActivity {
                     case "ac":
                         Intent intent = new Intent(DeviceActivity.this, DeviceAC.class);
                         intent.putExtra("device",dAdapter.getItem(position).d.id);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                         break;
                     case "refrigerator":
                         Intent intent1 = new Intent(DeviceActivity.this, DeviceFridge.class);
                         intent1.putExtra("device",dAdapter.getItem(position).d.id);
-
+                        intent1.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent1);
                         break;
                     case "door":
                         Intent intent2 = new Intent(DeviceActivity.this, DeviceDoor.class);
                         intent2.putExtra("device",dAdapter.getItem(position).d.id);
-
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent2);
                         break;
                     case "blind":
                         Intent intent3 = new Intent(DeviceActivity.this, DeviceBlind.class);
                         intent3.putExtra("device",dAdapter.getItem(position).d.id);
-
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent3);
                         break;
                     case "oven":
                         Intent intent4 = new Intent(DeviceActivity.this, DeviceOven.class);
                         intent4.putExtra("device",dAdapter.getItem(position).d.id);
-
+                        intent4.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent4);
                         break;
@@ -150,6 +159,11 @@ public class DeviceActivity extends AppActivity {
                 Log.d("Shipu", "Failere1");
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
+                if(connecting.isShown())
+                    connecting.dismiss();
+                if (!no_conection.isShown()){
+                    no_conection.show();
+                }
             }
         }) {
             @Override
@@ -173,6 +187,9 @@ public class DeviceActivity extends AppActivity {
         JsonObjectRequest request = new JsonObjectRequest(JsonRequest.Method.GET, API.getUrl() + "/devices", (String) null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                if (connecting.isShown())
+                    connecting.dismiss();
+                connected.show();
                 Log.d("Shipu", "Success!");
                 Log.d("Shipu", response.toString());
 
@@ -205,6 +222,9 @@ public class DeviceActivity extends AppActivity {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     Log.d("Shipu7", response.toString());
+                                    if (no_conection.isShown()){
+                                        no_conection.dismiss();
+                                    }
                                     try {
                                         Map<String,String> state = gson.fromJson(response.getJSONObject("result").toString(), type);
                                         dev.state = state;
@@ -249,6 +269,11 @@ public class DeviceActivity extends AppActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     Log.d("Shipu7", "Wrong");
+                                    if(connecting.isShown())
+                                        connecting.dismiss();
+                                    if (!no_conection.isShown()){
+                                        no_conection.show();
+                                    }
                                 }
                             }
                     );
@@ -261,6 +286,11 @@ public class DeviceActivity extends AppActivity {
                 Log.d("Shipu", "Failere2");
                 Log.d("Shipu", volleyError.toString());
                 volleyError.printStackTrace();
+                if(connecting.isShown())
+                    connecting.dismiss();
+                if (!no_conection.isShown()){
+                    no_conection.show();
+                }
             }
         }) {
             @Override

@@ -45,8 +45,10 @@
     <string name="fridge_def">se modifico a modo default</string>
     <string name="fridge_party" >se modifico a modo fiesta</string>
     <string name="fridge_trip" >se modifico a modo viaje</string>
-
-
+    <string name="no_conectivity">Falló enlace de red!</string>
+    <string name="connecting">Estableciendo enlace de red...</string>
+    <string name="retry">INTENTAR DE NUEVO</string>
+    <string name="connected">Enlace de red exitoso!</string>
 
 
 </resources>
