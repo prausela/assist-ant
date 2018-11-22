@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 public class API {
 
 
-    static String url = "http://192.168.0.5:8080/api";
+    static String url = "http://192.168.1.208:8080/api";
     public static Map<String, DeviceType> deviceTypes = new HashMap<>();
     public static Map<String, Device> devices = new HashMap<>();
     public static String getUrl() {
@@ -144,7 +144,7 @@ public class API {
 //                                Log.v("Shipu", "ts: " + parsedTs);
                                 Calendar cal = Calendar.getInstance(Locale.getDefault());
 
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+                                SimpleDateFormat sdf = (SimpleDateFormat) SimpleDateFormat.getDateTimeInstance();
                                 sdf.setTimeZone(cal.getTimeZone());
                                 try {
                                     cal.setTime(sdf.parse(parsedTs));
@@ -155,9 +155,9 @@ public class API {
                             }
                             Log.v("Shipu",e.toString());
                             Log.v("Shipu", "Checking if favorite...");
-                            if (de.device.decodedMeta.containsKey("favorite") && de.device.decodedMeta.get("favorite").equals("true")) {
+                            if (de.device.decodedMeta != null && de.device.decodedMeta.containsKey("favorite") && de.device.decodedMeta.get("favorite").equals("true")) {
                                 DeviceEvent previousEvent = toNotifyEvents.get(de.deviceId);
-                                if (previousEvent == null || de.cal.getTime().compareTo(previousEvent.cal.getTime()) > 0) {
+                                if (previousEvent == null || de.cal == null || de.cal.getTime().compareTo(previousEvent.cal.getTime()) > 0) {
                                     toNotifyEvents.put(de.deviceId,de);
                                 }
                             }

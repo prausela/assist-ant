@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 
 import com.assist.home.assisthome.AppActivity;
 import com.assist.home.assisthome.DeviceActivity;
@@ -27,15 +28,19 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
         String chid = "mychannel";
         CharSequence name = "chname";
         String description = "chdesc";
-        int importance = NotificationManager.IMPORTANCE_LOW;
-        NotificationChannel ch = new NotificationChannel(chid, name, importance);
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        ch.setDescription(description);
-        ch.enableLights(true);
-        ch.setLightColor(Color.RED);
-        ch.enableVibration(true);
-        ch.setVibrationPattern(new long[] {100,200,300,400,500,400,300,200,400});
-        nm.createNotificationChannel(ch);
+        if (Build.VERSION.SDK_INT >= 24) {
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            if (Build.VERSION.SDK_INT >= 26) {
+                NotificationChannel ch = new NotificationChannel(chid, name, importance);
+                ch.setDescription(description);
+                ch.enableLights(true);
+                ch.setLightColor(Color.RED);
+                ch.enableVibration(true);
+                ch.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                nm.createNotificationChannel(ch);
+            }
+        }
 
 
         Intent notificationIntent = intent;
@@ -47,15 +52,17 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
         final PendingIntent contentIntent = sb.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
 
         int messageId = 1;
-        Notification n = new Notification.Builder(context)
+        Notification.Builder nb = new Notification.Builder(context)
                 .setContentTitle(title)
                 .setContentText("")
                 .setSmallIcon(R.drawable.logo1)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.logo1))
                 .setAutoCancel(true)
-                .setChannelId(chid)
-                .setContentIntent(contentIntent)
-                .build();
+                .setContentIntent(contentIntent);
+        if (Build.VERSION.SDK_INT >= 26){
+            nb.setChannelId(chid);
+        }
+        Notification n = nb.build();
         nm.notify(messageId, n);
     }
 }

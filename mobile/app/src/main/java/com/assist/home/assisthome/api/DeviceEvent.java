@@ -23,7 +23,9 @@ public class DeviceEvent {
         str.append("Event: \n");
         str.append(device.name + "\n");
         str.append(event + "\n");
-        str.append(cal.getTime().toString() + "\n");
+        if (cal != null) {
+            str.append(cal.getTime().toString() + "\n");
+        }
         Iterator<Map.Entry<String,String>> it = args.entrySet().iterator();
         str.append("Args: \n");
         while(((Iterator) it).hasNext()) {
