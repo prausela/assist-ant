@@ -49,6 +49,10 @@
     <string name="connecting">Estableciendo enlace de red...</string>
     <string name="retry">INTENTAR DE NUEVO</string>
     <string name="connected">Enlace de red exitoso!</string>
+    <string name="msg_tmp">Temperatura fijada!</string>
+    <string name="msg_tmp_err">Fijado de temperatura falló!</string>
+    <string name="msg_on">Dispositivo encendido!</string>
+    <string name="msg_on_failed">No pudo encenderse el dispositivo!</string>
 
 
 </resources>

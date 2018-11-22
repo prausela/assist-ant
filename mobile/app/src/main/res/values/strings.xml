@@ -56,5 +56,9 @@
     <string name="no_conectivity">Network link failed!</string>
     <string name="retry">RETRY</string>
     <string name="connected">Network link successful!</string>
+    <string name="msg_tmp">Temperature set!</string>
+    <string name="msg_tmp_err">Temperature set fail!</string>
+    <string name="msg_on">Device turned on!</string>
+    <string name="msg_on_failed">Device could not turn on!</string>
     \
 </resources>
